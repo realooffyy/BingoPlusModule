@@ -1,6 +1,6 @@
 import settings from "../settings"
 import constants from "../utils/constants"
 
-register("messageSent", (e) => {
+register("messageSent", (message) => {
     ChatLib.chat();
 }).setCriteria();
