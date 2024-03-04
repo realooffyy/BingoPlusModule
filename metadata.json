@@ -1,0 +1,8 @@
+{
+    "name": "Bingo+",
+    "creator": "ooffyy",
+    "description": "A module that helps with various Bingo things!",
+    "version": "1.0.0",
+    "entry": "index.js",
+    "requires": ["Vigilance"]
+  }
