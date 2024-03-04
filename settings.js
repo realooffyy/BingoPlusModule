@@ -2,7 +2,7 @@ import { @Vigilant, @SwitchProperty, @ButtonProperty } from "Vigilance"
 
 @Vigilant("Bingo+/config", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
-        const categories = ["General", "Bingo", "NPC"];
+        const categories = ["General", "Bingo", "Chat"];
 
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     }
@@ -24,14 +24,22 @@ class Settings {
         //ChatLib.command("ct copy https://discord.gg/P8rahWWA7b", true);
     }
 
+
+    // Bingo
+
     @SwitchProperty({
         name: "Only on Bingo",
-        description: "Only enable mod features when on Bingo.",
-        category: "General"
+        description: "Only enable features in this category on Bingo profiles",
+        category: "Bingo"
     })
     only_on_bingo = true
 
-    // Bingo
+    @SwitchProperty({
+        name: "Community Goal Display",
+        description: "Displays community goal data when on the Bingo Card menu.",
+        category: "Bingo"
+    })
+    community_goal_display = true
 
     @SwitchProperty({
         name: "Chicken Head Timer",
@@ -49,12 +57,6 @@ class Settings {
     })
     copy_achievements = true
 
-    @SwitchProperty({
-        name: "Community Goal Display",
-        description: "Displays community goal data when on the bingo card menu",
-        category: "Bingo"
-    })
-    community_goal_display = true
 
     @SwitchProperty({
         name: "Baker Blocker",
@@ -64,12 +66,28 @@ class Settings {
     })
     baker_blocker = true
 
-    // NPC
+    @SwitchProperty({
+        name: "Disable Party Travel Messages",
+        description: "Disables party travel notifications on Bingo.",
+        category: "Bingo",
+        subcategory: "Party"
+    })
+    disable_party_travel_messages = false
+
+    // Chat
+
+    @SwitchProperty({
+        name: "Fake Emojis",
+        description: "Sends &6[MVP&c++&6]&r / &c[&fYOUTUBE&c]&r and Rank Gifting emojis without having the requirements!\n&cMay be laggy!",
+        category: "Chat",
+        subcategory: "Sending"
+    })
+    fake_emojis = false
 
     @SwitchProperty({
         name: "Maxwell",
         description: "Automatically skips Maxwell's dialogue.",
-        category: "NPC",
+        category: "Chat",
         subcategory: "Dialogue Skipper"
     })
     maxwell = true
@@ -77,15 +95,15 @@ class Settings {
     @SwitchProperty({
         name: "Sam",
         description: "Automatically skips Sam's dialogue.",
-        category: "NPC",
+        category: "Chat",
         subcategory: "Dialogue Skipper"
     })
     sam = true
 
     @SwitchProperty({
         name: "Pesthunter Phillip",
-        description: "Automatically skips Phillip's dialogue.",
-        category: "NPC",
+        description: "Automatically skips Phillip's dialogue. &cIncomplete!",
+        category: "Chat",
         subcategory: "Dialogue Skipper"
     })
     pesthunter_phillip = true
@@ -93,7 +111,7 @@ class Settings {
     @SwitchProperty({
         name: "Lone Adventurer",
         description: "Automatically skips the Lone Adventurer's dialogue.",
-        category: "NPC",
+        category: "Chat",
         subcategory: "Dialogue Skipper"
     })
     lone_adventurer = true

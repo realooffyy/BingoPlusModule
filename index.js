@@ -1,16 +1,16 @@
 import Settings from "./settings"
 
 // Features
-import "./features/dialogueskip"
+import "./features/dialogueSkipper"
 import "./features/bestiaryunlock"
-import "./features/emojisend"
-import "./features/copyachievements"
+import "./features/fakeEmojis"
+import "./features/bingo/copyAchievements"
 //import "./features/playercount"
 //import "./features/chickenhead"
-import "./features/bakerblock"
-import "./features/communitygoaldisplay"
+import "./features/bingo/disablePartyTravelMessages"
 
-
+import "./features/bingo/bakerBlocker"
+import "./features/bingo/communityGoalDisplay"
 
 import "./commands/skycrypt"
 import "./commands/showtitle"

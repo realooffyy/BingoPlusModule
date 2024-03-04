@@ -1,6 +1,6 @@
-import settings from "../settings"
-import constants from "../utils/constants"
-import { bingoCheck } from "../utils/onbingo";
+import settings from "../../settings"
+import constants from "../../utils/constants"
+import { bingoCheck } from "../../utils/onbingo";
 
 const PREFIX = constants.PREFIX
 

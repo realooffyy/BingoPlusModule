@@ -1,5 +1,5 @@
-import settings from "../settings";
-import constants from "../utils/constants"
+import settings from "../../settings";
+import constants from "../../utils/constants"
 
 const community_slots = [2, 12, 22, 32, 42];
 

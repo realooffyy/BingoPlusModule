@@ -1,4 +1,7 @@
-export default emojis {
+const emojis = {
+  // custom
+  "skull": "☠",
+  // mvp++/yt
   "<3": "❤",
   ":star:": "✮",
   ":yes:": "✔",
@@ -8,7 +11,6 @@ export default emojis {
   ":shrug:": "¯\_(ツ)_/¯",
   ":tableflip:": "(╯°□°）╯︵ ┻━┻",
   "o/": "( ﾟ◡ﾟ)/",
-  ":123:": "123",
   ":totem:": "☉_☉",
   ":typing:": "✎...",
   ":maths:": "√(π+x)=L",
@@ -18,17 +20,17 @@ export default emojis {
   ":wizard:": "('-')⊃━☆ﾟ.*･｡ﾟ",
   ":pvp:": "⚔",
   ":peace:": "✌",
-  ":oof:": "OOF",
   ":puffer:": "<('O')>",
+  // rank gifting
   ":yey:": "ヽ (◕◡◕) ﾉ",
   ":cat:": "= ＾● ⋏ ●＾ =",
   ":dab:": "<o/",
   ":dj:": "ヽ(⌐■_■)ノ♬",
   ":snow:": "☃",
-  "^_^": "^_^",
   "h/": "ヽ(^◇^*)/",
-  "^-^": "^-^",
   ":sloth:": "(・⊝・)",
   ":cute:": "(✿◠‿◠)",
   ":dog:": "(ᵔᴥᵔ)"
 }
+
+export default emojis
