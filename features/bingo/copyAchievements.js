@@ -1,11 +1,11 @@
 import settings from "../../settings"
 import constants from "../../utils/constants"
-import { bingoCheck } from "../../utils/onbingo";
+import { bingoFeaturesEnabled } from "../../utils/bingoCheck";
 
-const PREFIX = constants.PREFIX
+const regex = /(HEART OF THE MOUNTAIN.*|BINGO GOAL COMPLETE!.*)/g // https://regex101.com/r/nHf4KU/1
 
 register("chat", (e) => {
-    if (!settings.copy_achievements || !bingoCheck()) return
+    if (!settings.copy_achievements || !bingoFeaturesEnabled()) return
     ChatLib.command("ct copy "+ChatLib.getChatMessage(e).replace(/§./g, ''), true)
-    ChatLib.chat(PREFIX+"&aAchievement copied to clipboard!");
-}).setCriteria("§6§lBINGO GOAL COMPLETE!").setContains();
+    ChatLib.chat(constants.PREFIX+"&aAchievement copied to clipboard!");
+}).setCriteria(regex).setContains();

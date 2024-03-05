@@ -19,7 +19,7 @@
 		sam = true
 
 	[chat.sending]
-		fake_emojis = false
+		fake_emojis = true
 
 	[chat.party]
 		disable_party_travel_messages = true
@@ -39,4 +39,5 @@
 
 	[bingo.party]
 		disable_party_travel_messages = true
+		block_party_travel_messages = false
 

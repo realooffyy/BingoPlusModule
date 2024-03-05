@@ -67,12 +67,12 @@ class Settings {
     baker_blocker = true
 
     @SwitchProperty({
-        name: "Disable Party Travel Messages",
-        description: "Disables party travel notifications on Bingo.",
+        name: "Block Party Travel Messages",
+        description: "Block party travel notifications on Bingo.\n",
         category: "Bingo",
         subcategory: "Party"
     })
-    disable_party_travel_messages = false
+    block_party_travel_messages = false
 
     // Chat
 
