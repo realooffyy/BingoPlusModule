@@ -4,9 +4,6 @@ export function bingoFeaturesEnabled()
 {
     if(!settings.only_on_bingo) return true
     return isOnBingo()
-    /*let displayName = ''+Player.getDisplayName()
-    if(displayName.includes("Ⓑ")) return true
-    return false*/
 }
 
 export function isOnBingo()
@@ -15,5 +12,3 @@ export function isOnBingo()
     if(displayName.includes("Ⓑ")) return true
     return false
 }
-
-//export default isOnBingo()
