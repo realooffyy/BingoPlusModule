@@ -7,5 +7,5 @@ export const data = new PogObject("Bingo+", {
         x:0,
         y:0,
         scale:1
-    },
+    }
 }, "config/data.json")
