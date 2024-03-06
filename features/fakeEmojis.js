@@ -1,7 +1,7 @@
 import settings from "../settings"
 import emojis from "../utils/emojis"
 
-const allowedCommands = ["/pc", "/ac", "/gc", "/cc", "/oc", "/r", "/msg"]
+const allowedCommands = ["/pc", "/ac", "/gc", "/msg", "/r", "/cc", "/oc"]
 
 register("messageSent", (message, event) => {
   if (!settings.fake_emojis) return
