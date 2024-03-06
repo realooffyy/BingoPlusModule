@@ -12,6 +12,7 @@ import { @Vigilant, @SwitchProperty, @ButtonProperty } from "Vigilance"
 class Settings {
 
     chickenHeadTimerMove = new Gui()
+    communityGoalDisplayMove = new Gui()
 
     // General
 
@@ -39,9 +40,20 @@ class Settings {
     @SwitchProperty({
         name: "Community Goal Display",
         description: "Displays community goal data when on the Bingo Card menu.",
-        category: "Bingo"
+        category: "Bingo",
+        subcategory: "Commuity Goal Display"
     })
     community_goal_display = true
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Commuity Goal Display",
+        category: "Bingo",
+        subcategory: "Commuity Goal Display"
+    })
+    MoveCommunityGoalDisplay() {
+        this.communityGoalDisplayMove.open()
+    }
 
     @SwitchProperty({
         name: "Chicken Head Timer",
