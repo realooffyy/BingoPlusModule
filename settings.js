@@ -11,6 +11,8 @@ import { @Vigilant, @SwitchProperty, @ButtonProperty } from "Vigilance"
 
 class Settings {
 
+    chickenHeadTimerMove = new Gui()
+
     // General
 
     @ButtonProperty({
@@ -45,9 +47,19 @@ class Settings {
         name: "Chicken Head Timer",
         description: "Displays a timer for the Chicken Head cooldown.",
         category: "Bingo",
-        subcategory: "Timers"
+        subcategory: "Chicken Head Timer"
     })
     chicken_head_timer = true
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Chicken Head Timer",
+        category: "Bingo",
+        subcategory: "Chicken Head Timer"
+    })
+    MoveChickenHeadTimer() {
+        this.chickenHeadTimerMove.open()
+    }
 
     @SwitchProperty({
         name: "Copy Achievements",
@@ -68,7 +80,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Block Party Travel Messages",
-        description: "Block party travel notifications on Bingo.\n",
+        description: "Block party travel notifications on Bingo.\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r",
         category: "Bingo",
         subcategory: "Party"
     })
@@ -115,6 +127,14 @@ class Settings {
         subcategory: "Dialogue Skipper"
     })
     lone_adventurer = true
+
+    @SwitchProperty({
+        name: "Block Sky Mall Messages",
+        description: "Blocks the daily Sky Mall messages.\n\n§r§bNew day! §r§eYour §r§2Sky Mall §r§ebuff changed!§r\n§r§8§oYou can disable this messaging by toggling Sky Mall in your /hotm!§r",
+        category: "Chat",
+        subcategory: "Blockers"
+    })
+    block_sky_mall_messages = false
 
     constructor() {
         this.initialize(this);

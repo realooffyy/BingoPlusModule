@@ -2,7 +2,7 @@ import settings from "../settings"
 import constants from "../utils/constants"
 
 const PREFIX = constants.PREFIX
-
+/*
 const maxwell_lines = {
     "Select an option: [Ok, then what?] ": "selectnpcoption thaumaturgist x_2",
     "Select an option: [Magical power?] ": "selectnpcoption thaumaturgist x_2",
@@ -22,7 +22,7 @@ const pesthunter_phillip_lines = {
 const lone_adventurer_lines = {
     "Select an option: [YES] [NO] ": ["selectnpcoption lone_adventurer yes", "selectnpcoption lone_adventurer_2 yes"]
 }
-
+*/
 
 // Maxwell skipper
 
