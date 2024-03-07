@@ -18,11 +18,11 @@ let opened = false
 let guiElements = {
     name: "&6&lCommunity Goals",
     goals: [
-        ["Goal 1", "Contribution"],
-        ["Goal 2", "Contribution"],
-        ["Goal 3", "Contribution"],
-        ["Goal 4", "Contribution"],
-        ["Goal 5", "Contribution"]
+        ["Goal 1", "Contribution", "Contrib%"],
+        ["Goal 2", "Contribution", "Contrib%"],
+        ["Goal 3", "Contribution", "Contrib%"],
+        ["Goal 4", "Contribution", "Contrib%"],
+        ["Goal 5", "Contribution", "Contrib%"]
     ]
 }
 
@@ -46,14 +46,15 @@ register("postGuiRender", () => {
                 let item = items[i]
                 //console.log(item)
                 guiElements.goals[i][0] = item.getName()
-                let contribLine = ''
                 for (const line of item.getLore()){
                     console.log(line)
-                    if (/§5§o§7Contribution: .*/g.test(line)) contribLine += `${line.replace("§5§o§7Contribution: ",'')}`
-                    if (/  §8Top .*/g.test(line)) contribLine += ` &8(${line.replace('  ','')}&8)`
+                    if (/§5§o§7Contribution: .*/g.test(line)) guiElements.goals[i][1] = `${line.replace("§5§o§7Contribution: ",'')}`
+                    if (/  §8Top .*/g.test(line)) guiElements.goals[i][2] = ` &8(${line.replace('  ','')}&8)`
                 }
-                //console.log(contribLine)
-                guiElements.goals[i][1] = contribLine
+                // log all goals in console
+                for (let i = 0; i < 5; i++) {
+                  console.log(guiElements.goals[i])
+                }
             }
 
             let closeListener = register("guiClosed", () => {
