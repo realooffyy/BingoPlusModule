@@ -22,7 +22,7 @@
 		fake_emojis = true
 
 	[chat.blockers]
-		block_sky_mall_messages = false
+		block_sky_mall_messages = true
 
 	[chat.party]
 		disable_party_travel_messages = true

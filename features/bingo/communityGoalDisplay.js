@@ -44,14 +44,15 @@ register("postGuiRender", () => {
             ChatLib.chat("loaded bingo card items")
             for (let i = 0; i < 5; i++) {
                 let item = items[i]
-                console.log(item)
+                //console.log(item)
                 guiElements.goals[i][0] = item.getName()
                 let contribLine = ''
                 for (const line of item.getLore()){
+                    console.log(item)
                     if (/§5§o§7Contribution: .*/g.test(line)) contribLine += `${line.replace("§5§o§7Contribution: ",'')}`
                     if (/  §8Top .*/g.test(line)) contribLine += ` &8(${line.replace('  ','')}&8)`
                 }
-                console.log(contribLine)
+                //console.log(contribLine)
                 guiElements.goals[i][1] = contribLine
             }
 
