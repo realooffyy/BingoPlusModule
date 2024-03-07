@@ -48,7 +48,7 @@ register("postGuiRender", () => {
                 guiElements.goals[i][0] = item.getName()
                 let contribLine = ''
                 for (const line of item.getLore()){
-                    console.log(item)
+                    console.log(line)
                     if (/§5§o§7Contribution: .*/g.test(line)) contribLine += `${line.replace("§5§o§7Contribution: ",'')}`
                     if (/  §8Top .*/g.test(line)) contribLine += ` &8(${line.replace('  ','')}&8)`
                 }
