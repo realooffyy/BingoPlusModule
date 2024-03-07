@@ -5,7 +5,7 @@ export default constants = {
 }
 
 export const data = new PogObject("Bingo+", {
-    firstTime = true,
+    firstTime: true,
     
     chickenHeadTimerDisplay: {
         x: 0,

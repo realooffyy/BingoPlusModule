@@ -21,7 +21,7 @@ import "./features/bingo/blockPartyTravelMessages"
 ChatLib.chat("4")
 import "./features/bingo/bakerBlocker"
 ChatLib.chat("5")
-//import "./features/bingo/communityGoalDisplay"
+import "./features/bingo/communityGoalDisplay"
 ChatLib.chat("community goal display")
 
 // Commands

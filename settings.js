@@ -65,13 +65,21 @@ class Settings {
 
     @ButtonProperty({
         name: "Move",
-        description: "Move the Chicken Head Timer",
+        description: "Move the Chicken Head Timer.",
         category: "Bingo",
         subcategory: "Chicken Head Timer"
     })
     MoveChickenHeadTimer() {
         this.chickenHeadTimerMove.open()
     }
+
+    @SwitchProperty({
+        name: "Hide Egg Laid Message",
+        description: "Hides the §r§aYou laid an egg!§r message.",
+        category: "Bingo",
+        subcategory: "Chicken Head Timer"
+    })
+    hide_egg_laid_message = false
 
     @SwitchProperty({
         name: "Copy Achievements",
