@@ -41,15 +41,15 @@ class Settings {
         name: "Community Goal Display",
         description: "Displays community goal data when on the Bingo Card menu.",
         category: "Bingo",
-        subcategory: "Commuity Goal Display"
+        subcategory: "Community Goal Display"
     })
     community_goal_display = true
 
     @ButtonProperty({
         name: "Move",
-        description: "Move the Commuity Goal Display",
+        description: "Move the Community Goal Display",
         category: "Bingo",
-        subcategory: "Commuity Goal Display"
+        subcategory: "Community Goal Display"
     })
     MoveCommunityGoalDisplay() {
         this.communityGoalDisplayMove.open()

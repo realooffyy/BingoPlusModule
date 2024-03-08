@@ -1,6 +1,3 @@
-/// <reference types="../../../CTAutocomplete" />
-/// <reference lib="es2015" />
-
 import { data } from "../../utils/constants"
 import settings from "../../settings"
 import Skyblock from "../../../BloomCore/Skyblock"

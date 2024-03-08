@@ -1,3 +1,6 @@
+/// <reference types="../../../CTAutocomplete" />
+/// <reference lib="es2015" />
+
 import { data } from "../../utils/constants"
 import settings from "../../settings"
 import Skyblock from "../../../BloomCore/Skyblock"
@@ -13,52 +16,73 @@ display.setBackgroundColor(Renderer.BLACK);
 
 const community_slots = [2, 12, 22, 32, 42]
 
+let bingoCardOpened = false
+let stringReady = true
+
 let opened = false
 
 let guiElements = {
     name: "&6&lCommunity Goals",
     goals: [
-        ["Goal 1", "Contribution", "Contrib%"],
-        ["Goal 2", "Contribution", "Contrib%"],
-        ["Goal 3", "Contribution", "Contrib%"],
-        ["Goal 4", "Contribution", "Contrib%"],
-        ["Goal 5", "Contribution", "Contrib%"]
+        ["Goal 1", "Contribution", "(Top %)", 0],
+        ["Goal 2", "Contribution", "(Top %)", 0],
+        ["Goal 3", "Contribution", "(Top %)", 0],
+        ["Goal 4", "Contribution", "(Top %)", 0],
+        ["Goal 5", "Contribution", "(Top %)", 0]
+    //    name      contribution     top %    goal tier
     ]
 }
 
 
 
 register("postGuiRender", () => {
-    if (!settings.community_goal_display) return
+    if (!settings.community_goal_display || !Skyblock.inSkyblock) return
     let inv = Player.getContainer()
-    if (!opened && inv.getName() == "Bingo Card") {
-        opened = true
+    if (!bingoCardOpened && inv?.getName() == "Bingo Card") {
+        stringReady = false
+        bingoCardOpened = true
+        guiElements = resetElements()
 
-        let guiLoaded = register("tick", () => {
+        let guiLoaded = register("tick", (t) => {
             if (inv?.getItems()[42] == null) return
 
-            //if (finalItem.getName() != /.*(I|II|III|IV|V).*/g) return //inv?.getStackInSlot(inv?.getSize() - 37) == null || 
+            let items = community_slots.map(slot => inv.getItems()[slot])
+            console.log(items)
+            for (let i = 0; i < 5; i++) {
+                console.log("Testing item "+i)
+                if (!/.*(I|II|III|IV|V).*/g.test(items[i].getName())) return //inv?.getStackInSlot(inv?.getSize() - 37) == null ||
+            }
+                
             guiLoaded.unregister()
 
-            let items = community_slots.map(slot => inv.getItems()[slot])
+            
             ChatLib.chat("loaded bingo card items")
             for (let i = 0; i < 5; i++) {
                 let item = items[i]
                 //console.log(item)
                 guiElements.goals[i][0] = item.getName()
+
+                let contribution = ''
                 for (const line of item.getLore()){
-                    console.log(line)
+                    //console.log(line)
                     if (/§5§o§7Contribution: .*/g.test(line)) guiElements.goals[i][1] = `${line.replace("§5§o§7Contribution: ",'')}`
-                    if (/  §8Top .*/g.test(line)) guiElements.goals[i][2] = ` &8(${line.replace('  ','')}&8)`
+                    if (/§7§cYou have not contributed towards/g.test(line)) guiElements.goals[i][1] = `&cNo contribution!&r`
+                    if (/  §8Top .*/g.test(line)) contribution = ` &8(${line.replace('  ','')}&8)`
+                    if (/  §6§l#\d+ §fcontributor/g.test(line)) contribution = ` &8(${line.replace('  ','')}&8)`
+
                 }
+                guiElements.goals[i][2] = contribution
+
+                /*
                 // log all goals in console
                 for (let i = 0; i < 5; i++) {
                   console.log(guiElements.goals[i])
                 }
+                */
             }
 
             let closeListener = register("guiClosed", () => {
-                opened = false
+                bingoCardOpened = false
                 ChatLib.chat("unloaded listener")
                 closeListener?.unregister()
             })
@@ -66,33 +90,57 @@ register("postGuiRender", () => {
     }
 })
 
-
 registerWhen(register("renderOverlay", () => { // thanks bloom
-    if (!opened
-        ) return
-    Renderer.translate(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
+    if (!bingoCardOpened) return
+
+    let x = data.communityGoalDisplay.x
+    let y = data.communityGoalDisplay.y
+
+    const rectangle = new Rectangle(Renderer.color(0,0,0,180), x-5, y-5, 200, 150)
+    rectangle.draw()
+
+    if (!stringReady) renderStr = compileString(); stringReady = true
+
+    Renderer.translate(x, y)
     Renderer.scale(data.communityGoalDisplay.scale ?? 1)
 
-    Renderer.drawStringWithShadow(guiElements.name, 0, 0)
+    Renderer.drawStringWithShadow(renderStr, 0, 0)
 
-    for (let i = 0; i < 5; i++) {
-        Renderer.translate(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
-        Renderer.drawStringWithShadow(`   ${guiElements.goals[i][0]}`, 0, 25*(i+1)-10)
-        Renderer.translate(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
-        Renderer.drawStringWithShadow(` ${guiElements.goals[i][1]}`, 0, 25*(i+1))
-    }
-    
-}), () => opened)
+}), () => bingoCardOpened)
 
 
 register("dragged", (dx, dy, x, y) => {
-    if (!opened || !settings.communityGoalDisplayMove.isOpen()) {
+    if (!bingoCardOpened || !settings.communityGoalDisplayMove.isOpen()) {
         data.communityGoalDisplay.x = x
         data.communityGoalDisplay.y = y
         data.save()
     }
     
 })
+
+function resetElements() {
+    table = {
+        name: "&6&lCommunity Goals",
+        goals: [
+            ["Goal 1", "Contribution", "(Top %)"],
+            ["Goal 2", "Contribution", "(Top %)"],
+            ["Goal 3", "Contribution", "(Top %)"],
+            ["Goal 4", "Contribution", "(Top %)"],
+            ["Goal 5", "Contribution", "(Top %)"]
+        ]
+    }
+    return table
+}
+
+function compileString() {
+    let str = ''
+    str += `${guiElements.name}\n\n` // title
+    for (let i = 0; i < 5; i++) {
+        str += `  &a✔ ${guiElements.goals[i][0]}\n` // goal title
+        str += ` ${guiElements.goals[i][1]} ${guiElements.goals[i][2]}\n` // goal contrib
+    }
+    return str
+}
 
 /*
 register("clicked", (x, y, btn, state) => {
@@ -108,19 +156,4 @@ register("clicked", (x, y, btn, state) => {
         }
     }
 })
-*/
-
-/* #2 from trypo
-{
-    id: "minecraft:emerald_block",
-    Count: 1b,
-    tag: {
-        ench: [],
-        display: {
-            Lore: ["§8Community Goal", "", "§7§7Gain §b100M Fishing§7 experience.", "", "§7Progress to Skilled II: §e63.9§6%", "§2§l§m                §f§l§m         §r §e63,942,965§6/§e100M", "", "§7Contribution Rewards", "§fTop §e1% §8- §67 Bingo Points", "§fTop §e5% §8- §65 Bingo Points", "§fTop §e10% §8- §64 Bingo Points", "§fTop §e25% §8- §63 Bingo Points", "§fAll Contributors §8- §61 Bingo Point", "", "§7§8§oCommunity Goals are collaborative -", "§8§oanyone with a Bingo profile can help", "§8§oto reach the goal!", "", "§7§8§oThe more you contribute towards the", "§8§ogoal, the more you will be rewarded!", "", "§7Contribution: §a5,757,320 experience", "  §8Top §a0.03%", "  §6§l#2 §fcontributor"],
-            Name: "§aSkilled I"
-        }
-    },
-    Damage: 0s
-}
 */
