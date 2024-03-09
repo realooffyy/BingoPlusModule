@@ -19,3 +19,12 @@ import "./commands/skycrypt"
 import "./commands/showtitle"
 
 ChatLib.chat("Bingo+ fully initialised!")
+
+/* TODO
+ * - optimise dialogue skipper and figure out if i can even autoskip
+ * - command for accessing bingo party commands
+ * - command for visiting a cake hub
+ * - reminder to do bingo stuff
+ * - timer for bingo end + profile deletion
+ * - hide completed bingo goals
+ */

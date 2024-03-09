@@ -3,7 +3,7 @@ import PogObject from "../../PogData/index"
 export default constants = {
     PREFIX: "&6[&6Bingo&c+&6]&r ",
     COMMANDS_LIST: [
-        `&6/b+ &8- Opens Bingo+`,
+        `&6/b+ &8- Opens Bingo+ config`,
         `&7/skycrypt <player> [fruit] &8- Opens SkyCrypt in your browser`
     ]
 }

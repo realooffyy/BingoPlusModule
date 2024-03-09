@@ -33,7 +33,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Only on Bingo",
-        description: "Only enable features in this category on Bingo profiles",
+        description: "Only enable features in the &6Bingo &rcategory on Bingo profiles.",
         category: "Bingo"
     })
     only_on_bingo = true
@@ -111,7 +111,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Fake Emojis",
-        description: "Sends &6[MVP&c++&6]&r / &c[&fYOUTUBE&c]&r and Rank Gifting emojis without having the requirements! Run &e/emoji &ron Hypixel for all emojis.\n&cMay be laggy!",
+        description: "Sends &6[MVP&c++&6]&r / &c[&fYOUTUBE&c]&r and Rank Gifting emojis without having the requirements! Run &e/emoji &ron Hypixel for the list of all emojis.\n&cMay be laggy!",
         category: "Chat",
         subcategory: "Sending"
     })
@@ -158,20 +158,16 @@ class Settings {
     block_sky_mall_messages = false
 
     // Commands
-
     @SwitchProperty({
-        name: "SkyCrypt",
-        description: "&e/skycrypt [player] <fruit>",
+        name: "SkyCrypt Auto Open",
+        description: "Automatically opens a new window when running the &e/skycrypt &rcommand.",
         category: "Commands"
     })
-    skycrypt = true
+    skycrypt_auto_open = false
 
     constructor() {
-        this.initialize(this);
+        this.initialize(this)
         this.setCategoryDescription("General", `&6Bingo&c+ &bv${JSON.parse(FileLib.read("Bingo+", "metadata.json")).version}\n&aBy ooffyy`)
-        let cmd = ''
-        cmd = constants.COMMANDS_LIST.forEach(x => {cmd += x+'\n'})
-        this.setCategoryDescription("Commands", cmd)
     }
 }
 
