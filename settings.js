@@ -1,8 +1,9 @@
 import { @Vigilant, @SwitchProperty, @ButtonProperty } from "Vigilance"
+import constants from "./utils/constants";
 
 @Vigilant("Bingo+/config", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
-        const categories = ["General", "Bingo", "Chat"];
+        const categories = ["General", "Bingo", "Chat", "Commands"];
 
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     }
@@ -110,7 +111,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Fake Emojis",
-        description: "Sends &6[MVP&c++&6]&r / &c[&fYOUTUBE&c]&r and Rank Gifting emojis without having the requirements!\n&cMay be laggy!",
+        description: "Sends &6[MVP&c++&6]&r / &c[&fYOUTUBE&c]&r and Rank Gifting emojis without having the requirements! Run &e/emoji &ron Hypixel for all emojis.\n&cMay be laggy!",
         category: "Chat",
         subcategory: "Sending"
     })
@@ -156,9 +157,21 @@ class Settings {
     })
     block_sky_mall_messages = false
 
+    // Commands
+
+    @SwitchProperty({
+        name: "SkyCrypt",
+        description: "&e/skycrypt [player] <fruit>",
+        category: "Commands"
+    })
+    skycrypt = true
+
     constructor() {
         this.initialize(this);
         this.setCategoryDescription("General", `&6Bingo&c+ &bv${JSON.parse(FileLib.read("Bingo+", "metadata.json")).version}\n&aBy ooffyy`)
+        let cmd = ''
+        cmd = constants.COMMANDS_LIST.forEach(x => {cmd += x+'\n'})
+        this.setCategoryDescription("Commands", cmd)
     }
 }
 

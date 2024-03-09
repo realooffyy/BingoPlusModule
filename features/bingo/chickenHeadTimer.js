@@ -1,17 +1,19 @@
 import { data } from "../../utils/constants"
 import settings from "../../settings"
 import Skyblock from "../../../BloomCore/Skyblock"
-import { registerWhen } from "../../../BloomCore/utils/Utils"
+import { registerWhen } from "../../utils/utils"
 
 const layCooldown = 5000
-let hasChickenHead = false
 let lastLay = 0
+let opened = false
 
 register("step", () => {
-    if (!settings.chicken_head_timer || !Skyblock.inSkyblock) return hasChickenHead = false
+    if (!settings.chicken_head_timer || !Skyblock.inSkyblock) return opened = false
+    if (settings.chickenHeadTimerMove.isOpen()) return opened = true
     let helmet = Player.armor.getHelmet()
-    if (helmet==null) return hasChickenHead = false
-    hasChickenHead = helmet.getName().includes("Chicken Head")
+    if (helmet==null) return opened = false
+    if (helmet.getName().includes("Chicken Head")) return opened = true
+    return opened = false
 }).setFps(2)
 
 register("worldLoad", () => {
@@ -19,11 +21,14 @@ register("worldLoad", () => {
 })
 
 registerWhen(register("renderOverlay", () => { // thanks bloom
-    if (!hasChickenHead) return
-
+    if (!opened) return
+    
     Renderer.translate(data.chickenHeadTimerDisplay.x, data.chickenHeadTimerDisplay.y)
     Renderer.scale(data.chickenHeadTimerDisplay.scale ?? 1)
 
+    // Move GUI
+    if (settings.chickenHeadTimerMove.isOpen()) { Renderer.drawStringWithShadow("Chicken Head Timer:", 0, 0); return }
+    
     let sinceLay = new Date().getTime() - lastLay
     let remainingTime = layCooldown - sinceLay
 
@@ -33,7 +38,7 @@ registerWhen(register("renderOverlay", () => { // thanks bloom
     
     Renderer.drawStringWithShadow(output, 0, 0)
 
-}), () => hasChickenHead)
+}), () => opened)
 
 register("dragged", (dx, dy, x, y) => {
     if (!settings.chickenHeadTimerMove.isOpen()) return

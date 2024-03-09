@@ -1,13 +1,13 @@
 {
     "firstTime": true,
     "chickenHeadTimerDisplay": {
-        "x": 18.33333396911621,
-        "y": 61.729278564453125,
+        "x": 121,
+        "y": 27.6953125,
         "scale": 1
     },
     "communityGoalDisplay": {
-        "x": 298,
-        "y": 168.83616638183594,
+        "x": 8,
+        "y": 86.0869140625,
         "scale": 1
     }
 }

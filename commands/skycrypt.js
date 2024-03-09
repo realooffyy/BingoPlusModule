@@ -5,7 +5,10 @@ const myUser = Player.getName()
 
 register("command", (...args) => { 
     let username = args[0]
-    if(args[0] == undefined) username = myUser 
-    ChatLib.chat(`${constants.PREFIX}&aOpening ${username}&a's SkyCrypt!`)
-    java.awt.Desktop.getDesktop().browse(new java.net.URL(`https://sky.shiiyu.moe/stats/${username}/${args[1]}`).toURI());
+    let profile = args[1]
+    if(username == undefined) username = myUser 
+    if(profile == undefined) profile = '' 
+    link = `https://sky.shiiyu.moe/stats/${username}/${profile}`
+    new TextComponent(`${constants.PREFIX}&aOpening ${username}&a's SkyCrypt!`).setClick("open_url", link).chat()
+    java.awt.Desktop.getDesktop().browse(new java.net.URL(link).toURI());
 } ).setName("skycrypt").setAliases("sky")
