@@ -1,4 +1,4 @@
-import { @Vigilant, @SwitchProperty, @ButtonProperty } from "Vigilance"
+import { @Vigilant, @SwitchProperty, @ButtonProperty, @TextProperty} from "Vigilance"
 import constants from "./utils/constants";
 
 @Vigilant("Bingo+/config", "Bingo+ Settings", {
@@ -164,6 +164,13 @@ class Settings {
         category: "Commands"
     })
     skycrypt_auto_open = false
+
+    @TextProperty({
+        name: "Century Cake Island",
+        description: "Visits a Cake Hub when running &e/cake&r.\nDefault: BingoSplasher",
+        category: "Commands"
+    })
+    century_cake_island = "BingoSplasher"
 
     constructor() {
         this.initialize(this)
