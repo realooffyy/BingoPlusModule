@@ -20,6 +20,7 @@ import "./commands/centuryCakeIsland"
 ChatLib.chat("Bingo+ fully initialised!")
 
 /* TODO
+ * - check if bloom's settings code worked
  * - implement elementa to community goal display bc the renderer thing isn't getting past the inventory overlay
         maybe not
  * - message for first install
