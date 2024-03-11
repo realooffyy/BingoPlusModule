@@ -96,10 +96,9 @@ function compileLines(list) {
     lines = str
 }
 
-// todo: learn how to implement elementa OR how to make the overlay go over inventory
-registerWhen(register("renderOverlay", () => { // thanks bloom
-    register("postGuiRender", () => {
-    if (!opened) return
+const renderCommunityGoals = () => {
+    Renderer.retainTransforms(true)
+
     guiX = data.communityGoalDisplay.x
     guiY = data.communityGoalDisplay.y
 
@@ -110,8 +109,30 @@ registerWhen(register("renderOverlay", () => { // thanks bloom
     Renderer.scale(data.communityGoalDisplay.scale ?? 1)
     
     Renderer.drawStringWithShadow(lines, 0, 0) // text
+
+    Renderer.retainTransforms(false)
+    Renderer.finishDraw()
+}
+
+// todo: learn how to implement elementa OR how to make the overlay go over inventory
+// check if this works
+registerWhen(register("renderOverlay", () => { // thanks bloom
+    //register("postGuiRender", () => {
+    if (!opened) return
+    renderCommunityGoals()
+    /*
+    guiX = data.communityGoalDisplay.x
+    guiY = data.communityGoalDisplay.y
+
+    const rectangle = new Rectangle(Renderer.color(0,0,0,180), guiX-5, guiY-5, width, height) // background
+    rectangle.draw()
+
+    Renderer.translate(guiX, guiY, 1000)
+    Renderer.scale(data.communityGoalDisplay.scale ?? 1)
     
-    })
+    Renderer.drawStringWithShadow(lines, 0, 0) // text
+    */
+    //})
 }), () => opened)
 
 
