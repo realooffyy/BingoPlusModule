@@ -4,7 +4,9 @@ export default constants = {
     PREFIX: "&6[&6Bingo&c+&6]&r ",
     COMMANDS_LIST: [
         `&6/b+ &8- Opens Bingo+ config`,
-        `&7/skycrypt <player> [fruit] &8- Opens SkyCrypt in your browser`
+        `&7/cake &8- Visits a Cake Hub. Defaults to BingoSplasher, configurable in settings`,
+        `&7/skycrypt <player> [fruit] &8- Provides a user's SkyCrypt link`,
+
     ]
 }
 

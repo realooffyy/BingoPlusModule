@@ -13,6 +13,12 @@ let opened = false
 
 let lines = ''
 
+let width = 200
+let height = 150
+
+let guiX, guiY, grabX, grabY
+let changePos = false
+
 register("step", () => {
     opened = bingoCardOpened
     if (settings.communityGoalDisplayMove.isOpen()) return opened = true
@@ -80,56 +86,54 @@ register("postGuiRender", () => {
     }
 })
 
-registerWhen(register("renderOverlay", () => { // thanks bloom
-    if (!opened) return
-
-    let x = data.communityGoalDisplay.x
-    let y = data.communityGoalDisplay.y
-
-    const rectangle = new Rectangle(Renderer.color(0,0,0,180), x-5, y-5, 200, 150)
-    rectangle.draw()
-
-    Renderer.translate(x, y)
-    Renderer.scale(data.communityGoalDisplay.scale ?? 1)
-
-    // Move GUI
-    if (settings.communityGoalDisplayMove.isOpen()) { Renderer.drawStringWithShadow(lines, 0, 0); return }
-
-    Renderer.drawStringWithShadow(lines, 0, 0)
-
-}), () => opened)
-
-
-register("dragged", (dx, dy, x, y) => {
-    if (settings.communityGoalDisplayMove.isOpen()) {
-        data.communityGoalDisplay.x = x
-        data.communityGoalDisplay.y = y
-        data.save()
-    }
-})
-
-function compileLines(x) {
+function compileLines(list) {
     let str = ''
-    str += `${x.name}\n\n` // title
+    str += `${list.name}\n\n` // title
     for (let i = 0; i < 5; i++) {
-        str += `  &a✔ ${x.goals[i][0]}\n` // goal title
-        str += ` ${x.goals[i][1]} ${x.goals[i][2]}\n` // goal contrib
+        str += `  &a✔ ${list.goals[i][0]}\n` // goal title
+        str += ` ${list.goals[i][1]} ${list.goals[i][2]}\n` // goal contrib
     }
     lines = str
 }
 
-/*
-register("clicked", (x, y, btn, state) => {
-    if (opened) {
-        if (state) {
-            if ((y <= display.getRenderY() + display.getHeight() && y >= display.getRenderY()) &&
-                (x <= display.getRenderX() + display.getWidth() && x >= display.getRenderX())) {
-                changePos = true
-            } else {
-                changePos = false
-            }
+// todo: learn how to implement elementa OR how to make the overlay go over inventory
+registerWhen(register("renderOverlay", () => { // thanks bloom
+    register("postGuiRender", () => {
+    if (!opened) return
+    guiX = data.communityGoalDisplay.x
+    guiY = data.communityGoalDisplay.y
 
+    const rectangle = new Rectangle(Renderer.color(0,0,0,180), guiX-5, guiY-5, width, height) // background
+    rectangle.draw()
+
+    Renderer.translate(guiX, guiY, 1000)
+    Renderer.scale(data.communityGoalDisplay.scale ?? 1)
+    
+    Renderer.drawStringWithShadow(lines, 0, 0) // text
+    
+    })
+}), () => opened)
+
+
+register("dragged", (dx, dy, x, y) => {
+    if (changePos) {
+        data.communityGoalDisplay.x = x-grabX
+        data.communityGoalDisplay.y = y-grabY
+        data.save()
+    }
+})
+
+register("clicked", (x, y, btn, state) => {
+    if (!opened) return
+    if (state) {
+        if ((x >= guiX && x <= guiX + width) &&
+            (y >= guiY && y <= guiY + height)) {
+            grabX = x-guiX
+            grabY = y-guiY
+            changePos = true
+        } else {
+            changePos = false
         }
     }
 })
-*/
+

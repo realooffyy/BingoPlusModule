@@ -151,7 +151,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Block Sky Mall Messages",
-        description: "Blocks the daily Sky Mall messages.\n\n§r§bNew day! §r§eYour §r§2Sky Mall §r§ebuff changed!§r\n§r§8§oYou can disable this messaging by toggling Sky Mall in your /hotm!§r",
+        description: "Blocks the daily Sky Mall messages while outside the mining islands.\n\n§r§bNew day! §r§eYour §r§2Sky Mall §r§ebuff changed!§r\n§r§8§oYou can disable this messaging by toggling Sky Mall in your /hotm!§r",
         category: "Chat",
         subcategory: "Blockers"
     })

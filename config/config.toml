@@ -8,7 +8,7 @@
 		sam = true
 
 	[chat.sending]
-		fake_emojis = false
+		fake_emojis = true
 
 	[chat.blockers]
 		block_sky_mall_messages = true
@@ -33,6 +33,6 @@
 		block_party_travel_messages = false
 
 [commands]
-	century_cake_island = "calva"
-	skycrypt_auto_open = false
+	century_cake_island = "hunterhihunter"
+	skycrypt_auto_open = true
 
