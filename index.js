@@ -1,5 +1,7 @@
 ChatLib.chat("Loading Bingo+...")
 
+import ".utils/firstInstall"
+
 // Features
 import "./features/blockSkyMallMessages"
 import "./features/dialogueSkipper"
@@ -20,7 +22,7 @@ import "./commands/centuryCakeIsland"
 ChatLib.chat("Bingo+ fully initialised!")
 
 /* TODO
- * - check if bloom's settings code worked
+ * - check if bloom's settings code worked (line 3)
  * - implement elementa to community goal display bc the renderer thing isn't getting past the inventory overlay
         maybe not
  * - message for first install
