@@ -8,9 +8,24 @@ import constants from "./utils/constants";
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     }
 })
-
-
+    
 class Settings {
+    constructor() {
+        this.initialize(this)
+
+        const lines = constants.COMMAND_LIST
+        const maxLength = Math.max(...lines.map(a => Renderer.getStringWidth(a))) // thanks bloom
+        
+        this.setCategoryDescription("General",
+            `
+            &6Bingo&c+ &bv${JSON.parse(FileLib.read("Bingo+", "metadata.json")).version}
+            
+            &aBy ooffyy
+
+            ${lines.map(a => a !== "" ? padText(a + "&0", ".", maxLength) : a).join("\n")} // thanks bloom
+            `
+        )
+    }
 
     chickenHeadTimerMove = new Gui()
     communityGoalDisplayMove = new Gui()
@@ -171,11 +186,6 @@ class Settings {
         category: "Commands"
     })
     century_cake_island = "BingoSplasher"
-
-    constructor() {
-        this.initialize(this)
-        this.setCategoryDescription("General", `&6Bingo&c+ &bv${JSON.parse(FileLib.read("Bingo+", "metadata.json")).version}\n&aBy ooffyy`)
-    }
 }
 
 export default new Settings()
