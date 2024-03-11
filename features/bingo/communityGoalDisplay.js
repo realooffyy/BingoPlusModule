@@ -6,8 +6,6 @@ import settings from "../../settings"
 import Skyblock from "../../../BloomCore/Skyblock"
 import { registerWhen } from "../../utils/utils"
 
-const community_slots = [2, 12, 22, 32, 42]
-
 let bingoCardOpened = false
 let opened = false
 
@@ -28,6 +26,7 @@ register("postGuiRender", () => {
     if (!settings.community_goal_display || !Skyblock.inSkyblock) return
     let inv = Player.getContainer()
     if (!bingoCardOpened && inv?.getName() == "Bingo Card") {
+        const community_slots = [2, 12, 22, 32, 42]
         let guiElements = {
             name: "&6&lCommunity Goals",
             goals: [
@@ -102,13 +101,13 @@ const renderCommunityGoals = () => {
     guiX = data.communityGoalDisplay.x
     guiY = data.communityGoalDisplay.y
 
-    const rectangle = new Rectangle(Renderer.color(0,0,0,180), guiX-5, guiY-5, width, height) // background
+    const rectangle = new Rectangle(Renderer.color(0,0,0,255), guiX, guiY, width, height) // background
     rectangle.draw()
 
     Renderer.translate(guiX, guiY, 1000)
     Renderer.scale(data.communityGoalDisplay.scale ?? 1)
     
-    Renderer.drawStringWithShadow(lines, 0, 0) // text
+    Renderer.drawStringWithShadow(lines, 5, 5) // text
 
     Renderer.retainTransforms(false)
     Renderer.finishDraw()
@@ -117,29 +116,15 @@ const renderCommunityGoals = () => {
 // todo: learn how to implement elementa OR how to make the overlay go over inventory
 // check if this works
 registerWhen(register("renderOverlay", () => { // thanks bloom
-    //register("postGuiRender", () => {
     if (!opened) return
     renderCommunityGoals()
-    /*
-    guiX = data.communityGoalDisplay.x
-    guiY = data.communityGoalDisplay.y
-
-    const rectangle = new Rectangle(Renderer.color(0,0,0,180), guiX-5, guiY-5, width, height) // background
-    rectangle.draw()
-
-    Renderer.translate(guiX, guiY, 1000)
-    Renderer.scale(data.communityGoalDisplay.scale ?? 1)
-    
-    Renderer.drawStringWithShadow(lines, 0, 0) // text
-    */
-    //})
 }), () => opened)
 
 
 register("dragged", (dx, dy, x, y) => {
     if (changePos) {
-        data.communityGoalDisplay.x = x-grabX
-        data.communityGoalDisplay.y = y-grabY
+        data.communityGoalDisplay.x = x-grabX-5
+        data.communityGoalDisplay.y = y-grabY-5
         data.save()
     }
 })
@@ -149,8 +134,8 @@ register("clicked", (x, y, btn, state) => {
     if (state) {
         if ((x >= guiX && x <= guiX + width) &&
             (y >= guiY && y <= guiY + height)) {
-            grabX = x-guiX
-            grabY = y-guiY
+            grabX = x-guiX-5
+            grabY = y-guiY-5
             changePos = true
         } else {
             changePos = false

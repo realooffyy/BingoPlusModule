@@ -1,5 +1,4 @@
 import { @Vigilant, @SwitchProperty, @ButtonProperty, @TextProperty} from "Vigilance"
-import constants from "./utils/constants";
 
 @Vigilant("Bingo+/config", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
@@ -12,17 +11,11 @@ import constants from "./utils/constants";
 class Settings {
     constructor() {
         this.initialize(this)
-
-        const lines = constants.COMMAND_LIST
-        const maxLength = Math.max(...lines.map(a => Renderer.getStringWidth(a))) // thanks bloom
         
         this.setCategoryDescription("General",
             `
             &6Bingo&c+ &bv${JSON.parse(FileLib.read("Bingo+", "metadata.json")).version}
-            
             &aBy ooffyy
-
-            ${lines.map(a => a !== "" ? padText(a + "&0", ".", maxLength) : a).join("\n")} // thanks bloom
             `
         )
     }

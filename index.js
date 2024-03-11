@@ -1,6 +1,6 @@
 ChatLib.chat("Loading Bingo+...")
 
-import ".utils/firstInstall"
+import "./utils/firstInstall"
 
 // Features
 import "./features/blockSkyMallMessages"
@@ -22,6 +22,8 @@ import "./commands/centuryCakeIsland"
 ChatLib.chat("Bingo+ fully initialised!")
 
 /* TODO
+ * - implement elementa to community goal display bc the renderer thing isn't getting past the inventory overlay
+        maybe not
  * - optimise dialogue skipper and figure out if im allowed to autoskip
  * - command for accessing bingo party commands
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler
@@ -33,15 +35,15 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - disable fake emojis if user has mvp++ or yt rank 
  * - fetchur/puzzler solvers?? so many mods have this xD
  * - remove bloomcore dependencies
+ * - make the firstInstall thing clickable and runs /b+
+ * - add button to community goal display to pin the render
  */
 
 /* IN PROGRESS
- * - message for first install
- * - check if bloom's settings code worked (line 3)
- * - implement elementa to community goal display bc the renderer thing isn't getting past the inventory overlay
-        maybe not
+
  */
 
 /* DONE
+ * - message for first install
  * - command for visiting a cake hub
  */
