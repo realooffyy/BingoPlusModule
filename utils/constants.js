@@ -5,8 +5,7 @@ export default constants = {
     COMMANDS_LIST: [
         `&6/b+ &8- Opens Bingo+ config`,
         `&7/cake &8- Visits a Cake Hub. Defaults to BingoSplasher, configurable in settings`,
-        `&7/skycrypt <player> [fruit] &8- Provides a user's SkyCrypt link`,
-
+        `&7/skycrypt <player> [fruit] &8- Provides a user's SkyCrypt link`
     ]
 }
 
