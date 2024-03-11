@@ -32,6 +32,7 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - king talisman helper!
  * - disable fake emojis if user has mvp++ or yt rank 
  * - fetchur/puzzler solvers?? so many mods have this xD
+ * - remove bloomcore dependencies
  */
 
 /* IN PROGRESS
