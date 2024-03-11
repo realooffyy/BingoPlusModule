@@ -9,6 +9,5 @@ export function bingoFeaturesEnabled()
 export function isOnBingo()
 {
     let displayName = ''+Player.getDisplayName()
-    if(displayName.includes("Ⓑ")) return true
-    return false
+    return displayName.includes("Ⓑ")
 }
