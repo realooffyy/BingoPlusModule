@@ -175,7 +175,7 @@ class Settings {
     // Commands
     @SwitchProperty({
         name: "SkyCrypt Auto Open",
-        description: "Automatically opens a new window when running the &e/skycrypt &rcommand.",
+        description: "Automatically opens a new window when running the &e/skycrypt &ror &e/sky &rcommand.",
         category: "Commands"
     })
     skycrypt_auto_open = false
