@@ -22,13 +22,8 @@ import "./commands/centuryCakeIsland"
 ChatLib.chat("Bingo+ fully initialised!")
 
 /* TODO
- * - check if bloom's settings code worked (line 3)
- * - implement elementa to community goal display bc the renderer thing isn't getting past the inventory overlay
-        maybe not
- * - message for first install
  * - optimise dialogue skipper and figure out if im allowed to autoskip
  * - command for accessing bingo party commands
- * - command for visiting a cake hub
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler
  * - timer for bingo end and profile deletion
  * - hide completed bingo goals
@@ -37,4 +32,15 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - king talisman helper!
  * - disable fake emojis if user has mvp++ or yt rank 
  * - fetchur/puzzler solvers?? so many mods have this xD
+ */
+
+/* IN PROGRESS
+ * - message for first install
+ * - check if bloom's settings code worked (line 3)
+ * - implement elementa to community goal display bc the renderer thing isn't getting past the inventory overlay
+        maybe not
+ */
+
+/* DONE
+ * - command for visiting a cake hub
  */
