@@ -24,3 +24,13 @@ export const data = new PogObject("Bingo+", {
         scale: 1
     }
 }, "config/data.json")
+
+export const rats = [
+        [-33, 60, -83],
+        [9, 68, -109],
+        [-6, 69, 2],
+        [11, 61, -9],
+        [-35, 57, -122],
+        [43, 68, -38],
+        [42, 72, -162]
+]
