@@ -38,6 +38,10 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - bingo achievements
  * - trapper display
  * - splash display
+ * - grab bingo info from api on startup or smt
+ * - splasher features
+ *      add overlay for currently hovering potion
+ *      leecher display
  */
 
 /* IN PROGRESS
