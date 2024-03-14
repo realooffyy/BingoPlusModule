@@ -2,6 +2,12 @@ ChatLib.chat("Loading Bingo+...")
 
 import "./utils/firstInstall"
 
+// Commands
+import { bingoPlusCommand } from "./commands/bingoPlusCommand"
+import "./commands/skycrypt"
+import "./commands/showtitle"
+import "./commands/centuryCakeIsland"
+
 // Features
 import "./features/blockSkyMallMessages"
 import "./features/dialogueSkipper"
@@ -12,12 +18,6 @@ import "./features/bingo/blockPartyTravelMessages"
 import "./features/bingo/chickenHeadTimer"
 import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"
-
-// Commands
-import { bingoPlusCommand } from "./commands/bingoPlusCommand"
-import "./commands/skycrypt"
-import "./commands/showtitle"
-import "./commands/centuryCakeIsland"
 
 ChatLib.chat("Bingo+ fully initialised!")
 
