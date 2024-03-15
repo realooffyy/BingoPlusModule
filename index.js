@@ -33,7 +33,6 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - disable fake emojis if user has mvp++ or yt rank 
  * - fetchur/puzzler solvers?? so many mods have this xD
  * - remove bloomcore dependencies
- * - make the firstInstall thing clickable and runs /b+
  * - add button to community goal display to pin the render
  * - bingo achievements
  * - trapper display
@@ -51,6 +50,7 @@ ChatLib.chat("Bingo+ fully initialised!")
 /* DONE
  * - message for first install
  * - command for visiting a cake hub
+ * - make the firstInstall thing clickable and runs /b+
  */
 
 /* CANCELLED (probably)
