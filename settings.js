@@ -120,7 +120,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Leecher Display",
-        description: "Show a display with a list of people stealing a splash.",
+        description: "Show a display with a list of people stealing a splash while in the Pet Care area.",
         category: "Splasher",
         subcategory: "Leecher Display"
     })
@@ -138,11 +138,18 @@ class Settings {
 
     @SwitchProperty({
         name: "Show everywhere",
-        description: "Show the display everywhere and not only at the Pet Care.",
+        description: "Show the display everywhere and not just at the Pet Care.",
         category: "Splasher",
         subcategory: "Leecher Display"
     })
     leecher_display_everywhere = false
+
+    @SwitchProperty({
+        name: "No Potions Warning",
+        description: "Warns you if you enter the Pet Care without any splash potions.",
+        category: "Splasher"
+    })
+    no_potions_warning = true
 
     // Chat
 

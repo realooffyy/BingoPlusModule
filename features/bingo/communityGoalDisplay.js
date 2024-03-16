@@ -5,7 +5,7 @@ import { data } from "../../utils/constants"
 import settings from "../../settings"
 
 import { registerWhen } from "../../utils/utils"
-import skyblock from "../../utils/skyblock"
+import skyblock from "../../utils/Skyblock"
 
 
 let bingoCardOpened = false
@@ -21,7 +21,7 @@ let changePos = false
 
 register("step", () => {
     opened = bingoCardOpened
-    if (settings.communityGoalDisplayMove.isOpen()) return opened = true
+    if (settings.communityGoalDisplayMove.isOpen()) opened = true
 })
 
 register("postGuiRender", () => {
@@ -133,6 +133,8 @@ register("dragged", (dx, dy, x, y) => {
 register("clicked", (x, y, btn, state) => {
     if (!opened) return
     if (state) {
+        guiX = data.communityGoalDisplay.x
+        guiY = data.communityGoalDisplay.y
         if ((x >= guiX && x <= guiX + width) &&
             (y >= guiY && y <= guiY + height)) {
             grabX = x-guiX-5

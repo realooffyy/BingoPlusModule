@@ -20,6 +20,7 @@ import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"
 
 import "./features/splasher/leecherDisplay"
+import "./features/splasher/noPotionWarning"
 
 ChatLib.chat("Bingo+ fully initialised!")
 
@@ -43,6 +44,7 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - splasher features
  *      add overlay for currently hovering potion
  *      warn if you're entering the pet care without potions
+ * - detect keystroke to reset overlay location (probably R)
  */
 
 /* IN PROGRESS
