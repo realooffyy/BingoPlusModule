@@ -1,4 +1,3 @@
-import constants from "../utils/constants"
 import { data } from "../utils/constants"
 
 const checkFirstInstall = () => {
@@ -7,8 +6,8 @@ const checkFirstInstall = () => {
     data.save()
 
     ChatLib.chat(`&6&m${ChatLib.getChatBreak(" ")}`)
-    ChatLib.chat(`&rThank you for installing ${constants.PREFIX}!`)
-    new TextComponent("&rRun the &6/b+ &rcommand to get started").setClick("run_command", "/b+")
+    ChatLib.chat(ChatLib.getCenteredText(`&rThank you for installing &6[&6Bingo&c+&6]&r!`))
+    new TextComponent(ChatLib.getCenteredText("&rRun the &6/b+ &rcommand to get started")).setClick("run_command", "/b+").chat()
     ChatLib.chat(`&6&m${ChatLib.getChatBreak(" ")}`)
 }
 

@@ -2,7 +2,7 @@ import { @Vigilant, @SwitchProperty, @ButtonProperty, @TextProperty} from "Vigil
 
 @Vigilant("Bingo+/config", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
-        const categories = ["General", "Bingo", "Chat", "Commands"];
+        const categories = ["General", "Bingo", "Splasher", "Chat", "Commands"];
 
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     }
@@ -22,6 +22,7 @@ class Settings {
 
     chickenHeadTimerMove = new Gui()
     communityGoalDisplayMove = new Gui()
+    leecherDisplayMove = new Gui()
 
     // General
 
@@ -114,6 +115,34 @@ class Settings {
         subcategory: "Party"
     })
     block_party_travel_messages = false
+
+    // Splasher
+
+    @SwitchProperty({
+        name: "Leecher Display",
+        description: "Show a display with a list of people stealing a splash.",
+        category: "Splasher",
+        subcategory: "Leecher Display"
+    })
+    leecher_display = true
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Leecher Display",
+        category: "Splasher",
+        subcategory: "Leecher Display"
+    })
+    MoveLeecherDisplay() {
+        this.leecherDisplayMove.open()
+    }
+
+    @SwitchProperty({
+        name: "Show everywhere",
+        description: "Show the display everywhere and not only at the Pet Care.",
+        category: "Splasher",
+        subcategory: "Leecher Display"
+    })
+    leecher_display_everywhere = false
 
     // Chat
 

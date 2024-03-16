@@ -19,6 +19,8 @@ import "./features/bingo/chickenHeadTimer"
 import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"
 
+import "./features/splasher/leecherDisplay"
+
 ChatLib.chat("Bingo+ fully initialised!")
 
 /* TODO
@@ -40,11 +42,11 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - grab bingo info from api on startup or smt
  * - splasher features
  *      add overlay for currently hovering potion
- *      leecher display
+ *      warn if you're entering the pet care without potions
  */
 
 /* IN PROGRESS
-
+ * - leecher display
  */
 
 /* DONE

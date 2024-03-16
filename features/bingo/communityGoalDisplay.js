@@ -3,13 +3,15 @@
 
 import { data } from "../../utils/constants"
 import settings from "../../settings"
-import Skyblock from "../../../BloomCore/Skyblock"
+
 import { registerWhen } from "../../utils/utils"
+import skyblock from "../../utils/skyblock"
+
 
 let bingoCardOpened = false
 let opened = false
 
-let lines = ''
+let lines = '&6&lCommunity Goals'
 
 let width = 200
 let height = 150
@@ -23,7 +25,7 @@ register("step", () => {
 })
 
 register("postGuiRender", () => {
-    if (!settings.community_goal_display || !Skyblock.inSkyblock) return
+    if (!settings.community_goal_display || !skyblock.inSkyblock) return
     let inv = Player.getContainer()
     if (!bingoCardOpened && inv?.getName() == "Bingo Card") {
         const community_slots = [2, 12, 22, 32, 42]
@@ -101,7 +103,7 @@ const renderCommunityGoals = () => {
     guiX = data.communityGoalDisplay.x
     guiY = data.communityGoalDisplay.y
 
-    const rectangle = new Rectangle(Renderer.color(0,0,0,255), guiX, guiY, width, height) // background
+    const rectangle = new Rectangle(Renderer.color(0,0,0,150), guiX, guiY, width, height) // background
     rectangle.draw()
 
     Renderer.translate(guiX, guiY, 1000)
@@ -114,7 +116,6 @@ const renderCommunityGoals = () => {
 }
 
 // todo: learn how to implement elementa OR how to make the overlay go over inventory
-// check if this works
 registerWhen(register("renderOverlay", () => { // thanks bloom
     if (!opened) return
     renderCommunityGoals()
