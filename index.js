@@ -10,7 +10,7 @@ import "./commands/showtitle"
 import "./commands/centuryCakeIsland"
 
 // Features
-import "./features/blockSkyMallMessages"
+//import "./features/blockSkyMallMessages"
 // import "./features/dialogueSkipper"
 import "./features/chatFeatures"
 

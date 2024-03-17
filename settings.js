@@ -168,7 +168,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Fake Emojis",
-        description: "Sends &6[MVP&c++&6]&r / &c[&fYOUTUBE&c]&r and Rank Gifting emojis without having the requirements! Run &e/emoji &ron Hypixel for the list of all emojis.\n&cMay be laggy!",
+        description: "Sends &6[MVP&c++&6]&r / &c[&fYOUTUBE&c]&r, Rank Gifting and other custom emojis without having the requirements! Run &e/emoji &ron Hypixel for the list of all emojis.\n&cMay be laggy!",
         category: "Chat",
         subcategory: "Sending"
     })

@@ -1,6 +1,6 @@
 const emojis = {
   // custom
-  "skull": "☠",
+  ":skull:": "☠",
   // mvp++/yt
   "<3": "❤",
   ":star:": "✮",
@@ -8,7 +8,7 @@ const emojis = {
   ":no:": "✖",
   ":java:": "☕",
   ":arrow:": "➜",
-  ":shrug:": "¯\_(ツ)_/¯",
+  ":shrug:": "¯\\_(ツ)_/¯",
   ":tableflip:": "(╯°□°）╯︵ ┻━┻",
   "o/": "( ﾟ◡ﾟ)/",
   ":totem:": "☉_☉",

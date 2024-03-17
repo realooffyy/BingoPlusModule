@@ -15,13 +15,11 @@ let total = 0
 let enjoyers = 0
 let ironman = []
 let leechers = []
-let hubNumber = null
 
 let width = 150
 let height = 1
 
-let guiX, guiY, grabX, grabY
-let changePos = false
+let guiX, guiY
 
 register("step", () => { // opened and location manager
     guiX = data.splasherDisplay.x
@@ -83,15 +81,15 @@ register("step", () => { // line constructor
 
         let playerLine = ''
         let slotsLeft = playerMax-playerCount
-        if (playerCount === null | playerMax === null) playerLine = `&8Loading...`
+        if (playerCount === null | playerMax === null) playerLine = null
         else if (slotsLeft > 0) playerLine = `&e&l${slotsLeft} &eslots left &8(&7${playerCount}&8/${playerMax})`
         else playerLine = `&c&lFull! &8(&c${playerCount}&8/${playerMax})`
 
 
         lines += `&2&lHub Info&r\n`
         //lines += ` &3Hub ${hubNumber}\n`
-        lines += ` ${playerLine}\n`
-        lines += ` &7${Skyblock.server}&r\n\n`
+        if (playerLine) lines += ` ${playerLine}\n`
+        if (Skyblock.server) lines += ` &7${Skyblock.server}&r\n\n`
         
 
         if (enjoyers.length) lines += `&6&lEnjoyers: ${enjoyers}&r\n\n`
@@ -102,7 +100,7 @@ register("step", () => { // line constructor
 }).setFps(5)
 
 const renderDisplay = () => {
-    height = 10+(lines.replace(/[^\n]/g, "").length)*9
+    height = (lines.replace(/[^\n]/g, "").length)*9 +10
     const rectangle = new Rectangle(Renderer.color(0, 0, 0, 50), guiX, guiY, width, height) // background
     rectangle.draw()
 
