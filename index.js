@@ -1,6 +1,7 @@
 ChatLib.chat("Loading Bingo+...")
 
 import "./utils/firstInstall"
+import "./utils/bingoApi"
 
 // Commands
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
@@ -10,7 +11,7 @@ import "./commands/centuryCakeIsland"
 
 // Features
 import "./features/blockSkyMallMessages"
-import "./features/dialogueSkipper"
+// import "./features/dialogueSkipper"
 import "./features/chatFeatures"
 
 import "./features/bingo/bakerBlocker"
@@ -18,8 +19,9 @@ import "./features/bingo/blockPartyTravelMessages"
 import "./features/bingo/chickenHeadTimer"
 import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"
+import "./features/bingo/hideCompleteBingoGoals"
 
-import "./features/splasher/leecherDisplay"
+import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
 
 ChatLib.chat("Bingo+ fully initialised!")
@@ -29,13 +31,11 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - command for accessing bingo party commands
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler
  * - timer for bingo end and profile deletion
- * - hide completed bingo goals
  * - rat waypoints
  * - hotm tree unlock reminders
  * - king talisman helper!
  * - disable fake emojis if user has mvp++ or yt rank 
  * - fetchur/puzzler solvers?? so many mods have this xD
- * - remove bloomcore dependencies
  * - add button to community goal display to pin the render
  * - bingo achievements
  * - trapper display
@@ -45,16 +45,19 @@ ChatLib.chat("Bingo+ fully initialised!")
  *      add overlay for currently hovering potion
  *      warn if you're entering the pet care without potions
  * - detect keystroke to reset overlay location (probably R)
+ * - dreadlord sword drop warning
  */
 
 /* IN PROGRESS
- * - leecher display
+ * - hide completed bingo goals
  */
 
 /* DONE
  * - message for first install
  * - command for visiting a cake hub
  * - make the firstInstall thing clickable and runs /b+
+ * - remove bloomcore dependencies
+ * - leecher display
  */
 
 /* CANCELLED (probably)

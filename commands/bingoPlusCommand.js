@@ -11,4 +11,8 @@ export const bingoPlusCommand = register("command", (...args) => {
         ChatLib.chat([line, constants.PREFIX, "", cmd, line].join("\n"))
     }
 
+    else {
+        ChatLib.chat(`${constants.PREFIX}Unknown command. Run &6/b+ help&r to see all commands.`)
+    }
+
 }).setName("b+").setAliases(["bingo+","bingoplus"])

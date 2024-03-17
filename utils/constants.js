@@ -12,6 +12,14 @@ export default constants = {
 
 export const data = new PogObject("Bingo+", {
     firstTime: true,
+
+    bingoApi: {
+        id: null,
+        name: null,
+        modifier: null,
+        start: null,
+        end: null
+    },
     
     chickenHeadTimerDisplay: {
         x: 280,
@@ -23,9 +31,9 @@ export const data = new PogObject("Bingo+", {
         y: 90,
         scale: 1
     },
-    leecherDisplay: {
-        x: 0,
-        y: 0,
+    splasherDisplay: {
+        x: 10,
+        y: 10,
         scale: 1
     }
 }, "config/data.json")

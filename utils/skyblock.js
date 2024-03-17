@@ -22,8 +22,12 @@ export default new class Skyblock {
             for (let line of tabList) {
                 this.area = getValue(line, /Area: (.+)/, this.area)
             }
+
             this.subArea = removeUnicode(getMatchFromLines(/ ⏣ (.+)/, scoreboard)).replace(/ \(.+\)/, "")
             if (!this.area && this.subArea == "The Catacombs") this.area = "Dungeon"
+
+            this.server = removeUnicode(getMatchFromLines(/\d+\/\d+\/\d+ (.+)/, scoreboard)).replace(/ \(.+\)/, "")
+            // https://regex101.com/r/1sr2O1/1
         })
 
         register("chat", (message) => {
@@ -36,5 +40,6 @@ export default new class Skyblock {
     reset() {
         this.area = null
         this.subArea = null
+        this.server = null
     }
 }

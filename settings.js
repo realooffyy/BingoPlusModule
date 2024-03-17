@@ -18,11 +18,17 @@ class Settings {
             &aBy ooffyy
             `
         )
+
+        this.setCategoryDescription("Chat",
+            `&cDialogue Skippers are to be used at your own risk!`    
+        )
+
+        this.seet
     }
 
     chickenHeadTimerMove = new Gui()
     communityGoalDisplayMove = new Gui()
-    leecherDisplayMove = new Gui()
+    splasherDisplayMove = new Gui()
 
     // General
 
@@ -51,7 +57,7 @@ class Settings {
         name: "Community Goal Display",
         description: "Displays community goal data when on the Bingo Card menu.",
         category: "Bingo",
-        subcategory: "Community Goal Display"
+        subcategory: "Bingo Card"
     })
     community_goal_display = true
 
@@ -59,11 +65,19 @@ class Settings {
         name: "Move",
         description: "Move the Community Goal Display",
         category: "Bingo",
-        subcategory: "Community Goal Display"
+        subcategory: "Bingo Card"
     })
     MoveCommunityGoalDisplay() {
         this.communityGoalDisplayMove.open()
     }
+
+    @SwitchProperty({
+        name: "Hide Completed Bingo Goals",
+        description: "Stops rendering completed Bingo goals.",
+        category: "Bingo",
+        subcategory: "Bingo Card"
+    })
+    hide_completed_bingo_goals = false
 
     @SwitchProperty({
         name: "Chicken Head Timer",
@@ -99,7 +113,6 @@ class Settings {
     })
     copy_achievements = true
 
-
     @SwitchProperty({
         name: "Baker Blocker",
         description: "Prevents you from running &e/openbaker &ron Bingo.",
@@ -119,34 +132,34 @@ class Settings {
     // Splasher
 
     @SwitchProperty({
-        name: "Leecher Display",
-        description: "Show a display with a list of people stealing a splash while in the Pet Care area.",
+        name: "Splasher Display",
+        description: "Show a display with important information while in the Pet Care or Dungeon Hub.",
         category: "Splasher",
-        subcategory: "Leecher Display"
+        subcategory: "Splasher Display"
     })
-    leecher_display = true
+    splasher_display = true
 
     @ButtonProperty({
         name: "Move",
-        description: "Move the Leecher Display",
+        description: "Move the Splasher Display",
         category: "Splasher",
-        subcategory: "Leecher Display"
+        subcategory: "Splasher Display"
     })
     MoveLeecherDisplay() {
-        this.leecherDisplayMove.open()
+        this.splasherDisplayMove.open()
     }
 
     @SwitchProperty({
         name: "Show everywhere",
-        description: "Show the display everywhere and not just at the Pet Care.",
+        description: "Show the display everywhere.\n&cMay break!",
         category: "Splasher",
-        subcategory: "Leecher Display"
+        subcategory: "Splasher Display"
     })
-    leecher_display_everywhere = false
+    splasher_display_everywhere = false
 
     @SwitchProperty({
         name: "No Potions Warning",
-        description: "Warns you if you enter the Pet Care without any splash potions.",
+        description: "Warns you if you enter the Pet Care in a mega hub without any splash potions.",
         category: "Splasher"
     })
     no_potions_warning = true
@@ -167,7 +180,7 @@ class Settings {
         category: "Chat",
         subcategory: "Dialogue Skipper"
     })
-    maxwell = true
+    maxwell = false
 
     @SwitchProperty({
         name: "Sam",
@@ -175,7 +188,7 @@ class Settings {
         category: "Chat",
         subcategory: "Dialogue Skipper"
     })
-    sam = true
+    sam = false
 
     @SwitchProperty({
         name: "Pesthunter Phillip",
@@ -183,7 +196,7 @@ class Settings {
         category: "Chat",
         subcategory: "Dialogue Skipper"
     })
-    pesthunter_phillip = true
+    pesthunter_phillip = false
 
     @SwitchProperty({
         name: "Lone Adventurer",
@@ -191,7 +204,7 @@ class Settings {
         category: "Chat",
         subcategory: "Dialogue Skipper"
     })
-    lone_adventurer = true
+    lone_adventurer = false
 
     @SwitchProperty({
         name: "Block Sky Mall Messages",
@@ -211,7 +224,7 @@ class Settings {
 
     @TextProperty({
         name: "Century Cake Island",
-        description: "Visits a Cake Hub when running &e/cake&r.\nDefault: BingoSplasher",
+        description: "Visits a Cake Hub when running &e/cake&r.\nDefault: &aBingoSplasher&r",
         category: "Commands"
     })
     century_cake_island = "BingoSplasher"
