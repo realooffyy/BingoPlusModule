@@ -6,7 +6,7 @@ const regex = /New day! Your Sky Mall buff changed!|You can disable this messagi
 
 register("chat", (e) => {
     if (!settings.block_sky_mall_messages) return
-    if (!areas.includes(Skyblock.area)) return
+    if (areas.includes(Skyblock.area)) return
     cancel(e)
 }).setCriteria(regex)
 
