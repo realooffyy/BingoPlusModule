@@ -1,4 +1,4 @@
-//import settings from "../settings"
+//import Settings from "../settings"
 import constants from "../utils/constants"
 
 const PREFIX = constants.PREFIX

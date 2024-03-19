@@ -19,11 +19,9 @@ class Settings {
             `
         )
 
-        this.setCategoryDescription("Chat",
-            `&cDialogue Skippers are to be used at your own risk!`    
-        )
+        this.setSubcategoryDescription("Chat", "Dialogue Skipper",
+            `&cDialogue Skippers are to be used at your own risk!`)
 
-        this.seet
     }
 
     chickenHeadTimerMove = new Gui()
@@ -213,6 +211,14 @@ class Settings {
         subcategory: "Blockers"
     })
     block_sky_mall_messages = false
+
+    @SwitchProperty({
+        name: "Block Parkour Messages",
+        description: "Blocks the spammy parkour messages when AFKing on them.\n\n§r§aStarted parkour <name>!§r\n§aFinished parkour <name> in 00:00.999!§r\n§7+5 Island Points§r",
+        category: "Chat",
+        subcategory: "Blockers"
+    })
+    block_parkour_messages = false
 
     // Commands
     @SwitchProperty({

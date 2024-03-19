@@ -1,4 +1,4 @@
-import settings from "../../settings"
+import Settings from "../../settings"
 import constants from "../../utils/constants"
 import Bingo from "../../utils/Bingo";
 
@@ -6,7 +6,7 @@ const regex = /(HEART OF THE MOUNTAIN.*|BINGO GOAL COMPLETE!.*|Your Bingo levele
 // https://regex101.com/r/nHf4KU/2
 
 register("chat", (event) => {
-    if (!settings.copy_achievements || !Bingo.enabled) return
+    if (!Settings.copy_achievements || !Bingo.enabled) return
     ChatLib.command(`ct copy ${event}`, true)
     ChatLib.chat(constants.PREFIX+"&aAchievement copied to clipboard!");
 }).setCriteria(regex);

@@ -1,5 +1,5 @@
 import { data } from "../../utils/constants"
-import settings from "../../settings"
+import Settings from "../../settings"
 import Skyblock from "../../../BloomCore/Skyblock"
 import { registerWhen } from "../../utils/utils"
 
@@ -8,8 +8,8 @@ let lastLay = 0
 let opened = false
 
 register("step", () => {
-    if (!settings.chicken_head_timer || !Skyblock.inSkyblock) return opened = false
-    if (settings.chickenHeadTimerMove.isOpen()) return opened = true
+    if (!Settings.chicken_head_timer || !Skyblock.inSkyblock) return opened = false
+    if (Settings.chickenHeadTimerMove.isOpen()) return opened = true
     let helmet = Player.armor.getHelmet()
     if (helmet==null) return opened = false
     if (helmet.getName().includes("Chicken Head")) return opened = true
@@ -27,7 +27,7 @@ registerWhen(register("renderOverlay", () => { // thanks bloom
     Renderer.scale(data.chickenHeadTimerDisplay.scale ?? 1)
 
     // Move GUI
-    if (settings.chickenHeadTimerMove.isOpen()) { Renderer.drawStringWithShadow("Chicken Head Timer:", 0, 0); return }
+    if (Settings.chickenHeadTimerMove.isOpen()) { Renderer.drawStringWithShadow("Chicken Head Timer:", 0, 0); return }
     
     let sinceLay = new Date().getTime() - lastLay
     let remainingTime = layCooldown - sinceLay
@@ -41,7 +41,7 @@ registerWhen(register("renderOverlay", () => { // thanks bloom
 }), () => opened)
 
 register("dragged", (dx, dy, x, y) => {
-    if (!settings.chickenHeadTimerMove.isOpen()) return
+    if (!Settings.chickenHeadTimerMove.isOpen()) return
     data.chickenHeadTimerDisplay.x = x
     data.chickenHeadTimerDisplay.y = y
     data.save()
@@ -49,5 +49,5 @@ register("dragged", (dx, dy, x, y) => {
 
 register("chat", (e) => {
     lastLay = new Date().getTime()
-    if (settings.hide_egg_laid_message) cancel(e)
+    if (Settings.hide_egg_laid_message) cancel(e)
 }).setCriteria("You laid an egg!")

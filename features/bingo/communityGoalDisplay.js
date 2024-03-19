@@ -2,7 +2,7 @@
 /// <reference lib="es2015" />
 
 import { data } from "../../utils/constants"
-import settings from "../../settings"
+import Settings from "../../settings"
 
 import { registerWhen } from "../../utils/utils"
 import skyblock from "../../utils/Skyblock"
@@ -21,11 +21,11 @@ let changePos = false
 
 register("step", () => {
     opened = bingoCardOpened
-    if (settings.communityGoalDisplayMove.isOpen()) opened = true
+    if (Settings.communityGoalDisplayMove.isOpen()) opened = true
 })
 
 register("postGuiRender", () => {
-    if (!settings.community_goal_display || !skyblock.inSkyblock) return
+    if (!Settings.community_goal_display || !skyblock.inSkyblock) return
     let inv = Player.getContainer()
     if (!bingoCardOpened && inv?.getName() == "Bingo Card") {
         const community_slots = [2, 12, 22, 32, 42]

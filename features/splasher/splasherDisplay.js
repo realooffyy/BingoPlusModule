@@ -1,5 +1,5 @@
 import { data } from "../../utils/constants"
-import settings from "../../settings"
+import Settings from "../../settings"
 
 import { registerWhen, getTabList, getValue, removeUnicode } from "../../utils/utils"
 import Skyblock from "../../utils/Skyblock"
@@ -26,9 +26,9 @@ register("step", () => { // opened and location manager
     guiY = data.splasherDisplay.y
 
     opened = false
-    if (!settings.splasher_display || !Skyblock.inSkyblock) return
-    opened = Skyblock.subArea === 'Pet Care' || Skyblock.subArea === 'Dungeon Hub' || settings.splasher_display_everywhere || settings.splasherDisplayMove.isOpen()
-    moveGui = settings.splasherDisplayMove.isOpen()
+    if (!Settings.splasher_display || !Skyblock.inSkyblock) return
+    opened = Skyblock.subArea === 'Pet Care' || Skyblock.subArea === 'Dungeon Hub' || Settings.splasher_display_everywhere || Settings.splasherDisplayMove.isOpen()
+    moveGui = Settings.splasherDisplayMove.isOpen()
 })
 
 /*

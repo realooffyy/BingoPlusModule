@@ -1,4 +1,4 @@
-import settings from "../settings"
+import Settings from "../settings"
 import Skyblock from "./Skyblock"
 
 export default new class Bingo {
@@ -9,7 +9,7 @@ export default new class Bingo {
             if (t%10 || !Skyblock.inSkyblock) return
             let displayName = Player.getDisplayName().text
             this.inBingo = displayName.includes("Ⓑ")
-            this.enabled = this.inBingo || !settings.only_on_bingo
+            this.enabled = this.inBingo || !Settings.only_on_bingo
         })
     }
 }

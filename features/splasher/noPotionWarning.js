@@ -1,9 +1,9 @@
 import Skyblock from "../../utils/Skyblock"
-import settings from "../../settings"
+import Settings from "../../settings"
 import Bingo from "../../utils/Bingo"
 
 register("step", () => {
-    if (!settings.no_potions_warning || !Skyblock.inSkyblock || Bingo.inBingo) return
+    if (!Settings.no_potions_warning || !Skyblock.inSkyblock || Bingo.inBingo) return
     if (Skyblock.subArea !== 'Pet Care' || !Skyblock.server.startsWith('M')) return
     
     let found = false

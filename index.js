@@ -13,6 +13,7 @@ import "./commands/centuryCakeIsland"
 //import "./features/blockSkyMallMessages"
 // import "./features/dialogueSkipper"
 import "./features/chatFeatures"
+import "./features/blockParkourMessages"
 
 import "./features/bingo/bakerBlocker"
 import "./features/bingo/blockPartyTravelMessages"
