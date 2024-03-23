@@ -20,7 +20,7 @@ class Settings {
         )
 
         this.setSubcategoryDescription("Chat", "Dialogue Skipper",
-            `&cDialogue Skippers are to be used at your own risk!`)
+            `&cUse at your own risk!`)
 
     }
 

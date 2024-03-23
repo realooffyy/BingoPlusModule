@@ -1,28 +1,9 @@
 import Settings from "../settings"
 import constants from "../utils/constants"
 
-const PREFIX = constants.PREFIX
-/*
-const maxwell_lines = {
-    "Select an option: [Ok, then what?] ": "selectnpcoption thaumaturgist x_2",
-    "Select an option: [Magical power?] ": "selectnpcoption thaumaturgist x_2",
-    "Select an option: [That's amazing!] ": "selectnpcoption thaumaturgist x_7"
-}
+PREFIX = constants.PREFIX
 
-const sam_lines = {
-    "Help her out? [YES] [NO] ": "selectnpcoption sam_assistant yes",
-    "Collect Wheat for Sam?\n[That's a great idea] [I'd rather not] ": "/selectnpcoption sam yes",
-    "Sell leftover Wheat? \n [Good call!] [I'd rather keep it for myself] ": "/selectnpcoption sam_composter yes"
-}
-
-const pesthunter_phillip_lines = {
-    "Select an option: [What's a pest?] ": "/selectnpcoption pesthunter_phillip x_2"
-}
-
-const lone_adventurer_lines = {
-    "Select an option: [YES] [NO] ": ["selectnpcoption lone_adventurer yes", "selectnpcoption lone_adventurer_2 yes"]
-}
-*/
+// im bad at js please forgive me
 
 // Maxwell skipper
 
@@ -74,11 +55,10 @@ register("chat", (e) => {
 
 // Lone Adventurer skipper
 
-register("chat", (e) => {
+register("chat", (event) => {
     if(!Settings.lone_adventurer) return
     ChatLib.say("/selectnpcoption lone_adventurer yes");
     ChatLib.say("/selectnpcoption lone_adventurer_2 yes");
     ChatLib.chat(PREFIX+"&aSkipped dialogue!");
 }).setCriteria("Select an option: [YES] [NO] ");
-
 

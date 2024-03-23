@@ -11,7 +11,7 @@ import "./commands/centuryCakeIsland"
 
 // Features
 //import "./features/blockSkyMallMessages"
-// import "./features/dialogueSkipper"
+import "./features/dialogueSkipper"
 import "./features/chatFeatures"
 import "./features/blockParkourMessages"
 

@@ -1,3 +1,5 @@
+// thanks bloom
+
 import { getMatchFromLines, getScoreboard, getTabList, getValue, removeUnicode } from "./utils"
 
 const sbTitles = [
