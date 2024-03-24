@@ -1,6 +1,7 @@
 const emojis = {
   // custom
   ":skull:": "☠",
+
   // mvp++/yt
   "<3": "❤",
   ":star:": "✮",
@@ -21,6 +22,7 @@ const emojis = {
   ":pvp:": "⚔",
   ":peace:": "✌",
   ":puffer:": "<('O')>",
+  
   // rank gifting
   ":yey:": "ヽ (◕◡◕) ﾉ",
   ":cat:": "= ＾● ⋏ ●＾ =",

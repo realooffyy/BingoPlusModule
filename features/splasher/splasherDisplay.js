@@ -88,16 +88,18 @@ register("step", () => { // line constructor
 
         lines += `&2&lHub Info&r\n`
         //lines += ` &3Hub ${hubNumber}\n`
-        if (playerLine) lines += ` ${playerLine}\n`
-        if (Skyblock.server) lines += ` &7${Skyblock.server}&r\n\n`
+        if (playerLine) lines += ` ${playerLine}&r\n`
+        if (Skyblock.subArea) lines += ` &7⏣ &b${Skyblock.subArea}&r\n`
+        if (Skyblock.server) lines += ` &7${Skyblock.server}&r\n`
         
+        lines += '\n'
 
         if (enjoyers.length) lines += `&6&lEnjoyers: ${enjoyers}&r\n\n`
         if (ironman.length) lines += `&7&l♲ Ironman:&r\n ${ironman.join('\n ')}\n`
         if (leechers.length) lines += `&c&lൠ Leechers:&r\n ${leechers.join('\n ')}\n`
 
     }
-}).setFps(5)
+}).setFps(2)
 
 const renderDisplay = () => {
     height = (lines.replace(/[^\n]/g, "").length)*9 +10
