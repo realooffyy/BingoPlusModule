@@ -1,4 +1,9 @@
-import { @Vigilant, @SwitchProperty, @ButtonProperty, @TextProperty} from "Vigilance"
+import { 
+    @Vigilant, 
+    @SwitchProperty, 
+    @ButtonProperty, 
+    @TextProperty 
+} from "Vigilance"
 
 @Vigilant("Bingo+/config", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {

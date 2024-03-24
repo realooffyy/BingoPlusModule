@@ -62,8 +62,9 @@ register("step", () => { // line constructor
             }
         })
 
-        const area = Skyblock.area;
-        const server = Skyblock.server;
+        const area = Skyblock.area
+        const server = Skyblock.server
+        const subArea = Skyblock.subArea
 
         // player count 
         let playerMax = null
@@ -89,7 +90,9 @@ register("step", () => { // line constructor
         lines += `&2&lHub Info&r\n`
         //lines += ` &3Hub ${hubNumber}\n`
         if (playerLine) lines += ` ${playerLine}&r\n`
-        if (Skyblock.subArea) lines += ` &7⏣ &b${Skyblock.subArea}&r\n`
+        if (subArea) {
+            if (subArea !== 'None') lines += ` &7⏣ &b${subArea}&r\n`
+        }
         if (Skyblock.server) lines += ` &7${Skyblock.server}&r\n`
         
         lines += '\n'
