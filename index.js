@@ -14,6 +14,7 @@ import "./commands/centuryCakeIsland"
 import "./features/dialogueSkipper"
 import "./features/chatFeatures"
 import "./features/blockParkourMessages"
+import "./features/oringoCost"
 
 import "./features/bingo/bakerBlocker"
 import "./features/bingo/blockPartyTravelMessages"
