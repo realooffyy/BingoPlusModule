@@ -53,19 +53,29 @@ const pets = {
 } // i probably got at least something wrong
 
 const rarityList = {
-    'f': ['Common', 0],
-    'a': ['Uncommon', 1],
-    '9': ['Rare', 2],
-    '5': ['Epic', 3],
-    '6': ['Legendary', 4]
+    'f': ['COMMON', 0],
+    'a': ['UNCOMMON', 1],
+    '9': ['RARE', 2],
+    '5': ['EPIC', 3],
+    '6': ['LEGENDARY', 4]
 }
 
 // abiphone call 
-register("chat", (x) => {
+register("chat", (x, e) => {
     const pet = x.slice(2)
     const colour = x[1]
+    if (!rarityList[colour] || !pets[pet]) { ChatLib.chat(`${PREFIX}&cPet not read correctly!`); return }
+
+    cancel(e)
+
     const rarity = rarityList[colour]
     const price = pets[pet][rarity[1]]
 
-    ChatLib.chat(`${PREFIX}&${colour}${rarity[0]} ${pet}&r needs &6${price[0]} coins&r and &a${price[1]}&r!`)
-}).setCriteria("&e[NPC] &aOringo: &b✆ ${x} Pet").setContains()
+    ChatLib.chat(
+    `&e[NPC] &aOringo: &b✆
+ &7• &${colour}&l${rarity[0]} &${colour}${pet}&r
+  &7⟹ &6${price[0]} coins&r
+  &7⟹ &a${price[1]}&r`
+    )
+
+}).setCriteria("&e[NPC] &aOringo: &b✆ &8• ${x} Pet").setContains()

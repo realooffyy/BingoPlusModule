@@ -39,19 +39,17 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - disable fake emojis if user has mvp++ or yt rank 
  * - fetchur/puzzler solvers?? so many mods have this xD
  * - add button to community goal display to pin the render
- * - bingo achievements
+ * - custom bingo achievements
  * - trapper display
  * - splash display
- * - grab bingo info from api on startup or smt
  * - splasher features
  *      add overlay for currently hovering potion
- *      warn if you're entering the pet care without potions
  * - detect keystroke to reset overlay location (probably R)
  * - dreadlord sword drop warning
  */
 
 /* IN PROGRESS
- * - hide completed bingo goals
+ * 
  */
 
 /* DONE
@@ -60,6 +58,9 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - make the firstInstall thing clickable and runs /b+
  * - remove bloomcore dependencies
  * - leecher display
+ * - warn if you're entering the pet care without potions
+ * - hide completed bingo goals
+ * - grab bingo info from api on startup or smt
  */
 
 /* CANCELLED (probably)
