@@ -12,7 +12,7 @@ import "./commands/centuryCakeIsland"
 // Features
 //import "./features/blockSkyMallMessages"
 import "./features/dialogueSkipper"
-import "./features/chatFeatures"
+import "./features/sendFeatures"
 import "./features/blockParkourMessages"
 import "./features/oringoCost"
 
@@ -46,6 +46,8 @@ ChatLib.chat("Bingo+ fully initialised!")
  *      add overlay for currently hovering potion
  * - detect keystroke to reset overlay location (probably R)
  * - dreadlord sword drop warning
+ * - splash display private island mvp++ extras
+ * - splash display estimated hub number
  */
 
 /* IN PROGRESS
@@ -61,6 +63,7 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - warn if you're entering the pet care without potions
  * - hide completed bingo goals
  * - grab bingo info from api on startup or smt
+ * - abiphone oringo cost 
  */
 
 /* CANCELLED (probably)

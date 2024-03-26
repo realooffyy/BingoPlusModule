@@ -154,7 +154,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Show everywhere",
-        description: "Show the display everywhere.\n&cMay break!",
+        description: "Show the display everywhere.\n&cMay break in unsupported areas!",
         category: "Splasher",
         subcategory: "Splasher Display"
     })
@@ -168,6 +168,14 @@ class Settings {
     no_potions_warning = true
 
     // Chat
+
+    @SwitchProperty({
+        name: "Oringo Cost",
+        description: "Convert Oringo's Abiphone message to include the rarity and cost of each pet.",
+        category: "Chat",
+        subcategory: "Oringo"
+    })
+    oringo_abiphone_cost = true
 
     @SwitchProperty({
         name: "Fake Emojis",

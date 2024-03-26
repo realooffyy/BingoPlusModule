@@ -1,10 +1,12 @@
 import { data } from "../../utils/constants"
 import Settings from "../../settings"
 
-import { registerWhen, getTabList, getValue, removeUnicode } from "../../utils/utils"
+import { registerWhen, getTabList, getScoreboard,  getValue, removeUnicode } from "../../utils/utils"
 import Skyblock from "../../utils/Skyblock"
 
-const tablistRegex = /.*Players \((\d{1,2})\)/
+const playersTabRegex = /.*Players \((\d{1,2})\)/
+const playersBoardRegex = /  \((\d{1,2})\/(\d{1,2})\).*/
+// https://regex101.com/r/FxwnGL/1
 
 let opened = false
 let moveGui = false
@@ -73,17 +75,36 @@ register("step", () => { // line constructor
             if (server[0] === 'M') playerMax = 80
             else if (server[0] === 'm') playerMax = 24
         }
-        if (area === 'Dungeon Hub') playerMax = 24
+        else if (area === 'Dungeon Hub') playerMax = 24
+
+        else if (area?.includes('Private Island')) {
+            getScoreboard().forEach(x => {
+                line = removeUnicode(x)
+                if (playersBoardRegex.test(line)) {
+                    let match = playersBoardRegex.exec(line)
+                    if (match) {
+                        playerCount = parseInt(match[1])
+                        playerMax = parseInt(match[2])
+                    } else {
+                        playerCount = null;
+                        playerMax = null;
+                    }
+                }
+            })
+        }
 
         const tabLine = removeUnicode(getTabList()[0])
         if (tabLine !== null) {
-            if (tablistRegex.test(tabLine)) playerCount = getValue(tabLine, tablistRegex, '??')
+            if (playersTabRegex.test(tabLine)) playerCount = getValue(tabLine, playersTabRegex, '??')
         }
 
         let playerLine = ''
         let slotsLeft = playerMax-playerCount
         if (playerCount === null | playerMax === null) playerLine = null
-        else if (slotsLeft > 0) playerLine = `&e&l${slotsLeft} &eslots left &8(&7${playerCount}&8/${playerMax})`
+        else if (slotsLeft > 0) { 
+            let s = slotsLeft == 1 ? '' : 's'
+            playerLine = `&e&l${slotsLeft} &eslot${s} left &8(&7${playerCount}&8/${playerMax})`
+        }
         else playerLine = `&c&lFull! &8(&c${playerCount}&8/${playerMax})`
 
 

@@ -1,3 +1,4 @@
+import Settings from "../settings"
 import constants from "../utils/constants"
 
 PREFIX = constants.PREFIX
@@ -62,6 +63,7 @@ const rarityList = {
 
 // abiphone call 
 register("chat", (x, e) => {
+    if (!Settings.oringo_abiphone_cost) return
     const pet = x.slice(2)
     const colour = x[1]
     if (!rarityList[colour] || !pets[pet]) { ChatLib.chat(`${PREFIX}&cPet not read correctly!`); return }
@@ -72,10 +74,10 @@ register("chat", (x, e) => {
     const price = pets[pet][rarity[1]]
 
     ChatLib.chat(
-    `&e[NPC] &aOringo: &b✆
+`&e[NPC] Oringo&f: &b✆
  &7• &${colour}&l${rarity[0]} &${colour}${pet}&r
   &7⟹ &6${price[0]} coins&r
   &7⟹ &a${price[1]}&r`
     )
 
-}).setCriteria("&e[NPC] &aOringo: &b✆ &8• ${x} Pet").setContains()
+}).setCriteria("&e[NPC] Oringo&f: &b✆ &f&r&8• ${x} Pet&r")
