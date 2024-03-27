@@ -6,7 +6,7 @@ const blockMsg = new Message(new TextComponent(`${constants.PREFIX}&cBlocked &e/
 
 register("messageSent", (message, event) => {
     
-    if (!Settings.baker_blocker || !Bingo.inBingo) return
+    if (!Settings.bakerBlocker || !Bingo.inBingo) return
     if (message === "/openbaker") {
       cancel(event)
       ChatLib.chat(blockMsg)

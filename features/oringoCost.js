@@ -63,7 +63,7 @@ const rarityList = {
 
 // abiphone call 
 register("chat", (x, e) => {
-    if (!Settings.oringo_abiphone_cost) return
+    if (!Settings.oringoAbiphoneCost) return
     const pet = x.slice(2)
     const colour = x[1]
     if (!rarityList[colour] || !pets[pet]) { ChatLib.chat(`${PREFIX}&cPet not read correctly!`); return }

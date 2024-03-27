@@ -1,10 +1,10 @@
 import Settings from "../settings"
 import emojis from "../utils/emojis"
 
-const allowedCommands = ["/pc", "/ac", "/gc", "/msg", "/r", "/cc", "/oc"]
+const allowedCommands = ["/pc", "/ac", "/gc", "/msg", "/r", "/w", "/cc", "/oc"]
 
 register("messageSent", (message, event) => {
-  if (!Settings.fake_emojis) return
+  if (!Settings.fakeEmojis) return
   if (message.startsWith("/") && !allowedCommands.some(cmd => message.startsWith(cmd))) return
 
   let replaced = false

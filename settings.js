@@ -54,7 +54,7 @@ class Settings {
         description: "Only enable features in the &6Bingo &rcategory on Bingo profiles.",
         category: "Bingo"
     })
-    only_on_bingo = true
+    onlyOnBingo = true
 
     @SwitchProperty({
         name: "Community Goal Display",
@@ -62,7 +62,7 @@ class Settings {
         category: "Bingo",
         subcategory: "Bingo Card"
     })
-    community_goal_display = true
+    communityGoalDisplay = true
 
     @ButtonProperty({
         name: "Move",
@@ -80,7 +80,7 @@ class Settings {
         category: "Bingo",
         subcategory: "Bingo Card"
     })
-    hide_completed_bingo_goals = false
+    hideCompletedBingoGoals = false
 
     @SwitchProperty({
         name: "Chicken Head Timer",
@@ -88,7 +88,7 @@ class Settings {
         category: "Bingo",
         subcategory: "Chicken Head Timer"
     })
-    chicken_head_timer = true
+    chickenHeadTimer = true
 
     @ButtonProperty({
         name: "Move",
@@ -106,7 +106,7 @@ class Settings {
         category: "Bingo",
         subcategory: "Chicken Head Timer"
     })
-    hide_egg_laid_message = false
+    hideEggLaidMessage = false
 
     @SwitchProperty({
         name: "Copy Achievements",
@@ -114,7 +114,7 @@ class Settings {
         category: "Bingo",
         subcategory: "Chat"
     })
-    copy_achievements = true
+    copyAchievements = true
 
     @SwitchProperty({
         name: "Baker Blocker",
@@ -122,7 +122,7 @@ class Settings {
         category: "Bingo",
         subcategory: "Blockers"
     })
-    baker_blocker = true
+    bakerBlocker = true
 
     @SwitchProperty({
         name: "Block Party Travel Messages",
@@ -130,7 +130,7 @@ class Settings {
         category: "Bingo",
         subcategory: "Party"
     })
-    block_party_travel_messages = false
+    blockPartyTravelMessages = false
 
     // Splasher
 
@@ -140,7 +140,7 @@ class Settings {
         category: "Splasher",
         subcategory: "Splasher Display"
     })
-    splasher_display = true
+    splasherDisplay = true
 
     @ButtonProperty({
         name: "Move",
@@ -158,14 +158,14 @@ class Settings {
         category: "Splasher",
         subcategory: "Splasher Display"
     })
-    splasher_display_everywhere = false
+    splasherDisplayEverywhere = false
 
     @SwitchProperty({
         name: "No Potions Warning",
         description: "Warns you if you enter the Pet Care in a mega hub without any splash potions.",
         category: "Splasher"
     })
-    no_potions_warning = true
+    noPotionsWarning = true
 
     // Chat
 
@@ -175,7 +175,7 @@ class Settings {
         category: "Chat",
         subcategory: "Oringo"
     })
-    oringo_abiphone_cost = true
+    oringoAbiphoneCost = true
 
     @SwitchProperty({
         name: "Fake Emojis",
@@ -183,7 +183,7 @@ class Settings {
         category: "Chat",
         subcategory: "Sending"
     })
-    fake_emojis = false
+    fakeEmojis = false
 
     @SwitchProperty({
         name: "Maxwell",
@@ -191,7 +191,7 @@ class Settings {
         category: "Chat",
         subcategory: "Dialogue Skipper"
     })
-    maxwell = false
+    skipperMaxwell = false
 
     @SwitchProperty({
         name: "Sam",
@@ -199,7 +199,7 @@ class Settings {
         category: "Chat",
         subcategory: "Dialogue Skipper"
     })
-    sam = false
+    skipperSam = false
 
     @SwitchProperty({
         name: "Pesthunter Phillip",
@@ -207,7 +207,7 @@ class Settings {
         category: "Chat",
         subcategory: "Dialogue Skipper"
     })
-    pesthunter_phillip = false
+    skipperPesthunterPhillip = false
 
     @SwitchProperty({
         name: "Lone Adventurer",
@@ -215,7 +215,7 @@ class Settings {
         category: "Chat",
         subcategory: "Dialogue Skipper"
     })
-    lone_adventurer = false
+    skipperLoneAdventurer = false
 
     @SwitchProperty({
         name: "Block Sky Mall Messages",
@@ -223,7 +223,7 @@ class Settings {
         category: "Chat",
         subcategory: "Blockers"
     })
-    block_sky_mall_messages = false
+    blockSkyMallMessages = false
 
     @SwitchProperty({
         name: "Block Parkour Messages",
@@ -231,7 +231,7 @@ class Settings {
         category: "Chat",
         subcategory: "Blockers"
     })
-    block_parkour_messages = false
+    blockParkourMessages = false
 
     // Commands
     @SwitchProperty({
@@ -239,14 +239,14 @@ class Settings {
         description: "Automatically opens a new window when running the &e/skycrypt &ror &e/sky &rcommand.",
         category: "Commands"
     })
-    skycrypt_auto_open = false
+    skycryptAutoOpen = false
 
     @TextProperty({
         name: "Century Cake Island",
         description: "Visits a Cake Hub when running &e/cake&r.\nDefault: &aBingoSplasher&r",
         category: "Commands"
     })
-    century_cake_island = "BingoSplasher"
+    centuryCakeIsland = "BingoSplasher"
 }
 
 export default new Settings()

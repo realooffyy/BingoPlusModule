@@ -28,8 +28,8 @@ register("step", () => { // opened and location manager
     guiY = data.splasherDisplay.y
 
     opened = false
-    if (!Settings.splasher_display || !Skyblock.inSkyblock) return
-    opened = Skyblock.subArea === 'Pet Care' || Skyblock.subArea === 'Dungeon Hub' || Settings.splasher_display_everywhere || Settings.splasherDisplayMove.isOpen()
+    if (!Settings.splasherDisplay || !Skyblock.inSkyblock) return
+    opened = Skyblock.subArea === 'Pet Care' || Skyblock.subArea === 'Dungeon Hub' || Settings.splasherDisplayEverywhere || Settings.splasherDisplayMove.isOpen()
     moveGui = Settings.splasherDisplayMove.isOpen()
 })
 

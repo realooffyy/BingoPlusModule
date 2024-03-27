@@ -9,7 +9,7 @@ export default new class Bingo {
             if (t%10 || !Skyblock.inSkyblock) return
             let displayName = Player.getDisplayName().text
             this.inBingo = displayName.includes("Ⓑ")
-            this.enabled = this.inBingo || !Settings.only_on_bingo
+            this.enabled = this.inBingo || !Settings.onlyOnBingo
         })
     }
 }

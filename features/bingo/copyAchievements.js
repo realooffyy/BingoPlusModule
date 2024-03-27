@@ -6,7 +6,7 @@ const regex = /(HEART OF THE MOUNTAIN.*|BINGO GOAL COMPLETE!.*|Your Bingo levele
 // https://regex101.com/r/nHf4KU/2
 
 register("chat", (event) => {
-    if (!Settings.copy_achievements || !Bingo.enabled) return
+    if (!Settings.copyAchievements || !Bingo.enabled) return
     ChatLib.command(`ct copy ${event}`, true)
     ChatLib.chat(constants.PREFIX+"&aAchievement copied to clipboard!");
 }).setCriteria(regex);

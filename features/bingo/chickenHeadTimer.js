@@ -8,7 +8,7 @@ let lastLay = 0
 let opened = false
 
 register("step", () => {
-    if (!Settings.chicken_head_timer || !Skyblock.inSkyblock) return opened = false
+    if (!Settings.chickenHeadTimer || !Skyblock.inSkyblock) return opened = false
     if (Settings.chickenHeadTimerMove.isOpen()) return opened = true
     let helmet = Player.armor.getHelmet()
     if (helmet==null) return opened = false
@@ -49,5 +49,5 @@ register("dragged", (dx, dy, x, y) => {
 
 register("chat", (e) => {
     lastLay = new Date().getTime()
-    if (Settings.hide_egg_laid_message) cancel(e)
+    if (Settings.hideEggLaidMessage) cancel(e)
 }).setCriteria("You laid an egg!")

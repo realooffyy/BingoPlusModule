@@ -10,5 +10,5 @@ register("command", (...args) => {
     if(profile == undefined) profile = ''
     link = `https://sky.shiiyu.moe/stats/${username}/${profile}`
     new TextComponent(`${constants.PREFIX}&aClick me to open &e${username}&a's SkyCrypt!`).setClick("open_url", link).chat()
-    if (settings.skycrypt_auto_open) java.awt.Desktop.getDesktop().browse(new java.net.URL(link).toURI());
-} ).setName("skycrypt").setAliases("sky")
+    if (settings.skycryptAutoOpen) java.awt.Desktop.getDesktop().browse(new java.net.URL(link).toURI());
+} ).setName("skycrypt")

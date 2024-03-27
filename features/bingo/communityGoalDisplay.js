@@ -25,7 +25,7 @@ register("step", () => {
 })
 
 register("postGuiRender", () => {
-    if (!Settings.community_goal_display || !skyblock.inSkyblock) return
+    if (!Settings.communityGoalDisplay || !skyblock.inSkyblock) return
     let inv = Player.getContainer()
     if (!bingoCardOpened && inv?.getName() == "Bingo Card") {
         const community_slots = [2, 12, 22, 32, 42]
