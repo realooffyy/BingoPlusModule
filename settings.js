@@ -110,7 +110,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Copy Achievements",
-        description: "Automatically copies Bingo achievements to clipboard.",
+        description: "Automatically copies some Bingo achievements to clipboard.\n&6Incomplete!",
         category: "Bingo",
         subcategory: "Chat"
     })
@@ -118,7 +118,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Baker Blocker",
-        description: "Prevents you from running &e/openbaker &ron Bingo.",
+        description: "Prevents you from running &e/openbaker &r while on a Bingo profile.",
         category: "Bingo",
         subcategory: "Blockers"
     })
@@ -126,7 +126,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Block Party Travel Messages",
-        description: "Block party travel notifications on Bingo.\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r",
+        description: "Block party travel notifications while on a Bingo profile.\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r",
         category: "Bingo",
         subcategory: "Party"
     })
@@ -136,7 +136,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Splasher Display",
-        description: "Show a display with important information while in the Pet Care or Dungeon Hub.",
+        description: "Show a display with important information while in a splashing area.",
         category: "Splasher",
         subcategory: "Splasher Display"
     })
@@ -217,6 +217,7 @@ class Settings {
     })
     skipperLoneAdventurer = false
 
+    /*
     @SwitchProperty({
         name: "Block Sky Mall Messages",
         description: "Blocks the daily Sky Mall messages while outside the mining islands.\n\n§r§bNew day! §r§eYour §r§2Sky Mall §r§ebuff changed!§r\n§r§8§oYou can disable this messaging by toggling Sky Mall in your /hotm!§r",
@@ -224,7 +225,8 @@ class Settings {
         subcategory: "Blockers"
     })
     blockSkyMallMessages = false
-
+    */
+   
     @SwitchProperty({
         name: "Block Parkour Messages",
         description: "Blocks the spammy parkour messages when AFKing on them.\n\n§r§aStarted parkour <name>!§r\n§aFinished parkour <name> in 00:00.999!§r\n§7+5 Island Points§r",

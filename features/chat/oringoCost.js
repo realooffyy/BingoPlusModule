@@ -1,5 +1,5 @@
-import Settings from "../settings"
-import constants from "../utils/constants"
+import Settings from "../../settings"
+import constants from "../../utils/constants"
 
 PREFIX = constants.PREFIX
 

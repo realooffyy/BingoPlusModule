@@ -10,12 +10,6 @@ import "./commands/showtitle"
 import "./commands/centuryCakeIsland"
 
 // Features
-//import "./features/blockSkyMallMessages"
-import "./features/dialogueSkipper"
-import "./features/sendFeatures"
-import "./features/blockParkourMessages"
-import "./features/oringoCost"
-
 import "./features/bingo/bakerBlocker"
 import "./features/bingo/blockPartyTravelMessages"
 import "./features/bingo/chickenHeadTimer"
@@ -23,12 +17,19 @@ import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"
 import "./features/bingo/hideCompleteBingoGoals"
 
+import "./features/chat/blockSkyMallMessages"
+import "./features/chat/dialogueSkipper"
+import "./features/chat/sendFeatures"
+import "./features/chat/blockParkourMessages"
+import "./features/chat/oringoCost"
+
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
 
 ChatLib.chat("Bingo+ fully initialised!")
 
 /* TODO
+ * - organise .js into subfolders
  * - optimise dialogue skipper and figure out if im allowed to autoskip
  * - command for accessing bingo party commands
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler
