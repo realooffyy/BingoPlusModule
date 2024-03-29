@@ -32,6 +32,7 @@ class Settings {
     chickenHeadTimerMove = new Gui()
     communityGoalDisplayMove = new Gui()
     splasherDisplayMove = new Gui()
+    hubSelectorDisplayMove = new Gui()
 
     // General
 
@@ -166,6 +167,24 @@ class Settings {
         category: "Splasher"
     })
     noPotionsWarning = true
+
+    @SwitchProperty({
+        name: "Hub Selector Display",
+        description: "Show a display with the lowest player hubs while in the Hub Selector.",
+        category: "Splasher",
+        subcategory: "Hub Selector Display"
+    })
+    hubSelectorDisplay = true
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Lowest Hub Display",
+        category: "Splasher",
+        subcategory: "Hub Selector Display"
+    })
+    MoveHubSelectorDisplay() {
+        this.hubSelectorDisplayMove.open()
+    }
 
     // Chat
 

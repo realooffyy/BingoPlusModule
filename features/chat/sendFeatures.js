@@ -7,8 +7,6 @@ let send = ''
 register("messageSent", (message, e) => {
   if (message.startsWith("/") && !allowedCommands.some(cmd => message.startsWith(cmd))) return
 
-  send = ''
-
   if (Settings.fakeEmojis) {
     const words = message.split(" ")
 

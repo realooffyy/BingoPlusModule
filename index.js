@@ -25,6 +25,7 @@ import "./features/chat/oringoCost"
 
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
+import "./features/splasher/lowestHub"
 
 ChatLib.chat("Bingo+ fully initialised!")
 
@@ -49,6 +50,7 @@ ChatLib.chat("Bingo+ fully initialised!")
  * - dreadlord sword drop warning
  * - splash display private island mvp++ extras
  * - splash display estimated hub number
+ * - brewing stand name display
  */
 
 /* IN PROGRESS

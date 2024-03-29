@@ -35,7 +35,13 @@ export const data = new PogObject("Bingo+", {
         x: 10,
         y: 10,
         scale: 1
+    },
+    hubSelectorDisplay: {
+        x: 0,
+        y: 0,
+        scale: 1
     }
+    
 }, "config/data.json")
 
 export const rats = [

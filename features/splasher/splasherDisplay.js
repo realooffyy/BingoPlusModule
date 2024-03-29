@@ -1,7 +1,7 @@
 import { data } from "../../utils/constants"
 import Settings from "../../settings"
 
-import { registerWhen, getTabList, getScoreboard,  getValue, removeUnicode } from "../../utils/utils"
+import { registerWhen, getTabList, getScoreboard, getValue, removeUnicode } from "../../utils/utils"
 import Skyblock from "../../utils/Skyblock"
 
 const playersTabRegex = /.*Players \((\d{1,2})\)/

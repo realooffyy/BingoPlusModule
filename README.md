@@ -1,5 +1,7 @@
 # BingoPlus Module
 
+BingoPlus is a module with features related to the Hypixel SkyBlock Bingo gamemode.
+
 ## How to install
 **Ensure that [ChatTriggers](https://www.chattriggers.com/) 2.2.0 or higher is installed!**
 
@@ -50,12 +52,12 @@ If the module does not seem to be working, join the Discord and share your log i
     Convert Oringo's Abiphone message to include the rarity and cost of each pet.
 </details>
 <details>
-    <summary>Fake Emojis</summary>
-    Sends [MVP++] / [YOUTUBE], Rank Gifting and other custom emojis without having the requirements.
-</details>
-<details>
     <summary>Dialogue Skipper (use at your own risk!)</summary>
     Automatically skip the dialogue of certain NPCs.
+</details>
+<details>
+    <summary>Fake Emojis</summary>
+    Sends [MVP++] / [YOUTUBE], Rank Gifting and other custom emojis without having the requirements.
 </details>
 <details>
     <summary>Block Parkour Messages</summary>

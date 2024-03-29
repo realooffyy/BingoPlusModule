@@ -19,7 +19,7 @@ let height = 150
 let guiX, guiY, grabX, grabY
 let changePos = false
 
-register("step", () => {
+register("tick", () => {
     opened = bingoCardOpened
     if (Settings.communityGoalDisplayMove.isOpen()) opened = true
 })
