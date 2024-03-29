@@ -1,6 +1,6 @@
 {
     "$schema": "../CTAutocomplete/schema.json",
-    "name": "Bingo+",
+    "name": "BingoPlus",
     "creator": "ooffyy",
     "description": "A module that helps with various Bingo things!",
     "version": "1.0.0",

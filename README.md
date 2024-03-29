@@ -42,6 +42,10 @@ If the module does not seem to be working, join the Discord and share your log i
     Show a display with important information while in a splashing area.
 </details>
 <details>
+    <summary>Hub Selector Display</summary>
+    Show a display with the lowest player hubs while in the Hub Selector.
+</details>
+<details>
     <summary>No Potions Warning</summary>
     Warns you if you enter the Pet Care in a mega hub without any splash potions.
 </details>

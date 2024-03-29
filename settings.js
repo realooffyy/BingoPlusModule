@@ -1,9 +1,10 @@
 import { 
-    @Vigilant, 
-    @SwitchProperty, 
-    @ButtonProperty, 
-    @TextProperty 
-} from "Vigilance"
+    @ButtonProperty,
+    @SwitchProperty,
+    @TextProperty,
+    @Vigilant,
+    @SliderProperty
+} from '../Vigilance/index'
 
 @Vigilant("Bingo+/config", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
@@ -137,7 +138,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Splasher Display",
-        description: "Show a display with important information while in a splashing area.",
+        description: "Show a display with important information while in the Pet Care area.",
         category: "Splasher",
         subcategory: "Splasher Display"
     })
@@ -176,6 +177,16 @@ class Settings {
     })
     hubSelectorDisplay = true
 
+    @SliderProperty({
+        name: "Top Hubs",
+        description: "How many hubs to show",
+        category: "Splasher",
+        subcategory: "Hub Selector Display",
+        min: 1,
+        max: 28
+    })
+    hubSelectorDisplayTopHubs = 5;
+
     @ButtonProperty({
         name: "Move",
         description: "Move the Lowest Hub Display",
@@ -195,14 +206,6 @@ class Settings {
         subcategory: "Oringo"
     })
     oringoAbiphoneCost = true
-
-    @SwitchProperty({
-        name: "Fake Emojis",
-        description: "Sends &6[MVP&c++&6]&r / &c[&fYOUTUBE&c]&r, Rank Gifting and other custom emojis without having the requirements! Run &e/emoji &ron Hypixel for the list of all emojis.\n&cMay be laggy!",
-        category: "Chat",
-        subcategory: "Sending"
-    })
-    fakeEmojis = false
 
     @SwitchProperty({
         name: "Maxwell",
@@ -236,31 +239,7 @@ class Settings {
     })
     skipperLoneAdventurer = false
 
-    /*
-    @SwitchProperty({
-        name: "Block Sky Mall Messages",
-        description: "Blocks the daily Sky Mall messages while outside the mining islands.\n\n§r§bNew day! §r§eYour §r§2Sky Mall §r§ebuff changed!§r\n§r§8§oYou can disable this messaging by toggling Sky Mall in your /hotm!§r",
-        category: "Chat",
-        subcategory: "Blockers"
-    })
-    blockSkyMallMessages = false
-    */
-   
-    @SwitchProperty({
-        name: "Block Parkour Messages",
-        description: "Blocks the spammy parkour messages when AFKing on them.\n\n§r§aStarted parkour <name>!§r\n§aFinished parkour <name> in 00:00.999!§r\n§7+5 Island Points§r",
-        category: "Chat",
-        subcategory: "Blockers"
-    })
-    blockParkourMessages = false
-
     // Commands
-    @SwitchProperty({
-        name: "SkyCrypt Auto Open",
-        description: "Automatically opens a new window when running the &e/skycrypt &ror &e/sky &rcommand.",
-        category: "Commands"
-    })
-    skycryptAutoOpen = false
 
     @TextProperty({
         name: "Century Cake Island",

@@ -21,15 +21,10 @@ let leechers = []
 let width = 150
 let height = 1
 
-let guiX, guiY
-
-register("step", () => { // opened and location manager
-    guiX = data.splasherDisplay.x
-    guiY = data.splasherDisplay.y
-
+register("tick", () => { // opened and location manager
     opened = false
     if (!Settings.splasherDisplay || !Skyblock.inSkyblock) return
-    opened = Skyblock.subArea === 'Pet Care' || Skyblock.subArea === 'Dungeon Hub' || Settings.splasherDisplayEverywhere || Settings.splasherDisplayMove.isOpen()
+    opened = Skyblock.subArea === 'Pet Care' || Settings.splasherDisplayEverywhere || Settings.splasherDisplayMove.isOpen()
     moveGui = Settings.splasherDisplayMove.isOpen()
 })
 
@@ -126,6 +121,9 @@ register("step", () => { // line constructor
 }).setFps(2)
 
 const renderDisplay = () => {
+    let guiX = data.splasherDisplay.x
+    let guiY = data.splasherDisplay.y
+
     height = (lines.replace(/[^\n]/g, "").length)*9 +10
     const rectangle = new Rectangle(Renderer.color(0, 0, 0, 50), guiX, guiY, width, height) // background
     rectangle.draw()

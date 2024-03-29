@@ -1,6 +1,6 @@
 import { data } from "../../utils/constants"
 import Settings from "../../settings"
-import Skyblock from "../../../BloomCore/Skyblock"
+import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
 
 const layCooldown = 5000
@@ -8,13 +8,9 @@ let lastLay = 0
 let opened = false
 
 register("step", () => {
-    if (!Settings.chickenHeadTimer || !Skyblock.inSkyblock) return opened = false
-    if (Settings.chickenHeadTimerMove.isOpen()) return opened = true
-    let helmet = Player.armor.getHelmet()
-    if (helmet==null) return opened = false
-    if (helmet.getName().includes("Chicken Head")) return opened = true
-    return opened = false
+    opened = (Settings.chickenHeadTimer && Skyblock.inSkyblock && Player.armor?.getHelmet()?.getName()?.includes("Chicken Head")) || Settings.chickenHeadTimerMove.isOpen()
 }).setFps(2)
+
 
 register("worldLoad", () => {
     lastLay = new Date().getTime()
@@ -41,10 +37,11 @@ registerWhen(register("renderOverlay", () => { // thanks bloom
 }), () => opened)
 
 register("dragged", (dx, dy, x, y) => {
-    if (!Settings.chickenHeadTimerMove.isOpen()) return
-    data.chickenHeadTimerDisplay.x = x
-    data.chickenHeadTimerDisplay.y = y
-    data.save()
+    if (Settings.chickenHeadTimerMove.isOpen()) {
+        data.chickenHeadTimerDisplay.x = x
+        data.chickenHeadTimerDisplay.y = y
+        data.save()
+    }  
 })
 
 register("chat", (e) => {
