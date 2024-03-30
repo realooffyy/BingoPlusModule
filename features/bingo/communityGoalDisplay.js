@@ -20,6 +20,7 @@ let grabX, grabY
 let grabbed = false
 
 register("tick", () => {
+    display.setRenderLoc(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
     opened = bingoCardOpened || Settings.communityGoalDisplayMove.isOpen()
     if (Settings.communityGoalDisplayMove.isOpen()) {
         display.clearLines()

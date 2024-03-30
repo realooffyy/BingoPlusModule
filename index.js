@@ -5,6 +5,8 @@ import "./utils/bingoApi"
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 
+import "./render/move"
+
 // Features
 import "./features/bingo/bakerBlocker"
 import "./features/bingo/blockPartyTravelMessages"
@@ -18,7 +20,7 @@ import "./features/chat/oringoCost"
 
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
-import "./features/splasher/lowestHub"
+import "./features/splasher/hubSelectorDisplay"
 
 /* TODO
  * - command for accessing bingo party commands
@@ -27,7 +29,6 @@ import "./features/splasher/lowestHub"
  * - rat waypoints
  * - hotm tree unlock reminders
  * - king talisman helper!
- * - disable fake emojis if user has mvp++ or yt rank 
  * - fetchur/puzzler solvers?? so many mods have this xD
  * - add button to community goal display to pin the render
  * - custom bingo achievements
@@ -35,7 +36,6 @@ import "./features/splasher/lowestHub"
  * - splash display
  * - splasher features
  *      add overlay for currently hovering potion
- * - detect keystroke to reset overlay location (probably R)
  * - dreadlord sword drop warning
  * - splash display private island mvp++ extras
  * - splash display hub number guess

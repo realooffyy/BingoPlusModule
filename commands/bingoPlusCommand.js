@@ -1,5 +1,7 @@
 import Settings from "../settings"
+import { data } from "../utils/constants"
 import constants from "../utils/constants"
+
 
 export const bingoPlusCommand = register("command", (...args) => {
     if (!args || !args[0]) return Settings.openGUI()
@@ -9,6 +11,12 @@ export const bingoPlusCommand = register("command", (...args) => {
         let cmd = ''
         constants.COMMANDS_LIST.forEach(x => {cmd += x+'\n'})
         ChatLib.chat([line, constants.PREFIX, "", cmd, line].join("\n"))
+    }
+
+    if (args[0] == "togglebingoapi") {
+        data.bingoApiOn = !data.bingoApiOn
+        data.save()
+        ChatLib.chat(`${constants.PREFIX}Set bingo api calling to ${data.bingoApiOn}`)
     }
 
     else {

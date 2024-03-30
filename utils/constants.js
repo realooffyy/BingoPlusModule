@@ -12,8 +12,10 @@ export default constants = {
 export const data = new PogObject("BingoPlus", {
     firstTime: true,
 
+    bingoApiOn: true,
     bingoApi: {
         id: null,
+        lastUpdated: null,
         name: null,
         modifier: null,
         start: null,

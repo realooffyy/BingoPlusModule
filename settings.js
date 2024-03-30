@@ -28,6 +28,11 @@ class Settings {
         this.setSubcategoryDescription("Chat", "Dialogue Skipper",
             `&cUse at your own risk!`)
 
+        this.addDependency("Top Hubs", "Hub Selector Display")
+        this.addDependency("Highlight Best Hubs", "Hub Selector Display")
+        this.addDependency("Hub Restart Warning", "Hub Selector Display")
+
+        this.addDependency("Show everywhere", "Splasher Display")
     }
 
     chickenHeadTimerMove = new Gui()
@@ -44,8 +49,7 @@ class Settings {
         placeholder: "Open"
     })
     joinDiscord() {
-        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI());
-        //ChatLib.command("ct copy https://discord.gg/P8rahWWA7b", true);
+        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
     }
 
 
@@ -167,7 +171,7 @@ class Settings {
         description: "Warns you if you enter the Pet Care in a mega hub without any splash potions.",
         category: "Splasher"
     })
-    noPotionsWarning = true
+    noPotionsWarning = false
 
     @SwitchProperty({
         name: "Hub Selector Display",
@@ -175,7 +179,15 @@ class Settings {
         category: "Splasher",
         subcategory: "Hub Selector Display"
     })
-    hubSelectorDisplay = false
+    hubSelectorDisplay = true
+
+    @SwitchProperty({
+        name: "Hub Restart Warning",
+        description: "Sends a message in chat if a restarting hub is detected.",
+        category: "Splasher",
+        subcategory: "Hub Selector Display"
+    })
+    hubRestartWarning = false
 
     @SliderProperty({
         name: "Top Hubs",

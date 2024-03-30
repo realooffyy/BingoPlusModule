@@ -14,7 +14,7 @@ const playerRegex = /§5§o§7Players: (\d{1,2})\/(\d{1,2})/
 //const serverName = 
 
 const display = new Display()
-display.setRenderLoc(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
+display.setRenderLoc(data.hubSelectorDisplay.x, data.hubSelectorDisplay.y)
 display.setBackground(DisplayHandler.Background.FULL)
 display.setRegisterType("post gui render")
 
@@ -29,6 +29,7 @@ let grabX, grabY
 let grabbed = false
 
 register("tick", () => {
+    display.setRenderLoc(data.hubSelectorDisplay.x, data.hubSelectorDisplay.y)
     opened = hubSelectorOpened || Settings.hubSelectorDisplayMove.isOpen()
     if (Settings.hubSelectorDisplayMove.isOpen()) {
         display.clearLines()
@@ -42,8 +43,11 @@ register("tick", () => {
 
 register("guiRender", (e) => {
     if (!Settings.hubSelectorHighlightBestHubs) return
+    let rgba = [0, 0, 0, 255]
     bestHubs.forEach(x => {
-        highlightSlot(x[3], [0, 255, 0, 255])  
+        if (x[2] === 'c') rgba = [255, 0, 0, 255]
+        if (x[2] === 'a') rgba = [0, 255, 0, 255]
+        highlightSlot(x[3], rgba)  
     })
 })
 
@@ -88,13 +92,16 @@ register("postGuiRender", () => {
                                 playerCount = match[1]
                                 playerMax = match[2]
                                 slotsLeft = playerMax-playerCount
-                                if (playerMax == 0 && !restartWarning) {
-                                    ChatLib.chat(`${constants.PREFIX}&cDetected a restarting server! &eI recommend waiting before selecting a hub, in case the hubs shift.`)
-                                    restartWarning = true
-                                }
-                                else if (playerCount == 0 && !emptyWarning) {
-                                    ChatLib.chat(`${constants.PREFIX}&eDetected a server with 0 players, hubs may be shifting or you're just lucky. Check hub number before splashing.`)
-                                    emptyWarning = true
+                                
+                                if (Settings.hubRestartWarning) {
+                                    if (playerMax == 0 && !restartWarning) {
+                                        ChatLib.chat(`${constants.PREFIX}&cDetected a restarting server! &eI recommend waiting before selecting a hub, in case the hubs shift.`)
+                                        restartWarning = true
+                                    }
+                                    else if (playerCount == 0 && !emptyWarning) {
+                                        ChatLib.chat(`${constants.PREFIX}&eDetected a server with 0 players, hubs may be shifting or you're just lucky. Check hub number before splashing.`)
+                                        emptyWarning = true
+                                    }
                                 }
 
                             }                                

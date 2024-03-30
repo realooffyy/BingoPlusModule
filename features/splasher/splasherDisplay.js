@@ -22,7 +22,6 @@ let width = 150
 let height = 1
 
 register("tick", () => { // opened and location manager
-    opened = false
     if (!Settings.splasherDisplay || !Skyblock.inSkyblock) return
     opened = Skyblock.subArea === 'Pet Care' || Settings.splasherDisplayEverywhere || Settings.splasherDisplayMove.isOpen()
     moveGui = Settings.splasherDisplayMove.isOpen()
