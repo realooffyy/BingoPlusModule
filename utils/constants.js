@@ -9,7 +9,7 @@ export default constants = {
     ]
 }
 
-export const data = new PogObject("Bingo+", {
+export const data = new PogObject("BingoPlus", {
     firstTime: true,
 
     bingoApi: {
@@ -36,8 +36,8 @@ export const data = new PogObject("Bingo+", {
         scale: 1
     },
     hubSelectorDisplay: {
-        x: 0,
-        y: 0,
+        x: 10,
+        y: 10,
         scale: 1
     }
     

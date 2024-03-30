@@ -3,6 +3,7 @@
 
 import constants, { data } from "../../utils/constants"
 import Settings from "../../settings"
+import { highlightSlot } from "../../utils/utils"
 
 import Skyblock from "../../utils/Skyblock"
 
@@ -21,6 +22,8 @@ let hubSelectorOpened = false
 let opened = false
 
 let lines = '&e&lHub Selector'
+let bestHubs = []
+let otherHubs = []
 
 let grabX, grabY
 let grabbed = false
@@ -35,6 +38,13 @@ register("tick", () => {
             display?.clearLines()
         })
     }
+})
+
+register("guiRender", (e) => {
+    if (!Settings.hubSelectorHighlightBestHubs) return
+    bestHubs.forEach(x => {
+        highlightSlot(x[3], [0, 255, 0, 255])  
+    })
 })
 
 register("postGuiRender", () => {
@@ -52,6 +62,7 @@ register("postGuiRender", () => {
                 hubSelectorOpened = false
                 closeListener?.unregister()
                 display?.clearLines()
+                bestHubs = []
             })
 
             const hubs = []
@@ -97,6 +108,8 @@ register("postGuiRender", () => {
             
             compileLines(hubs, 1)
 
+            
+
         })
     }
 })
@@ -123,8 +136,8 @@ function compileLines(arr, sortIndex) {
     display.addLine('')
 
     let bestCount = hubs[0][sortIndex]
-    let bestHubs = []
-    let otherHubs = []
+    bestHubs = []
+    otherHubs = []
 
     for (let i = 0; i < Settings.hubSelectorDisplayTopHubs; i++) {
         let hub = hubs[i]

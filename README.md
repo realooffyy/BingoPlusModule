@@ -1,6 +1,6 @@
 # BingoPlus Module
 
-BingoPlus is a module with features related to the Hypixel SkyBlock Bingo gamemode.
+BingoPlus is a ChatTriggers module with features related to the Hypixel SkyBlock Bingo gamemode.
 
 ## How to install
 **Ensure that [ChatTriggers](https://www.chattriggers.com/) 2.2.0 or higher is installed!**
@@ -10,7 +10,9 @@ Use `/b+` to open the config.
 If the module does not seem to be working, join the Discord and share your log in `/ct console js`.
 
 ## Features
+
 ### Bingo
+
 <details>
     <summary>Community Goal Display</summary>
     Displays community goal data when on the Bingo Card menu.
@@ -37,6 +39,7 @@ If the module does not seem to be working, join the Discord and share your log i
 </details>
 
 ### Splasher
+
 <details>
     <summary>Splasher Display</summary>
     Show a display with important information while in a splashing area.
@@ -51,6 +54,7 @@ If the module does not seem to be working, join the Discord and share your log i
 </details>
 
 ### Chat
+
 <details>
     <summary>Oringo Cost</summary>
     Convert Oringo's Abiphone message to include the rarity and cost of each pet.
@@ -59,22 +63,10 @@ If the module does not seem to be working, join the Discord and share your log i
     <summary>Dialogue Skipper (use at your own risk!)</summary>
     Automatically skip the dialogue of certain NPCs.
 </details>
-<details>
-    <summary>Fake Emojis</summary>
-    Sends [MVP++] / [YOUTUBE], Rank Gifting and other custom emojis without having the requirements.
-</details>
-<details>
-    <summary>Block Parkour Messages</summary>
-    Blocks the spammy parkour messages when AFKing on them.
-</details>
 
 ### Commands
 
 <details>
     <summary>/cake</summary>
     Visits a Cake Hub. Default is BingoSplasher, configurable in settings
-</details>
-<details>
-    <summary>/skycrypt player</summary>
-    Provides a user's SkyCrypt link. Optionally automatically open it.
 </details>

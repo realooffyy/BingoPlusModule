@@ -1,5 +1,3 @@
-ChatLib.chat("Loading Bingo+...")
-
 import "./utils/firstInstall"
 import "./utils/bingoApi"
 
@@ -21,8 +19,6 @@ import "./features/chat/oringoCost"
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
 import "./features/splasher/lowestHub"
-
-ChatLib.chat("Bingo+ fully initialised!")
 
 /* TODO
  * - command for accessing bingo party commands

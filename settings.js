@@ -6,7 +6,7 @@ import {
     @SliderProperty
 } from '../Vigilance/index'
 
-@Vigilant("Bingo+/config", "Bingo+ Settings", {
+@Vigilant("BingoPlus/config", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
         const categories = ["General", "Bingo", "Splasher", "Chat", "Commands"];
 
@@ -20,7 +20,7 @@ class Settings {
         
         this.setCategoryDescription("General",
             `
-            &6Bingo&c+ &bv${JSON.parse(FileLib.read("Bingo+", "metadata.json")).version}
+            &6Bingo&c+ &bv${JSON.parse(FileLib.read("BingoPlus", "metadata.json")).version}
             &aBy ooffyy
             `
         )
@@ -175,7 +175,7 @@ class Settings {
         category: "Splasher",
         subcategory: "Hub Selector Display"
     })
-    hubSelectorDisplay = true
+    hubSelectorDisplay = false
 
     @SliderProperty({
         name: "Top Hubs",
@@ -186,6 +186,14 @@ class Settings {
         max: 28
     })
     hubSelectorDisplayTopHubs = 5;
+
+    @SwitchProperty({
+        name: "Highlight Best Hubs",
+        description: "Highlights the lowest player hubs.\n&8Disable SBE's Hub Colors for the best experience!",
+        category: "Splasher",
+        subcategory: "Hub Selector Display"
+    })
+    hubSelectorHighlightBestHubs = false
 
     @ButtonProperty({
         name: "Move",
