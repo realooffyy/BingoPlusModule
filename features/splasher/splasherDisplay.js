@@ -47,7 +47,7 @@ register("step", () => { // line constructor
         const selfName = Player?.getName()
 
         // put everyone in the lists
-        const nearbyPlayers = World.getAllPlayers().filter(player => player.getUUID().version() === 4 && Math.hypot(x - player.x, y - player.y, z - player.z) < 5)
+        const nearbyPlayers = World.getAllPlayers().filter(player => player.getUUID().version() === 4 && Math.hypot(x - player.x, y - player.y, z - player.z) < Settings.splasherDisplayDistance)
 
         nearbyPlayers.forEach(user => {
             const name = user.getDisplayName().text

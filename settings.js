@@ -44,9 +44,10 @@ class Settings {
 
     @ButtonProperty({
         name: "Discord",
-        description: "Join the Bingo+ Discord!",
+        description: "Click the button to join the Discord.",
         category: "General",
-        placeholder: "Open"
+        subcategory: "Discord",
+        placeholder: "Join"
     })
     joinDiscord() {
         java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
@@ -74,7 +75,8 @@ class Settings {
         name: "Move",
         description: "Move the Community Goal Display",
         category: "Bingo",
-        subcategory: "Bingo Card"
+        subcategory: "Bingo Card",
+        placeholder: "Move"
     })
     MoveCommunityGoalDisplay() {
         this.communityGoalDisplayMove.open()
@@ -100,7 +102,8 @@ class Settings {
         name: "Move",
         description: "Move the Chicken Head Timer.",
         category: "Bingo",
-        subcategory: "Chicken Head Timer"
+        subcategory: "Chicken Head Timer",
+        placeholder: "Move"
     })
     MoveChickenHeadTimer() {
         this.chickenHeadTimerMove.open()
@@ -148,16 +151,6 @@ class Settings {
     })
     splasherDisplay = true
 
-    @ButtonProperty({
-        name: "Move",
-        description: "Move the Splasher Display",
-        category: "Splasher",
-        subcategory: "Splasher Display"
-    })
-    MoveLeecherDisplay() {
-        this.splasherDisplayMove.open()
-    }
-
     @SwitchProperty({
         name: "Show everywhere",
         description: "Show the display everywhere.\n&cMay break in unsupported areas!",
@@ -165,6 +158,27 @@ class Settings {
         subcategory: "Splasher Display"
     })
     splasherDisplayEverywhere = false
+
+    @SliderProperty({
+        name: "Splasher Display Distance",
+        description: "Detect players until this distance.\n&a5 is recommended",
+        category: "Splasher",
+        subcategory: "Splasher Display",
+        min: 1,
+        max: 10
+    })
+    splasherDisplayDistance = 5;
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Splasher Display",
+        category: "Splasher",
+        subcategory: "Splasher Display",
+        placeholder: "Move"
+    })
+    MoveSplasherDisplay() {
+        this.splasherDisplayMove.open()
+    }
 
     @SwitchProperty({
         name: "No Potions Warning",
@@ -179,15 +193,15 @@ class Settings {
         category: "Splasher",
         subcategory: "Hub Selector Display"
     })
-    hubSelectorDisplay = true
+    hubSelectorDisplay = false
 
     @SwitchProperty({
         name: "Hub Restart Warning",
-        description: "Sends a message in chat if a restarting hub is detected.",
+        description: "Sends a message in chat if a restarting hub is detected.\nHub numbers may be shifting when this happens.",
         category: "Splasher",
         subcategory: "Hub Selector Display"
     })
-    hubRestartWarning = false
+    hubRestartWarning = true
 
     @SliderProperty({
         name: "Top Hubs",
@@ -211,7 +225,8 @@ class Settings {
         name: "Move",
         description: "Move the Lowest Hub Display",
         category: "Splasher",
-        subcategory: "Hub Selector Display"
+        subcategory: "Hub Selector Display",
+        placeholder: "Move"
     })
     MoveHubSelectorDisplay() {
         this.hubSelectorDisplayMove.open()

@@ -13,7 +13,7 @@ export const bingoPlusCommand = register("command", (...args) => {
         ChatLib.chat([line, constants.PREFIX, "", cmd, line].join("\n"))
     }
 
-    if (args[0] == "togglebingoapi") {
+    else if (args[0] == "togglebingoapi") {
         data.bingoApiOn = !data.bingoApiOn
         data.save()
         ChatLib.chat(`${constants.PREFIX}Set bingo api calling to ${data.bingoApiOn}`)

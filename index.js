@@ -40,6 +40,7 @@ import "./features/splasher/hubSelectorDisplay"
  * - splash display private island mvp++ extras
  * - splash display hub number guess
  * - brewing stand name display
+ * - bednom reminder
  */
 
 /* IN PROGRESS
