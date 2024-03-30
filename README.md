@@ -1,6 +1,6 @@
 # BingoPlus Module
 
-BingoPlus is a ChatTriggers module with features related to the Hypixel SkyBlock Bingo gamemode.
+BingoPlus is a module with features related to the Hypixel SkyBlock Bingo gamemode.
 
 ## How to install
 **Ensure that [ChatTriggers](https://www.chattriggers.com/) 2.2.0 or higher is installed!**
