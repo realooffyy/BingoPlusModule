@@ -13,6 +13,7 @@ import "./features/bingo/blockPartyTravelMessages"
 import "./features/bingo/chickenHeadTimer"
 import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"
+//import "./features/bingo/dreadlordPickup"
 import "./features/bingo/hideCompleteBingoGoals"
 
 import "./features/chat/dialogueSkipper"
