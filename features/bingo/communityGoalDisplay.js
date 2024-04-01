@@ -55,6 +55,7 @@ register("postGuiRender", () => {
 
             let closeListener = register("guiClosed", () => {
                 bingoCardOpened = false
+                guiLoaded?.unregister()
                 closeListener?.unregister()
                 refresh?.unregister()
                 display?.clearLines()

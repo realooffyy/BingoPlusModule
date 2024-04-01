@@ -64,6 +64,7 @@ register("postGuiRender", () => {
 
             let closeListener = register("guiClosed", () => {
                 hubSelectorOpened = false
+                guiLoaded?.unregister()
                 closeListener?.unregister()
                 display?.clearLines()
                 bestHubs = []
