@@ -112,7 +112,7 @@ register("step", () => { // line constructor
         
         lines += '\n'
 
-        if (enjoyers.length) lines += `&6&lEnjoyers: ${enjoyers}&r\n\n`
+        if (enjoyers > 0) lines += `&6&lEnjoyers: ${enjoyers}&r\n\n`
         if (ironman.length) lines += `&7&l♲ Ironman:&r\n ${ironman.join('\n ')}\n`
         if (leechers.length) lines += `&c&lൠ Leechers:&r\n ${leechers.join('\n ')}\n`
 
