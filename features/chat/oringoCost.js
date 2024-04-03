@@ -63,8 +63,6 @@ const rarityList = {
 
 let pets = []
 
-ChatLib.command('ct copy a\na\n', true)
-
 // abiphone call 
 register("chat", (x, e) => {
     if (!Settings.oringoAbiphoneCost) return
@@ -88,6 +86,7 @@ register("chat", (x, e) => {
 
     if (rarity[1] == 4 && Settings.oringoDiscordCopy) {
         // todo: make a copyable message after detecting the final pet (from what i've seen it's always legendary)
+        // btw \n works
         let line = '## Travelling Zoo'
     }
 
