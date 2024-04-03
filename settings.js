@@ -33,6 +33,8 @@ class Settings {
         this.addDependency("Hub Restart Warning", "Hub Selector Display")
 
         this.addDependency("Show everywhere", "Splasher Display")
+
+        this.addDependency("Copy as Discord message","Oringo Abiphone Cost")
     }
 
     chickenHeadTimerMove = new Gui()
@@ -235,12 +237,20 @@ class Settings {
     // Chat
 
     @SwitchProperty({
-        name: "Oringo Cost",
+        name: "Oringo Abiphone Cost",
         description: "Convert Oringo's Abiphone message to include the rarity and cost of each pet.",
         category: "Chat",
         subcategory: "Oringo"
     })
     oringoAbiphoneCost = true
+
+    @SwitchProperty({
+        name: "Copy as Discord message",
+        description: "Also automatically copy this message to send in Discord.",
+        category: "Chat",
+        subcategory: "Oringo"
+    })
+    oringoDiscordCopy = true
 
     @SwitchProperty({
         name: "Maxwell",

@@ -3,7 +3,7 @@ import constants from "../../utils/constants"
 
 PREFIX = constants.PREFIX
 
-const pets = {
+const allPets = {
     'Blue Whale': [
         ['10k', '64x Raw Fish'],
         ['25k', '1x Enchanted Raw Fish'],
@@ -61,17 +61,21 @@ const rarityList = {
     '6': ['LEGENDARY', 4]
 }
 
+let pets = []
+
+ChatLib.command('ct copy a\na\n', true)
+
 // abiphone call 
 register("chat", (x, e) => {
     if (!Settings.oringoAbiphoneCost) return
     const pet = x.slice(2)
     const colour = x[1]
-    if (!rarityList[colour] || !pets[pet]) { ChatLib.chat(`${PREFIX}&cPet not read correctly!`); return }
+    if (!rarityList[colour] || !allPets[pet]) { ChatLib.chat(`${PREFIX}&cPet not read correctly!`); return }
 
     cancel(e)
 
     const rarity = rarityList[colour]
-    const price = pets[pet][rarity[1]]
+    const price = allPets[pet][rarity[1]]
 
     ChatLib.chat(
 `&e[NPC] Oringo&f: &b✆
@@ -79,5 +83,12 @@ register("chat", (x, e) => {
   &7⟹ &6${price[0]} coins&r
   &7⟹ &a${price[1]}&r`
     )
+
+    pets.push([pet, rarity])
+
+    if (rarity[1] == 4 && Settings.oringoDiscordCopy) {
+        // todo: make a copyable message after detecting the final pet (from what i've seen it's always legendary)
+        let line = '## Travelling Zoo'
+    }
 
 }).setCriteria("&e[NPC] Oringo&f: &b✆ &f&r&8• ${x} Pet&r")
