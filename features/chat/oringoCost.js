@@ -92,6 +92,7 @@ register("chat", (x, e) => {
         })
 
         ChatLib.command(`ct console ${line.join('\n')}`)
+        ChatLib.chat(`${PREFIX}&aCopied all pets to clipboard. You can send this in Discord.`)
 
     }
 
