@@ -1,4 +1,4 @@
-// thanks bloom
+// a lot of these are from bloom 🙏
 
 // Removes all unicode characters from a string
 export const removeUnicode = (string) => typeof(string) !== "string" ? "" : string.replace(/[^\u0000-\u007F]/g, "")
