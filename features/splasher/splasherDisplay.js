@@ -1,4 +1,5 @@
 import { data } from "../../utils/constants"
+import constants from "../../utils/constants"
 import Settings from "../../settings"
 
 import { registerWhen, getTabList, getScoreboard, getValue, removeUnicode } from "../../utils/utils"
@@ -146,5 +147,17 @@ register("dragged", (dx, dy, x, y) => {
         data.splasherDisplay.x = x
         data.splasherDisplay.y = y
         data.save()
+    }
+})
+
+register("clicked", (x, y, btn, state) => {
+    if (opened && !moveGui && state) {
+        if ((y <= data.splasherDisplay.y + height && y >= data.splasherDisplay.y) &&
+            (x <= data.splasherDisplay.x + width && x >= data.splasherDisplay.x)) {
+            let copy = `[Bingo+] Extracted splasher display at <t:${Math.floor(Date.now()/1000)}>\n`+
+                       '```' + lines.removeFormatting() + '```'
+            ChatLib.command(`ct copy ${copy}`, true)
+            ChatLib.chat(`${constants.PREFIX}&aCopied current info to clipboard!`)
+        }
     }
 })
