@@ -82,12 +82,21 @@ register("chat", (x, e) => {
   &7⟹ &a${price[1]}&r`
     )
 
-    pets.push([pet, rarity])
+    pets.push([rarity[0], pet, price])
 
-    if (rarity[1] == 4 && Settings.oringoDiscordCopy) {
-        // todo: make a copyable message after detecting the final pet (from what i've seen it's always legendary)
-        // btw \n works
-        let line = '## Travelling Zoo'
+    if (rarity[1] == 4 && Settings.oringoDiscordCopy) { // todo: test if this actually works
+        let line = ['# Travelling Zoo']
+        
+        pets.forEach(x => {
+            line.push(`- **${x[0]} ${x[1]}**: ${x[2][0]} coins and ${x[2][1]}`)
+        })
+
+        ChatLib.command(`ct console ${line.join('\n')}`)
+
     }
 
 }).setCriteria("&e[NPC] Oringo&f: &b✆ &f&r&8• ${x} Pet&r")
+
+register("worldLoad", () => {
+    pets = []
+})
