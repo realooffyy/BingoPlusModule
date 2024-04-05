@@ -27,7 +27,7 @@ class Settings {
         this.setSubcategoryDescription("Party", "Party Travel Messages",
             `It's recommended to disable Party Travel Messages entirely: &aSkyblock Menu -> Settings -> Comms -> Co-op Travel Notifications`)
         this.setSubcategoryDescription("Party", "Bingo Party",
-            `Brought to you by &aaphased&r!`)
+            `Thanks to &aaphased&r and &aTryp0MC&r for hosting BingoParty!`)
         this.setSubcategoryDescription("Chat", "Dialogue Skipper",
             `&cUse at your own risk!`)
 
