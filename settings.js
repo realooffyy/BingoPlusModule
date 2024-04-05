@@ -8,7 +8,7 @@ import {
 
 @Vigilant("BingoPlus/config", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
-        const categories = ["General", "Bingo", "Splasher", "Chat", "Commands"];
+        const categories = ["General", "Bingo", "Party", "Splasher", "Chat", "Commands"];
 
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     }
@@ -24,7 +24,10 @@ class Settings {
             &aBy ooffyy
             `
         )
-
+        this.setSubcategoryDescription("Party", "Party Travel Messages",
+            `It's recommended to disable Party Travel Messages entirely: &aSkyblock Menu -> Settings -> Comms -> Co-op Travel Notifications`)
+        this.setSubcategoryDescription("Party", "Bingo Party",
+            `Brought to you by &aaphased&r!`)
         this.setSubcategoryDescription("Chat", "Dialogue Skipper",
             `&cUse at your own risk!`)
 
@@ -135,13 +138,42 @@ class Settings {
     })
     bakerBlocker = true
 
+    // Party
+
     @SwitchProperty({
         name: "Block Party Travel Messages",
-        description: "Block party travel notifications while on a Bingo profile.\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r",
-        category: "Bingo",
-        subcategory: "Party"
+        description: "Blocks party travel notifications in chat.\n&aYou can toggle this with &6/ptravel&a!&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r",
+        category: "Party",
+        subcategory: "Party Travel Messages"
     })
     blockPartyTravelMessages = false
+
+    @SwitchProperty({
+        name: "Show status",
+        description: "Tells you if travel messages are enabled or disabled when you join a party.",
+        category: "Party",
+        subcategory: "Party Travel Messages"
+    })
+    blockPartyTravelMessagesWarning = false
+
+    @TextProperty({
+        name: "Alias for /msg BingoParty !p",
+        description: "Create an alias for &6/msg BingoParty !p&r.\n&cRun /ct load after changing alias!\nLeave blank to disable.\n&cThis is intended for splashers/allowed users only!",
+        category: "Party",
+        subcategory: "Bingo Party"
+    })
+    bingoPartyAlias = ""
+
+    @ButtonProperty({
+        name: "BingoParty Documentation",
+        description: "Click the button to open this in your browser.",
+        category: "Party",
+        subcategory: "Bingo Party",
+        placeholder: "GitHub"
+    })
+    openBPDocumentation() {
+        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://github.com/aphased/bingopartytools').toURI())
+    }
 
     // Splasher
 
