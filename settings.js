@@ -165,14 +165,14 @@ class Settings {
     bingoPartyAlias = ""
 
     @ButtonProperty({
-        name: "BingoParty Documentation",
+        name: "BingoParty Commands Documentation",
         description: "Click the button to open this in your browser.",
         category: "Party",
         subcategory: "Bingo Party",
         placeholder: "GitHub"
     })
     openBPDocumentation() {
-        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://github.com/aphased/bingopartytools').toURI())
+        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://github.com/aphased/BingoPartyCommands').toURI())
     }
 
     // Splasher

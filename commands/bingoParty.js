@@ -7,6 +7,7 @@ if (commandName !== '') {
         ChatLib.command(`msg BingoParty !p ${args}`)
     })
     .setTabCompletions((args) => {
+        // https://github.com/aphased/BingoPartyCommands
         return [
         'mute', 'unmute',
         'promote',
@@ -14,12 +15,12 @@ if (commandName !== '') {
         'kick', 'remove',
         'block', 'ban',
         'unblock', 'unban',
-        'poll',
         'stream', 'public', 'open',
         'invite', 'inv',
         'allinvite',
         'speak', 'say',
         'rule',
+        'poll',
         'help',
         // leave the worst for last
         'transfer',
