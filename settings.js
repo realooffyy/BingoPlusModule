@@ -146,6 +146,13 @@ class Settings {
     // Splasher
 
     @SwitchProperty({
+        name: "Bring Back Bea House",
+        description: "Replace 'Pet Care' in the scoreboard with 'Bea House'",
+        category: "Splasher"
+    })
+    showBeaHouseInScoreboard = false
+
+    @SwitchProperty({
         name: "Splasher Display",
         description: "Show a display with important information while in the Pet Care area.",
         category: "Splasher",

@@ -20,6 +20,7 @@ import "./features/bingo/hideCompleteBingoGoals"
 import "./features/chat/dialogueSkipper"
 import "./features/chat/oringoCost"
 
+import "./features/splasher/beaHouse"
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
 import "./features/splasher/hubSelectorDisplay"
