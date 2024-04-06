@@ -143,6 +143,14 @@ class Settings {
     })
     blockPartyTravelMessages = false
 
+    @SwitchProperty({
+        name: "Rat Waypoints",
+        description: "Shows waypoints for rat spawns.\n&aToggleable with &6/rats&a.",
+        category: "Bingo",
+        subcategory: "Rat Helper"
+    })
+    ratWaypoints = false
+
     // Splasher
 
     @SwitchProperty({
