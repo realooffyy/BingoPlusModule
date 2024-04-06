@@ -31,7 +31,7 @@ if (commandName !== '') {
         else {
             let output = []
             commandList.forEach(x => {
-                if (x.startsWith(args[0])) output.push(x)
+                if (x.startsWith(args[0].toLowerCase())) output.push(x)
             })
             return output
         }
