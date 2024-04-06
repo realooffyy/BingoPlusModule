@@ -53,4 +53,5 @@ export const rats = [
     [-34, 57, -90], // auction house basement
     [43, 72, -162], // farm house
     [-36, 57, -117], // hexatorium basement
+    [19, 61, -4], // furniture shop basement
 ]
