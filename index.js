@@ -4,6 +4,7 @@ import "./utils/bingoApi"
 // Commands
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
+import "./commands/getEntities"
 
 import "./render/move"
 
@@ -22,6 +23,8 @@ import "./features/chat/oringoCost"
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
 import "./features/splasher/hubSelectorDisplay"
+
+import "./features/world/rats"
 
 /* TODO
  * - command for accessing bingo party commands
