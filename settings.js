@@ -31,6 +31,9 @@ class Settings {
         this.setSubcategoryDescription("Chat", "Dialogue Skipper",
             `&cUse at your own risk!`)
 
+        this.addDependency("Show text", "Rat Helper")
+        this.addDependency("Show beacon", "Rat Helper")
+
         this.addDependency("Top Hubs", "Hub Selector Display")
         this.addDependency("Highlight Best Hubs", "Hub Selector Display")
         this.addDependency("Hub Restart Warning", "Hub Selector Display")
@@ -137,7 +140,31 @@ class Settings {
         subcategory: "Blockers"
     })
     bakerBlocker = true
+  
+    @SwitchProperty({
+        name: "Rat Helper",
+        description: "Shows waypoints for the general location of Rat spawns.\n&aToggleable with &6/rats&a.",
+        category: "Bingo",
+        subcategory: "Rat Helper"
+    })
+    ratHelper = false
 
+    @SwitchProperty({
+        name: "Show text",
+        description: "Shows text next to each waypoint with information on how to access it.",
+        category: "Bingo",
+        subcategory: "Rat Helper"
+    })
+    ratHelperShowText = true
+
+    @SwitchProperty({
+        name: "Show beacon",
+        description: "Shows a beacon at each waypoint.",
+        category: "Bingo",
+        subcategory: "Rat Helper"
+    })
+    ratHelperShowBeacon = true
+  
     // Party
 
     @SwitchProperty({
@@ -174,7 +201,7 @@ class Settings {
     openBPDocumentation() {
         java.awt.Desktop.getDesktop().browse(new java.net.URL('https://github.com/aphased/BingoPartyCommands').toURI())
     }
-
+  
     // Splasher
 
     @SwitchProperty({

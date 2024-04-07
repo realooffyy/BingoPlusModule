@@ -6,6 +6,7 @@ import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 import "./commands/partyTravelMessages"
 import "./commands/bingoParty"
+import "./commands/ratHelper"
 
 import "./render/move"
 
@@ -25,25 +26,27 @@ import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
 import "./features/splasher/hubSelectorDisplay"
 
+import "./features/world/rats"
+
 /* TODO
  * - command for accessing bingo party commands
- * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler
+ * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler, bednom
  * - timer for bingo end and profile deletion
  * - rat waypoints
  * - hotm tree unlock reminders
  * - king talisman helper!
  * - fetchur/puzzler solvers?? so many mods have this xD
- * - add button to community goal display to pin the render
+ * - community goal display stuff
+ *      make it pinnable
+ *      show total bingo points you're getting from current tiers and stuff
  * - custom bingo achievements
  * - trapper display
  * - splash display
  * - splasher features
  *      add overlay for currently hovering potion
  * - dreadlord sword drop warning
- * - splash display private island mvp++ extras
  * - splash display hub number guess
  * - brewing stand name display
- * - bednom reminder
  */
 
 /* IN PROGRESS

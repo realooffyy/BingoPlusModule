@@ -12,6 +12,6 @@ const checkFirstInstall = () => {
 }
 
 
-register("tick", () => {
+register("step", () => {
     checkFirstInstall()
-})
+}).setFps(1)
