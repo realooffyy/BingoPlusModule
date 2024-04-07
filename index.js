@@ -4,7 +4,6 @@ import "./utils/bingoApi"
 // Commands
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
-import "./commands/getEntities"
 import "./commands/ratHelper"
 
 import "./render/move"
