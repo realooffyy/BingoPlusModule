@@ -145,7 +145,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Rat Waypoints",
-        description: "Shows waypoints for rat spawns.\n&aToggleable with &6/rats&a.",
+        description: "Shows waypoints for the general location of Rat spawns.\n&aToggleable with &6/rats&a.",
         category: "Bingo",
         subcategory: "Rat Helper"
     })
