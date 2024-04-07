@@ -2,6 +2,6 @@ import Settings from "../settings"
 import constants from "../utils/constants"
 
 register("command", () => {
-    Settings.ratWaypoints = !Settings.ratWaypoints
-    ChatLib.chat(`${constants.PREFIX}${Settings.ratWaypoints ? '&aEnabled' : '&cDisabled'} Rat Helper.`)
-}).setName("rats").setAliases(["ratwaypoints"])
+    Settings.ratHelper = !Settings.ratHelper
+    ChatLib.chat(`${constants.PREFIX}${Settings.ratHelper ? '&aEnabled' : '&cDisabled'} Rat Helper.`)
+}).setName("rats").setAliases(["rathelper"])
