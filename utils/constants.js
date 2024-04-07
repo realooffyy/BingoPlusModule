@@ -46,12 +46,12 @@ export const data = new PogObject("BingoPlus", {
 }, "config/data.json")
 
 export const rats = [
-    [-6, 69, 2], // house under mountain
-    [27, 66, -24], // behind fashion house
-    [46, 69, -37], // thaumaturgist house
-    [4, 71, -98], // community house
-    [-34, 57, -90], // auction house basement
-    [43, 72, -162], // farm house
-    [-36, 57, -117], // hexatorium basement
-    [19, 61, -4], // furniture shop basement
+    [-6, 69, 2, 'under mountain'], // house under mountain
+    [27, 66, -24, 'back here'], // behind fashion house
+    [46, 69, -37, 'inside or behind thaumaturgist house'], // thaumaturgist house
+    [4, 71, -98, 'community house or outside in the bushes'], // community house
+    [-34, 57, -90, 'auction house basement'], // auction house basement
+    [43, 72, -162, 'farm house'], // farm house
+    [-36, 57, -117, 'hexatorium basement'], // why does this exist 💀
+    [19, 61, -4, 'furniture shop basement'], // furniture shop basement
 ]
