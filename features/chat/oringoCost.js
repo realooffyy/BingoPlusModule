@@ -88,10 +88,10 @@ register("chat", (x, e) => {
         let line = ['# Travelling Zoo']
         
         pets.forEach(x => {
-            line.push(`- **${x[0]} ${x[1]}**: ${x[2][0]} coins and ${x[2][1]}`)
+            line.push(`- **${x[0]} ${x[1]}**: \`${x[2][0]} coins\` and \`${x[2][1]}\``)
         })
 
-        ChatLib.command(`ct console ${line.join('\n')}`, true)
+        ChatLib.command(`ct copy ${line.join('\n')}`, true)
         ChatLib.chat(`${PREFIX}&aCopied all pets to clipboard. You can send this in Discord.`)
 
     }
