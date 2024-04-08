@@ -74,7 +74,7 @@ register("step", () => { // line constructor
 
         else if (area?.includes('Private Island')) {
             getScoreboard().forEach(x => {
-                line = removeUnicode(x)
+                let line = removeUnicode(x)
                 if (playersBoardRegex.test(line)) {
                     let match = playersBoardRegex.exec(line)
                     if (match) {
