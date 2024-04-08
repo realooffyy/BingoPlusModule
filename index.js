@@ -27,10 +27,8 @@ import "./features/splasher/hubSelectorDisplay"
 import "./features/world/rats"
 
 /* TODO
- * - command for accessing bingo party commands
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler, bednom
  * - timer for bingo end and profile deletion
- * - rat waypoints
  * - hotm tree unlock reminders
  * - king talisman helper!
  * - fetchur/puzzler solvers?? so many mods have this xD
