@@ -61,14 +61,15 @@ register("step", () => { // line constructor
 
         const area = Skyblock.area
         const server = Skyblock.server
+        const serverType = Skyblock.serverType
         const subArea = Skyblock.subArea
 
         // player count 
         let playerMax = null
         let playerCount = null
         if (area === 'Hub') {
-            if (server[0] === 'M') playerMax = 80
-            else if (server[0] === 'm') playerMax = 24
+            if (serverType === 'M') playerMax = 80
+            else if (serverType === 'm') playerMax = 24
         }
         else if (area === 'Dungeon Hub') playerMax = 24
 

@@ -28,8 +28,14 @@ export default new class Skyblock {
             this.subArea = removeUnicode(getMatchFromLines(/ ⏣ (.+)/, scoreboard)).replace(/ \(.+\)/, "")
             if (!this.area && this.subArea == "The Catacombs") this.area = "Dungeon"
 
-            this.server = removeUnicode(getMatchFromLines(/\d+\/\d+\/\d+ (.+)/, scoreboard)).replace(/ \(.+\)/, "")
-            // https://regex101.com/r/1sr2O1/1
+            this.server = removeUnicode(getMatchFromLines(/ Server: (.+)/, tabList)).replace(/ \(.+\)/, "") // https://regex101.com/r/cITZLV/1
+                       || removeUnicode(getMatchFromLines(/\d+\/\d+\/\d+ (.+)/, scoreboard)).replace(/ \(.+\)/, "") // https://regex101.com/r/1sr2O1/1
+                       || null
+
+            if (this.server) {
+                this.serverType = (this.server.slice(0,4) === 'mega' || this.server[0] === 'M' ? 'M' : 'm')
+            }
+            
         })
 
         register("chat", (message) => {
@@ -43,5 +49,6 @@ export default new class Skyblock {
         this.area = null
         this.subArea = null
         this.server = null
+        this.serverType = null
     }
 }
