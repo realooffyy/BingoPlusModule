@@ -23,7 +23,7 @@ const commandList = [
 
 if (commandName !== '') {
     register("command", (...args) => {
-        ChatLib.command(`msg BingoParty !p ${args}`)
+        ChatLib.command(`msg BingoParty !p ${args.join(" ")}`)
     })
     .setTabCompletions((args) => {
         if (args == undefined || args[0] == undefined) return commandList
