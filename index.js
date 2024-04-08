@@ -12,7 +12,6 @@ import "./render/move"
 
 // Features
 import "./features/bingo/bakerBlocker"
-import "./features/party/blockPartyTravelMessages"
 import "./features/bingo/chickenHeadTimer"
 import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"
@@ -21,6 +20,8 @@ import "./features/bingo/hideCompleteBingoGoals"
 
 import "./features/chat/dialogueSkipper"
 import "./features/chat/oringoCost"
+
+import "./features/party/blockPartyTravelMessages"
 
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
