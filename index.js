@@ -4,13 +4,15 @@ import "./utils/bingoApi"
 // Commands
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
+import "./commands/partyTravelMessages"
+import "./commands/bingoParty"
 import "./commands/ratHelper"
 
 import "./render/move"
 
 // Features
 import "./features/bingo/bakerBlocker"
-import "./features/bingo/blockPartyTravelMessages"
+import "./features/party/blockPartyTravelMessages"
 import "./features/bingo/chickenHeadTimer"
 import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"
