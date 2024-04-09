@@ -45,6 +45,7 @@ class Settings {
 
     chickenHeadTimerMove = new Gui()
     communityGoalDisplayMove = new Gui()
+    bingoCardDisplayMove = new Gui()
     splasherDisplayMove = new Gui()
     hubSelectorDisplayMove = new Gui()
 
@@ -75,7 +76,7 @@ class Settings {
         name: "Community Goal Display",
         description: "Displays community goal data when on the Bingo Card menu.",
         category: "Bingo",
-        subcategory: "Bingo Card"
+        subcategory: "Community Goal Display"
     })
     communityGoalDisplay = true
 
@@ -83,7 +84,7 @@ class Settings {
         name: "Move",
         description: "Move the Community Goal Display",
         category: "Bingo",
-        subcategory: "Bingo Card",
+        subcategory: "Community Goal Display",
         placeholder: "Move"
     })
     MoveCommunityGoalDisplay() {
@@ -164,6 +165,25 @@ class Settings {
         subcategory: "Rat Helper"
     })
     ratHelperShowBeacon = true
+
+    @SwitchProperty({
+        name: "Bingo Card Display",
+        description: "Shows the Bingo Card on-screen.",
+        category: "Bingo",
+        subcategory: "Bingo Card Display"
+    })
+    bingoCardDisplay = false
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Bingo Card Display.",
+        category: "Bingo",
+        subcategory: "Bingo Card Display",
+        placeholder: "Move"
+    })
+    MoveBingoCardDisplay() {
+        this.bingoCardDisplayMove.open()
+    }
   
     // Party
 

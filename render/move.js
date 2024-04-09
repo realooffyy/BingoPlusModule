@@ -7,7 +7,8 @@ register("renderOverlay", () => {
     move = (Settings.hubSelectorDisplayMove.isOpen() ||
             Settings.splasherDisplayMove.isOpen() ||
             Settings.chickenHeadTimerMove.isOpen() ||
-            Settings.communityGoalDisplayMove.isOpen())
+            Settings.communityGoalDisplayMove.isOpen() ||
+            Settings.bingoCardDisplayMove.isOpen())
             
     if (move)
     {

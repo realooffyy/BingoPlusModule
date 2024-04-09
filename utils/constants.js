@@ -41,6 +41,11 @@ export const data = new PogObject("BingoPlus", {
         x: 10,
         y: 10,
         scale: 1
+    },
+    bingoCardDisplay: {
+        x: 10,
+        y: 10,
+        scale: 1
     }
     
 }, "config/data.json")
