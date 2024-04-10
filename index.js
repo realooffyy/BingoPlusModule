@@ -1,6 +1,8 @@
 import "./utils/firstInstall"
 import "./utils/bingoApi"
 
+import "./render/registerGui"
+
 // Commands
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"

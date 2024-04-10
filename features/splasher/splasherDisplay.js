@@ -1,31 +1,33 @@
 import { data } from "../../utils/constants"
 import constants from "../../utils/constants"
 import Settings from "../../settings"
-
 import { registerWhen, getTabList, getScoreboard, getValue, removeUnicode } from "../../utils/utils"
 import Skyblock from "../../utils/Skyblock"
+import { BaseGui } from "../../render/BaseGui"
+import { registerGui } from "../../render/registerGui"
 
 const playersTabRegex = /.*Players \((\d{1,2})\)/
 const playersBoardRegex = /  \((\d{1,2})\/(\d{1,2})\).*/
 // https://regex101.com/r/FxwnGL/1
 
 let opened = false
-let moveGui = false
 
 let lines = ''
 
-let total = 0
 let enjoyers = 0
 let ironman = []
 let leechers = []
 
-let width = 150
+const base_width = 150
+let width = 1
 let height = 1
+
+let splasherGui = new BaseGui('splasherDisplay', ['splasherDisplay', 'splasher', 'splashing'])
+registerGui(splasherGui)
 
 register("tick", () => { // opened and location manager
     if (!Settings.splasherDisplay || !Skyblock.inSkyblock) return
-    opened = Skyblock.subArea === 'Pet Care' || Settings.splasherDisplayEverywhere || Settings.splasherDisplayMove.isOpen()
-    moveGui = Settings.splasherDisplayMove.isOpen()
+    opened = Skyblock.subArea === 'Pet Care' || Settings.splasherDisplayEverywhere || splasherGui.isOpen()
 })
 
 /*
@@ -124,13 +126,15 @@ register("step", () => { // line constructor
 const renderDisplay = () => {
     let guiX = data.splasherDisplay.x
     let guiY = data.splasherDisplay.y
+    let scale = data.splasherDisplay.scale
 
-    height = (lines.replace(/[^\n]/g, "").length)*9 +10
+    height = ((lines.replace(/[^\n]/g, "").length)*9 +10 ) *scale
+    width = base_width * scale
     const rectangle = new Rectangle(Renderer.color(0, 0, 0, 50), guiX, guiY, width, height) // background
     rectangle.draw()
 
     Renderer.translate(guiX, guiY, 1000)
-    Renderer.scale(data.splasherDisplay.scale ?? 1)
+    Renderer.scale(scale)
     
     Renderer.drawStringWithShadow(lines, 5, 5) // text
 
@@ -143,16 +147,8 @@ registerWhen(register("renderOverlay", () => { // thanks bloom
     renderDisplay()
 }), () => opened)
 
-register("dragged", (dx, dy, x, y) => {
-    if (moveGui) {
-        data.splasherDisplay.x = x
-        data.splasherDisplay.y = y
-        data.save()
-    }
-})
-
 register("clicked", (x, y, btn, state) => {
-    if (opened && !moveGui && state) {
+    if (opened && !splasherGui.isOpen() && state) {
         if ((y <= data.splasherDisplay.y + height && y >= data.splasherDisplay.y) &&
             (x <= data.splasherDisplay.x + width && x >= data.splasherDisplay.x)) {
             let copy = `[Bingo+] Extracted splasher display at <t:${Math.floor(Date.now()/1000)}>\n`+

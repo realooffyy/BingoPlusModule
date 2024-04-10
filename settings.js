@@ -45,7 +45,6 @@ class Settings {
 
     chickenHeadTimerMove = new Gui()
     communityGoalDisplayMove = new Gui()
-    bingoCardDisplayMove = new Gui()
     splasherDisplayMove = new Gui()
     hubSelectorDisplayMove = new Gui()
 
@@ -182,7 +181,7 @@ class Settings {
         placeholder: "Move"
     })
     MoveBingoCardDisplay() {
-        this.bingoCardDisplayMove.open()
+        ChatLib.command('b+ move bingoCardDisplay')
     }
   
     // Party

@@ -1,3 +1,4 @@
+import guis from "../render/registerGui"
 import Settings from "../settings"
 import { data } from "../utils/constants"
 import constants from "../utils/constants"
@@ -17,6 +18,22 @@ export const bingoPlusCommand = register("command", (...args) => {
         data.bingoApiOn = !data.bingoApiOn
         data.save()
         ChatLib.chat(`${constants.PREFIX}Set bingo api calling to ${data.bingoApiOn}`)
+    }
+
+    else if (args[0] == "move") { // thanks coleweight
+        if (args[1] == undefined) {ChatLib.chat(`${constants.PREFIX}&cNot enough arguments.`); return}
+        let found = false
+
+        guis.forEach(gui => {
+            if(gui.aliases.map(alias => alias.toLowerCase()).includes(args[1].toLowerCase()))
+            {
+                gui.open()
+                found = true
+            }
+        })
+
+        if(!found)
+            ChatLib.chat(`${constants.PREFIX}&cNo such gui as '${args[1]}'.`)
     }
 
     else {
