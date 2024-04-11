@@ -45,7 +45,6 @@ class Settings {
 
     chickenHeadTimerMove = new Gui()
     communityGoalDisplayMove = new Gui()
-    splasherDisplayMove = new Gui()
     hubSelectorDisplayMove = new Gui()
 
     // General
@@ -114,7 +113,7 @@ class Settings {
         placeholder: "Move"
     })
     MoveChickenHeadTimer() {
-        this.chickenHeadTimerMove.open()
+        ChatLib.command('b+ move chickenHeadTimer', true)
     }
 
     @SwitchProperty({
@@ -167,7 +166,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Bingo Card Display",
-        description: "Shows the Bingo Card on-screen.",
+        description: "Shows the Bingo Card on-screen.\n&cCurrently can get very laggy!",
         category: "Bingo",
         subcategory: "Bingo Card Display"
     })
@@ -181,7 +180,7 @@ class Settings {
         placeholder: "Move"
     })
     MoveBingoCardDisplay() {
-        ChatLib.command('b+ move bingoCardDisplay')
+        ChatLib.command('b+ move bingoCardDisplay', true)
     }
   
     // Party
@@ -257,7 +256,7 @@ class Settings {
         placeholder: "Move"
     })
     MoveSplasherDisplay() {
-        this.splasherDisplayMove.open()
+        ChatLib.command('b+ move splasherDisplay', true)
     }
 
     @SwitchProperty({

@@ -5,8 +5,6 @@ let move = false
 
 register("renderOverlay", () => {
     move = (Settings.hubSelectorDisplayMove.isOpen() ||
-            Settings.splasherDisplayMove.isOpen() ||
-            Settings.chickenHeadTimerMove.isOpen() ||
             Settings.communityGoalDisplayMove.isOpen()
         )
             
