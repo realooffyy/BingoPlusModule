@@ -1,6 +1,6 @@
 import Settings from "../settings"
 import Skyblock from "./Skyblock"
-import { data, goalSlots } from "./constants"
+import { goalSlots } from "./constants"
 
 export default new class Bingo {
     constructor() {

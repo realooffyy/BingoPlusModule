@@ -16,7 +16,7 @@ function callBingoApi() {
         json: true
     })
     .then((api) => {
-        if (x.id !== api.id) ChatLib.chat(`${prefix}&7Loading data for &a${x.name} &7Bingo!`)
+        if (x.id !== api.id) ChatLib.chat(`${prefix}&7Loading data for &a${api.name} &7Bingo!`)
         if (x.lastUpdated !== api.lastUpdated) {
             x.id = api.id
             x.lastUpdated = api.lastUpdated
