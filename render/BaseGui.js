@@ -41,16 +41,15 @@ export class BaseGui {
                 data[guiData].scale += 0.05
             else if (keyCode == 12)
                 data[guiData].scale -= 0.05
-                
-            // TODO: check if these are the right keycodes
+            
+            else if (keyCode == 200) // up
+                data[guiData].y -= 1
+            else if (keyCode == 208) // down
+                data[guiData].y += 1
             else if (keyCode == 203) // left
                 data[guiData].x -= 1
-            else if (keyCode == 208) // up
-                data[guiData].x += 1
             else if (keyCode == 205) // right
-                data[guiData].y -= 1
-            else if (keyCode == 200) // down
-                data[guiData].y += 1
+                data[guiData].x += 1
 
             data.save()
         })
