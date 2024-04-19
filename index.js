@@ -26,6 +26,8 @@ import "./features/party/blockPartyTravelMessages"
 import "./features/chat/dialogueSkipper"
 import "./features/chat/oringoCost"
 
+import "./features/party/blockPartyTravelMessages"
+
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
 import "./features/splasher/hubSelectorDisplay"
