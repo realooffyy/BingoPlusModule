@@ -9,7 +9,7 @@ const layCooldown = 5000
 let lastLay = 0
 let opened = false
 
-let chickenHeadTimerGui = new BaseGui('chickenHeadTimer', ['chicken'])
+let chickenHeadTimerGui = new BaseGui('chickenHeadTimerDisplay', ['chicken'])
 registerGui(chickenHeadTimerGui)
 
 register("tick", () => {
