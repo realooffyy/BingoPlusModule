@@ -12,6 +12,8 @@ const commandList = [
     'invite', 'inv',
     'allinvite',
     'speak', 'say',
+    'repeat', 'rep',
+    'customrepeat', 'customrep', 'crepeat', 'crep',
     'rule',
     'poll',
     'help',
