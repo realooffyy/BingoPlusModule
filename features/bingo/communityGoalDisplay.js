@@ -74,7 +74,7 @@ register("postGuiRender", () => {
 
                     let contribution = ''
                     for (const line of item.getLore()){
-                        console.log(line)
+                        //console.log(line)
                         if (/§5§o§7Contribution: .*/g.test(line)) guiElements.goals[i][1] = `${line.replace("§5§o§7Contribution: ",'')}`
                         if (/§7§cYou have not contributed towards/g.test(line)) guiElements.goals[i][1] = `&cNo contribution!&r`
                         if (/  §8Top .*/g.test(line)) contribution = ` &f(Top${line.replace('  §8Top','')}&f)`

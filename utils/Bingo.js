@@ -18,7 +18,7 @@ export default new class Bingo {
             if (!Skyblock.inSkyblock) return
             if (!Settings.communityGoalDisplay || !Settings.bingoCardDisplay) return
             let inv = Player.getContainer()
-            if (inv?.getName() == "Bingo Card") {
+            if (inv?.getName() == "Bingo Card" || inv?.getName() == "Your Skills") { // also skills menu for testing purposes
                 let guiLoaded = register("tick", (t) => {
 
                     let closeListener = register("guiClosed", () => {
@@ -31,12 +31,12 @@ export default new class Bingo {
 
                     guiLoaded.unregister()
 
-                    let refresh = register("step", () => {
+                    //let refresh = register("step", () => {
                         goalSlots.community.map(slot => { // https://regex101.com/r/FzKlfa/1
                             //if (!inv.getItems()[slot].getName()) console.log("a")
                         })
-                        //this.goals = goalSlots.all.map(slot => inv.getItems()[slot])
-                    }).setFps(1)
+                        this.goals = goalSlots.all.map(slot => inv.getItems()[slot])
+                    //}).setFps(1)
                     
                 })
             }

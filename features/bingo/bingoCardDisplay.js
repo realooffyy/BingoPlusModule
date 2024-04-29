@@ -57,7 +57,7 @@ registerWhen(register('renderOverlay', () => {
     let count = 0
     for (let i = 0; i<5; i++) {
         for (let j = 0; j<5; j++) {
-            Bingo.goals[count].draw(x1 + 16*i*scale, y1 + 16*j*scale, scale)
+            Bingo.goals[count].draw(x1 + 16*j*scale, y1 + 16*i*scale, scale)
             count++
         }
     }

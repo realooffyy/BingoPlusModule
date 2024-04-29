@@ -4,6 +4,7 @@ import constants from "../../utils/constants"
 PREFIX = constants.PREFIX
 
 // i'll fix this later 💀
+// https://chattriggers.com/javadocs/-chat-triggers/com.chattriggers.ctjs.minecraft.objects.message/-text-component/index.html
 
 // Maxwell skipper
 
