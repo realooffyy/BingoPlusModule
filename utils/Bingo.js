@@ -32,9 +32,9 @@ export default new class Bingo {
                     guiLoaded.unregister()
 
                     //let refresh = register("step", () => {
-                        goalSlots.community.map(slot => { // https://regex101.com/r/FzKlfa/1
+                        //goalSlots.community.map(slot => { // https://regex101.com/r/FzKlfa/1
                             //if (!inv.getItems()[slot].getName()) console.log("a")
-                        })
+                        //})
                         this.goals = goalSlots.all.map(slot => inv.getItems()[slot])
                     //}).setFps(1)
                     

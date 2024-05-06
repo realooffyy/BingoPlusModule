@@ -64,9 +64,8 @@ registerWhen(register('renderOverlay', () => {
 
 }), () => opened)
 
-/* // lol this is such an awful idea...
 register("clicked", (x, y, btn, state) => {
-    if (opened && !bingoCardGui.isOpen()) {
+    if (opened && !bingoCardGui.isOpen() && Bingo.goals < 25) {
         if (state) {
             if ((y <= y2 && y >= y1) &&
                 (x <= x2 && x >= x1)) {
@@ -75,4 +74,3 @@ register("clicked", (x, y, btn, state) => {
         }
     }
 })
-*/

@@ -3,7 +3,6 @@ import Settings from "../../settings"
 import Bingo from "../../utils/Bingo"
 
 register("step", () => {
-    console.log(`'${Skyblock.subArea}', '${Skyblock.serverType}'`)
     if (!Settings.noPotionsWarning || !Skyblock.inSkyblock || Bingo.inBingo) return
     if (Skyblock.subArea !== 'Pet Care' || Skyblock.serverType !== 'M') return
 
