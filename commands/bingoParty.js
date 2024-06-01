@@ -3,7 +3,7 @@ import Settings from "../settings"
 const commandName = Settings.bingoPartyAlias
 const commandList = [ 
     'mute', 'unmute',
-    'promote',
+    'promote', 'pro',
     'kickoffline', 'kickafk', 'ko', 'ka',
     'kick', 'remove',
     'block', 'ban',
