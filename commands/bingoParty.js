@@ -4,7 +4,7 @@ const commandName = Settings.bingoPartyAlias
 const commandList = [ 
     'mute', 'unmute',
     'promote',
-    'kickoffline', 'kickafk',
+    'kickoffline', 'kickafk', 'ko', 'ka',
     'kick', 'remove',
     'block', 'ban',
     'unblock', 'unban',
