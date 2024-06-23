@@ -47,7 +47,7 @@ registerWhen(register('renderOverlay', () => {
     Renderer.drawLine(Renderer.WHITE, bx2, by1, bx2, by2, thick*scale)
 
     if (Bingo.goals < 25) {
-        Renderer.scale(scale, scale)
+        Renderer.scale(scale)
         Renderer.drawStringWithShadow('&cOpen Bingo Card!', x1/scale, y1/scale+20*scale)
         Renderer.finishDraw()
         return
@@ -61,7 +61,6 @@ registerWhen(register('renderOverlay', () => {
             count++
         }
     }
-
 }), () => opened)
 
 register("clicked", (x, y, btn, state) => {

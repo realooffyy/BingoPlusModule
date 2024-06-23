@@ -4,9 +4,7 @@ const txt = 'Drag to move'
 let move = false
 
 register("renderOverlay", () => {
-    move = (Settings.hubSelectorDisplayMove.isOpen() ||
-            Settings.communityGoalDisplayMove.isOpen()
-        )
+    move = Settings.hubSelectorDisplayMove.isOpen()
             
     if (move)
     {

@@ -4,127 +4,56 @@
 import { data } from "../../utils/constants"
 import Settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
+import Bingo from "../../utils/Bingo"
+import { BaseGui } from "../../render/BaseGui"
+import { registerGui } from "../../render/registerGui"
+import { registerWhen, removeUnicode } from "../../utils/utils"
 
-const display = new Display()
-display.setRenderLoc(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
-display.setBackground(DisplayHandler.Background.FULL)
-display.setRegisterType("post gui render")
+let communityGoalDisplayGui = new BaseGui('communityGoalDisplay', ['communityGoalDisplay', 'communitygoal', 'communitygoals', 'community'])
+registerGui(communityGoalDisplayGui)
 
-let bingoCardOpened = false
+const baseText = 'Loading Community Goal data...'
+
 let opened = false
-
 let lines = 'Loading Community Goal data...'
 
-let grabX, grabY
+const baseWidth = 150
+const baseHeight = 118
 
-let grabbed = false
-
-register("tick", () => {
-    display.setRenderLoc(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
-    opened = bingoCardOpened || Settings.communityGoalDisplayMove.isOpen()
-    if (Settings.communityGoalDisplayMove.isOpen()) {
-        display.clearLines()
-        display.addLine("&6&lCommunity Goals")
-        let closeListener = register("guiClosed", () => {
-            closeListener?.unregister()
-            display?.clearLines()
-        })
+register("tick", (t) => {
+    opened = (Bingo.cardOpened && Settings.communityGoalDisplay) || communityGoalDisplayGui.isOpen()
+    if (t%10 || !Skyblock.inSkyblock || !Settings.communityGoalDisplay) return
+    if (Bingo.community !== null) {
+        if (Bingo.community.length == 5 && Bingo.cardOpened) compileLines()
     }
+    if (!Bingo.cardOpened) lines = baseText
 })
 
-register("postGuiRender", () => {
-    if (!Settings.communityGoalDisplay || !Skyblock.inSkyblock) return
-    let inv = Player.getContainer()
-    if (!bingoCardOpened && inv?.getName() == "Bingo Card") {
-        const community_slots = [2, 12, 22, 32, 42]
-        let guiElements = {
-            name: "&6&lCommunity Goals",
-            goals: [
-                ["Goal 1", "Contribution", "(Top %)", 0],
-                ["Goal 2", "Contribution", "(Top %)", 0],
-                ["Goal 3", "Contribution", "(Top %)", 0],
-                ["Goal 4", "Contribution", "(Top %)", 0],
-                ["Goal 5", "Contribution", "(Top %)", 0]
-            //    name      contribution     top %    goal tier
-            ]
-        }
-        lines = 'Loading Community Goal data...'
-        bingoCardOpened = true
+registerWhen(register('renderOverlay', () => { // render
+    const guiX = data.communityGoalDisplay.x
+    const guiY = data.communityGoalDisplay.y
+    const scale = data.communityGoalDisplay.scale
+    const width = baseWidth * scale
+    const height = baseHeight * scale
 
-        let guiLoaded = register("tick", (t) => {
+    const rectangle = new Rectangle(Renderer.color(0, 0, 0, 80), guiX, guiY, width, height)
+    rectangle.draw()
 
-            let closeListener = register("guiClosed", () => {
-                bingoCardOpened = false
-                guiLoaded?.unregister()
-                closeListener?.unregister()
-                refresh?.unregister()
-                display?.clearLines()
-            })
-            
-            if (inv?.getStackInSlot(inv?.getSize() - 37) == null) return
-                
-            guiLoaded.unregister()
-
-            let refresh = register("step", () => {
-                let items = community_slots.map(slot => inv.getItems()[slot])
-
-                for (let i = 0; i < 5; i++) {
-                    let item = items[i]
-                    guiElements.goals[i][0] = item.getName()
-
-                    let contribution = ''
-                    for (const line of item.getLore()){
-                        //console.log(line)
-                        if (/§5§o§7Contribution: .*/g.test(line)) guiElements.goals[i][1] = `${line.replace("§5§o§7Contribution: ",'')}`
-                        if (/§7§cYou have not contributed towards/g.test(line)) guiElements.goals[i][1] = `&cNo contribution!&r`
-                        if (/  §8Top .*/g.test(line)) contribution = ` &f(Top${line.replace('  §8Top','')}&f)`
-                        if (/  §6§l#\d+ §fcontributor/g.test(line)) contribution = ` &8(${line.replace('  ','')}&8)`
-
-                    }
-                    guiElements.goals[i][2] = contribution
-                }
-
-                compileLines(guiElements)
-
-            }).setFps(1)
-        })
-    }
-})
+    Renderer.translate(guiX+5, guiY+5, 999)
+    Renderer.scale(scale)
+    Renderer.drawStringWithShadow(lines, 0, 0)
+}), () => opened)
 
 
-function compileLines(list) {
-    display?.clearLines()
-    display?.addLine(`${list.name}`) // title
-    display?.addLine('') // empty
-    for (let i = 0; i < 5; i++) {
-        display?.addLine(`  &a✔ ${list.goals[i][0]}`) // goal title
-        display?.addLine(` ${list.goals[i][1]} ${list.goals[i][2]}`) // goal contrib
-    }
+function compileLines() {
+    lines = '&6&lCommunity Goals&r\n\n'
+    Bingo.community.forEach(goal => {
+        lines += `  &a✔ ${goal.name}\n\n` // title
+    })
+    //display?.addLine(`${list.name}`) // title
+    //display?.addLine('') // empty
+    //for (let i = 0; i < 5; i++) {
+        //display?.addLine(`  &a✔ ${list.goals[i][0]}`) // goal title
+        //display?.addLine(` ${list.goals[i][1]} ${list.goals[i][2]}`) // goal contrib
+    //}
 }
-
-register("dragged", (dx, dy, x, y) => {
-    if (opened) {
-        if (grabbed || Settings.communityGoalDisplayMove.isOpen()) {
-            display.setRenderLoc(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
-            data.communityGoalDisplay.x = x-(grabbed ? grabX : 0)
-            data.communityGoalDisplay.y = y-(grabbed ? grabY : 0)
-            data.save()
-        }
-    }
-})
-
-register("clicked", (x, y, btn, state) => {
-    if (opened) {
-        if (state) {
-            if ((y <= display.getRenderY() + display.getHeight() && y >= display.getRenderY()) &&
-                (x <= display.getRenderX() + display.getWidth() && x >= display.getRenderX())) {
-                grabY = y-display.getRenderY()
-                grabX = x-display.getRenderX()
-                grabbed = true
-            } else {
-                grabbed = false
-            }
-
-        }
-    }
-})

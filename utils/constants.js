@@ -11,6 +11,7 @@ export default constants = {
 
 export const data = new PogObject("BingoPlus", {
     firstTime: true,
+    dev: false,
 
     bingoApiOn: true,
     bingoApi: {
@@ -51,6 +52,8 @@ export const data = new PogObject("BingoPlus", {
         y: 10,
         scale: 1
     }
+
+
     
 }, "config/data.json")
 

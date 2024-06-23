@@ -29,7 +29,7 @@ class Settings {
         this.setSubcategoryDescription("Party", "Bingo Party",
             `Thanks to &aaphased&r and &aTryp0MC&r for hosting BingoParty!`)
         this.setSubcategoryDescription("Chat", "Dialogue Skipper",
-            `&cUse at your own risk!`)
+            `&cCurrently disabled, will be reworked in next update probably`)
 
         this.addDependency("Show text", "Rat Helper")
         this.addDependency("Show beacon", "Rat Helper")
@@ -44,7 +44,6 @@ class Settings {
     }
 
     chickenHeadTimerMove = new Gui()
-    communityGoalDisplayMove = new Gui()
     hubSelectorDisplayMove = new Gui()
 
     // General
@@ -86,7 +85,7 @@ class Settings {
         placeholder: "Move"
     })
     MoveCommunityGoalDisplay() {
-        this.communityGoalDisplayMove.open()
+        ChatLib.command('b+ move communityGoalDisplay', true)
     }
 
     @SwitchProperty({

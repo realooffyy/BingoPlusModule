@@ -36,8 +36,19 @@ export const bingoPlusCommand = register("command", (...args) => {
             ChatLib.chat(`${constants.PREFIX}&cNo such gui as '${args[1]}'.`)
     }
 
+    else if (args[0] == "dev") {
+        data.dev = !data.dev
+        data.save()
+        ChatLib.chat(`${constants.PREFIX}Set developer to ${data.dev}\nMake sure you know what you're doing!`)
+    }
+
     else {
         ChatLib.chat(`${constants.PREFIX}Unknown command. Run &6/b+ help&r to see all commands.`)
     }
 
-}).setName("b+").setAliases(["bingo+","bingoplus"])
+}).setName("b+")
+  .setAliases(["bingo+","bingoplus"])
+  .setTabCompletions([
+    "help",
+    "move"
+  ])

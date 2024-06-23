@@ -124,9 +124,9 @@ register("step", () => { // line constructor
 }).setFps(2)
 
 const renderDisplay = () => {
-    let guiX = data.splasherDisplay.x
-    let guiY = data.splasherDisplay.y
-    let scale = data.splasherDisplay.scale
+    const guiX = data.splasherDisplay.x
+    const guiY = data.splasherDisplay.y
+    const scale = data.splasherDisplay.scale
 
     height = ((lines.replace(/[^\n]/g, "").length)*9 +10 ) *scale
     width = base_width * scale
