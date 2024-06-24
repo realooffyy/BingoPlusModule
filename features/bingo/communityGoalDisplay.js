@@ -29,7 +29,7 @@ register("tick", (t) => {
     if (!Bingo.cardOpened) lines = baseText
 })
 
-registerWhen(register('renderOverlay', () => { // render
+registerWhen(register('postGuiRender', () => { // render
     const guiX = data.communityGoalDisplay.x
     const guiY = data.communityGoalDisplay.y
     const scale = data.communityGoalDisplay.scale

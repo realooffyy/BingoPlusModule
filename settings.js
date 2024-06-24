@@ -40,17 +40,16 @@ class Settings {
 
         this.addDependency("Show everywhere", "Splasher Display")
 
-        this.addDependency("Copy as Discord message","Oringo Abiphone Cost")
+        this.addDependency("Copy as Discord message", "Oringo Abiphone Cost")
     }
 
-    chickenHeadTimerMove = new Gui()
     hubSelectorDisplayMove = new Gui()
 
     // General
 
     @ButtonProperty({
         name: "Discord",
-        description: "Click the button to join the Discord.",
+        description: "Click the button to join my discord.",
         category: "General",
         subcategory: "Discord",
         placeholder: "Join"
@@ -61,13 +60,6 @@ class Settings {
 
 
     // Bingo
-
-    @SwitchProperty({
-        name: "Only on Bingo",
-        description: "Only enable features in the &6Bingo &rcategory on Bingo profiles.",
-        category: "Bingo"
-    })
-    onlyOnBingo = true
 
     @SwitchProperty({
         name: "Community Goal Display",
@@ -90,7 +82,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Hide Completed Bingo Goals",
-        description: "Stops rendering completed Bingo goals.",
+        description: "Stops rendering completed Bingo goals everywhere.",
         category: "Bingo",
         subcategory: "Bingo Card"
     })
@@ -180,6 +172,41 @@ class Settings {
     })
     MoveBingoCardDisplay() {
         ChatLib.command('b+ move bingoCardDisplay', true)
+    }
+
+    @SwitchProperty({
+        name: "Bingo Timer",
+        description: "Shows time until a Bingo starts, ends, and profile deletion.",
+        category: "Bingo",
+        subcategory: "Bingo Timer Display"
+    })
+    bingoTimerDisplay = false
+
+    @SwitchProperty({
+        name: "Don't round",
+        description: "Leaves the time as day:hour:minute:second and doesn't round.",
+        category: "Bingo",
+        subcategory: "Bingo Timer Display"
+    })
+    bingoTimerDisplayDontRound = false
+
+    @SwitchProperty({
+        name: "Show everywhere",
+        description: "Shows timer while not on a Bingo profile.",
+        category: "Bingo",
+        subcategory: "Bingo Timer Display"
+    })
+    bingoTimerDisplayEverywhere = false
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Bingo Timer Display.",
+        category: "Bingo",
+        subcategory: "Bingo Timer Display",
+        placeholder: "Move"
+    })
+    MoveBingoTimerDisplay() {
+        ChatLib.command('b+ move bingoTimerDisplay', true)
     }
   
     // Party

@@ -39,7 +39,8 @@ export const bingoPlusCommand = register("command", (...args) => {
     else if (args[0] == "dev") {
         data.dev = !data.dev
         data.save()
-        ChatLib.chat(`${constants.PREFIX}Set developer to ${data.dev}\nMake sure you know what you're doing!`)
+        ChatLib.chat(`${constants.PREFIX}Set developer to ${data.dev}`)
+        if (data.dev) ChatLib.chat("Make sure you know what you're doing!")
     }
 
     else {

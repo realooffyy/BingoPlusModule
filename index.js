@@ -15,6 +15,7 @@ import "./render/move"
 // Features
 import "./features/bingo/bakerBlocker"
 import "./features/bingo/bingoCardDisplay"
+import "./features/bingo/bingoTimerDisplay"
 import "./features/bingo/chickenHeadTimer"
 import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"

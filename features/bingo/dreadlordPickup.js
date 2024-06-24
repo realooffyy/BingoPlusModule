@@ -3,7 +3,6 @@
 
 // not done
 
-import Settings from "../../settings"
 import Bingo from "../../utils/Bingo"
 import Skyblock from "../../utils/Skyblock"
 import constants from "../../utils/constants"
@@ -15,7 +14,7 @@ const S2FPacketSetSlot = Java.type("net.minecraft.network.play.server.S2FPacketS
 Client.showTitle('', '', 0, 1, 0)
 
 register('packetReceived', (packet) => {
-    if (Skyblock.area !== 'Dungeon' || !Bingo.enabled) return
+    if (Skyblock.area !== 'Dungeon' || !Bingo.inBingo) return
 
     const itemStack = packet.func_149174_e()
     const slot = packet.func_149173_d()

@@ -51,8 +51,12 @@ export const data = new PogObject("BingoPlus", {
         x: 10,
         y: 10,
         scale: 1
+    },
+    bingoTimerDisplay: {
+        x: 10,
+        y: 10,
+        scale: 1
     }
-
 
     
 }, "config/data.json")
@@ -68,6 +72,7 @@ export const rats = [
     [19, 61, -4, 'furniture shop basement'], // furniture shop basement
 ]
 
+/*
 export const goalSlots = {
     personal: [3, 4, 5, 6,
             11, 13, 14, 15,
@@ -81,3 +86,4 @@ export const goalSlots = {
         29, 30, 31, 32, 33,
         38, 39, 40, 41, 42]
 }
+*/

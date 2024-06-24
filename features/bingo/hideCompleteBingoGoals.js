@@ -1,7 +1,7 @@
 import Settings from "../../settings"
 
-register("renderItemIntoGui", (item, x, y, e) => {
-    let inv = Player.getContainer()
-    if (!Settings.hideCompletedBingoGoals || !inv.getName().includes('Bingo Card')) return
-    if (item.getID() == 351 && item.getDamage() == 10) cancel(e)
+register("renderItemOverlayIntoGui", (item, x, y, e) => {
+    if (item.getID() == 351 && item.getLore().includes('GOAL REACHED')) cancel(e) // item.getDamage() == 10
 })
+
+register("renderItemOverlayIntoGui")

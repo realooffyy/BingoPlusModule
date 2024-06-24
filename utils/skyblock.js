@@ -13,8 +13,8 @@ export default new class Skyblock {
         this.inSkyblock = false
         this.reset()
 
-        register("tick", (ticks) => {
-            if (ticks%10) return
+        register("tick", (t) => {
+            if (t%10) return
             let scoreboard = getScoreboard(false)
             let tabList = getTabList(false)
 
