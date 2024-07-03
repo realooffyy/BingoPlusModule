@@ -1,6 +1,6 @@
 import { BaseGui } from "../../render/BaseGui"
 import { data } from "../../utils/constants"
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
 import { registerGui } from "../../render/registerGui"

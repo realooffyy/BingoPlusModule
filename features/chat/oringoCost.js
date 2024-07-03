@@ -1,9 +1,9 @@
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import constants from "../../utils/constants"
 
 PREFIX = constants.PREFIX
 
-const allPets = {
+const oringoPets = {
     'Blue Whale': [
         ['10k', '64x Raw Fish'],
         ['25k', '1x Enchanted Raw Fish'],
@@ -68,12 +68,12 @@ register("chat", (x, e) => {
     if (!Settings.oringoAbiphoneCost) return
     const pet = x.slice(2)
     const colour = x[1]
-    if (!rarityList[colour] || !allPets[pet]) { ChatLib.chat(`${PREFIX}&cPet not read correctly!`); return }
+    if (!rarityList[colour] || !oringoPets[pet]) { ChatLib.chat(`${PREFIX}&cPet not read correctly!`); return }
 
     cancel(e)
 
     const rarity = rarityList[colour]
-    const price = allPets[pet][rarity[1]]
+    const price = oringoPets[pet][rarity[1]]
 
     ChatLib.chat(
 `&e[NPC] Oringo&f: &b✆

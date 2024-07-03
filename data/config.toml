@@ -1,0 +1,76 @@
+
+[chat]
+
+	[chat.oringo]
+		oringo_abiphone_cost = true
+		copy_as_discord_message = true
+
+	[chat.dialogue_skipper]
+		pesthunter_phillip = false
+		maxwell = false
+		lone_adventurer = false
+		sam = false
+
+[bingo]
+
+	[bingo.bingo_card_display]
+		bingo_card_display = true
+
+	[bingo.bingo_card]
+		hide_completed_bingo_goals = false
+
+	[bingo.chat]
+		copy_achievements = true
+
+	[bingo.community_goal_display]
+		community_goal_display = true
+
+	[bingo.bingo_timer_display]
+		"don't_round" = true
+		show_timer_everywhere = true
+		bingo_timer = true
+
+	[bingo.chicken_head_timer]
+		hide_egg_laid_message = true
+		chicken_head_timer = true
+
+	[bingo.blockers]
+		baker_blocker = true
+
+	[bingo.rat_helper]
+		show_text = true
+		show_beacon = true
+		rat_helper = false
+
+[splasher]
+	no_potions_warning = false
+
+	[splasher.hub_selector_display]
+		hub_restart_warning = true
+		highlight_best_hubs = true
+		hub_selector_display = true
+		top_hubs = 5
+
+	[splasher.splasher_display]
+		splasher_display_distance = 5
+		show_everywhere = false
+		splasher_display = true
+
+[party]
+
+	[party.bingo_party]
+		"alias_for_/msg_bingoparty_!p" = "ap"
+
+	[party.bingoparty_moderation]
+		"alias_for_/msg_bingoparty_!p" = "ap"
+
+	[party.message_blockers]
+		show_message_blocker_status = false
+		"block_join/leave" = 0
+		block_party_travel = 1
+		block_party_line_breaks = 0
+		block_party_travel_notifications = 1
+
+[commands]
+	century_cake_island = "hunterhihunter"
+

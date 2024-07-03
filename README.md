@@ -19,6 +19,10 @@ If the module does not seem to be working, join the Discord and share your log i
     Displays community goal data when on the Bingo Card menu.
 </details>
 <details>
+    <summary>Bingo Timer Display</summary>
+    Displays time until a Bingo starts, ends, and profile deletion.
+</details>
+<details>
     <summary>Chicken Head Timer</summary>
     Displays a timer for the Chicken Head cooldown.
 </details>

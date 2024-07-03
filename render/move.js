@@ -1,4 +1,4 @@
-import Settings from "../settings"
+import Settings from "../Settings"
 
 const txt = 'Drag to move'
 let move = false

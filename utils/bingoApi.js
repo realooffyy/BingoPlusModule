@@ -7,13 +7,15 @@ register("step", () => {
     callBingoApi()    
 }).setDelay(300)
 
+register("worldLoad", callBingoApi)
+
 function callBingoApi() {
     request({
         url: 'https://api.hypixel.net/v2/resources/skyblock/bingo',
         json: true
     })
     .then((api) => {
-        if (data.bingoApi.id !== api.id) ChatLib.chat(`${prefix}&7Loading data for &a${api.name} &7Bingo!`)
+        if (data.bingoApi.id !== api.id) ChatLib.chat(`${constants.PREFIX}&7Loading data for &a${api.name} &7Bingo!`)
         if (data.bingoApi.lastUpdated !== api.lastUpdated) {
             data.bingoApi.id = api.id
             data.bingoApi.lastUpdated = api.lastUpdated

@@ -1,4 +1,4 @@
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import constants from "../../utils/constants"
 import Bingo from "../../utils/Bingo";
 

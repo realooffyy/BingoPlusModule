@@ -1,7 +1,8 @@
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import Bingo from "../../utils/Bingo"
+import Skyblock from "../../utils/Skyblock"
 import { data } from "../../utils/constants"
 import { registerWhen } from "../../utils/utils"
 
@@ -12,14 +13,13 @@ let opened = false
 
 const day = 86400000
 let localDate = Date.now()
-let prefix = ''
 let diff = 0
 let line = ''
 
 register("tick", (t) => {
-    if (t%10) return
-    if (!Settings.bingoTimerDisplay || (!Bingo.inBingo && !Settings.bingoTimerDisplayEverywhere)) return
+    if (!Skyblock.inSkyblock) return opened = false
     if (bingoTimerDisplayGui.isOpen()) { line = 'Bingo Timer'; return }
+    if (!Settings.bingoTimerDisplay || (!Bingo.inBingo && !Settings.bingoTimerDisplayEverywhere)) return
 
     line = ''
 
@@ -37,13 +37,13 @@ register("tick", (t) => {
     } else {
         if (localDate > data.bingoApi.end) { // bingo ended
             diff = (data.bingoApi.end + day*3) - localDate
-            prefix = 'Bingo profile deletion: '
+            line = '&6Bingo profile deletion: '
         } else if (localDate > data.bingoApi.start) { // mid-bingo
             diff = data.bingoApi.end - localDate
-            prefix = 'Bingo ends: '
+            line = '&6Bingo ends: '
         } else if (localDate > (data.bingoApi.start - day*3)) { // pre-bingo
             diff = data.bingoApi.start - localDate
-            prefix = 'Bingo starts: '
+            line = '&6Bingo starts: '
         } else return
 
         const result = msToTime(diff)
@@ -53,23 +53,22 @@ register("tick", (t) => {
             else if (result[1] > 0) line += result[1] + 'h ' + result[2] + 'm ' + result[3] + 's'
             else if (result[2] > 0) line += result[2] + 'm ' + result[3] + 's'
             else if (result[3] > 0) line += result[3] + 's'
-            else line += '0s'
+            else line += '&aNow!'
         } else {
             if (result[0] > 0) line += result[0] + 'd '
             else if (result[1] > 6) line += result[1] + 'h '
             else if (result[1] > 0) line += result[1] + 'h ' + result[2] + 'm '
             else if (result[2] > 0) line += result[2] + 'm ' + result[3] + 's'
             else if (result[3] > 0) line += result[3] + 's'
-            else line += '0s'
+            else line += '&aNow!'
         }
-
     }
 })
 
 registerWhen(register("renderOverlay", () => {
     Renderer.scale(data.bingoTimerDisplay.scale)
     Renderer.drawStringWithShadow(line, data.bingoTimerDisplay.x, data.bingoTimerDisplay.y)
-}), () => opened)
+}), () => opened || bingoTimerDisplayGui.isOpen())
 
 function msToTime(s) { // adapted from https://stackoverflow.com/questions/9763441/milliseconds-to-time-in-javascript
     let ms = s % 1000

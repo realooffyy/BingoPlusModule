@@ -1,7 +1,7 @@
 import RenderLib from "../../../RenderLib/index.js"
 import renderBeaconBeam from "../../../BeaconBeam"
 
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import Skyblock from "../../utils/Skyblock"
 import constants, { rats } from "../../utils/constants"
 

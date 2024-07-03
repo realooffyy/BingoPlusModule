@@ -1,6 +1,7 @@
 // thanks coleweight
 
 import { data } from "../utils/constants"
+import { registerWhen } from "../utils/utils"
 
 export class BaseGui {
 
@@ -22,7 +23,7 @@ export class BaseGui {
             data.save()
         })
 
-        register("renderOverlay", () => {
+        registerWhen(register("renderOverlay", () => {
             if (this.gui.isOpen()) {
                 let txt = "Drag to move. Use +/- to increase/decrease gui size."
                 Renderer.drawStringWithShadow(txt, Renderer.screen.getWidth()/2 - Renderer.getStringWidth(txt)/2, Renderer.screen.getHeight()/2)
@@ -32,7 +33,7 @@ export class BaseGui {
                 Renderer.drawStringWithShadow(txt, Renderer.screen.getWidth()/2 - Renderer.getStringWidth(txt)/2, Renderer.screen.getHeight()/2 + 30)
 
             }
-        })
+        }), () => this.gui.isOpen())
 
         register("guiKey", (char, keyCode, gui, event) => {
             if (!this.gui.isOpen()) return

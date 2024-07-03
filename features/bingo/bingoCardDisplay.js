@@ -1,6 +1,6 @@
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import Bingo from "../../utils/Bingo"
 import Skyblock from "../../utils/Skyblock"
 import { data } from "../../utils/constants"
@@ -20,7 +20,7 @@ let bingoCardGui = new BaseGui('bingoCardDisplay', ['bingoCardDisplay', 'bingoCa
 registerGui(bingoCardGui)
 
 register("tick", () => {
-    opened = Settings.bingoCardDisplay && Skyblock.inSkyblock || bingoCardGui.isOpen()
+    opened = Settings.bingoCardDisplay && Skyblock.inSkyblock && Bingo.inBingo || bingoCardGui.isOpen()
 })
 
 registerWhen(register('renderOverlay', () => {

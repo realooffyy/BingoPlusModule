@@ -1,14 +1,14 @@
 import "./utils/firstInstall"
-import "./utils/bingoApi"
+import "./utils/BingoApi"
 
 import "./render/registerGui"
 
 // Commands
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
-import "./commands/partyTravelMessages"
 import "./commands/bingoParty"
 import "./commands/ratHelper"
+import "./commands/guideSearch"
 
 import "./render/move"
 
@@ -22,12 +22,10 @@ import "./features/bingo/copyAchievements"
 //import "./features/bingo/dreadlordPickup"
 import "./features/bingo/hideCompleteBingoGoals"
 
-import "./features/party/blockPartyTravelMessages"
+import "./features/party/chatBlockers"
 
 import "./features/chat/dialogueSkipper"
 import "./features/chat/oringoCost"
-
-import "./features/party/blockPartyTravelMessages"
 
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
@@ -37,7 +35,6 @@ import "./features/world/rats"
 
 /* TODO
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler, bednom
- * - timer for bingo end and profile deletion
  * - hotm tree unlock reminders
  * - king talisman helper!
  * - fetchur/puzzler solvers?? so many mods have this xD

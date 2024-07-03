@@ -1,8 +1,11 @@
 /// <reference types="../../../CTAutocomplete" />
 /// <reference lib="es2015" />
 
-// not done
+// uhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 
+/*
+
+import Settings from "../../Settings"
 import Bingo from "../../utils/Bingo"
 import Skyblock from "../../utils/Skyblock"
 import constants from "../../utils/constants"
@@ -40,3 +43,5 @@ register('packetReceived', (packet) => {
         //}
     }
 }).setFilteredClass(S2FPacketSetSlot)
+
+*/

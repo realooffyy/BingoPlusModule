@@ -59,7 +59,7 @@ export const data = new PogObject("BingoPlus", {
     }
 
     
-}, "config/data.json")
+}, "data/data.json")
 
 export const rats = [
     [-6, 69, 2, 'under mountain'], // house under mountain

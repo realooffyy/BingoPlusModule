@@ -1,6 +1,6 @@
 import { data } from "../../utils/constants"
 import constants from "../../utils/constants"
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import { registerWhen, getTabList, getScoreboard, getValue, removeUnicode } from "../../utils/utils"
 import Skyblock from "../../utils/Skyblock"
 import { BaseGui } from "../../render/BaseGui"

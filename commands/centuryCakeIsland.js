@@ -1,11 +1,11 @@
-import settings from "../settings"
+import Settings from "../Settings"
 import constants from "../utils/constants"
 
 register("command", () => {
-    let x = ''+settings.centuryCakeIsland
-    if (settings.centuryCakeIsland === '') {
+    let name = '' + Settings.centuryCakeIsland
+    if (Settings.centuryCakeIsland === '') {
         ChatLib.chat(`${constants.PREFIX}&aDefaulting to BingoSplasher.`)
-        x = "BingoSplasher"
+        name = "BingoSplasher"
     }
     ChatLib.say(`/visit ${x}`)
 }).setCommandName("cake").setAliases("cakes")

@@ -2,7 +2,7 @@
 /// <reference lib="es2015" />
 
 import { data } from "../../utils/constants"
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import Skyblock from "../../utils/Skyblock"
 import Bingo from "../../utils/Bingo"
 import { BaseGui } from "../../render/BaseGui"
@@ -12,48 +12,72 @@ import { registerWhen, removeUnicode } from "../../utils/utils"
 let communityGoalDisplayGui = new BaseGui('communityGoalDisplay', ['communityGoalDisplay', 'communitygoal', 'communitygoals', 'community'])
 registerGui(communityGoalDisplayGui)
 
-const baseText = 'Loading Community Goal data...'
+const baseText = 'Reading...'
 
 let opened = false
-let lines = 'Loading Community Goal data...'
+let lines = baseText
 
-const baseWidth = 150
+const baseWidth = 100
 const baseHeight = 118
 
+let guiX = 0
+let guiY = 0
+let scale = 1
+let height = 1
+let width = 1
+
 register("tick", (t) => {
-    opened = (Bingo.cardOpened && Settings.communityGoalDisplay) || communityGoalDisplayGui.isOpen()
+    opened = (Bingo.cardOpened && Settings.communityGoalDisplay)
     if (t%10 || !Skyblock.inSkyblock || !Settings.communityGoalDisplay) return
     if (Bingo.community !== null) {
-        if (Bingo.community.length == 5 && Bingo.cardOpened) compileLines()
+        if (Bingo.community.length == 5 && Bingo.cardOpened) {
+            compileLines()
+            calcWidth()
+        }
     }
     if (!Bingo.cardOpened) lines = baseText
 })
 
-registerWhen(register('postGuiRender', () => { // render
-    const guiX = data.communityGoalDisplay.x
-    const guiY = data.communityGoalDisplay.y
-    const scale = data.communityGoalDisplay.scale
-    const width = baseWidth * scale
-    const height = baseHeight * scale
+registerWhen(register('guiRender', () => { // rendering
+    rendering(lines)
+}), () => opened)
+
+registerWhen(register('renderOverlay', () => { // settings rendering
+    rendering('&6&lCommunity Goals&r')
+}), () => communityGoalDisplayGui.isOpen())
+
+/**
+ * draws the stuff
+ * @param {String} - the string to render
+ */
+function rendering(text) {
+    guiX = data.communityGoalDisplay.x
+    guiY = data.communityGoalDisplay.y
+    scale = data.communityGoalDisplay.scale
+    height = baseHeight * scale
 
     const rectangle = new Rectangle(Renderer.color(0, 0, 0, 80), guiX, guiY, width, height)
     rectangle.draw()
 
-    Renderer.translate(guiX+5, guiY+5, 999)
+    Renderer.translate(guiX+5, guiY+5)
     Renderer.scale(scale)
-    Renderer.drawStringWithShadow(lines, 0, 0)
-}), () => opened)
+    Renderer.drawStringWithShadow(text, 0, 0)
+}
 
 
 function compileLines() {
-    lines = '&6&lCommunity Goals&r\n\n'
+    lines = '&6&lCommunity Goals&r\n'
     Bingo.community.forEach(goal => {
-        lines += `  &a✔ ${goal.name}\n\n` // title
+        lines += `\n  &a✔ ${goal.name}\n      ${goal.contributionLine} &f`
+        if (goal.rank) lines += `(&6&l#${goal.rank} &fContributor)`
+        else if (goal.percent) lines += `&8(Top &${goal.percentColour}${goal.percent}%&8)&r`
     })
-    //display?.addLine(`${list.name}`) // title
-    //display?.addLine('') // empty
-    //for (let i = 0; i < 5; i++) {
-        //display?.addLine(`  &a✔ ${list.goals[i][0]}`) // goal title
-        //display?.addLine(` ${list.goals[i][1]} ${list.goals[i][2]}`) // goal contrib
-    //}
+}
+
+function calcWidth() {
+    width = 100
+    lines.split('\n').forEach(x => {
+        const lineWidth = Renderer.getStringWidth(x)
+        if (width < lineWidth) width = (lineWidth + 10) * scale 
+    })
 }

@@ -1,7 +1,8 @@
-import Settings from "../../settings"
+import Settings from "../../Settings"
+import { registerWhen } from "../../utils/utils"
 
-register("renderItemOverlayIntoGui", (item, x, y, e) => {
+registerWhen(register("renderItemOverlayIntoGui", (item, x, y, e) => {
     if (item.getID() == 351 && item.getLore().includes('GOAL REACHED')) cancel(e) // item.getDamage() == 10
-})
+}), () => Settings.hideCompletedBingoGoals)
 
-register("renderItemOverlayIntoGui")
+// doc my beloved

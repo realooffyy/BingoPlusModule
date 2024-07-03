@@ -1,5 +1,5 @@
 import Skyblock from "../../utils/Skyblock"
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import Bingo from "../../utils/Bingo"
 
 register("step", () => {

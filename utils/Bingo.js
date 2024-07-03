@@ -1,7 +1,6 @@
-import Settings from "../settings"
+import Settings from "../Settings"
 import Skyblock from "./Skyblock"
 import { data } from "./constants"
-import { getValue } from "./utils"
 
 const goalSlots = [2,  3,  4,  5,  6,
                    11, 12, 13, 14, 15,
@@ -9,6 +8,10 @@ const goalSlots = [2,  3,  4,  5,  6,
                    29, 30, 31, 32, 33,
                    38, 39, 40, 41, 42]
 const communityGoalSlots = [0, 6, 12, 18, 24]
+
+const contributionRegex = /§5§o§7Contribution: (.*)/
+const percentRegex = /  §8Top §(\w)(.*)%/
+const rankRegex = /  §6§l#(\d)+ §fcontributor/
 
 export default new class Bingo {
     constructor() {
@@ -29,7 +32,7 @@ export default new class Bingo {
 
         register("tick", (t) => { // bingo card grabber
             if (!Skyblock.inSkyblock) return
-            if (!Settings.communityGoalDisplay || !Settings.bingoCardDisplay || this.inv == null) return
+            if ((!Settings.communityGoalDisplay && !Settings.bingoCardDisplay) || this.inv == null) return
             if (this.inv.getName() == "Bingo Card" || (this.inv.getName() == "Your Skills" && data.dev)) { // also skills menu for testing purposes
                 this.cardOpened = true
 
@@ -56,16 +59,23 @@ export default new class Bingo {
             const goal = {
                 name: null,
                 tier: null,
-                contribution: null,
+                contributionLine: '&cNo contribution!',
                 percent: null,
+                percentColour: null,
                 rank: null,
+                rankLine: null,
             }
 
             goal.name = item.getName()
-            //element.tier = 
-
+            
             item.getLore().forEach(line => {
-                //if (/§5§o§7Contribution: .*/g.test(line)) goal.contribution = getValue()
+                if (contributionRegex.test(line)) {
+                    goal.contributionLine = contributionRegex.exec(line)[1]
+                } else if (percentRegex.test(line)) {
+                    [, goal.percentColour, goal.percent] = percentRegex.exec(line)
+                } else if (rankRegex.test(line)) {
+                    goal.rank = rankRegex.exec(line)
+                }
             })
             
             goals.push(goal)

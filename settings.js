@@ -3,15 +3,22 @@ import {
     @SwitchProperty,
     @TextProperty,
     @Vigilant,
-    @SliderProperty
+    @SliderProperty,
+    @SelectorProperty
 } from '../Vigilance/index'
 
-@Vigilant("BingoPlus/config", "Bingo+ Settings", {
+@Vigilant("BingoPlus/data", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
         const categories = ["General", "Bingo", "Party", "Splasher", "Chat", "Commands"];
 
         return categories.indexOf(a.name) - categories.indexOf(b.name);
-    }
+    },
+
+    //getPropertyComparator: () => (a, b) => {
+        //const names = ["Do action!!!", "password", "text", "Color Picker"];
+
+        //return names.indexOf(a.attributesExt.name) - names.indexOf(b.attributesExt.name);
+    //}
 })
     
 class Settings {
@@ -24,12 +31,20 @@ class Settings {
             &aBy ooffyy
             `
         )
-        this.setSubcategoryDescription("Party", "Party Travel Messages",
-            `It's recommended to disable Party Travel Messages entirely: &aSkyblock Menu -> Settings -> Comms -> Co-op Travel Notifications`)
+
         this.setSubcategoryDescription("Party", "Bingo Party",
             `Thanks to &aaphased&r and &aTryp0MC&r for hosting BingoParty!`)
+        this.setSubcategoryDescription("Party", "Message Blockers",
+            `&cOff&r: Messages won't be blocked
+&6Only in Bingo Party&r: Messages will be blocked when in §6[MVP§r§c++§r§6] BingoParty§r's party
+&aEverywhere&r: Message will always be blocked`)
+            // It's recommended to disable Party Travel Messages entirely: &aSkyblock Menu -> Settings -> Comms -> Co-op Travel Notifications
+
         this.setSubcategoryDescription("Chat", "Dialogue Skipper",
-            `&cCurrently disabled, will be reworked in next update probably`)
+            `&cDisabled as the current method is slightly cheaty, will be reworked eventually`)
+
+        this.addDependency("Don't round", "Bingo Timer")
+        this.addDependency("Show timer everywhere", "Bingo Timer")
 
         this.addDependency("Show text", "Rat Helper")
         this.addDependency("Show beacon", "Rat Helper")
@@ -48,16 +63,34 @@ class Settings {
     // General
 
     @ButtonProperty({
+        name: "Bingo Menu",
+        category: "General",
+        placeholder: "/p join BingoParty"
+    })
+    runBingoCommand() {
+        Client.currentGui.close()
+        ChatLib.command('p join BingoParty')
+    }
+
+    @ButtonProperty({
+        name: "Bingo Party",
+        category: "General",
+        placeholder: "/bingo"
+    })
+    runBingoPartyJoinCommand() {
+        Client.currentGui.close()
+        ChatLib.command('bingo')
+    }
+
+    @ButtonProperty({
         name: "Discord",
         description: "Click the button to join my discord.",
         category: "General",
-        subcategory: "Discord",
         placeholder: "Join"
     })
     joinDiscord() {
         java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
     }
-
 
     // Bingo
 
@@ -176,7 +209,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Bingo Timer",
-        description: "Shows time until a Bingo starts, ends, and profile deletion.",
+        description: "Displays time until a Bingo starts, ends, and profile deletion.",
         category: "Bingo",
         subcategory: "Bingo Timer Display"
     })
@@ -191,7 +224,7 @@ class Settings {
     bingoTimerDisplayDontRound = false
 
     @SwitchProperty({
-        name: "Show everywhere",
+        name: "Show timer everywhere",
         description: "Shows timer while not on a Bingo profile.",
         category: "Bingo",
         subcategory: "Bingo Timer Display"
@@ -208,30 +241,51 @@ class Settings {
     MoveBingoTimerDisplay() {
         ChatLib.command('b+ move bingoTimerDisplay', true)
     }
-  
+    
     // Party
-
+    
+    /*
     @SwitchProperty({
-        name: "Block Party Travel Messages",
-        description: "Blocks party travel notifications in chat.\n&aYou can toggle this with &6/ptravel&a!&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r",
+        name: "Show message blocker status",
+        description: "Tells you which blockers are active when joining a party",
         category: "Party",
-        subcategory: "Party Travel Messages"
+        subcategory: "Message Blockers"
     })
-    blockPartyTravelMessages = false
+    blockPartyMessagesStatus = false
+    */
 
-    @SwitchProperty({
-        name: "Show status",
-        description: "Tells you if travel messages are enabled or disabled when you join a party.",
+    @SelectorProperty({
+        name: "Block Party Line Breaks",
+        description: "Blocks this line: \n&9&m-----------------------------------------------------&r\nRecommended if using the other blockers!", // \n&aToggleable with &6/ptravel&a.&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r
         category: "Party",
-        subcategory: "Party Travel Messages"
+        subcategory: "Message Blockers",
+        options: ['Off', 'Only in Bingo Party', 'Everywhere']
     })
-    blockPartyTravelMessagesWarning = false
+    blockPartyLineBreak = 0;
+
+    @SelectorProperty({
+        name: "Block Party Travel Notifications",
+        description: "Blocks party travel notifications.\n&8Instead of using 'Everywhere' consider disabling Co-op Travel Notifications in SkyBlock settings!", // \n&aToggleable with &6/ptravel&a.&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r
+        category: "Party",
+        subcategory: "Message Blockers",
+        options: ['Off', 'Only in Bingo Party', 'Everywhere']
+    })
+    blockPartyTravelMessagesNew = 0;
+
+    @SelectorProperty({
+        name: "Block Join/Leave",
+        description: "Blocks party join/leave messages. This includes the 5 min disconnect messages.",
+        category: "Party",
+        subcategory: "Message Blockers",
+        options: ['Off', 'Only in Bingo Party', 'Everywhere']
+    })
+    blockPartyJoinLeave = 0;
 
     @TextProperty({
         name: "Alias for /msg BingoParty !p",
-        description: "Create an alias for &6/msg BingoParty !p&r.\n&cRun /ct load after changing alias!\nLeave blank to disable.\n&cThis is intended for splashers/allowed users only!",
+        description: "Creates an alias for &6/msg BingoParty !p&r. Leave blank to disable.\nExample: &aap&r\n&cRun /ct load after changing alias!",
         category: "Party",
-        subcategory: "Bingo Party"
+        subcategory: "BingoParty Moderation"
     })
     bingoPartyAlias = ""
 
@@ -239,7 +293,7 @@ class Settings {
         name: "BingoParty Commands Documentation",
         description: "Click the button to open this in your browser.",
         category: "Party",
-        subcategory: "Bingo Party",
+        subcategory: "BingoParty Moderation",
         placeholder: "GitHub"
     })
     openBPDocumentation() {
