@@ -19,8 +19,12 @@ If the module does not seem to be working, join the Discord and share your log i
     Displays community goal data when on the Bingo Card menu.
 </details>
 <details>
-    <summary>Bingo Timer Display</summary>
+    <summary>Bingo Timer</summary>
     Displays time until a Bingo starts, ends, and profile deletion.
+</details>
+<details>
+    <summary>Bingo Card Display</summary>
+    Shows the Bingo Card on-screen.
 </details>
 <details>
     <summary>Chicken Head Timer</summary>
@@ -47,6 +51,16 @@ If the module does not seem to be working, join the Discord and share your log i
     Shows rat waypoints. Toggleable with /rats.
 </details>
 
+### Party
+<details>
+    <summary>Chat blockers</summary>
+    Various blockers for messages, like follow, join and leave.
+</details>
+<details>
+    <summary>BingoParty moderation</summary>
+    Tools for splashers from Bingo Brewers and other allowed users to interact with BingoParty
+</details>
+
 ### Splasher
 
 <details>
@@ -69,7 +83,7 @@ If the module does not seem to be working, join the Discord and share your log i
     Convert Oringo's Abiphone message to include the rarity and cost of each pet. Also copyable as a Discord message!
 </details>
 <details>
-    <summary>Dialogue Skipper (use at your own risk!)</summary>
+    <summary>Dialogue Skipper (currently disabled)</summary>
     Automatically skip the dialogue of certain NPCs.
 </details>
 
