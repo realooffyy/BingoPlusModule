@@ -1,9 +1,12 @@
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import constants from "../../utils/constants"
 
 PREFIX = constants.PREFIX
 
 // i'll fix this later 💀
+// https://chattriggers.com/javadocs/-chat-triggers/com.chattriggers.ctjs.minecraft.objects.message/-text-component/index.html
+
+/*
 
 // Maxwell skipper
 
@@ -62,3 +65,4 @@ register("chat", () => {
     ChatLib.chat(PREFIX+"&aSkipped dialogue!");
 }).setCriteria("Select an option: [YES] [NO] ");
 
+*/

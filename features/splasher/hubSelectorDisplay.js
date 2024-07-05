@@ -2,7 +2,7 @@
 /// <reference lib="es2015" />
 
 import constants, { data } from "../../utils/constants"
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import { highlightSlot } from "../../utils/utils"
 
 import Skyblock from "../../utils/Skyblock"
@@ -51,7 +51,7 @@ register("guiRender", (e) => {
     })
 })
 
-register("postGuiRender", () => {
+register("guiRender", () => {
     if (!Settings.hubSelectorDisplay || !Skyblock.inSkyblock) return
     const container = Player.getContainer()
     if (!hubSelectorOpened && (container?.getName() == "SkyBlock Hub Selector" || container?.getName() == "Dungeon Hub Selector")) {

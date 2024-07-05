@@ -11,6 +11,7 @@ export default constants = {
 
 export const data = new PogObject("BingoPlus", {
     firstTime: true,
+    dev: false,
 
     bingoApiOn: true,
     bingoApi: {
@@ -19,9 +20,13 @@ export const data = new PogObject("BingoPlus", {
         name: null,
         modifier: null,
         start: null,
-        end: null
+        end: null,
+
+        goals: null
     },
-    
+
+    allGoals: [],
+
     chickenHeadTimerDisplay: {
         x: 280,
         y: 30,
@@ -41,9 +46,20 @@ export const data = new PogObject("BingoPlus", {
         x: 10,
         y: 10,
         scale: 1
+    },
+    bingoCardDisplay: {
+        x: 10,
+        y: 10,
+        scale: 1
+    },
+    bingoTimerDisplay: {
+        x: 10,
+        y: 10,
+        scale: 1
     }
+
     
-}, "config/data.json")
+}, "data/data.json")
 
 export const rats = [
     [-6, 69, 2, 'under mountain'], // house under mountain
@@ -55,3 +71,19 @@ export const rats = [
     [-36, 57, -117, 'hexatorium basement'], // why does this exist 💀
     [19, 61, -4, 'furniture shop basement'], // furniture shop basement
 ]
+
+/*
+export const goalSlots = {
+    personal: [3, 4, 5, 6,
+            11, 13, 14, 15,
+            20, 21, 23, 24,
+            29, 30, 31, 33,
+            38, 39, 40, 41],
+    community: [2, 12, 22, 32, 42],
+    all: [2, 3, 4, 5, 6,
+        11, 12, 13, 14, 15,
+        20, 21, 22, 23, 24,
+        29, 30, 31, 32, 33,
+        38, 39, 40, 41, 42]
+}
+*/

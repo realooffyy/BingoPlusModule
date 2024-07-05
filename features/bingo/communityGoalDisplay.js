@@ -2,129 +2,81 @@
 /// <reference lib="es2015" />
 
 import { data } from "../../utils/constants"
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import Skyblock from "../../utils/Skyblock"
+import Bingo from "../../utils/Bingo"
+import { BaseGui } from "../../render/BaseGui"
+import { registerGui } from "../../render/registerGui"
+import { registerWhen, removeUnicode } from "../../utils/utils"
 
-const display = new Display()
-display.setRenderLoc(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
-display.setBackground(DisplayHandler.Background.FULL)
-display.setRegisterType("post gui render")
+let communityGoalDisplayGui = new BaseGui('communityGoalDisplay', ['communityGoalDisplay', 'communitygoal', 'communitygoals', 'community'])
+registerGui(communityGoalDisplayGui)
 
-let bingoCardOpened = false
+const baseText = 'Reading...'
+
 let opened = false
+let lines = baseText
 
-let lines = 'Loading Community Goal data...'
+const baseWidth = 100
+const baseHeight = 118
 
-let grabX, grabY
+let guiX = 0
+let guiY = 0
+let scale = 1
+let height = baseHeight
+let width = baseWidth
 
-let grabbed = false
-
-register("tick", () => {
-    display.setRenderLoc(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
-    opened = bingoCardOpened || Settings.communityGoalDisplayMove.isOpen()
-    if (Settings.communityGoalDisplayMove.isOpen()) {
-        display.clearLines()
-        display.addLine("&6&lCommunity Goals")
-        let closeListener = register("guiClosed", () => {
-            closeListener?.unregister()
-            display?.clearLines()
-        })
-    }
-})
-
-register("postGuiRender", () => {
-    if (!Settings.communityGoalDisplay || !Skyblock.inSkyblock) return
-    let inv = Player.getContainer()
-    if (!bingoCardOpened && inv?.getName() == "Bingo Card") {
-        const community_slots = [2, 12, 22, 32, 42]
-        let guiElements = {
-            name: "&6&lCommunity Goals",
-            goals: [
-                ["Goal 1", "Contribution", "(Top %)", 0],
-                ["Goal 2", "Contribution", "(Top %)", 0],
-                ["Goal 3", "Contribution", "(Top %)", 0],
-                ["Goal 4", "Contribution", "(Top %)", 0],
-                ["Goal 5", "Contribution", "(Top %)", 0]
-            //    name      contribution     top %    goal tier
-            ]
+register("tick", (t) => {
+    opened = (Bingo.cardOpened && Settings.communityGoalDisplay)
+    if (!Bingo.cardOpened) lines = baseText
+    if (t%10 || !Skyblock.inSkyblock || !Settings.communityGoalDisplay) return
+    if (Bingo.community !== null) {
+        if (Bingo.community.length == 5 && Bingo.cardOpened) {
+            compileLines()
+            calcWidth()
         }
-        lines = 'Loading Community Goal data...'
-        bingoCardOpened = true
-
-        let guiLoaded = register("tick", (t) => {
-
-            let closeListener = register("guiClosed", () => {
-                bingoCardOpened = false
-                guiLoaded?.unregister()
-                closeListener?.unregister()
-                refresh?.unregister()
-                display?.clearLines()
-            })
-            
-            if (inv?.getStackInSlot(inv?.getSize() - 37) == null) return
-                
-            guiLoaded.unregister()
-
-            let refresh = register("step", () => {
-                let items = community_slots.map(slot => inv.getItems()[slot])
-
-                for (let i = 0; i < 5; i++) {
-                    let item = items[i]
-                    guiElements.goals[i][0] = item.getName()
-
-                    let contribution = ''
-                    for (const line of item.getLore()){
-                        //console.log(line)
-                        if (/§5§o§7Contribution: .*/g.test(line)) guiElements.goals[i][1] = `${line.replace("§5§o§7Contribution: ",'')}`
-                        if (/§7§cYou have not contributed towards/g.test(line)) guiElements.goals[i][1] = `&cNo contribution!&r`
-                        if (/  §8Top .*/g.test(line)) contribution = ` &f(Top${line.replace('  §8Top','')}&f)`
-                        if (/  §6§l#\d+ §fcontributor/g.test(line)) contribution = ` &8(${line.replace('  ','')}&8)`
-
-                    }
-                    guiElements.goals[i][2] = contribution
-                }
-
-                compileLines(guiElements)
-
-            }).setFps(1)
-        })
     }
 })
 
+registerWhen(register('guiRender', () => { // rendering
+    rendering(lines)
+}), () => opened)
 
-function compileLines(list) {
-    display?.clearLines()
-    display?.addLine(`${list.name}`) // title
-    display?.addLine('') // empty
-    for (let i = 0; i < 5; i++) {
-        display?.addLine(`  &a✔ ${list.goals[i][0]}`) // goal title
-        display?.addLine(` ${list.goals[i][1]} ${list.goals[i][2]}`) // goal contrib
-    }
+registerWhen(register('renderOverlay', () => { // settings rendering
+    rendering('&6&lCommunity Goals&r')
+}), () => communityGoalDisplayGui.isOpen())
+
+/**
+ * draws the stuff
+ * @param {String} - the string to render
+ */
+function rendering(text) {
+    guiX = data.communityGoalDisplay.x
+    guiY = data.communityGoalDisplay.y
+    scale = data.communityGoalDisplay.scale
+    height = baseHeight * scale
+
+    const rectangle = new Rectangle(Renderer.color(0, 0, 0, 80), guiX, guiY, width, height)
+    rectangle.draw()
+
+    Renderer.translate(guiX+5, guiY+5)
+    Renderer.scale(scale)
+    Renderer.drawStringWithShadow(text, 0, 0)
 }
 
-register("dragged", (dx, dy, x, y) => {
-    if (opened) {
-        if (grabbed || Settings.communityGoalDisplayMove.isOpen()) {
-            display.setRenderLoc(data.communityGoalDisplay.x, data.communityGoalDisplay.y)
-            data.communityGoalDisplay.x = x-(grabbed ? grabX : 0)
-            data.communityGoalDisplay.y = y-(grabbed ? grabY : 0)
-            data.save()
-        }
-    }
-})
+function compileLines() {
+    lines = '&6&lCommunity Goals&r\n'
+    Bingo.community.forEach(goal => {
+        lines += `\n  &a✔ ${goal.name}\n      ${goal.contributionLine} &f`
+        if (goal.rank) lines += `(&6&l#${goal.rank} &fContributor)`
+        else if (goal.percent) lines += `&8(Top &${goal.percentColour}${goal.percent}%&8)&r`
+    })
+}
 
-register("clicked", (x, y, btn, state) => {
-    if (opened) {
-        if (state) {
-            if ((y <= display.getRenderY() + display.getHeight() && y >= display.getRenderY()) &&
-                (x <= display.getRenderX() + display.getWidth() && x >= display.getRenderX())) {
-                grabY = y-display.getRenderY()
-                grabX = x-display.getRenderX()
-                grabbed = true
-            } else {
-                grabbed = false
-            }
-
-        }
-    }
-})
+function calcWidth() {
+    width = 100
+    lines.split('\n').forEach(x => {
+        const lineWidth = Renderer.getStringWidth(x)
+        if (width < lineWidth) width = (lineWidth + 10) * scale 
+    })
+}

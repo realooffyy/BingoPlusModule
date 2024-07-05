@@ -1,13 +1,10 @@
-import Settings from "../settings"
+import Settings from "../Settings"
 
 const txt = 'Drag to move'
 let move = false
 
 register("renderOverlay", () => {
-    move = (Settings.hubSelectorDisplayMove.isOpen() ||
-            Settings.splasherDisplayMove.isOpen() ||
-            Settings.chickenHeadTimerMove.isOpen() ||
-            Settings.communityGoalDisplayMove.isOpen())
+    move = Settings.hubSelectorDisplayMove.isOpen()
             
     if (move)
     {

@@ -1,15 +1,11 @@
 import request from "../../requestV2"
 import constants, { data } from "./constants"
 
-x = data.bingoApi
-const prefix = constants.PREFIX
-
-callBingoApi()  
-
 register("step", () => {
-    if (!data.bingoApiOn) return
     callBingoApi()    
-}).setDelay(120)
+}).setDelay(300)
+
+register("worldLoad", callBingoApi)
 
 function callBingoApi() {
     request({
@@ -17,18 +13,22 @@ function callBingoApi() {
         json: true
     })
     .then((api) => {
-        if (x.id !== api.id) {
-            x.id = api.id
-            x.lastUpdated = api.lastUpdated
-            x.name = api.name
-            x.modifier = api.modifier
-            x.start = api.start
-            x.end = api.end
+        if (data.bingoApi.id !== api.id) ChatLib.chat(`${constants.PREFIX}&7Loading data for &a${api.name} &7Bingo!`)
+        if (data.bingoApi.lastUpdated !== api.lastUpdated) {
+            data.bingoApi.id = api.id
+            data.bingoApi.lastUpdated = api.lastUpdated
+            data.bingoApi.name = api.name
+            data.bingoApi.modifier = api.modifier
+            data.bingoApi.start = api.start
+            data.bingoApi.end = api.end
+
+            //data.bingoApi.goals = api.goals
+            //data.bingoApi.communityGoals = [api.goals[0], api.goals[6], api.goals[12], api.goals[18], api.goals[24]]
             data.save()
-            ChatLib.chat(`${prefix}&7Loaded data for &a${x.name} &7Bingo!`)
+            
         }
     })
     .catch(err => {
-        ChatLib.chat(`${prefix}&7Failed to get Bingo data. (${err})`)
+        ChatLib.chat(`${constants.PREFIX}&7Error fetching bingo api: &f"${err.cause}"\n${constants.PREFIX}&7please report this to ooffyy on discord`)
     })
 }
