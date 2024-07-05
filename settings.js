@@ -14,6 +14,13 @@ import {
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     },
 
+    getSubcategoryComparator: () => (a, b) => {
+        const subcategories = ["Message Blockers", "BingoParty Moderation"];
+
+        return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) -
+            subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
+    },
+
     //getPropertyComparator: () => (a, b) => {
         //const names = ["Do action!!!", "password", "text", "Color Picker"];
 
@@ -28,16 +35,21 @@ class Settings {
         this.setCategoryDescription("General",
             `
             &6Bingo&c+ &bv${JSON.parse(FileLib.read("BingoPlus", "metadata.json")).version}
-            &aBy ooffyy
+            &aBy &dooffyy&r
+
+            &c[!] The config has been reset since &bv1.0.0&c; you may need to change some of your settings!
             `
         )
 
-        this.setSubcategoryDescription("Party", "Bingo Party",
-            `Thanks to &aaphased&r and &aTryp0MC&r for hosting BingoParty!`)
+        this.setSubcategoryDescription("Party", "BingoParty Moderation",
+            `Thanks to &aaphased&r and &aTryp0MC&r for hosting BingoParty!
+&8This section is intended for splashers from Bingo Brewers and other allowed users.`)
         this.setSubcategoryDescription("Party", "Message Blockers",
             `&cOff&r: Messages won't be blocked
 &6Only in Bingo Party&r: Messages will be blocked when in §6[MVP§r§c++§r§6] BingoParty§r's party
-&aEverywhere&r: Message will always be blocked`)
+&aEverywhere&r: Message will always be blocked
+
+If a BingoParty blocker is not working, try running &a/p list&r.`)
             // It's recommended to disable Party Travel Messages entirely: &aSkyblock Menu -> Settings -> Comms -> Co-op Travel Notifications
 
         this.setSubcategoryDescription("Chat", "Dialogue Skipper",
@@ -63,7 +75,7 @@ class Settings {
     // General
 
     @ButtonProperty({
-        name: "Bingo Menu",
+        name: "Bingo Party",
         category: "General",
         placeholder: "/p join BingoParty"
     })
@@ -73,7 +85,7 @@ class Settings {
     }
 
     @ButtonProperty({
-        name: "Bingo Party",
+        name: "Bingo Menu",
         category: "General",
         placeholder: "/bingo"
     })
@@ -137,7 +149,7 @@ class Settings {
         placeholder: "Move"
     })
     MoveChickenHeadTimer() {
-        ChatLib.command('b+ move chickenHeadTimer', true)
+        ChatLib.command('b+ move chickenHeadTimerDisplay', true)
     }
 
     @SwitchProperty({
@@ -190,7 +202,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Bingo Card Display",
-        description: "Shows the Bingo Card on-screen.\n&cCurrently can get very laggy!",
+        description: "Shows the Bingo Card on-screen.",
         category: "Bingo",
         subcategory: "Bingo Card Display"
     })
@@ -242,6 +254,15 @@ class Settings {
         ChatLib.command('b+ move bingoTimerDisplay', true)
     }
     
+/*
+    @SwitchProperty({
+        name: "Broken Goal Helper",
+        description: "Sends a chat message with a solution to a broken goal when opening the Bingo Card.",
+        category: "Bingo",
+        subcategory: "Broken Goal Helper"
+    })
+    brokenBingoGoalHelper = false
+*/
     // Party
     
     /*
@@ -256,7 +277,7 @@ class Settings {
 
     @SelectorProperty({
         name: "Block Party Line Breaks",
-        description: "Blocks this line: \n&9&m-----------------------------------------------------&r\nRecommended if using the other blockers!", // \n&aToggleable with &6/ptravel&a.&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r
+        description: "Blocks the blue separator line.\nRecommended if using the other blockers!", // \n&aToggleable with &6/ptravel&a.&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r
         category: "Party",
         subcategory: "Message Blockers",
         options: ['Off', 'Only in Bingo Party', 'Everywhere']

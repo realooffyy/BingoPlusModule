@@ -7,5 +7,5 @@ register("command", () => {
         ChatLib.chat(`${constants.PREFIX}&aDefaulting to BingoSplasher.`)
         name = "BingoSplasher"
     }
-    ChatLib.say(`/visit ${x}`)
+    ChatLib.say(`/visit ${name}`)
 }).setCommandName("cake").setAliases("cakes")

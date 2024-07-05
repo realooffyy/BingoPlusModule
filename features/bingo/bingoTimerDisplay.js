@@ -17,13 +17,13 @@ let diff = 0
 let line = ''
 
 register("tick", (t) => {
-    if (!Skyblock.inSkyblock) return opened = false
+    opened = false
+    if (!Skyblock.inSkyblock) return
     if (bingoTimerDisplayGui.isOpen()) { line = 'Bingo Timer'; return }
     if (!Settings.bingoTimerDisplay || (!Bingo.inBingo && !Settings.bingoTimerDisplayEverywhere)) return
+    opened = true
 
     line = ''
-
-    opened = true
 
     if (data.bingoApi.start == null || data.bingoApi.end == null) {
         line = 'Invalid API'

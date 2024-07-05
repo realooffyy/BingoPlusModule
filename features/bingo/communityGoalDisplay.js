@@ -23,11 +23,12 @@ const baseHeight = 118
 let guiX = 0
 let guiY = 0
 let scale = 1
-let height = 1
-let width = 1
+let height = baseHeight
+let width = baseWidth
 
 register("tick", (t) => {
     opened = (Bingo.cardOpened && Settings.communityGoalDisplay)
+    if (!Bingo.cardOpened) lines = baseText
     if (t%10 || !Skyblock.inSkyblock || !Settings.communityGoalDisplay) return
     if (Bingo.community !== null) {
         if (Bingo.community.length == 5 && Bingo.cardOpened) {
@@ -35,7 +36,6 @@ register("tick", (t) => {
             calcWidth()
         }
     }
-    if (!Bingo.cardOpened) lines = baseText
 })
 
 registerWhen(register('guiRender', () => { // rendering
@@ -63,7 +63,6 @@ function rendering(text) {
     Renderer.scale(scale)
     Renderer.drawStringWithShadow(text, 0, 0)
 }
-
 
 function compileLines() {
     lines = '&6&lCommunity Goals&r\n'

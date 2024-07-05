@@ -1,348 +1,15 @@
 {
     "firstTime": false,
-    "dev": true,
+    "dev": false,
     "bingoApiOn": true,
     "bingoApi": {
         "id": 31,
-        "lastUpdated": 1720011715012,
+        "lastUpdated": 1720221715039,
         "name": "July 2024",
         "modifier": "NORMAL",
         "start": 1719806400000,
         "end": 1720411200000,
-        "goals": [
-            {
-                "id": "BLOW_CRYPTS",
-                "name": "KABOOM!",
-                "tiers": [
-                    15000,
-                    30000,
-                    45000,
-                    60000,
-                    75000
-                ],
-                "progress": 21177,
-                "lore": "Â§7Blow up Â§e75kÂ§7 Crypts in The Catacombs.",
-                "fullLore": [
-                    "Â§7Blow up Â§e75kÂ§7 Crypts in The Catacombs."
-                ]
-            },
-            {
-                "id": "OBTAIN_JACOB_BRONZE",
-                "name": "Podium Position",
-                "lore": "Â§7Obtain a Â§cBronzeÂ§7 or higher Â§cMedalÂ§7 in Jacob's Farming Contest.",
-                "fullLore": [
-                    "Â§7Obtain a Â§cBronzeÂ§7 or higher Â§cMedalÂ§7 in Jacob's Farming Contest."
-                ]
-            },
-            {
-                "id": "collect_powder_mithril",
-                "name": "Powder Collector",
-                "lore": "Â§7Collect 50,000 Â§2Mithril PowderÂ§7.",
-                "fullLore": [
-                    "Â§7Collect 50,000 Â§2Mithril PowderÂ§7."
-                ],
-                "requiredAmount": 50000
-            },
-            {
-                "id": "stat_ferocity",
-                "name": "Ferocious",
-                "lore": "Â§7Reach Â§c3 Â§câ«½ FerocityÂ§7.",
-                "fullLore": [
-                    "Â§7Reach Â§c3 Â§câ«½ FerocityÂ§7."
-                ],
-                "requiredAmount": 3
-            },
-            {
-                "id": "bank_coins",
-                "name": "Meiser",
-                "lore": "Â§7Store Â§63,500,000 Coins Â§7in your Bank.",
-                "fullLore": [
-                    "Â§7Store Â§63,500,000 Coins Â§7in your Bank."
-                ],
-                "requiredAmount": 3500000
-            },
-            {
-                "id": "fairy_souls",
-                "name": "Fairy Finder",
-                "lore": "Â§7Obtain Â§d25 Fairy SoulsÂ§7.",
-                "fullLore": [
-                    "Â§7Obtain Â§d25 Fairy SoulsÂ§7."
-                ],
-                "requiredAmount": 25
-            },
-            {
-                "id": "kill_goblins",
-                "name": "Goblin Slayer",
-                "tiers": [
-                    400000,
-                    800000,
-                    1200000,
-                    1600000,
-                    2000000
-                ],
-                "progress": 1130409,
-                "lore": "Â§7Kill Â§a2M GoblinsÂ§7.",
-                "fullLore": [
-                    "Â§7Kill Â§a2M GoblinsÂ§7."
-                ]
-            },
-            {
-                "id": "DUNGEON_CATACOMBS_2_250",
-                "name": "High Score!",
-                "lore": "Â§7Obtain a score of Â§6250Â§7 or higher on Â§cFloor 2Â§7 of Â§cCatacombsÂ§7.",
-                "fullLore": [
-                    "Â§7Obtain a score of Â§6250Â§7 or higher on Â§cFloor 2Â§7 of Â§cCatacombsÂ§7."
-                ]
-            },
-            {
-                "id": "GET_SKILL_combat_10",
-                "name": "Warrior",
-                "lore": "Â§7Obtain level Â§e10Â§7 in the Â§6Combat Â§7Skill.",
-                "fullLore": [
-                    "Â§7Obtain level Â§e10Â§7 in the Â§6Combat Â§7Skill."
-                ]
-            },
-            {
-                "id": "stat_walk_speed",
-                "name": "I Am Speed",
-                "lore": "Â§7Reach Â§f250 Â§fâœ¦ SpeedÂ§7.",
-                "fullLore": [
-                    "Â§7Reach Â§f250 Â§fâœ¦ SpeedÂ§7."
-                ],
-                "requiredAmount": 250
-            },
-            {
-                "id": "collection_string",
-                "name": "String Collector",
-                "lore": "Â§7Reach Â§a60,000 Â§7String Collection.",
-                "fullLore": [
-                    "Â§7Reach Â§a60,000 Â§7String Collection."
-                ],
-                "requiredAmount": 60000
-            },
-            {
-                "id": "UNLOCK_DUNGEON_CHEST_EMERALD",
-                "name": "Emerald Treasure",
-                "lore": "Â§7Unlock an Â§2EmeraldÂ§7 Dungeon Chest.",
-                "fullLore": [
-                    "Â§7Unlock an Â§2EmeraldÂ§7 Dungeon Chest."
-                ]
-            },
-            {
-                "id": "break_block_ores",
-                "name": "Operation: Ore",
-                "tiers": [
-                    2000000,
-                    4000000,
-                    6000000,
-                    8000000,
-                    10000000
-                ],
-                "progress": 36810233,
-                "lore": "Â§7Break Â§e10M OreÂ§7 Blocks.",
-                "fullLore": [
-                    "Â§7Break Â§e10M OreÂ§7 Blocks."
-                ]
-            },
-            {
-                "id": "wear_unique_armor_12",
-                "name": "Fashionable",
-                "lore": "Â§7Wear Â§e12 Â§7unique Armor Sets.",
-                "fullLore": [
-                    "Â§7Wear Â§e12 Â§7unique Armor Sets."
-                ],
-                "requiredAmount": 12
-            },
-            {
-                "id": "obtain_item_cat_talisman",
-                "name": "Cat",
-                "lore": "Â§7Obtain a Â§aCat TalismanÂ§7.",
-                "fullLore": [
-                    "Â§7Obtain a Â§aCat TalismanÂ§7."
-                ]
-            },
-            {
-                "id": "EQUIP_ROCK_UNCOMMON",
-                "name": "Rock Solid",
-                "lore": "Â§7Equip an Â§aUncommon Â§7or higher tiered Â§aRock PetÂ§7.",
-                "fullLore": [
-                    "Â§7Equip an Â§aUncommon Â§7or higher tiered Â§aRock PetÂ§7."
-                ]
-            },
-            {
-                "id": "skill_average",
-                "name": "Skill Average",
-                "lore": "Â§7Reach a non-cosmetic Skill Average of Â§a14Â§7.",
-                "fullLore": [
-                    "Â§7Reach a non-cosmetic Skill Average of Â§a14Â§7."
-                ],
-                "requiredAmount": 14
-            },
-            {
-                "id": "stat_health",
-                "name": "Healthy",
-                "lore": "Â§7Reach Â§c500 Â§câ�¤ HealthÂ§7.",
-                "fullLore": [
-                    "Â§7Reach Â§c500 Â§câ�¤ HealthÂ§7."
-                ],
-                "requiredAmount": 500
-            },
-            {
-                "id": "collect_exp_farming",
-                "name": "Skilled",
-                "tiers": [
-                    150000000,
-                    300000000,
-                    450000000,
-                    600000000,
-                    750000000
-                ],
-                "progress": 1512119877,
-                "lore": "Â§7Gain Â§b750M FarmingÂ§7 experience",
-                "fullLore": [
-                    "Â§7Gain Â§b750M FarmingÂ§7 experience"
-                ]
-            },
-            {
-                "id": "craft_item_hot_potato_book",
-                "name": "Potatorific",
-                "lore": "Â§7Craft a Â§5Hot Potato BookÂ§7.",
-                "fullLore": [
-                    "Â§7Craft a Â§5Hot Potato BookÂ§7."
-                ]
-            },
-            {
-                "id": "craft_item_small_backpack",
-                "name": "Carry-On",
-                "lore": "Â§7Craft a Â§aSmall BackpackÂ§7.",
-                "fullLore": [
-                    "Â§7Craft a Â§aSmall BackpackÂ§7."
-                ]
-            },
-            {
-                "id": "consume_mushed_glowed_tonic",
-                "name": "Is This Safe?",
-                "lore": "Â§7Consume a Â§2Mushed Glowy Tonic PotionÂ§7.",
-                "fullLore": [
-                    "Â§7Consume a Â§2Mushed Glowy Tonic PotionÂ§7."
-                ]
-            },
-            {
-                "id": "spawn_golden_goblin",
-                "name": "Strange Eggs",
-                "lore": "Â§7Spawn a Â§6Golden GoblinÂ§7.",
-                "fullLore": [
-                    "Â§7Spawn a Â§6Golden GoblinÂ§7."
-                ]
-            },
-            {
-                "id": "obtain_pets",
-                "name": "Pet Hoarder",
-                "lore": "Â§7Obtain Â§a12 Â§7unique Pets.",
-                "fullLore": [
-                    "Â§7Obtain Â§a12 Â§7unique Pets."
-                ],
-                "requiredAmount": 12
-            },
-            {
-                "id": "collect_pelts",
-                "name": "Hunter",
-                "tiers": [
-                    20000,
-                    40000,
-                    60000,
-                    80000,
-                    100000
-                ],
-                "progress": 112646,
-                "lore": "Â§7Collect Â§6100k PeltsÂ§7.",
-                "fullLore": [
-                    "Â§7Collect Â§6100k PeltsÂ§7."
-                ]
-            }
-        ],
-        "communityGoals": [
-            {
-                "id": "BLOW_CRYPTS",
-                "name": "KABOOM!",
-                "tiers": [
-                    15000,
-                    30000,
-                    45000,
-                    60000,
-                    75000
-                ],
-                "progress": 21177,
-                "lore": "Â§7Blow up Â§e75kÂ§7 Crypts in The Catacombs.",
-                "fullLore": [
-                    "Â§7Blow up Â§e75kÂ§7 Crypts in The Catacombs."
-                ]
-            },
-            {
-                "id": "kill_goblins",
-                "name": "Goblin Slayer",
-                "tiers": [
-                    400000,
-                    800000,
-                    1200000,
-                    1600000,
-                    2000000
-                ],
-                "progress": 1130409,
-                "lore": "Â§7Kill Â§a2M GoblinsÂ§7.",
-                "fullLore": [
-                    "Â§7Kill Â§a2M GoblinsÂ§7."
-                ]
-            },
-            {
-                "id": "break_block_ores",
-                "name": "Operation: Ore",
-                "tiers": [
-                    2000000,
-                    4000000,
-                    6000000,
-                    8000000,
-                    10000000
-                ],
-                "progress": 36810233,
-                "lore": "Â§7Break Â§e10M OreÂ§7 Blocks.",
-                "fullLore": [
-                    "Â§7Break Â§e10M OreÂ§7 Blocks."
-                ]
-            },
-            {
-                "id": "collect_exp_farming",
-                "name": "Skilled",
-                "tiers": [
-                    150000000,
-                    300000000,
-                    450000000,
-                    600000000,
-                    750000000
-                ],
-                "progress": 1512119877,
-                "lore": "Â§7Gain Â§b750M FarmingÂ§7 experience",
-                "fullLore": [
-                    "Â§7Gain Â§b750M FarmingÂ§7 experience"
-                ]
-            },
-            {
-                "id": "collect_pelts",
-                "name": "Hunter",
-                "tiers": [
-                    20000,
-                    40000,
-                    60000,
-                    80000,
-                    100000
-                ],
-                "progress": 112646,
-                "lore": "Â§7Collect Â§6100k PeltsÂ§7.",
-                "fullLore": [
-                    "Â§7Collect Â§6100k PeltsÂ§7."
-                ]
-            }
-        ]
+        "goals": null
     },
     "allGoals": [],
     "chickenHeadTimerDisplay": {
@@ -351,28 +18,28 @@
         "scale": 1
     },
     "communityGoalDisplay": {
-        "x": 4,
-        "y": 28.028961181640625,
+        "x": 5.333333492279053,
+        "y": 64.73226928710938,
         "scale": 1
     },
     "splasherDisplay": {
-        "x": 10,
-        "y": 10,
+        "x": 4.666666507720947,
+        "y": 26.694305419921875,
         "scale": 1
     },
     "hubSelectorDisplay": {
-        "x": 27.666671752929688,
-        "y": 77.07791137695312,
+        "x": 6.333333492279053,
+        "y": 65.06594848632812,
         "scale": 1
     },
     "bingoCardDisplay": {
-        "x": 582.6666870117188,
-        "y": 275.6103820800781,
+        "x": 581,
+        "y": 275.609375,
         "scale": 0.6499999999999997
     },
     "bingoTimerDisplay": {
-        "x": 2.3333332538604736,
-        "y": 322.32269287109375,
+        "x": 3.6666667461395264,
+        "y": 321.3216857910156,
         "scale": 1
     }
 }

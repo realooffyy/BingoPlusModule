@@ -3,6 +3,13 @@ import Settings from "../Settings"
 import { data } from "../utils/constants"
 import constants from "../utils/constants"
 
+const commandsList = [
+    "help",
+    "move",
+    "togglebingoapi",
+    "resetdata"
+]
+
 export const bingoPlusCommand = register("command", (...args) => {
     if (!args || !args[0]) return Settings.openGUI()
 
@@ -66,3 +73,22 @@ export const bingoPlusCommand = register("command", (...args) => {
     "togglebingoapi",
     "resetdata"
   ])
+
+
+/*
+.setTabCompletions((args) => {
+    if (args == undefined || args[0] == undefined) return commandsList
+
+    else {
+        if (args[0] === 'move') {
+            let output = []
+            guis.forEach(gui => {
+                gui.aliases.forEach(alias => {
+                    if (alias.startsWith(args[1].toLowerCase())) output.push(alias)
+                })
+            })
+            return output
+        }
+    }
+})
+*/

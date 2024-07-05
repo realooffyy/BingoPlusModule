@@ -1,8 +1,6 @@
 import request from "../../requestV2"
 import constants, { data } from "./constants"
 
-callBingoApi()  
-
 register("step", () => {
     callBingoApi()    
 }).setDelay(300)
@@ -24,13 +22,13 @@ function callBingoApi() {
             data.bingoApi.start = api.start
             data.bingoApi.end = api.end
 
-            data.bingoApi.goals = api.goals
-            data.bingoApi.communityGoals = [api.goals[0], api.goals[6], api.goals[12], api.goals[18], api.goals[24]]
+            //data.bingoApi.goals = api.goals
+            //data.bingoApi.communityGoals = [api.goals[0], api.goals[6], api.goals[12], api.goals[18], api.goals[24]]
             data.save()
             
         }
     })
     .catch(err => {
-        if (err.cause) ChatLib.chat(`${constants.PREFIX}&7Error fetching bingo api: &f"${err.cause}"\n${constants.PREFIX}&7please report this to ooffyy on discord`)
+        ChatLib.chat(`${constants.PREFIX}&7Error fetching bingo api: &f"${err.cause}"\n${constants.PREFIX}&7please report this to ooffyy on discord`)
     })
 }

@@ -8,8 +8,9 @@ import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 import "./commands/bingoParty"
 import "./commands/ratHelper"
-import "./commands/guideSearch"
+//import "./commands/guideSearch"
 
+// Legacy rendering
 import "./render/move"
 
 // Features
@@ -20,7 +21,7 @@ import "./features/bingo/chickenHeadTimer"
 import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"
 //import "./features/bingo/dreadlordPickup"
-import "./features/bingo/hideCompleteBingoGoals"
+import "./features/bingo/hideCompletedBingoGoals"
 
 import "./features/party/chatBlockers"
 
@@ -49,8 +50,4 @@ import "./features/world/rats"
  * - dreadlord sword drop warning
  * - splash display hub number guess
  * - brewing stand name display
- */
-
-/* IN PROGRESS
- * 
  */

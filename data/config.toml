@@ -17,7 +17,7 @@
 		bingo_card_display = true
 
 	[bingo.bingo_card]
-		hide_completed_bingo_goals = false
+		hide_completed_bingo_goals = true
 
 	[bingo.chat]
 		copy_achievements = true
@@ -31,7 +31,7 @@
 		bingo_timer = true
 
 	[bingo.chicken_head_timer]
-		hide_egg_laid_message = true
+		hide_egg_laid_message = false
 		chicken_head_timer = true
 
 	[bingo.blockers]
@@ -43,11 +43,11 @@
 		rat_helper = false
 
 [splasher]
-	no_potions_warning = false
+	no_potions_warning = true
 
 	[splasher.hub_selector_display]
 		hub_restart_warning = true
-		highlight_best_hubs = true
+		highlight_best_hubs = false
 		hub_selector_display = true
 		top_hubs = 5
 
@@ -58,16 +58,11 @@
 
 [party]
 
-	[party.bingo_party]
-		"alias_for_/msg_bingoparty_!p" = "ap"
-
 	[party.bingoparty_moderation]
 		"alias_for_/msg_bingoparty_!p" = "ap"
 
 	[party.message_blockers]
-		show_message_blocker_status = false
 		"block_join/leave" = 0
-		block_party_travel = 1
 		block_party_line_breaks = 0
 		block_party_travel_notifications = 1
 

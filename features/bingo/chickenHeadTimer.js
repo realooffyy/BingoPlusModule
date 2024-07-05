@@ -9,7 +9,7 @@ const layCooldown = 5000
 let lastLay = 0
 let opened = false
 
-let chickenHeadTimerGui = new BaseGui('chickenHeadTimerDisplay', ['chicken'])
+let chickenHeadTimerGui = new BaseGui('chickenHeadTimerDisplay', ['chickenHeadTimerDisplay', 'chickenHead', 'chicken'])
 registerGui(chickenHeadTimerGui)
 
 register("tick", () => {
@@ -27,7 +27,7 @@ registerWhen(register("renderOverlay", () => { // thanks bloom
     Renderer.scale(data.chickenHeadTimerDisplay.scale ?? 1)
 
     // Move GUI
-    if (Settings.chickenHeadTimerMove.isOpen()) { Renderer.drawStringWithShadow("Chicken Head Timer:", 0, 0); return }
+    if (chickenHeadTimerGui.isOpen()) { Renderer.drawStringWithShadow("Chicken Head Timer:", 0, 0); return }
     
     let sinceLay = new Date().getTime() - lastLay
     let remainingTime = layCooldown - sinceLay
