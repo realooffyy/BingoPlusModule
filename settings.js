@@ -3,15 +3,29 @@ import {
     @SwitchProperty,
     @TextProperty,
     @Vigilant,
-    @SliderProperty
+    @SliderProperty,
+    @SelectorProperty
 } from '../Vigilance/index'
 
-@Vigilant("BingoPlus/config", "Bingo+ Settings", {
+@Vigilant("BingoPlus/data", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
         const categories = ["General", "Bingo", "Party", "Splasher", "Chat", "Commands"];
 
         return categories.indexOf(a.name) - categories.indexOf(b.name);
-    }
+    },
+
+    getSubcategoryComparator: () => (a, b) => {
+        const subcategories = ["Message Blockers", "BingoParty Moderation"];
+
+        return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) -
+            subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
+    },
+
+    //getPropertyComparator: () => (a, b) => {
+        //const names = ["Do action!!!", "password", "text", "Color Picker"];
+
+        //return names.indexOf(a.attributesExt.name) - names.indexOf(b.attributesExt.name);
+    //}
 })
     
 class Settings {
@@ -21,15 +35,28 @@ class Settings {
         this.setCategoryDescription("General",
             `
             &6Bingo&c+ &bv${JSON.parse(FileLib.read("BingoPlus", "metadata.json")).version}
-            &aBy ooffyy
+            &aBy &dooffyy&r
+
+            &c[!] The config has been reset since &bv1.0.0&c; you may need to change some of your settings!
             `
         )
-        this.setSubcategoryDescription("Party", "Party Travel Messages",
-            `It's recommended to disable Party Travel Messages entirely: &aSkyblock Menu -> Settings -> Comms -> Co-op Travel Notifications`)
-        this.setSubcategoryDescription("Party", "Bingo Party",
-            `Thanks to &aaphased&r and &aTryp0MC&r for hosting BingoParty!`)
+
+        this.setSubcategoryDescription("Party", "BingoParty Moderation",
+            `Thanks to &aaphased&r and &aTryp0MC&r for hosting BingoParty!
+&8This section is intended for splashers from Bingo Brewers and other allowed users.`)
+        this.setSubcategoryDescription("Party", "Message Blockers",
+            `&cOff&r: Messages won't be blocked
+&6Only in Bingo Party&r: Messages will be blocked when in §6[MVP§r§c++§r§6] BingoParty§r's party
+&aEverywhere&r: Message will always be blocked
+
+If a BingoParty blocker is not working, try running &a/p list&r.`)
+            // It's recommended to disable Party Travel Messages entirely: &aSkyblock Menu -> Settings -> Comms -> Co-op Travel Notifications
+
         this.setSubcategoryDescription("Chat", "Dialogue Skipper",
-            `&cUse at your own risk!`)
+            `&cDisabled as the current method is slightly cheaty, will be reworked eventually`)
+
+        this.addDependency("Don't round", "Bingo Timer")
+        this.addDependency("Show timer everywhere", "Bingo Timer")
 
         this.addDependency("Show text", "Rat Helper")
         this.addDependency("Show beacon", "Rat Helper")
@@ -40,42 +67,50 @@ class Settings {
 
         this.addDependency("Show everywhere", "Splasher Display")
 
-        this.addDependency("Copy as Discord message","Oringo Abiphone Cost")
+        this.addDependency("Copy as Discord message", "Oringo Abiphone Cost")
     }
 
-    chickenHeadTimerMove = new Gui()
-    communityGoalDisplayMove = new Gui()
-    splasherDisplayMove = new Gui()
     hubSelectorDisplayMove = new Gui()
 
     // General
 
     @ButtonProperty({
-        name: "Discord",
-        description: "Click the button to join the Discord.",
+        name: "Bingo Party",
         category: "General",
-        subcategory: "Discord",
+        placeholder: "/p join BingoParty"
+    })
+    runBingoCommand() {
+        Client.currentGui.close()
+        ChatLib.command('p join BingoParty')
+    }
+
+    @ButtonProperty({
+        name: "Bingo Menu",
+        category: "General",
+        placeholder: "/bingo"
+    })
+    runBingoPartyJoinCommand() {
+        Client.currentGui.close()
+        ChatLib.command('bingo')
+    }
+
+    @ButtonProperty({
+        name: "Discord",
+        description: "Click the button to join my discord.",
+        category: "General",
         placeholder: "Join"
     })
     joinDiscord() {
         java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
     }
 
-
     // Bingo
-
-    @SwitchProperty({
-        name: "Only on Bingo",
-        description: "Only enable features in the &6Bingo &rcategory on Bingo profiles.",
-        category: "Bingo"
-    })
-    onlyOnBingo = true
 
     @SwitchProperty({
         name: "Community Goal Display",
         description: "Displays community goal data when on the Bingo Card menu.",
         category: "Bingo",
-        subcategory: "Bingo Card"
+        subcategory: "Community Goal Display"
     })
     communityGoalDisplay = true
 
@@ -83,16 +118,16 @@ class Settings {
         name: "Move",
         description: "Move the Community Goal Display",
         category: "Bingo",
-        subcategory: "Bingo Card",
+        subcategory: "Community Goal Display",
         placeholder: "Move"
     })
     MoveCommunityGoalDisplay() {
-        this.communityGoalDisplayMove.open()
+        ChatLib.command('b+ move communityGoalDisplay', true)
     }
 
     @SwitchProperty({
         name: "Hide Completed Bingo Goals",
-        description: "Stops rendering completed Bingo goals.",
+        description: "Stops rendering completed Bingo goals everywhere.",
         category: "Bingo",
         subcategory: "Bingo Card"
     })
@@ -114,7 +149,7 @@ class Settings {
         placeholder: "Move"
     })
     MoveChickenHeadTimer() {
-        this.chickenHeadTimerMove.open()
+        ChatLib.command('b+ move chickenHeadTimerDisplay', true)
     }
 
     @SwitchProperty({
@@ -164,30 +199,114 @@ class Settings {
         subcategory: "Rat Helper"
     })
     ratHelperShowBeacon = true
-  
+
+    @SwitchProperty({
+        name: "Bingo Card Display",
+        description: "Shows the Bingo Card on-screen.",
+        category: "Bingo",
+        subcategory: "Bingo Card Display"
+    })
+    bingoCardDisplay = false
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Bingo Card Display.",
+        category: "Bingo",
+        subcategory: "Bingo Card Display",
+        placeholder: "Move"
+    })
+    MoveBingoCardDisplay() {
+        ChatLib.command('b+ move bingoCardDisplay', true)
+    }
+
+    @SwitchProperty({
+        name: "Bingo Timer",
+        description: "Displays time until a Bingo starts, ends, and profile deletion.",
+        category: "Bingo",
+        subcategory: "Bingo Timer Display"
+    })
+    bingoTimerDisplay = false
+
+    @SwitchProperty({
+        name: "Don't round",
+        description: "Leaves the time as day:hour:minute:second and doesn't round.",
+        category: "Bingo",
+        subcategory: "Bingo Timer Display"
+    })
+    bingoTimerDisplayDontRound = false
+
+    @SwitchProperty({
+        name: "Show timer everywhere",
+        description: "Shows timer while not on a Bingo profile.",
+        category: "Bingo",
+        subcategory: "Bingo Timer Display"
+    })
+    bingoTimerDisplayEverywhere = false
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Bingo Timer Display.",
+        category: "Bingo",
+        subcategory: "Bingo Timer Display",
+        placeholder: "Move"
+    })
+    MoveBingoTimerDisplay() {
+        ChatLib.command('b+ move bingoTimerDisplay', true)
+    }
+    
+/*
+    @SwitchProperty({
+        name: "Broken Goal Helper",
+        description: "Sends a chat message with a solution to a broken goal when opening the Bingo Card.",
+        category: "Bingo",
+        subcategory: "Broken Goal Helper"
+    })
+    brokenBingoGoalHelper = false
+*/
     // Party
-
+    
+    /*
     @SwitchProperty({
-        name: "Block Party Travel Messages",
-        description: "Blocks party travel notifications in chat.\n&aYou can toggle this with &6/ptravel&a!&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r",
+        name: "Show message blocker status",
+        description: "Tells you which blockers are active when joining a party",
         category: "Party",
-        subcategory: "Party Travel Messages"
+        subcategory: "Message Blockers"
     })
-    blockPartyTravelMessages = false
+    blockPartyMessagesStatus = false
+    */
 
-    @SwitchProperty({
-        name: "Show status",
-        description: "Tells you if travel messages are enabled or disabled when you join a party.",
+    @SelectorProperty({
+        name: "Block Party Line Breaks",
+        description: "Blocks the blue separator line.\nRecommended if using the other blockers!", // \n&aToggleable with &6/ptravel&a.&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r
         category: "Party",
-        subcategory: "Party Travel Messages"
+        subcategory: "Message Blockers",
+        options: ['Off', 'Only in Bingo Party', 'Everywhere']
     })
-    blockPartyTravelMessagesWarning = false
+    blockPartyLineBreak = 0;
+
+    @SelectorProperty({
+        name: "Block Party Travel Notifications",
+        description: "Blocks party travel notifications.\n&8Instead of using 'Everywhere' consider disabling Co-op Travel Notifications in SkyBlock settings!", // \n&aToggleable with &6/ptravel&a.&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r
+        category: "Party",
+        subcategory: "Message Blockers",
+        options: ['Off', 'Only in Bingo Party', 'Everywhere']
+    })
+    blockPartyTravelMessagesNew = 0;
+
+    @SelectorProperty({
+        name: "Block Join/Leave",
+        description: "Blocks party join/leave messages. This includes the 5 min disconnect messages.",
+        category: "Party",
+        subcategory: "Message Blockers",
+        options: ['Off', 'Only in Bingo Party', 'Everywhere']
+    })
+    blockPartyJoinLeave = 0;
 
     @TextProperty({
         name: "Alias for /msg BingoParty !p",
-        description: "Create an alias for &6/msg BingoParty !p&r.\n&cRun /ct load after changing alias!\nLeave blank to disable.\n&cThis is intended for splashers/allowed users only!",
+        description: "Creates an alias for &6/msg BingoParty !p&r. Leave blank to disable.\nExample: &aap&r\n&cRun /ct load after changing alias!",
         category: "Party",
-        subcategory: "Bingo Party"
+        subcategory: "BingoParty Moderation"
     })
     bingoPartyAlias = ""
 
@@ -195,7 +314,7 @@ class Settings {
         name: "BingoParty Commands Documentation",
         description: "Click the button to open this in your browser.",
         category: "Party",
-        subcategory: "Bingo Party",
+        subcategory: "BingoParty Moderation",
         placeholder: "GitHub"
     })
     openBPDocumentation() {
@@ -238,7 +357,7 @@ class Settings {
         placeholder: "Move"
     })
     MoveSplasherDisplay() {
-        this.splasherDisplayMove.open()
+        ChatLib.command('b+ move splasherDisplay', true)
     }
 
     @SwitchProperty({

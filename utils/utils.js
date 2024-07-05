@@ -72,3 +72,17 @@ export const highlightSlot = (slot, rgba) => {
     Renderer.translate(0, 0, 300);
     Renderer.drawRect(rgba ? Renderer.color(rgba[0], rgba[1], rgba[2], rgba[3]) : Renderer.color(0, 255, 0, 255), renderX - 8, renderY - 8, 16, 16);
 }
+
+// from AzuredClient
+export function romanToInt(s) {
+    let accumulator = 0
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === 'I' && (s[i + 1] === 'V' || s[i + 1] === 'X')) {
+            accumulator += romanHash[s[i + 1]] - romanHash[s[i]]
+            i++
+        } else {
+            accumulator += romanHash[s[i]]
+        }
+    }
+    return accumulator
+}

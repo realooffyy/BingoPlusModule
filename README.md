@@ -19,6 +19,10 @@ If the module does not seem to be working, join the Discord and share your log i
     Displays community goal data when on the Bingo Card menu.
 </details>
 <details>
+    <summary>Bingo Timer Display</summary>
+    Displays time until a Bingo starts, ends, and profile deletion.
+</details>
+<details>
     <summary>Chicken Head Timer</summary>
     Displays a timer for the Chicken Head cooldown.
 </details>
@@ -37,6 +41,10 @@ If the module does not seem to be working, join the Discord and share your log i
 <details>
     <summary>Block Party Travel Messages</summary>
     Block party travel notifications while on a Bingo profile.
+</details>
+<details>
+    <summary>Rat Helper</summary>
+    Shows rat waypoints. Toggleable with /rats.
 </details>
 
 ### Splasher
@@ -58,7 +66,7 @@ If the module does not seem to be working, join the Discord and share your log i
 
 <details>
     <summary>Oringo Cost</summary>
-    Convert Oringo's Abiphone message to include the rarity and cost of each pet.
+    Convert Oringo's Abiphone message to include the rarity and cost of each pet. Also copyable as a Discord message!
 </details>
 <details>
     <summary>Dialogue Skipper (use at your own risk!)</summary>

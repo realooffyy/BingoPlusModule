@@ -1,27 +1,32 @@
 import "./utils/firstInstall"
-import "./utils/bingoApi"
+import "./utils/BingoApi"
+
+import "./render/registerGui"
 
 // Commands
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
-import "./commands/partyTravelMessages"
 import "./commands/bingoParty"
 import "./commands/ratHelper"
+//import "./commands/guideSearch"
 
+// Legacy rendering
 import "./render/move"
 
 // Features
 import "./features/bingo/bakerBlocker"
+import "./features/bingo/bingoCardDisplay"
+import "./features/bingo/bingoTimerDisplay"
 import "./features/bingo/chickenHeadTimer"
 import "./features/bingo/communityGoalDisplay"
 import "./features/bingo/copyAchievements"
 //import "./features/bingo/dreadlordPickup"
-import "./features/bingo/hideCompleteBingoGoals"
+import "./features/bingo/hideCompletedBingoGoals"
+
+import "./features/party/chatBlockers"
 
 import "./features/chat/dialogueSkipper"
 import "./features/chat/oringoCost"
-
-import "./features/party/blockPartyTravelMessages"
 
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
@@ -31,7 +36,6 @@ import "./features/world/rats"
 
 /* TODO
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler, bednom
- * - timer for bingo end and profile deletion
  * - hotm tree unlock reminders
  * - king talisman helper!
  * - fetchur/puzzler solvers?? so many mods have this xD
@@ -46,9 +50,4 @@ import "./features/world/rats"
  * - dreadlord sword drop warning
  * - splash display hub number guess
  * - brewing stand name display
- * - move pets for oringo helper to constants
- */
-
-/* IN PROGRESS
- * 
  */

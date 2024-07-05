@@ -1,4 +1,4 @@
-import Settings from "../settings"
+import Settings from "../Settings"
 
 const commandName = Settings.bingoPartyAlias
 const commandList = [ 

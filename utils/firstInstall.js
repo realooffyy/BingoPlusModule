@@ -6,7 +6,7 @@ const checkFirstInstall = () => {
     data.save()
 
     ChatLib.chat(`&6&m${ChatLib.getChatBreak(" ")}`)
-    ChatLib.chat(ChatLib.getCenteredText(`&rThank you for installing &6[&6Bingo&c+&6]&r!`))
+    ChatLib.chat(ChatLib.getCenteredText(`&rThank you for importing &6[&6Bingo&c+&6]&r!`))
     new TextComponent(ChatLib.getCenteredText("&rRun the &6/b+ &rcommand to get started")).setClick("run_command", "/b+").chat()
     ChatLib.chat(`&6&m${ChatLib.getChatBreak(" ")}`)
 }
