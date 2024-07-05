@@ -3,8 +3,8 @@ import Settings from "../Settings"
 const commandName = Settings.bingoPartyAlias
 const commandList = [ 
     'mute', 'unmute',
-    'promote',
-    'kickoffline', 'kickafk',
+    'promote', 'pro',
+    'kickoffline', 'kickafk', 'ko', 'ka',
     'kick', 'remove',
     'block', 'ban',
     'unblock', 'unban',
@@ -12,6 +12,8 @@ const commandList = [
     'invite', 'inv',
     'allinvite',
     'speak', 'say',
+    'repeat', 'rep',
+    'customrepeat', 'customrep', 'crepeat', 'crep',
     'rule',
     'poll',
     'help',
