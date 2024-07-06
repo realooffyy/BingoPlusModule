@@ -15,9 +15,9 @@ register("renderWorld", () => {
     if (!warningSent) { ChatLib.chat(warning); warningSent = true}
     rats.forEach(element => {
         const [x, y, z, text] = element
-        RenderLib.drawEspBox(x, y, z, 1, 1, 1, 0, 0, 1, true)
+        RenderLib.drawInnerEspBox(x, y, z, 1, 1, 0, 1, 0, 0.15, true)
         if (Settings.ratHelperShowText) Tessellator.drawString(text, x, y, z)
-        if (Settings.ratHelperShowBeacon) renderBeaconBeam(x-0.5, y, z-0.5, 1, 1, 1, 1, false, 300)
+        if (Settings.ratHelperShowBeacon) renderBeaconBeam(x-0.5, y, z-0.5, 0, 1, 0, 1, false, 300)
     })
 })
 
