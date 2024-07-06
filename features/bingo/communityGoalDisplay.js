@@ -26,14 +26,14 @@ let scale = 1
 let height = baseHeight
 let width = baseWidth
 
-register("tick", (t) => {
-    opened = (Bingo.cardOpened && Settings.communityGoalDisplay)
-    if (!Bingo.cardOpened) lines = baseText
-    if (t%10 || !Skyblock.inSkyblock || !Settings.communityGoalDisplay) return
+register("tick", () => {
+    opened = (Skyblock.inSkyblock && Bingo.cardLoaded && Settings.communityGoalDisplay)
+    if (!Bingo.cardLoaded) lines = baseText
     if (Bingo.community !== null) {
-        if (Bingo.community.length == 5 && Bingo.cardOpened) {
+        if (Bingo.community.length == 5 && Bingo.cardLoaded && !this.communityGoalDisplayLinesUpdated) {
             compileLines()
             calcWidth()
+            Bingo.communityGoalDisplayLinesUpdated = true
         }
     }
 })
