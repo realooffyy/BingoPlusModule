@@ -1,6 +1,7 @@
 import Settings from "../Settings"
 import Skyblock from "./Skyblock"
 import { data } from "./constants"
+import { getScoreboard } from "./utils"
 
 const S30PacketWindowItems = Java.type("net.minecraft.network.play.server.S30PacketWindowItems")
 const S2DPacketOpenWindow = Java.type("net.minecraft.network.play.server.S2DPacketOpenWindow")
@@ -32,8 +33,13 @@ export default new class Bingo {
         register("tick", (t) => { // bingo check
             if (t%10 || !Skyblock.inSkyblock) return
             const displayName = Player.getDisplayName().text
-            this.inBingo = displayName.includes("Ⓑ")
-            this.enabled = this.inBingo || !Settings.onlyOnBingo
+            
+            //this.inBingo = displayName.includes("Ⓑ") // old detection (breaks when visiting)
+
+            getScoreboard().forEach(line => {
+                if (line.includes('Ⓑ')) return this.inBingo = true
+            })
+            return this.inBingo = false
         })
 
         register("packetReceived", (packet) => {
@@ -100,7 +106,7 @@ export default new class Bingo {
         })
         return goals
     }
-    
+
     reset() {
         this.inBingo = null
         

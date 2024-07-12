@@ -53,8 +53,8 @@ import "./features/world/rats"
  */
 
 
-/* changelog 
+/* 1.1.1 changelog 
 - optimised community goal display
 - added automatic achievement sending in party and guild
-- 
+- changed bingo detection (experimental)
  */
