@@ -14,12 +14,12 @@ import "./commands/ratHelper"
 import "./render/move"
 
 // Features
+import "./features/bingo/achievements"
 import "./features/bingo/bakerBlocker"
 import "./features/bingo/bingoCardDisplay"
 import "./features/bingo/bingoTimerDisplay"
 import "./features/bingo/chickenHeadTimer"
 import "./features/bingo/communityGoalDisplay"
-import "./features/bingo/copyAchievements"
 //import "./features/bingo/dreadlordPickup"
 import "./features/bingo/hideCompletedBingoGoals"
 
@@ -50,4 +50,11 @@ import "./features/world/rats"
  * - dreadlord sword drop warning
  * - splash display hub number guess
  * - brewing stand name display
+ */
+
+
+/* changelog 
+- optimised community goal display
+- added automatic achievement sending in party and guild
+- 
  */

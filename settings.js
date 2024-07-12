@@ -164,9 +164,25 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
         name: "Copy Achievements",
         description: "Automatically copies some Bingo achievements to clipboard.\n&6Incomplete!",
         category: "Bingo",
-        subcategory: "Chat"
+        subcategory: "Achievements"
     })
     copyAchievements = true
+
+    @SwitchProperty({
+        name: "Send in guild",
+        description: "Sends achievements to guild",
+        category: "Bingo",
+        subcategory: "Achievements"
+    })
+    autoSendAchievementsInGuild = false
+
+    @SwitchProperty({
+        name: "Send in party",
+        description: "Sends achievements to party",
+        category: "Bingo",
+        subcategory: "Achievements"
+    })
+    autoSendAchievementsInParty = false
 
     @SwitchProperty({
         name: "Baker Blocker",

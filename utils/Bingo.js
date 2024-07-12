@@ -100,6 +100,7 @@ export default new class Bingo {
         })
         return goals
     }
+    
     reset() {
         this.inBingo = null
         
@@ -107,6 +108,4 @@ export default new class Bingo {
         this.cardLoaded = false
         this.communityGoalDisplayLinesUpdated = false
     }
-
-
 }
