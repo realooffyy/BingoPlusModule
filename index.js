@@ -55,6 +55,7 @@ import "./features/world/rats"
 
 /* 1.1.1 changelog 
 - added automatic achievement sending in party and guild
+- added disclaimer to leecher display
 - changed bingo detection (experimental)
 - changed rat waypoint colours
 - optimised community goal display
