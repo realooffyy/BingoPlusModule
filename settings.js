@@ -272,7 +272,7 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
 
     @SwitchProperty({
         name: "Puzzler solver",
-        description: "Solves the Puzzler's riddle in the Dwarven Mines.\nlooks better than the solvers in other mods tbh",
+        description: "Solves the Puzzler's riddle in the Dwarven Mines.",
         category: "Bingo",
         subcategory: "Puzzler"
     })
