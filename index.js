@@ -33,6 +33,8 @@ import "./features/splasher/noPotionWarning"
 import "./features/splasher/hubSelectorDisplay"
 
 import "./features/world/rats"
+import "./features/world/puzzlerSolver"
+
 
 /* TODO
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler, bednom

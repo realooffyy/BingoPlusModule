@@ -269,6 +269,14 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
     MoveBingoTimerDisplay() {
         ChatLib.command('b+ move bingoTimerDisplay', true)
     }
+
+    @SwitchProperty({
+        name: "Puzzler solver",
+        description: "Solves the Puzzler's riddle in the Dwarven Mines.\nlooks better than the solvers in other mods tbh",
+        category: "Bingo",
+        subcategory: "Puzzler"
+    })
+    puzzlerSolver = false
     
 /*
     @SwitchProperty({
