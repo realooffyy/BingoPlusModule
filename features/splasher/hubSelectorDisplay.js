@@ -7,6 +7,8 @@ import { highlightSlot } from "../../utils/utils"
 
 import Skyblock from "../../utils/Skyblock"
 
+// i dont want to rewrite this lol
+
 const nameRegex = /§(a|c)(?:Dungeon|SkyBlock) Hub #(\d{1,2})/
 // https://regex101.com/r/b8Gx1Q/1
 const playerRegex = /§5§o§7Players: (\d{1,2})\/(\d{1,2})/

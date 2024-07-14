@@ -55,7 +55,11 @@ import "./features/world/puzzlerSolver"
  */
 
 
-/* 1.1.1 changelog 
+/*
+    1.1.2 changelog
+-
+
+    1.1.1 changelog 
 - added automatic achievement sending in party and guild
 - added disclaimer to leecher display
 - added puzzler solver

@@ -8,7 +8,7 @@ import Bingo from "../../utils/Bingo"
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
 import { registerWhen, removeUnicode } from "../../utils/utils"
-import { getStringHeight, getStringWidth, rendering } from "../../render/utils"
+import { getStringHeight, getStringWidth, renderTextBox } from "../../render/utils"
 
 let communityGoalDisplayGui = new BaseGui('communityGoalDisplay', ['communityGoalDisplay', 'communitygoal', 'communitygoals', 'community'])
 registerGui(communityGoalDisplayGui)
@@ -36,11 +36,11 @@ register("tick", () => {
 })
 
 registerWhen(register('guiRender', () => { // rendering
-    rendering(lines, 'communityGoalDisplay', height, width)
+    renderTextBox(lines, 'communityGoalDisplay', height, width)
 }), () => opened)
 
 registerWhen(register('renderOverlay', () => { // settings rendering
-    rendering('&6&lCommunity Goals&r', 'communityGoalDisplay')
+    renderTextBox('&6&lCommunity Goals&r', 'communityGoalDisplay')
 }), () => communityGoalDisplayGui.isOpen())
 
 function compileLines() {
@@ -52,4 +52,5 @@ function compileLines() {
     })
 
     width = getStringWidth(lines)
+    height = getStringHeight(lines)
 }

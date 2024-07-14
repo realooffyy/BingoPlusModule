@@ -12,7 +12,9 @@ export const getStringWidth = text => {
     })
     return width
 }
-
+/**
+ * Gets height of a string
+ */
 export const getStringHeight = text => text.split('\n').length * 9
 
 
@@ -24,18 +26,18 @@ export const getStringHeight = text => text.split('\n').length * 9
  * @param {Number} - width of text
  * @param {Number} - border size
  */
-export function rendering(text, dataName, height = 100, width = 100, border = 5) {
+export function renderTextBox(text, dataName, height = 100, width = 100, border = 5) {
     const guiX = data[dataName].x
     const guiY = data[dataName].y
-    const scale = data[dataName].scale
-    const guiHeight = height * scale
-    const guiWidth = width * scale
-    const guiBorder = border * scale
+    const guiScale = data[dataName].scale
+    const guiHeight = height * guiScale
+    const guiWidth = width * guiScale
+    const guiBorder = border * guiScale
 
-    const rectangle = new Rectangle(Renderer.color(0, 0, 0, 80), guiX, guiY, guiWidth+guiBorder, guiHeight)
+    const rectangle = new Rectangle(Renderer.color(0, 0, 0, 80), guiX, guiY, guiWidth+(guiBorder*2), guiHeight+(guiBorder*2))
     rectangle.draw()
 
-    Renderer.translate(guiX+(border*scale), guiY+(border*scale))
-    Renderer.scale(scale)
+    Renderer.translate(guiX + guiBorder, guiY + guiBorder)
+    Renderer.scale(guiScale)
     Renderer.drawStringWithShadow(text, 0, 0)
 }
