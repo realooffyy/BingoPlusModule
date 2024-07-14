@@ -8,6 +8,7 @@ import Bingo from "../../utils/Bingo"
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
 import { registerWhen, removeUnicode } from "../../utils/utils"
+import { getStringHeight, getStringWidth, rendering } from "../../render/utils"
 
 let communityGoalDisplayGui = new BaseGui('communityGoalDisplay', ['communityGoalDisplay', 'communitygoal', 'communitygoals', 'community'])
 registerGui(communityGoalDisplayGui)
@@ -20,9 +21,6 @@ let lines = baseText
 const baseWidth = 100
 const baseHeight = 118
 
-let guiX = 0
-let guiY = 0
-let scale = 1
 let height = baseHeight
 let width = baseWidth
 
@@ -32,37 +30,18 @@ register("tick", () => {
     if (Bingo.community !== null) {
         if (Bingo.community.length == 5 && Bingo.cardLoaded && !this.communityGoalDisplayLinesUpdated) {
             compileLines()
-            calcWidth()
             Bingo.communityGoalDisplayLinesUpdated = true
         }
     }
 })
 
 registerWhen(register('guiRender', () => { // rendering
-    rendering(lines)
+    rendering(lines, 'communityGoalDisplay', height, width)
 }), () => opened)
 
 registerWhen(register('renderOverlay', () => { // settings rendering
-    rendering('&6&lCommunity Goals&r')
+    rendering('&6&lCommunity Goals&r', 'communityGoalDisplay')
 }), () => communityGoalDisplayGui.isOpen())
-
-/**
- * draws the stuff
- * @param {String} - the string to render
- */
-function rendering(text) {
-    guiX = data.communityGoalDisplay.x
-    guiY = data.communityGoalDisplay.y
-    scale = data.communityGoalDisplay.scale
-    height = baseHeight * scale
-
-    const rectangle = new Rectangle(Renderer.color(0, 0, 0, 80), guiX, guiY, width, height)
-    rectangle.draw()
-
-    Renderer.translate(guiX+5, guiY+5)
-    Renderer.scale(scale)
-    Renderer.drawStringWithShadow(text, 0, 0)
-}
 
 function compileLines() {
     lines = '&6&lCommunity Goals&r\n'
@@ -71,12 +50,6 @@ function compileLines() {
         if (goal.rank) lines += `(&6&l#${goal.rank} &fContributor)`
         else if (goal.percent) lines += `&8(Top &${goal.percentColour}${goal.percent}%&8)&r`
     })
-}
 
-function calcWidth() {
-    width = 100
-    lines.split('\n').forEach(x => {
-        const lineWidth = Renderer.getStringWidth(x)
-        if (width < lineWidth) width = (lineWidth + 10) * scale 
-    })
+    width = getStringWidth(lines)
 }
