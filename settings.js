@@ -276,7 +276,7 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
         category: "Bingo",
         subcategory: "Puzzler"
     })
-    puzzlerSolver = false
+    puzzlerSolver = true
 
     @SwitchProperty({
         name: "Accurate playtime",
@@ -284,7 +284,7 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
         category: "Bingo",
         subcategory: "Playtime"
     })
-    accurateBingoPlaytime = false
+    accurateBingoPlaytime = true
 
 /*
     @SwitchProperty({
