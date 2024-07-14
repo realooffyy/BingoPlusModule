@@ -31,15 +31,11 @@ export default new class Bingo {
         this.communityGoalDisplayLinesUpdated = false
 
         register("tick", (t) => { // bingo check
-            if (t%10 || !Skyblock.inSkyblock) return
-            const displayName = Player.getDisplayName().text
-            
-            //this.inBingo = displayName.includes("Ⓑ") // old detection (breaks when visiting)
+            if (t%40 || !Skyblock.inSkyblock) return
 
-            getScoreboard().forEach(line => {
-                if (line.includes('Ⓑ')) return this.inBingo = true
-            })
-            return this.inBingo = false
+            // TODO: improve bingo detection
+            const displayName = Player.getDisplayName().text
+            this.inBingo = displayName.includes("Ⓑ")
         })
 
         register("packetReceived", (packet) => {
