@@ -26,7 +26,7 @@ export const getStringHeight = text => text.split('\n').length * 9
  * @param {Number} - width of text
  * @param {Number} - border size
  */
-export function renderTextBox(text, dataName, height = 100, width = 100, border = 5) {
+export function renderTextBox(text, dataName, height = 100, width = 100, alpha = 80, border = 5) {
     const guiX = data[dataName].x
     const guiY = data[dataName].y
     const guiScale = data[dataName].scale
@@ -34,7 +34,7 @@ export function renderTextBox(text, dataName, height = 100, width = 100, border 
     const guiWidth = width * guiScale
     const guiBorder = border * guiScale
 
-    const rectangle = new Rectangle(Renderer.color(0, 0, 0, 80), guiX, guiY, guiWidth+(guiBorder*2), guiHeight+(guiBorder*2))
+    const rectangle = new Rectangle(Renderer.color(0, 0, 0, alpha), guiX, guiY, guiWidth+(guiBorder*2), guiHeight+(guiBorder*2))
     rectangle.draw()
 
     Renderer.translate(guiX + guiBorder, guiY + guiBorder)

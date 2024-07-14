@@ -5,6 +5,7 @@ import { registerWhen, getTabList, getScoreboard, getValue, removeUnicode } from
 import Skyblock from "../../utils/Skyblock"
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
+import { getStringHeight, getStringWidth, renderTextBox } from "../../render/utils"
 
 const playersTabRegex = /.*Players \((\d{1,2})\)/
 const playersBoardRegex = /  \((\d{1,2})\/(\d{1,2})\).*/
@@ -120,31 +121,15 @@ register("step", () => { // line constructor
         if (ironman.length) lines += `&7&l♲ Ironman:&r\n ${ironman.join('\n ')}\n`
         if (leechers.length) lines += `&c&lൠ Leechers:&r\n ${leechers.join('\n ')}\n`
 
+        height = getStringHeight(lines)
+        width = getStringWidth(lines)
+
     }
 }).setFps(2)
 
-const renderDisplay = () => {
-    const guiX = data.splasherDisplay.x
-    const guiY = data.splasherDisplay.y
-    const scale = data.splasherDisplay.scale
-
-    height = ((lines.replace(/[^\n]/g, "").length)*9 +10 ) *scale
-    width = base_width * scale
-    const rectangle = new Rectangle(Renderer.color(0, 0, 0, 50), guiX, guiY, width, height) // background
-    rectangle.draw()
-
-    Renderer.translate(guiX, guiY, 1000)
-    Renderer.scale(scale)
-    
-    Renderer.drawStringWithShadow(lines, 5, 5) // text
-
-    Renderer.retainTransforms(false)
-    Renderer.finishDraw()
-}
-
 registerWhen(register("renderOverlay", () => { // thanks bloom
     if (!opened) return
-    renderDisplay()
+    renderTextBox(lines, 'splasherDisplay', height, width, 60)
 }), () => opened)
 
 register("clicked", (x, y, btn, state) => {
