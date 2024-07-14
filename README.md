@@ -16,7 +16,7 @@ If the module does not seem to be working, join the Discord and share your log i
 
 <details>
     <summary>Community Goal Display</summary>
-    Displays community goal data when on the Bingo Card menu.
+    Displays community goal information when in the Bingo Card menu.
 </details>
 <details>
     <summary>Bingo Timer</summary>
@@ -36,7 +36,7 @@ If the module does not seem to be working, join the Discord and share your log i
 </details>
 <details>
     <summary>Copy Achievements</summary>
-    Automatically copies some Bingo achievements to clipboard.
+    Automatically copies some Bingo achievements to clipboard. Also optionally automatically send these in guild and party chat.
 </details>
 <details>
     <summary>Baker Blocker</summary>
@@ -49,6 +49,10 @@ If the module does not seem to be working, join the Discord and share your log i
 <details>
     <summary>Rat Helper</summary>
     Shows rat waypoints. Toggleable with /rats.
+</details>
+<details>
+    <summary>Puzzler Solver</summary>
+    Solves the Puzzler's riddle in the Dwarven Mines.
 </details>
 
 ### Party

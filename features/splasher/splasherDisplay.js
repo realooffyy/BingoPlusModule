@@ -151,8 +151,12 @@ register("clicked", (x, y, btn, state) => {
     if (opened && !splasherGui.isOpen() && state) {
         if ((y <= data.splasherDisplay.y + height && y >= data.splasherDisplay.y) &&
             (x <= data.splasherDisplay.x + width && x >= data.splasherDisplay.x)) {
-            let copy = `[Bingo+] Extracted splasher display at <t:${Math.floor(Date.now()/1000)}>\n`+
-                       '```' + lines.removeFormatting() + '```'
+                
+            const copy =
+`[Bingo+] Extracted splasher display at <t:${Math.floor(Date.now()/1000)}>
+**This is not a definitive leecher list!** Please proofcheck before issuing punishments.
+\`\`\`${lines.removeFormatting()}\`\`\``
+
             ChatLib.command(`ct copy ${copy}`, true)
             ChatLib.chat(`${constants.PREFIX}&aCopied current info to clipboard!`)
         }

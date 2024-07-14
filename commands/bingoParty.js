@@ -2,6 +2,7 @@ import Settings from "../Settings"
 
 const commandName = Settings.bingoPartyAlias
 const commandList = [ 
+    'boopme',
     'mute', 'unmute',
     'promote', 'pro',
     'kickoffline', 'kickafk', 'ko', 'ka',
@@ -11,10 +12,11 @@ const commandList = [
     'stream', 'public', 'open',
     'invite', 'inv',
     'allinvite',
-    'speak', 'say',
+    'say', 'speak',
     'repeat', 'rep',
-    'customrepeat', 'customrep', 'crepeat', 'crep',
+    'customrep', 'customrepeat', 'crep', 'crepeat',
     'rule',
+    'guide',
     'poll',
     'help',
     // leave the worst for last
