@@ -60,6 +60,7 @@ import "./features/world/puzzlerSolver"
     1.1.2 changelog
 - added accurate bingo playtime
 - changed puzzler solver to be on by default
+- optimised splasher display
 
     1.1.1 changelog 
 - added automatic achievement sending in party and guild
