@@ -14,6 +14,7 @@ import "./commands/ratHelper"
 import "./render/move"
 
 // Features
+import "./features/bingo/accurateBingoPlaytime"
 import "./features/bingo/achievements"
 import "./features/bingo/bakerBlocker"
 import "./features/bingo/bingoCardDisplay"

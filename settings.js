@@ -279,12 +279,22 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
     puzzlerSolver = false
 
     @SwitchProperty({
+        name: "Accurate playtime",
+        description: "Shows a more accurate Bingo playtime by measuring each second. Use &a/playtime &rto view.\n&cYou should preferably have this feature enabled before creating your Bingo profile for the most accurate time!",
+        category: "Bingo",
+        subcategory: "Playtime"
+    })
+    accurateBingoPlaytime = false
+
+/*
+    @SwitchProperty({
         name: "Dreadlord Sword alert",
         description: "Warns you when you pickup a Dreadlord Sword on Bingo.",
         category: "Bingo",
         subcategory: "Dreadlord Sword"
     })
     dreadlordSwordAlert = false
+*/
     
 /*
     @SwitchProperty({

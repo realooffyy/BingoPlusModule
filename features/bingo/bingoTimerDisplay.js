@@ -5,6 +5,7 @@ import Bingo from "../../utils/Bingo"
 import Skyblock from "../../utils/Skyblock"
 import { data } from "../../utils/constants"
 import { registerWhen } from "../../utils/utils"
+import { msToTime } from "../../utils/utils"
 
 let bingoTimerDisplayGui = new BaseGui('bingoTimerDisplay', ['bingoTimerDisplay', 'bingoTimer'])
 registerGui(bingoTimerDisplayGui)
@@ -69,17 +70,3 @@ registerWhen(register("renderOverlay", () => {
     Renderer.scale(data.bingoTimerDisplay.scale)
     Renderer.drawStringWithShadow(line, data.bingoTimerDisplay.x, data.bingoTimerDisplay.y)
 }), () => opened || bingoTimerDisplayGui.isOpen())
-
-function msToTime(s) { // adapted from https://stackoverflow.com/questions/9763441/milliseconds-to-time-in-javascript
-    let ms = s % 1000
-    s = (s - ms) / 1000
-    let secs = s % 60
-    s = (s - secs) / 60
-    let mins = s % 60
-    s = (s - mins) / 60
-    let hrs = s % 24
-    s = (s - hrs) / 24
-    let days = s
-  
-    return [days, hrs, mins, secs]
-}

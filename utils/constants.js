@@ -25,6 +25,9 @@ export const data = new PogObject("BingoPlus", {
         goals: null
     },
 
+    bingoPlaytimeStart: null,
+    bingoPlaytime: 0,
+
     allGoals: [],
 
     chickenHeadTimerDisplay: {
