@@ -31,7 +31,7 @@ export default new class Bingo {
         this.communityGoalDisplayLinesUpdated = false
 
         register("tick", (t) => { // bingo check
-            if (t%40 || !Skyblock.inSkyblock) return
+            if (t%10 || !Skyblock.inSkyblock) return
 
             // TODO: improve bingo detection
             const displayName = Player.getDisplayName().text
