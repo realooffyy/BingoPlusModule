@@ -5,7 +5,7 @@ import { registerWhen, getTabList, getScoreboard, getValue, removeUnicode } from
 import Skyblock from "../../utils/Skyblock"
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
-import { getStringHeight, getStringWidth, renderTextBox } from "../../render/utils"
+import { getStringHeight, getStringWidth, drawTextBox } from "../../render/utils"
 
 const playersTabRegex = /.*Players \((\d{1,2})\)/
 const playersBoardRegex = /  \((\d{1,2})\/(\d{1,2})\).*/
@@ -19,16 +19,15 @@ let enjoyers = 0
 let ironman = []
 let leechers = []
 
-const base_width = 150
-let width = 1
-let height = 1
+let width = 100
+let height = 100
 
 let splasherGui = new BaseGui('splasherDisplay', ['splasherDisplay', 'splasher', 'splashing'])
 registerGui(splasherGui)
 
 register("tick", () => { // opened and location manager
     if (!Settings.splasherDisplay || !Skyblock.inSkyblock) return
-    opened = Skyblock.subArea === 'Pet Care' || Settings.splasherDisplayEverywhere || splasherGui.isOpen()
+    opened = Skyblock.subArea === 'Pet Care' || Settings.splasherDisplayEverywhere
 })
 
 /*
@@ -128,9 +127,12 @@ register("step", () => { // line constructor
 }).setFps(2)
 
 registerWhen(register("renderOverlay", () => { // thanks bloom
-    if (!opened) return
-    renderTextBox(lines, 'splasherDisplay', height, width, 60)
+    drawTextBox(lines, 'splasherDisplay', height, width, 60)
 }), () => opened)
+
+registerWhen(register("renderOverlay", () => { // thanks bloom
+    drawTextBox('&6&lSplasher Display', 'splasherDisplay', 100, 100, 60)
+}), () => splasherGui.isOpen())
 
 register("clicked", (x, y, btn, state) => {
     if (opened && !splasherGui.isOpen() && state) {

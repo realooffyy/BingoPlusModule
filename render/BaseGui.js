@@ -39,9 +39,9 @@ export class BaseGui {
             if (!this.gui.isOpen()) return
 
             if (keyCode == 13)
-                data[guiData].scale += 0.05
+                data[guiData].scale = (Number(data[guiData].scale) + 0.05).toFixed(2)
             else if (keyCode == 12)
-                data[guiData].scale -= 0.05
+                data[guiData].scale = (data[guiData].scale - 0.05).toFixed(2)
             
             else if (keyCode == 200) // up
                 data[guiData].y -= 1

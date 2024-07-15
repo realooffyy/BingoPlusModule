@@ -9,13 +9,13 @@ import {
 
 @Vigilant("BingoPlus/data", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
-        const categories = ["General", "Bingo", "Party", "Splasher", "Chat", "Commands"];
+        const categories = ["General", "Bingo", "Other", "Party", "Splasher", "Chat", "Commands"];
 
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     },
 
     getSubcategoryComparator: () => (a, b) => {
-        const subcategories = ["Message Blockers", "BingoParty Moderation"];
+        const subcategories = [];
 
         return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) -
             subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
@@ -285,6 +285,35 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
         subcategory: "Playtime"
     })
     accurateBingoPlaytime = true
+    
+    @SwitchProperty({
+        name: "Wind Compass Display",
+        description: "Shows a display with a wind compass.",
+        category: "Other",
+        subcategory: "Gone with the Wind"
+    })
+    windCompassDisplay = false
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Wind Compass Display.",
+        category: "Other",
+        subcategory: "Gone with the Wind",
+        placeholder: "Move"
+    })
+    MoveWindCompassDisplay() {
+        ChatLib.command('b+ move windCompassDisplay', true)
+    }
+/*
+    @SwitchProperty({
+        name: "Wind guide",
+        description: "Draws lines to guide you where to face for the max mining speed.",
+        category: "Other",
+        subcategory: "Gone with the Wind"
+    })
+    windCompassGuide = false
+*/
+
 
 /*
     @SwitchProperty({

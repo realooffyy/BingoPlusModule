@@ -59,6 +59,11 @@ export const data = new PogObject("BingoPlus", {
         x: 10,
         y: 10,
         scale: 1
+    },
+    windCompassDisplay: {
+        x: Renderer.screen.getWidth()/2,
+        y: Renderer.screen.getHeight()/2,
+        scale: 2
     }
 
     

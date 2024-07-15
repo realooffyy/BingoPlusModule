@@ -35,6 +35,7 @@ import "./features/splasher/hubSelectorDisplay"
 
 import "./features/world/rats"
 import "./features/world/puzzlerSolver"
+import "./features/world/windCompass"
 
 
 /* TODO
@@ -53,12 +54,14 @@ import "./features/world/puzzlerSolver"
  * - dreadlord sword drop warning
  * - splash display hub number guess
  * - brewing stand name display
+ * - broken bingo goal helper
  */
 
 
 /*
     1.1.2 changelog
 - added accurate bingo playtime
+- added gone with the wind compass display
 - changed puzzler solver to be on by default
 - optimised splasher display
 
