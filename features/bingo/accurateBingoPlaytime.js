@@ -11,11 +11,8 @@ register("step", () => {
     }
 
     data.bingoPlaytime += 1
+    if (!data.bingoPlaytime % 60) data.save()
 }).setDelay(1)
-
-register("gameUnload", () => {
-    data.save()
-})
 
 register("chat", () => {
     data.bingoPlaytime = 0

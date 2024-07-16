@@ -1,5 +1,6 @@
 import "./utils/firstInstall"
 import "./utils/BingoApi"
+import "./utils/dataManager"
 
 import "./render/registerGui"
 
@@ -63,6 +64,7 @@ import "./features/world/windCompass"
 - added accurate bingo playtime
 - added gone with the wind compass display
 - changed puzzler solver to be on by default
+- fixed long decimals when scaling display elements
 - optimised splasher display
 
     1.1.1 changelog 

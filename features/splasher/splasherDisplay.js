@@ -141,8 +141,8 @@ register("clicked", (x, y, btn, state) => {
                 
             const copy =
 `[Bingo+] Extracted splasher display at <t:${Math.floor(Date.now()/1000)}>
-**This is not a definitive leecher list!** Please proofcheck before issuing punishments.
-\`\`\`${lines.removeFormatting()}\`\`\``
+\`\`\`${lines.removeFormatting()}\`\`\`
+-# **This is not a definitive leecher list!** Please proofcheck before issuing punishments.`
 
             ChatLib.command(`ct copy ${copy}`, true)
             ChatLib.chat(`${constants.PREFIX}&aCopied current info to clipboard!`)
