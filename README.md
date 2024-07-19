@@ -43,16 +43,22 @@ If the module does not seem to be working, join the Discord and share your log i
     Prevents you from running /openbaker while on a Bingo profile.
 </details>
 <details>
-    <summary>Block Party Travel Messages</summary>
-    Block party travel notifications while on a Bingo profile.
+    <summary>Accurate Bingo playtime</summary>
+    Shows a more accurate Bingo playtime by measuring each second on the profile. You should have this feature enabled before the start of a Bingo event for the most accurate time.
 </details>
+
+### Other
 <details>
-    <summary>Rat Helper</summary>
-    Shows rat waypoints. Toggleable with /rats.
+    <summary>Wind Compass Display</summary>
+    Shows a display with the wind compass during the 'Gone with the Wind' event.
 </details>
 <details>
     <summary>Puzzler Solver</summary>
     Solves the Puzzler's riddle in the Dwarven Mines.
+</details>
+<details>
+    <summary>Rat waypoints</summary>
+    Shows waypoints for the general location of Rat spawns. Toggleable with `/rats`.
 </details>
 
 ### Party
