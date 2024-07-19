@@ -60,6 +60,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.1.3 changelog
+- removed dialogue skipper
+
     1.1.2 changelog
 - added accurate bingo playtime
 - added gone with the wind compass display
