@@ -247,14 +247,6 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
     }
 
     @SwitchProperty({
-        name: "Puzzler solver",
-        description: "Solves the Puzzler's riddle in the Dwarven Mines.",
-        category: "Bingo",
-        subcategory: "Puzzler"
-    })
-    puzzlerSolver = true
-
-    @SwitchProperty({
         name: "Accurate playtime",
         description: "Shows a more accurate Bingo playtime by measuring each second. Use &a/playtime &rto view.\n&cYou should preferably have this feature enabled before creating your Bingo profile for the most accurate time!",
         category: "Bingo",
@@ -282,6 +274,14 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
     MoveWindCompassDisplay() {
         ChatLib.command('b+ move windCompassDisplay', true)
     }
+
+    @SwitchProperty({
+        name: "Puzzler solver",
+        description: "Solves the Puzzler's riddle in the Dwarven Mines.",
+        category: "Other",
+        subcategory: "Puzzler"
+    })
+    puzzlerSolver = true
 /*
     @SwitchProperty({
         name: "Wind guide",
