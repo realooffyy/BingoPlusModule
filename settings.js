@@ -252,7 +252,7 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
         category: "Bingo",
         subcategory: "Playtime"
     })
-    accurateBingoPlaytime = true
+    accurateBingoPlaytime = false
 
     // Other
     
