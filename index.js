@@ -27,7 +27,6 @@ import "./features/bingo/hideCompletedBingoGoals"
 
 import "./features/party/chatBlockers"
 
-import "./features/chat/dialogueSkipper"
 import "./features/chat/oringoCost"
 
 import "./features/splasher/splasherDisplay"
