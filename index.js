@@ -8,7 +8,7 @@ import "./render/registerGui"
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 import "./commands/bingoParty"
-import "./commands/ratHelper"
+import "./commands/ratWaypoints" // TODO: fix this
 //import "./commands/guideSearch"
 
 // Legacy rendering
@@ -64,6 +64,7 @@ import "./features/world/windCompass"
 - added accurate bingo playtime
 - added gone with the wind compass display
 - changed puzzler solver to be on by default
+- renamed and moved rat waypoints to 'other'
 - fixed long decimals when scaling display elements
 - optimised splasher display
 
