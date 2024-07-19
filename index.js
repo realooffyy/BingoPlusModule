@@ -64,7 +64,7 @@ import "./features/world/windCompass"
 - added accurate bingo playtime
 - added gone with the wind compass display
 - changed puzzler solver to be on by default
-- renamed and moved rat waypoints to 'other'
+- moved rat waypoints and puzzler solver to 'other'
 - fixed long decimals when scaling display elements
 - optimised splasher display
 
