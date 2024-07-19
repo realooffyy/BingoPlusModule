@@ -35,7 +35,7 @@ export default new class Bingo {
 
             // TODO: improve bingo detection
             const displayName = Player.getDisplayName().text
-            this.inBingo = displayName.includes("Ⓑ")
+            this.inBingo = displayName.includes("Ⓑ") //Ⓑ
         })
 
         register("packetReceived", (packet) => {

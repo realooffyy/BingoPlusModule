@@ -5,6 +5,7 @@ import { registerWhen, getTabList, getScoreboard, getValue, removeUnicode } from
 import Skyblock from "../../utils/Skyblock"
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
+import { getStringHeight, getStringWidth, drawTextBox } from "../../render/utils"
 
 const playersTabRegex = /.*Players \((\d{1,2})\)/
 const playersBoardRegex = /  \((\d{1,2})\/(\d{1,2})\).*/
@@ -18,16 +19,15 @@ let enjoyers = 0
 let ironman = []
 let leechers = []
 
-const base_width = 150
-let width = 1
-let height = 1
+let width = 100
+let height = 100
 
 let splasherGui = new BaseGui('splasherDisplay', ['splasherDisplay', 'splasher', 'splashing'])
 registerGui(splasherGui)
 
 register("tick", () => { // opened and location manager
     if (!Settings.splasherDisplay || !Skyblock.inSkyblock) return
-    opened = Skyblock.subArea === 'Pet Care' || Settings.splasherDisplayEverywhere || splasherGui.isOpen()
+    opened = Skyblock.subArea === 'Pet Care' || Settings.splasherDisplayEverywhere
 })
 
 /*
@@ -120,32 +120,19 @@ register("step", () => { // line constructor
         if (ironman.length) lines += `&7&l♲ Ironman:&r\n ${ironman.join('\n ')}\n`
         if (leechers.length) lines += `&c&lൠ Leechers:&r\n ${leechers.join('\n ')}\n`
 
+        height = getStringHeight(lines)
+        width = getStringWidth(lines)
+
     }
 }).setFps(2)
 
-const renderDisplay = () => {
-    const guiX = data.splasherDisplay.x
-    const guiY = data.splasherDisplay.y
-    const scale = data.splasherDisplay.scale
-
-    height = ((lines.replace(/[^\n]/g, "").length)*9 +10 ) *scale
-    width = base_width * scale
-    const rectangle = new Rectangle(Renderer.color(0, 0, 0, 50), guiX, guiY, width, height) // background
-    rectangle.draw()
-
-    Renderer.translate(guiX, guiY, 1000)
-    Renderer.scale(scale)
-    
-    Renderer.drawStringWithShadow(lines, 5, 5) // text
-
-    Renderer.retainTransforms(false)
-    Renderer.finishDraw()
-}
+registerWhen(register("renderOverlay", () => { // thanks bloom
+    drawTextBox(lines, 'splasherDisplay', height, width, 60)
+}), () => opened)
 
 registerWhen(register("renderOverlay", () => { // thanks bloom
-    if (!opened) return
-    renderDisplay()
-}), () => opened)
+    drawTextBox('&6&lSplasher Display', 'splasherDisplay', 100, 100, 60)
+}), () => splasherGui.isOpen())
 
 register("clicked", (x, y, btn, state) => {
     if (opened && !splasherGui.isOpen() && state) {
@@ -154,8 +141,8 @@ register("clicked", (x, y, btn, state) => {
                 
             const copy =
 `[Bingo+] Extracted splasher display at <t:${Math.floor(Date.now()/1000)}>
-**This is not a definitive leecher list!** Please proofcheck before issuing punishments.
-\`\`\`${lines.removeFormatting()}\`\`\``
+\`\`\`${lines.removeFormatting()}\`\`\`
+-# **This is not a definitive leecher list!** Please proofcheck before issuing punishments.`
 
             ChatLib.command(`ct copy ${copy}`, true)
             ChatLib.chat(`${constants.PREFIX}&aCopied current info to clipboard!`)

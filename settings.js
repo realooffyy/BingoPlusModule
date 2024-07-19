@@ -9,13 +9,13 @@ import {
 
 @Vigilant("BingoPlus/data", "Bingo+ Settings", {
     getCategoryComparator: () => (a, b) => {
-        const categories = ["General", "Bingo", "Party", "Splasher", "Chat", "Commands"];
+        const categories = ["General", "Bingo", "Other", "Party", "Splasher", "Chat", "Commands"];
 
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     },
 
     getSubcategoryComparator: () => (a, b) => {
-        const subcategories = ["Message Blockers", "BingoParty Moderation"];
+        const subcategories = [];
 
         return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) -
             subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
@@ -58,8 +58,8 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
         this.addDependency("Don't round", "Bingo Timer")
         this.addDependency("Show timer everywhere", "Bingo Timer")
 
-        this.addDependency("Show text", "Rat Helper")
-        this.addDependency("Show beacon", "Rat Helper")
+        this.addDependency("Show text", "Rat Waypoints")
+        this.addDependency("Show beacon", "Rat Waypoints")
 
         this.addDependency("Top Hubs", "Hub Selector Display")
         this.addDependency("Highlight Best Hubs", "Hub Selector Display")
@@ -191,30 +191,6 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
         subcategory: "Blockers"
     })
     bakerBlocker = true
-  
-    @SwitchProperty({
-        name: "Rat Helper",
-        description: "Shows waypoints for the general location of Rat spawns.\n&aToggleable with &6/rats&a.",
-        category: "Bingo",
-        subcategory: "Rat Helper"
-    })
-    ratHelper = false
-
-    @SwitchProperty({
-        name: "Show text",
-        description: "Shows text next to each waypoint with information on how to access it.",
-        category: "Bingo",
-        subcategory: "Rat Helper"
-    })
-    ratHelperShowText = true
-
-    @SwitchProperty({
-        name: "Show beacon",
-        description: "Shows a beacon at each waypoint.",
-        category: "Bingo",
-        subcategory: "Rat Helper"
-    })
-    ratHelperShowBeacon = true
 
     @SwitchProperty({
         name: "Bingo Card Display",
@@ -271,12 +247,84 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
     }
 
     @SwitchProperty({
+        name: "Accurate playtime",
+        description: "Shows a more accurate Bingo playtime by measuring each second. Use &a/playtime &rto view.\n&cYou should preferably have this feature enabled before creating your Bingo profile for the most accurate time!",
+        category: "Bingo",
+        subcategory: "Playtime"
+    })
+    accurateBingoPlaytime = false
+
+    // Other
+    
+    @SwitchProperty({
+        name: "Wind Compass Display",
+        description: "Shows a display with a wind compass.",
+        category: "Other",
+        subcategory: "Gone with the Wind"
+    })
+    windCompassDisplay = false
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Wind Compass Display.",
+        category: "Other",
+        subcategory: "Gone with the Wind",
+        placeholder: "Move"
+    })
+    MoveWindCompassDisplay() {
+        ChatLib.command('b+ move windCompassDisplay', true)
+    }
+
+    @SwitchProperty({
         name: "Puzzler solver",
         description: "Solves the Puzzler's riddle in the Dwarven Mines.",
-        category: "Bingo",
+        category: "Other",
         subcategory: "Puzzler"
     })
-    puzzlerSolver = false
+    puzzlerSolver = true
+/*
+    @SwitchProperty({
+        name: "Wind guide",
+        description: "Draws lines to guide you where to face for the max mining speed.",
+        category: "Other",
+        subcategory: "Gone with the Wind"
+    })
+    windCompassGuide = false
+*/
+
+    @SwitchProperty({
+        name: "Rat Waypoints",
+        description: "Shows waypoints for the general location of Rat spawns.\n&aToggleable with &6/rats&a.",
+        category: "Other",
+        subcategory: "Rats"
+    })
+    ratWaypoints = false
+
+    @SwitchProperty({
+        name: "Show text",
+        description: "Shows text next to each waypoint with information on how to access it.",
+        category: "Other",
+        subcategory: "Rats"
+    })
+    ratWaypointsShowText = true
+
+    @SwitchProperty({
+        name: "Show beacon",
+        description: "Shows a beacon at each waypoint.",
+        category: "Other",
+        subcategory: "Rats"
+    })
+    ratWaypointsShowBeacon = true
+
+/*
+    @SwitchProperty({
+        name: "Dreadlord Sword alert",
+        description: "Warns you when you pickup a Dreadlord Sword on Bingo.",
+        category: "Bingo",
+        subcategory: "Dreadlord Sword"
+    })
+    dreadlordSwordAlert = false
+*/
     
 /*
     @SwitchProperty({

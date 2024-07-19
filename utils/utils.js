@@ -86,3 +86,21 @@ export function romanToInt(s) {
     }
     return accumulator
 }
+
+export function msToTime(s) { // adapted from https://stackoverflow.com/questions/9763441/milliseconds-to-time-in-javascript
+    let ms = s % 1000
+    s = (s - ms) / 1000
+    let secs = s % 60
+    s = (s - secs) / 60
+    let mins = s % 60
+    s = (s - mins) / 60
+    let hrs = s % 24
+    s = (s - hrs) / 24
+    let days = s
+  
+    return [days, hrs, mins, secs]
+}
+
+export function convertDateObjectToString(date) { //https://www.delftstack.com/howto/javascript/javascript-convert-timestamp-to-date/
+    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
+}

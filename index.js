@@ -1,5 +1,6 @@
 import "./utils/firstInstall"
 import "./utils/BingoApi"
+import "./utils/dataManager"
 
 import "./render/registerGui"
 
@@ -7,13 +8,14 @@ import "./render/registerGui"
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 import "./commands/bingoParty"
-import "./commands/ratHelper"
+import "./commands/ratWaypoints" // TODO: fix this
 //import "./commands/guideSearch"
 
 // Legacy rendering
 import "./render/move"
 
 // Features
+import "./features/bingo/accurateBingoPlaytime"
 import "./features/bingo/achievements"
 import "./features/bingo/bakerBlocker"
 import "./features/bingo/bingoCardDisplay"
@@ -34,6 +36,7 @@ import "./features/splasher/hubSelectorDisplay"
 
 import "./features/world/rats"
 import "./features/world/puzzlerSolver"
+import "./features/world/windCompass"
 
 
 /* TODO
@@ -52,10 +55,20 @@ import "./features/world/puzzlerSolver"
  * - dreadlord sword drop warning
  * - splash display hub number guess
  * - brewing stand name display
+ * - broken bingo goal helper
  */
 
 
-/* 1.1.1 changelog 
+/*
+    1.1.2 changelog
+- added accurate bingo playtime
+- added gone with the wind compass display
+- changed puzzler solver to be on by default
+- moved rat waypoints and puzzler solver to 'other'
+- fixed long decimals when scaling display elements
+- optimised splasher display
+
+    1.1.1 changelog 
 - added automatic achievement sending in party and guild
 - added disclaimer to leecher display
 - added puzzler solver
