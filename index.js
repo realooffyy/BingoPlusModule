@@ -31,6 +31,7 @@ import "./features/chat/oringoCost"
 
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
+import "./features/splasher/potionUtils"
 import "./features/splasher/hubSelectorDisplay"
 
 import "./features/world/rats"

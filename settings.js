@@ -393,6 +393,14 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
     // Splasher
 
     @SwitchProperty({
+        name: "Show potion abbreviation",
+        description: "Renders the potion's abbreviation over it",
+        category: "Splasher",
+        subcategory: "Potions"
+    })
+    potionAbbreviation = true
+
+    @SwitchProperty({
         name: "Splasher Display",
         description: "Show a display with important information while in the Pet Care area.",
         category: "Splasher",

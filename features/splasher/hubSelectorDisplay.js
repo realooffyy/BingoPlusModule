@@ -2,7 +2,7 @@
 /// <reference lib="es2015" />
 
 import constants, { data } from "../../utils/constants"
-import Settings from "../../Settings"
+import Settings from "../../settings"
 import { highlightSlot } from "../../utils/utils"
 
 import Skyblock from "../../utils/Skyblock"
