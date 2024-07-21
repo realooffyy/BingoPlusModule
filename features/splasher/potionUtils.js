@@ -1,5 +1,5 @@
 import { registerWhen } from "../../utils/utils"
-import Settings from "../../settings"
+import Settings from "../../Settings"
 import Skyblock from "../../utils/Skyblock"
 
 // Show potion abbreviation

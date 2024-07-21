@@ -1,4 +1,4 @@
-import request from "../../requestV2"
+//import request from "../../requestV2"
 
 const indigo = "https://hypixel.net/search/12209410/?q=Bingo+Guide&t=post&c[title_only]=1&c[users]=IndigoPolecat&o=date"
 const tanya = "https://hypixel.net/search/15028449/?q=Day-by-Day&t=post&c[content]=thread&c[title_only]=1&c[users]=ZerosTulip&o=date"
