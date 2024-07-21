@@ -62,6 +62,7 @@ import "./features/world/windCompass"
 /*
     1.1.3 changelog
 - removed dialogue skipper
+- added potion abbreviations
 
     1.1.2 changelog
 - added accurate bingo playtime
