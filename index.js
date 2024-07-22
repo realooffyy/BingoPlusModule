@@ -8,8 +8,8 @@ import "./render/registerGui"
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 import "./commands/bingoParty"
-import "./commands/ratWaypoints" // TODO: fix this
-//import "./commands/guideSearch"
+import "./commands/ratWaypoints"
+//import "./commands/bingoGuides"
 
 // Legacy rendering
 import "./render/move"
@@ -63,6 +63,7 @@ import "./features/world/windCompass"
     1.1.3 changelog
 - removed dialogue skipper
 - added potion abbreviations
+- fix unwanted gui movement
 
     1.1.2 changelog
 - added accurate bingo playtime
