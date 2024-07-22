@@ -27,10 +27,6 @@ If the module does not seem to be working, join the Discord and share your log i
     Shows the Bingo Card on-screen.
 </details>
 <details>
-    <summary>Chicken Head Timer</summary>
-    Displays a timer for the Chicken Head cooldown.
-</details>
-<details>
     <summary>Hide Completed Bingo Goals</summary>
     Stops rendering completed Bingo goals
 </details>
@@ -43,16 +39,26 @@ If the module does not seem to be working, join the Discord and share your log i
     Prevents you from running /openbaker while on a Bingo profile.
 </details>
 <details>
-    <summary>Block Party Travel Messages</summary>
-    Block party travel notifications while on a Bingo profile.
+    <summary>Accurate Bingo playtime</summary>
+    Shows a more accurate Bingo playtime by measuring each second on the profile. You should have this feature enabled before the start of a Bingo event for the most accurate time.
+</details>
+
+### Other
+<details>
+    <summary>Chicken Head Timer</summary>
+    Displays a timer for the Chicken Head cooldown.
 </details>
 <details>
-    <summary>Rat Helper</summary>
-    Shows rat waypoints. Toggleable with /rats.
+    <summary>Wind Compass Display</summary>
+    Shows a display with the wind compass during the 'Gone with the Wind' event.
 </details>
 <details>
     <summary>Puzzler Solver</summary>
     Solves the Puzzler's riddle in the Dwarven Mines.
+</details>
+<details>
+    <summary>Rat waypoints</summary>
+    Shows waypoints for the general location of Rat spawns. Toggleable with `/rats`.
 </details>
 
 ### Party
@@ -67,6 +73,10 @@ If the module does not seem to be working, join the Discord and share your log i
 
 ### Splasher
 
+<details>
+    <summary>Potion Abbreviations</summary>
+    Shows a shortened name next to splash potion items.
+</details>
 <details>
     <summary>Splasher Display</summary>
     Show a display with important information while in a splashing area.
@@ -85,10 +95,6 @@ If the module does not seem to be working, join the Discord and share your log i
 <details>
     <summary>Oringo Cost</summary>
     Convert Oringo's Abiphone message to include the rarity and cost of each pet. Also copyable as a Discord message!
-</details>
-<details>
-    <summary>Dialogue Skipper (currently disabled)</summary>
-    Automatically skip the dialogue of certain NPCs.
 </details>
 
 ### Commands
