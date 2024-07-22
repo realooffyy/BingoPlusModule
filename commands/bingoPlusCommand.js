@@ -34,13 +34,14 @@ export const bingoPlusCommand = register("command", (...args) => {
         if(!found)
             ChatLib.chat(`${constants.PREFIX}&cNo such gui as '${args[1]}'.`)
     }
-
+    /*
     else if (args[0] == "togglebingoapi") {
         data.bingoApiOn = !data.bingoApiOn
         data.save()
         ChatLib.chat(`${constants.PREFIX}Set bingo api calling to ${data.bingoApiOn}`)
         if (!data.bingoApiOn) ChatLib.chat(`This may break some features!`)
     }
+    */
 
     // i couldn't get this to work
     /*
@@ -69,9 +70,7 @@ export const bingoPlusCommand = register("command", (...args) => {
   .setAliases(["bingo+","bingoplus"])
   .setTabCompletions([
     "help",
-    "move",
-    "togglebingoapi",
-    "resetdata"
+    "move"
   ])
 
 

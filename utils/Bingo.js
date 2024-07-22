@@ -1,7 +1,7 @@
 import Settings from "../Settings"
 import Skyblock from "./Skyblock"
 import { data } from "./constants"
-import { getScoreboard } from "./utils"
+// import { getScoreboard } from "./utils"
 
 const S30PacketWindowItems = Java.type("net.minecraft.network.play.server.S30PacketWindowItems")
 const S2DPacketOpenWindow = Java.type("net.minecraft.network.play.server.S2DPacketOpenWindow")

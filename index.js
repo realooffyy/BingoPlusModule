@@ -8,8 +8,8 @@ import "./render/registerGui"
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 import "./commands/bingoParty"
-import "./commands/ratWaypoints" // TODO: fix this
-//import "./commands/guideSearch"
+import "./commands/ratWaypoints"
+//import "./commands/bingoGuides"
 
 // Legacy rendering
 import "./render/move"
@@ -27,11 +27,11 @@ import "./features/bingo/hideCompletedBingoGoals"
 
 import "./features/party/chatBlockers"
 
-import "./features/chat/dialogueSkipper"
 import "./features/chat/oringoCost"
 
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/noPotionWarning"
+import "./features/splasher/potionUtils"
 import "./features/splasher/hubSelectorDisplay"
 
 import "./features/world/rats"
@@ -60,6 +60,12 @@ import "./features/world/windCompass"
 
 
 /*
+    1.1.3 changelog
+- added potion abbreviations
+- removed dialogue skipper
+- moved chicken head timer to 'other'
+- fix unwanted gui movement
+
     1.1.2 changelog
 - added accurate bingo playtime
 - added gone with the wind compass display

@@ -52,9 +52,6 @@ class Settings {
 If a BingoParty blocker is not working, try running &a/p list&r.`)
             // It's recommended to disable Party Travel Messages entirely: &aSkyblock Menu -> Settings -> Comms -> Co-op Travel Notifications
 
-        this.setSubcategoryDescription("Chat", "Dialogue Skipper",
-            `&cDisabled as the current method is slightly cheaty, will be reworked eventually`)
-
         this.addDependency("Don't round", "Bingo Timer")
         this.addDependency("Show timer everywhere", "Bingo Timer")
 
@@ -132,33 +129,6 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
         subcategory: "Bingo Card"
     })
     hideCompletedBingoGoals = false
-
-    @SwitchProperty({
-        name: "Chicken Head Timer",
-        description: "Displays a timer for the Chicken Head cooldown.",
-        category: "Bingo",
-        subcategory: "Chicken Head Timer"
-    })
-    chickenHeadTimer = true
-
-    @ButtonProperty({
-        name: "Move",
-        description: "Move the Chicken Head Timer.",
-        category: "Bingo",
-        subcategory: "Chicken Head Timer",
-        placeholder: "Move"
-    })
-    MoveChickenHeadTimer() {
-        ChatLib.command('b+ move chickenHeadTimerDisplay', true)
-    }
-
-    @SwitchProperty({
-        name: "Hide Egg Laid Message",
-        description: "Hides the §r§aYou laid an egg!§r message.",
-        category: "Bingo",
-        subcategory: "Chicken Head Timer"
-    })
-    hideEggLaidMessage = false
 
     @SwitchProperty({
         name: "Copy Achievements",
@@ -255,10 +225,37 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
     accurateBingoPlaytime = false
 
     // Other
+
+    @SwitchProperty({
+        name: "Chicken Head Timer",
+        description: "Displays a timer for the Chicken Head cooldown.",
+        category: "Other",
+        subcategory: "Chicken Head Timer"
+    })
+    chickenHeadTimer = true
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Chicken Head Timer.",
+        category: "Other",
+        subcategory: "Chicken Head Timer",
+        placeholder: "Move"
+    })
+    MoveChickenHeadTimer() {
+        ChatLib.command('b+ move chickenHeadTimerDisplay', true)
+    }
+
+    @SwitchProperty({
+        name: "Hide Egg Laid Message",
+        description: "Hides the §r§aYou laid an egg!§r message.",
+        category: "Other",
+        subcategory: "Chicken Head Timer"
+    })
+    hideEggLaidMessage = false
     
     @SwitchProperty({
         name: "Wind Compass Display",
-        description: "Shows a display with a wind compass.",
+        description: "Shows a display with the wind compass during the 'Gone with the Wind' event.",
         category: "Other",
         subcategory: "Gone with the Wind"
     })
@@ -396,6 +393,14 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
     // Splasher
 
     @SwitchProperty({
+        name: "Show potion abbreviation",
+        description: "Renders the potion's abbreviation over it",
+        category: "Splasher",
+        subcategory: "Potions"
+    })
+    potionAbbreviation = true
+
+    @SwitchProperty({
         name: "Splasher Display",
         description: "Show a display with important information while in the Pet Care area.",
         category: "Splasher",
@@ -501,38 +506,6 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
         subcategory: "Oringo"
     })
     oringoDiscordCopy = true
-
-    @SwitchProperty({
-        name: "Maxwell",
-        description: "Automatically skips Maxwell's dialogue.",
-        category: "Chat",
-        subcategory: "Dialogue Skipper"
-    })
-    skipperMaxwell = false
-
-    @SwitchProperty({
-        name: "Sam",
-        description: "Automatically skips Sam's dialogue.",
-        category: "Chat",
-        subcategory: "Dialogue Skipper"
-    })
-    skipperSam = false
-
-    @SwitchProperty({
-        name: "Pesthunter Phillip",
-        description: "Automatically skips Phillip's dialogue. &cIncomplete!",
-        category: "Chat",
-        subcategory: "Dialogue Skipper"
-    })
-    skipperPesthunterPhillip = false
-
-    @SwitchProperty({
-        name: "Lone Adventurer",
-        description: "Automatically skips the Lone Adventurer's dialogue.",
-        category: "Chat",
-        subcategory: "Dialogue Skipper"
-    })
-    skipperLoneAdventurer = false
 
     // Commands
 

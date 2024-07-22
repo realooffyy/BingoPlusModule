@@ -27,10 +27,6 @@ If the module does not seem to be working, join the Discord and share your log i
     Shows the Bingo Card on-screen.
 </details>
 <details>
-    <summary>Chicken Head Timer</summary>
-    Displays a timer for the Chicken Head cooldown.
-</details>
-<details>
     <summary>Hide Completed Bingo Goals</summary>
     Stops rendering completed Bingo goals
 </details>
@@ -48,6 +44,10 @@ If the module does not seem to be working, join the Discord and share your log i
 </details>
 
 ### Other
+<details>
+    <summary>Chicken Head Timer</summary>
+    Displays a timer for the Chicken Head cooldown.
+</details>
 <details>
     <summary>Wind Compass Display</summary>
     Shows a display with the wind compass during the 'Gone with the Wind' event.
@@ -74,6 +74,10 @@ If the module does not seem to be working, join the Discord and share your log i
 ### Splasher
 
 <details>
+    <summary>Potion Abbreviations</summary>
+    Shows a shortened name next to splash potion items.
+</details>
+<details>
     <summary>Splasher Display</summary>
     Show a display with important information while in a splashing area.
 </details>
@@ -91,10 +95,6 @@ If the module does not seem to be working, join the Discord and share your log i
 <details>
     <summary>Oringo Cost</summary>
     Convert Oringo's Abiphone message to include the rarity and cost of each pet. Also copyable as a Discord message!
-</details>
-<details>
-    <summary>Dialogue Skipper (currently disabled)</summary>
-    Automatically skip the dialogue of certain NPCs.
 </details>
 
 ### Commands

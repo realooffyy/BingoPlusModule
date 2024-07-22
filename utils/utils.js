@@ -64,13 +64,19 @@ export const getTabList = (formatted=false) => {
 
 export const highlightSlot = (slot, rgba) => {
     // From AlonAddons
-    let x = slot % 9;
-    let y = Math.floor(slot / 9);
-    let renderX = Renderer.screen.getWidth() / 2 + ((x - 4) * 18);
-    let renderY = (Renderer.screen.getHeight() + 10) / 2 + ((y - Player.getContainer().getSize() / 18) * 18);
+    let renderX, renderY
+    [renderX, renderY] = getSlotLocation(slot)
 
     Renderer.translate(0, 0, 300);
     Renderer.drawRect(rgba ? Renderer.color(rgba[0], rgba[1], rgba[2], rgba[3]) : Renderer.color(0, 255, 0, 255), renderX - 8, renderY - 8, 16, 16);
+}
+
+export const getSlotLocation = (slot) => {
+    let x = slot % 9
+    let y = Math.floor(slot / 9)
+    let renderX = Renderer.screen.getWidth() / 2 + ((x - 4) * 18)
+    let renderY = (Renderer.screen.getHeight() + 10) / 2 + ((y - Player.getContainer().getSize() / 18) * 18)
+    return [renderX, renderY]   
 }
 
 // from AzuredClient
