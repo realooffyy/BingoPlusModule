@@ -14,13 +14,19 @@ export class BaseGui {
     constructor(guiData, aliases) {
         this.guiData = guiData
         this.aliases = aliases
+        this.move = false
         this.gui = new Gui()
     
         register("dragged", (dx, dy, x, y) => {
-            if (!this.gui.isOpen()) return
+            if (!this.move) return
             data[guiData].x = x
             data[guiData].y = y
             data.save()
+        })
+
+        register("clicked", (x, y, button, state) => {
+            if (state) this.move = this.gui.isOpen()
+            else this.move = false
         })
 
         registerWhen(register("renderOverlay", () => {
