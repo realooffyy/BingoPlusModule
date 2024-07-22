@@ -131,33 +131,6 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
     hideCompletedBingoGoals = false
 
     @SwitchProperty({
-        name: "Chicken Head Timer",
-        description: "Displays a timer for the Chicken Head cooldown.",
-        category: "Bingo",
-        subcategory: "Chicken Head Timer"
-    })
-    chickenHeadTimer = true
-
-    @ButtonProperty({
-        name: "Move",
-        description: "Move the Chicken Head Timer.",
-        category: "Bingo",
-        subcategory: "Chicken Head Timer",
-        placeholder: "Move"
-    })
-    MoveChickenHeadTimer() {
-        ChatLib.command('b+ move chickenHeadTimerDisplay', true)
-    }
-
-    @SwitchProperty({
-        name: "Hide Egg Laid Message",
-        description: "Hides the §r§aYou laid an egg!§r message.",
-        category: "Bingo",
-        subcategory: "Chicken Head Timer"
-    })
-    hideEggLaidMessage = false
-
-    @SwitchProperty({
         name: "Copy Achievements",
         description: "Automatically copies some Bingo achievements to clipboard.\n&6Incomplete!",
         category: "Bingo",
@@ -252,6 +225,33 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
     accurateBingoPlaytime = false
 
     // Other
+
+    @SwitchProperty({
+        name: "Chicken Head Timer",
+        description: "Displays a timer for the Chicken Head cooldown.",
+        category: "Other",
+        subcategory: "Chicken Head Timer"
+    })
+    chickenHeadTimer = true
+
+    @ButtonProperty({
+        name: "Move",
+        description: "Move the Chicken Head Timer.",
+        category: "Other",
+        subcategory: "Chicken Head Timer",
+        placeholder: "Move"
+    })
+    MoveChickenHeadTimer() {
+        ChatLib.command('b+ move chickenHeadTimerDisplay', true)
+    }
+
+    @SwitchProperty({
+        name: "Hide Egg Laid Message",
+        description: "Hides the §r§aYou laid an egg!§r message.",
+        category: "Other",
+        subcategory: "Chicken Head Timer"
+    })
+    hideEggLaidMessage = false
     
     @SwitchProperty({
         name: "Wind Compass Display",
