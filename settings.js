@@ -387,7 +387,9 @@ If a BingoParty blocker is not working, try running &a/p list&r.`)
         placeholder: "GitHub"
     })
     openBPDocumentation() {
-        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://github.com/aphased/BingoPartyCommands').toURI())
+        java.awt.Desktop.getDesktop().browse(new java.net.URL(
+            'https://github.com/aphased/BingoPartyCommands?tab=readme-ov-file#bingopartycommands'
+        ).toURI())
     }
   
     // Splasher
