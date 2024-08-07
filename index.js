@@ -80,4 +80,5 @@ import "./features/world/windCompass"
 - added puzzler solver
 - changed rat waypoint colours
 - optimised community goal display
- */
+
+*/
