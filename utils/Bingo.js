@@ -1,6 +1,7 @@
 import Settings from "../Settings"
 import Skyblock from "./Skyblock"
 import { data } from "./constants"
+import { getScoreboard } from "./utils"
 // import { getScoreboard } from "./utils"
 
 const S30PacketWindowItems = Java.type("net.minecraft.network.play.server.S30PacketWindowItems")
@@ -32,10 +33,7 @@ export default new class Bingo {
 
         register("tick", (t) => { // bingo check
             if (t%10 || !Skyblock.inSkyblock) return
-
-            // TODO: improve bingo detection
-            const displayName = Player.getDisplayName().text
-            this.inBingo = displayName.includes("Ⓑ") //Ⓑ
+            this.inBingo = getScoreboard().some(line => line.includes('Ⓑ'))
         })
 
         register("packetReceived", (packet) => {

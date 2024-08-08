@@ -60,6 +60,10 @@ import "./features/world/windCompass"
 
 
 /*
+
+    1.2.0 changelog
+- fixed bingo detection while visiting
+
     1.1.3 changelog
 - added potion abbreviations
 - removed dialogue skipper
