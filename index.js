@@ -61,7 +61,7 @@ import "./features/world/windCompass"
 
     1.2.0 changelog
 - migrate to amaterasu
-- fixed bingo detection while visiting
+- fixed bingo detection while visiting players
 - temporarily disable /rats command (it broke)
 
     1.1.3 changelog
