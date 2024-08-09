@@ -1,5 +1,5 @@
 import RenderLib from "../../../RenderLib"
-import Settings from "../../Settings"
+import settings from "../../settings"
 import constants from "../../utils/constants"
 import { registerWhen } from "../../utils/utils"
 
@@ -23,7 +23,7 @@ register("chat", () => {
 
 // the actual solver
 register("chat", (puzzle) => {
-    if (!Settings.puzzlerSolver) return
+    if (!settings().puzzlerSolver) return
     loc = { ...origin }
     for (let char of puzzle) {
         console.log(char)

@@ -1,3 +1,5 @@
 .vs
 config/*
-data/*
+data/config.toml
+data/data.json
+data/settings.json

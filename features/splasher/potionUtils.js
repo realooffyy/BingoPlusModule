@@ -1,5 +1,5 @@
 import { registerWhen } from "../../utils/utils"
-import Settings from "../../Settings"
+import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 
 // Show potion abbreviation
@@ -12,4 +12,4 @@ registerWhen(register("renderItemIntoGui", (item, x, y) => {
     Renderer.scale(0.6)
     Renderer.drawString(text, 0, 0)
 
-}), () => Settings.potionAbbreviation && Skyblock.inSkyblock)
+}), () => settings().potionAbbreviation && Skyblock.inSkyblock)

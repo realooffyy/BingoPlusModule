@@ -1,522 +1,440 @@
-import { 
-    @ButtonProperty,
-    @SwitchProperty,
-    @TextProperty,
-    @Vigilant,
-    @SliderProperty,
-    @SelectorProperty
-} from '../Vigilance/index'
+import FuckYouIWantToUseThatName from "../Amaterasu/core/Settings"
+import DefaultConfig from "../Amaterasu/core/DefaultConfig"
+import constants from "./utils/constants"
 
-@Vigilant("BingoPlus/data", "Bingo+ Settings", {
-    getCategoryComparator: () => (a, b) => {
-        const categories = ["General", "Bingo", "Other", "Party", "Splasher", "Chat", "Commands"];
+const categories = ["General", "Bingo", "Other", "Party", "Splasher", "Chat", "Commands"]
+const version = JSON.parse(FileLib.read("BingoPlus", "metadata.json")).version
 
-        return categories.indexOf(a.name) - categories.indexOf(b.name);
-    },
+const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
-    getSubcategoryComparator: () => (a, b) => {
-        const subcategories = [];
+// General
 
-        return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) -
-            subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
-    },
-
-    //getPropertyComparator: () => (a, b) => {
-        //const names = ["Do action!!!", "password", "text", "Color Picker"];
-
-        //return names.indexOf(a.attributesExt.name) - names.indexOf(b.attributesExt.name);
-    //}
+.addButton({
+    category: "General",
+    configName: "joinDiscord",
+    title: "Join the Discord",
+    description: "",
+    placeHolder: "Discord",
+    onClick() {
+        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
+    } // AVOID NOAMM9 AT ALL COSTS
 })
-    
-class Settings {
-    constructor() {
-        this.initialize(this)
-        
-        this.setCategoryDescription("General",
-            `
-            &6Bingo&c+ &bv${JSON.parse(FileLib.read("BingoPlus", "metadata.json")).version}
-            &aBy &dooffyy&r
-
-            &c[!] The config has been reset since &bv1.0.0&c; you may need to change some of your settings!
-            `
-        )
-
-        this.setSubcategoryDescription("Party", "BingoParty Moderation",
-            `Thanks to &aaphased&r and &aTryp0MC&r for hosting BingoParty!
-&8This section is intended for splashers from Bingo Brewers and other allowed users.`)
-        this.setSubcategoryDescription("Party", "Message Blockers",
-            `&cOff&r: Messages won't be blocked
-&6Only in Bingo Party&r: Messages will be blocked when in §6[MVP§r§c++§r§6] BingoParty§r's party
-&aEverywhere&r: Message will always be blocked
-
-If a BingoParty blocker is not working, try running &a/p list&r.`)
-            // It's recommended to disable Party Travel Messages entirely: &aSkyblock Menu -> Settings -> Comms -> Co-op Travel Notifications
-
-        this.addDependency("Don't round", "Bingo Timer")
-        this.addDependency("Show timer everywhere", "Bingo Timer")
-
-        this.addDependency("Show text", "Rat Waypoints")
-        this.addDependency("Show beacon", "Rat Waypoints")
-
-        this.addDependency("Top Hubs", "Hub Selector Display")
-        this.addDependency("Highlight Best Hubs", "Hub Selector Display")
-        this.addDependency("Hub Restart Warning", "Hub Selector Display")
-
-        this.addDependency("Show everywhere", "Splasher Display")
-
-        this.addDependency("Copy as Discord message", "Oringo Abiphone Cost")
-    }
-
-    hubSelectorDisplayMove = new Gui()
-
-    // General
-
-    @ButtonProperty({
-        name: "Bingo Party",
-        category: "General",
-        placeholder: "/p join BingoParty"
-    })
-    runBingoCommand() {
-        Client.currentGui.close()
-        ChatLib.command('p join BingoParty')
-    }
-
-    @ButtonProperty({
-        name: "Bingo Menu",
-        category: "General",
-        placeholder: "/bingo"
-    })
-    runBingoPartyJoinCommand() {
+.addButton({
+    category: "General",
+    configName: "runBingoCommand",
+    title: "Bingo Menu",
+    description: "",
+    placeHolder: "/bingo",
+    onClick() {
         Client.currentGui.close()
         ChatLib.command('bingo')
     }
-
-    @ButtonProperty({
-        name: "Discord",
-        description: "Click the button to join my discord.",
-        category: "General",
-        placeholder: "Join"
-    })
-    joinDiscord() {
-        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
+})
+.addButton({
+    category: "General",
+    configName: "runBingoPartyJoinCommand",
+    title: "Bingo Party",
+    description: "",
+    placeHolder: "/p join BingoParty",
+    onClick() {
+        Client.currentGui.close()
+        ChatLib.command('p join BingoParty')
     }
+})
 
-    // Bingo
+// Bingo
 
-    @SwitchProperty({
-        name: "Community Goal Display",
-        description: "Displays community goal data when on the Bingo Card menu.",
-        category: "Bingo",
-        subcategory: "Community Goal Display"
-    })
-    communityGoalDisplay = true
-
-    @ButtonProperty({
-        name: "Move",
-        description: "Move the Community Goal Display",
-        category: "Bingo",
-        subcategory: "Community Goal Display",
-        placeholder: "Move"
-    })
-    MoveCommunityGoalDisplay() {
+.addSwitch({
+    category: "Bingo",
+    configName: "communityGoalDisplay",
+    title: "Community Goal Display",
+    description: "Displays community goal data when on the Bingo Card menu.",
+    subcategory: "Community Goal Display",
+    value: true
+})
+.addButton({
+    category: "Bingo",
+    configName: "moveCommunityGoalDisplay",
+    title: "Move",
+    description: "Move the Community Goal Display",
+    subcategory: "Community Goal Display",
+    placeHolder: "Move",
+    onClick() {
         ChatLib.command('b+ move communityGoalDisplay', true)
     }
+})
 
-    @SwitchProperty({
-        name: "Hide Completed Bingo Goals",
-        description: "Stops rendering completed Bingo goals everywhere.",
-        category: "Bingo",
-        subcategory: "Bingo Card"
-    })
-    hideCompletedBingoGoals = false
+.addSwitch({
+    category: "Bingo",
+    configName: "hideCompletedBingoGoals",
+    title: "Hide Completed Bingo Goals",
+    description: "Stops rendering completed Bingo goals everywhere.",
+    subcategory: "Bingo Card"
+})
 
-    @SwitchProperty({
-        name: "Copy Achievements",
-        description: "Automatically copies some Bingo achievements to clipboard.\n&6Incomplete!",
-        category: "Bingo",
-        subcategory: "Achievements"
-    })
-    copyAchievements = true
+.addSwitch({
+    category: "Bingo",
+    configName: "copyAchievements",
+    title: "Copy Achievements",
+    description: "Automatically copies some Bingo achievements to clipboard.\n&6Incomplete!",
+    subcategory: "Achievements",
+    value: true
+})
+.addSwitch({
+    category: "Bingo",
+    configName: "autoSendAchievementsInGuild",
+    title: "Send in guild",
+    description: "Sends achievements to guild",
+    subcategory: "Achievements"
+})
+.addSwitch({
+    category: "Bingo",
+    configName: "autoSendAchievementsInParty",
+    title: "Send in party",
+    description: "Sends achievements to party",
+    subcategory: "Achievements"
+})
 
-    @SwitchProperty({
-        name: "Send in guild",
-        description: "Sends achievements to guild",
-        category: "Bingo",
-        subcategory: "Achievements"
-    })
-    autoSendAchievementsInGuild = false
+.addSwitch({
+    category: "Bingo",
+    configName: "bakerBlocker",
+    title: "Baker Blocker",
+    description: "Prevents you from running &e/openbaker &r while on a Bingo profile.",
+    subcategory: "Blockers",
+    value: true
+})
 
-    @SwitchProperty({
-        name: "Send in party",
-        description: "Sends achievements to party",
-        category: "Bingo",
-        subcategory: "Achievements"
-    })
-    autoSendAchievementsInParty = false
-
-    @SwitchProperty({
-        name: "Baker Blocker",
-        description: "Prevents you from running &e/openbaker &r while on a Bingo profile.",
-        category: "Bingo",
-        subcategory: "Blockers"
-    })
-    bakerBlocker = true
-
-    @SwitchProperty({
-        name: "Bingo Card Display",
-        description: "Shows the Bingo Card on-screen.",
-        category: "Bingo",
-        subcategory: "Bingo Card Display"
-    })
-    bingoCardDisplay = false
-
-    @ButtonProperty({
-        name: "Move",
-        description: "Move the Bingo Card Display.",
-        category: "Bingo",
-        subcategory: "Bingo Card Display",
-        placeholder: "Move"
-    })
-    MoveBingoCardDisplay() {
+.addSwitch({
+    category: "Bingo",
+    configName: "bingoCardDisplay",
+    title: "Bingo Card Display",
+    description: "Shows the Bingo Card on-screen.",
+    subcategory: "Bingo Card Display"
+})
+.addButton({
+    category: "Bingo",
+    configName: "MoveBingoCardDisplay",
+    title: "Move",
+    description: "Move the Bingo Card Display.",
+    subcategory: "Bingo Card Display",
+    placeHolder: "Move",
+    onClick() {
         ChatLib.command('b+ move bingoCardDisplay', true)
     }
+})
 
-    @SwitchProperty({
-        name: "Bingo Timer",
-        description: "Displays time until a Bingo starts, ends, and profile deletion.",
-        category: "Bingo",
-        subcategory: "Bingo Timer Display"
-    })
-    bingoTimerDisplay = false
-
-    @SwitchProperty({
-        name: "Don't round",
-        description: "Leaves the time as day:hour:minute:second and doesn't round.",
-        category: "Bingo",
-        subcategory: "Bingo Timer Display"
-    })
-    bingoTimerDisplayDontRound = false
-
-    @SwitchProperty({
-        name: "Show timer everywhere",
-        description: "Shows timer while not on a Bingo profile.",
-        category: "Bingo",
-        subcategory: "Bingo Timer Display"
-    })
-    bingoTimerDisplayEverywhere = false
-
-    @ButtonProperty({
-        name: "Move",
-        description: "Move the Bingo Timer Display.",
-        category: "Bingo",
-        subcategory: "Bingo Timer Display",
-        placeholder: "Move"
-    })
-    MoveBingoTimerDisplay() {
+.addSwitch({
+    category: "Bingo",
+    configName: "bingoTimerDisplay",
+    title: "Bingo Timer",
+    description: "Displays time until a Bingo starts, ends, and profile deletion.",
+    subcategory: "Bingo Timer Display"
+})
+.addSwitch({
+    category: "Bingo",
+    configName: "bingoTimerDisplayDontRound",
+    title: "Don't round",
+    description: "Leaves the time as day:hour:minute:second and doesn't round.",
+    subcategory: "Bingo Timer Display"
+})
+.addSwitch({
+    category: "Bingo",
+    configName: "bingoTimerDisplayEverywhere",
+    title: "Show timer everywhere",
+    description: "Shows timer while not on a Bingo profile.",
+    subcategory: "Bingo Timer Display"
+})
+.addButton({
+    category: "Bingo",
+    configName: "MoveBingoTimerDisplay",
+    title: "Move",
+    description: "Move the Bingo Timer Display.",
+    subcategory: "Bingo Timer Display",
+    placeHolder: "Move",
+    onClick() {
         ChatLib.command('b+ move bingoTimerDisplay', true)
     }
+})
 
-    @SwitchProperty({
-        name: "Accurate playtime",
-        description: "Shows a more accurate Bingo playtime by measuring each second. Use &a/playtime &rto view.\n&cYou should preferably have this feature enabled before creating your Bingo profile for the most accurate time!",
-        category: "Bingo",
-        subcategory: "Playtime"
-    })
-    accurateBingoPlaytime = false
+.addSwitch({
+    category: "Bingo",
+    configName: "accurateBingoPlaytime",
+    title: "Accurate playtime",
+    description: "Shows a more accurate Bingo playtime by measuring each second. Use &a/playtime &rto view.\n&cYou should preferably have this feature enabled before creating your Bingo profile for the most accurate time!",
+    subcategory: "Playtime"
+})
 
-    // Other
+// Other
 
-    @SwitchProperty({
-        name: "Chicken Head Timer",
-        description: "Displays a timer for the Chicken Head cooldown.",
-        category: "Other",
-        subcategory: "Chicken Head Timer"
-    })
-    chickenHeadTimer = true
-
-    @ButtonProperty({
-        name: "Move",
-        description: "Move the Chicken Head Timer.",
-        category: "Other",
-        subcategory: "Chicken Head Timer",
-        placeholder: "Move"
-    })
-    MoveChickenHeadTimer() {
+.addSwitch({
+    category: "Other",
+    configName: "chickenHeadTimer",
+    title: "Chicken Head Timer",
+    description: "Displays a timer for the Chicken Head cooldown.",
+    subcategory: "Chicken Head Timer",
+    value: true
+})
+.addButton({
+    category: "Other",
+    configName: "MoveChickenHeadTimer",
+    title: "Move",
+    description: "Move the Chicken Head Timer.",
+    subcategory: "Chicken Head Timer",
+    placeHolder: "Move",
+    onClick() {
         ChatLib.command('b+ move chickenHeadTimerDisplay', true)
     }
+})
+.addSwitch({
+    category: "Other",
+    configName: "hideEggLaidMessage",
+    title: "Hide Egg Laid Message",
+    description: "Hides the §r§aYou laid an egg!§r message.",
+    subcategory: "Chicken Head Timer"
+})
 
-    @SwitchProperty({
-        name: "Hide Egg Laid Message",
-        description: "Hides the §r§aYou laid an egg!§r message.",
-        category: "Other",
-        subcategory: "Chicken Head Timer"
-    })
-    hideEggLaidMessage = false
-    
-    @SwitchProperty({
-        name: "Wind Compass Display",
-        description: "Shows a display with the wind compass during the 'Gone with the Wind' event.",
-        category: "Other",
-        subcategory: "Gone with the Wind"
-    })
-    windCompassDisplay = false
-
-    @ButtonProperty({
-        name: "Move",
-        description: "Move the Wind Compass Display.",
-        category: "Other",
-        subcategory: "Gone with the Wind",
-        placeholder: "Move"
-    })
-    MoveWindCompassDisplay() {
-        ChatLib.command('b+ move windCompassDisplay', true)
+.addSwitch({
+    category: "Other",
+    configName: "windCompassDisplay",
+    title: "Wind Compass Display",
+    description: "Shows a display with the wind compass during the 'Gone with the Wind' event.",
+    subcategory: "Gone with the Wind"
+})
+.addButton({
+    category: "Other",
+    configName: "MoveWindCompassDisplay",
+    title: "Move",
+    description: "Move the Wind Compass Display.",
+    subcategory: "Gone with the Wind",
+    placeHolder: "Move",
+    onClick() {
+        ChatLib.command('b+ move chickenHeadTimerDisplay', true)
     }
+})
 
-    @SwitchProperty({
-        name: "Puzzler solver",
-        description: "Solves the Puzzler's riddle in the Dwarven Mines.",
-        category: "Other",
-        subcategory: "Puzzler"
-    })
-    puzzlerSolver = true
-/*
-    @SwitchProperty({
-        name: "Wind guide",
-        description: "Draws lines to guide you where to face for the max mining speed.",
-        category: "Other",
-        subcategory: "Gone with the Wind"
-    })
-    windCompassGuide = false
-*/
+.addSwitch({
+    category: "Other",
+    configName: "puzzlerSolver",
+    title: "Puzzler solver",
+    description: "Solves the Puzzler's riddle in the Dwarven Mines.",
+    subcategory: "Puzzler",
+    value: true
+})
 
-    @SwitchProperty({
-        name: "Rat Waypoints",
-        description: "Shows waypoints for the general location of Rat spawns.\n&aToggleable with &6/rats&a.",
-        category: "Other",
-        subcategory: "Rats"
-    })
-    ratWaypoints = false
+.addSwitch({
+    category: "Other",
+    configName: "ratWaypoints",
+    title: "Rat Waypoints",
+    description: "Shows waypoints for the general location of Rat spawns.\n&aToggleable with &6/rats&a.",
+    subcategory: "Rats",
+    value: false
+})
+.addSwitch({
+    category: "Other",
+    configName: "ratWaypointsShowText",
+    title: "Show text",
+    description: "Shows text next to each waypoint with information on how to access it.",
+    subcategory: "Rats",
+    value: true
+})
+.addSwitch({
+    category: "Other",
+    configName: "ratWaypointsShowBeacon",
+    title: "Show beacon",
+    description: "Shows a beacon at each waypoint.",
+    subcategory: "Rats",
+    value: true
+})
 
-    @SwitchProperty({
-        name: "Show text",
-        description: "Shows text next to each waypoint with information on how to access it.",
-        category: "Other",
-        subcategory: "Rats"
-    })
-    ratWaypointsShowText = true
+// Party
 
-    @SwitchProperty({
-        name: "Show beacon",
-        description: "Shows a beacon at each waypoint.",
-        category: "Other",
-        subcategory: "Rats"
-    })
-    ratWaypointsShowBeacon = true
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyLineBreak",
+    title: "Block Party Line Breaks",
+    description: "Blocks the blue separator line.\nRecommended if using the other blockers!",
+    options: ["Off", "Only in Bingo Party", "Everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyTravelMessagesNew",
+    title: "Block Party Travel Notifications",
+    description: "Blocks party travel notifications.\n&8Instead of using 'Everywhere' consider disabling Co-op Travel Notifications in SkyBlock settings!",
+    options: ["Off", "Only in Bingo Party", "Everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyJoinLeave",
+    title: "Block Join/Leave",
+    description: "Blocks party join/leave messages. This includes the 5 minute disconnect messages.",
+    options: ["Off", "Only in Bingo Party", "Everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
 
-/*
-    @SwitchProperty({
-        name: "Dreadlord Sword alert",
-        description: "Warns you when you pickup a Dreadlord Sword on Bingo.",
-        category: "Bingo",
-        subcategory: "Dreadlord Sword"
-    })
-    dreadlordSwordAlert = false
-*/
-    
-/*
-    @SwitchProperty({
-        name: "Broken Goal Helper",
-        description: "Sends a chat message with a solution to a broken goal when opening the Bingo Card.",
-        category: "Bingo",
-        subcategory: "Broken Goal Helper"
-    })
-    brokenBingoGoalHelper = false
-*/
-    // Party
-    
-    /*
-    @SwitchProperty({
-        name: "Show message blocker status",
-        description: "Tells you which blockers are active when joining a party",
-        category: "Party",
-        subcategory: "Message Blockers"
-    })
-    blockPartyMessagesStatus = false
-    */
-
-    @SelectorProperty({
-        name: "Block Party Line Breaks",
-        description: "Blocks the blue separator line.\nRecommended if using the other blockers!", // \n&aToggleable with &6/ptravel&a.&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r
-        category: "Party",
-        subcategory: "Message Blockers",
-        options: ['Off', 'Only in Bingo Party', 'Everywhere']
-    })
-    blockPartyLineBreak = 0;
-
-    @SelectorProperty({
-        name: "Block Party Travel Notifications",
-        description: "Blocks party travel notifications.\n&8Instead of using 'Everywhere' consider disabling Co-op Travel Notifications in SkyBlock settings!", // \n&aToggleable with &6/ptravel&a.&r\n\n §9§l» §booffyy §eis traveling to §aPrivate Island §e§lFOLLOW§r\n §9§l» §6aphased §eis traveling to §aHub §e§lFOLLOW§r
-        category: "Party",
-        subcategory: "Message Blockers",
-        options: ['Off', 'Only in Bingo Party', 'Everywhere']
-    })
-    blockPartyTravelMessagesNew = 0;
-
-    @SelectorProperty({
-        name: "Block Join/Leave",
-        description: "Blocks party join/leave messages. This includes the 5 min disconnect messages.",
-        category: "Party",
-        subcategory: "Message Blockers",
-        options: ['Off', 'Only in Bingo Party', 'Everywhere']
-    })
-    blockPartyJoinLeave = 0;
-
-    @TextProperty({
-        name: "Alias for /msg BingoParty !p",
-        description: "Creates an alias for &6/msg BingoParty !p&r. Leave blank to disable.\nExample: &aap&r\n&cRun /ct load after changing alias!",
-        category: "Party",
-        subcategory: "BingoParty Moderation"
-    })
-    bingoPartyAlias = ""
-
-    @ButtonProperty({
-        name: "BingoParty Commands Documentation",
-        description: "Click the button to open this in your browser.",
-        category: "Party",
-        subcategory: "BingoParty Moderation",
-        placeholder: "GitHub"
-    })
-    openBPDocumentation() {
+.addButton({
+    category: "Party",
+    configName: "openBingoPartyDocumentation",
+    title: "BingoParty Commands Documentation",
+    description: "A guide on the available §6[MVP§r§c++§r§6] BingoParty§r commands.",
+    subcategory: "BingoParty Moderation",
+    placeHolder: "GitHub",
+    onClick() {
         java.awt.Desktop.getDesktop().browse(new java.net.URL(
             'https://github.com/aphased/BingoPartyCommands?tab=readme-ov-file#bingopartycommands'
         ).toURI())
     }
-  
-    // Splasher
+})
 
-    @SwitchProperty({
-        name: "Show potion abbreviation",
-        description: "Renders the potion's abbreviation over it",
-        category: "Splasher",
-        subcategory: "Potions"
-    })
-    potionAbbreviation = true
+.addTextInput({
+    category: "Party",
+    configName: "bingoPartyAlias",
+    title: "Alias for /msg BingoParty !p",
+    description: "Creates an alias for &6/msg BingoParty !p&r. Leave blank to disable.\nExample: &aap&r\n&cRun /ct load after changing alias!",
+    subcategory: "BingoParty Moderation",
+    placeHolder: "eg. ap",
+    value: "",
+})
 
-    @SwitchProperty({
-        name: "Splasher Display",
-        description: "Show a display with important information while in the Pet Care area.",
-        category: "Splasher",
-        subcategory: "Splasher Display"
-    })
-    splasherDisplay = true
+// Splasher
 
-    @SwitchProperty({
-        name: "Show everywhere",
-        description: "Show the display everywhere.\n&cMay break in unsupported areas!",
-        category: "Splasher",
-        subcategory: "Splasher Display"
-    })
-    splasherDisplayEverywhere = false
+.addSwitch({
+    category: "Splasher",
+    configName: "potionAbbreviation",
+    title: "Show potion abbreviation",
+    description: "Renders the potion's abbreviation over it",
+    subcategory: "Potions",
+    value: true
+})
 
-    @SliderProperty({
-        name: "Splasher Display Distance",
-        description: "Detect players until this distance.\n&a5 is recommended",
-        category: "Splasher",
-        subcategory: "Splasher Display",
-        min: 1,
-        max: 10
-    })
-    splasherDisplayDistance = 5;
-
-    @ButtonProperty({
-        name: "Move",
-        description: "Move the Splasher Display",
-        category: "Splasher",
-        subcategory: "Splasher Display",
-        placeholder: "Move"
-    })
-    MoveSplasherDisplay() {
+.addSwitch({
+    category: "Splasher",
+    configName: "splasherDisplay",
+    title: "Splasher Display",
+    description: "Show a display with important information while in the Pet Care area.",
+    subcategory: "Splasher Display",
+    value: true
+})
+.addSwitch({
+    category: "Splasher",
+    configName: "splasherDisplayEverywhere",
+    title: "Show everywhere",
+    description: "Show the display everywhere.\n&cMay break in unsupported areas!",
+    subcategory: "Splasher Display"
+})
+.addSlider({
+    category: "Splasher",
+    configName: "splasherDisplayDistance",
+    title: "Splasher Display Distance",
+    description: "Detect players until this distance.\n&a5 is recommended",
+    subcategory: "Splasher Display",
+    options: [1, 10],
+    value: 5,
+})
+.addButton({
+    category: "Splasher",
+    configName: "MoveSplasherDisplay",
+    title: "Move",
+    description: "Move the Splasher Display",
+    subcategory: "Splasher Display",
+    placeHolder: "Move",
+    onClick() {
         ChatLib.command('b+ move splasherDisplay', true)
     }
+})
 
-    @SwitchProperty({
-        name: "No Potions Warning",
-        description: "Warns you if you enter the Pet Care in a mega hub without any splash potions.",
-        category: "Splasher"
-    })
-    noPotionsWarning = false
+.addSwitch({
+    category: "Splasher",
+    configName: "noPotionsWarning",
+    title: "No Potions Warning",
+    description: "Warns you if you enter the Pet Care in a mega hub without any splash potions.\n&cthis doesn't work correctly rn i think",
+    subcategory: ""
+})
 
-    @SwitchProperty({
-        name: "Hub Selector Display",
-        description: "Show a display with the lowest player hubs while in the Hub Selector.",
-        category: "Splasher",
-        subcategory: "Hub Selector Display"
-    })
-    hubSelectorDisplay = false
-
-    @SwitchProperty({
-        name: "Hub Restart Warning",
-        description: "Sends a message in chat if a restarting hub is detected.\nHub numbers may be shifting when this happens.",
-        category: "Splasher",
-        subcategory: "Hub Selector Display"
-    })
-    hubRestartWarning = true
-
-    @SliderProperty({
-        name: "Top Hubs",
-        description: "How many hubs to show",
-        category: "Splasher",
-        subcategory: "Hub Selector Display",
-        min: 1,
-        max: 28
-    })
-    hubSelectorDisplayTopHubs = 5;
-
-    @SwitchProperty({
-        name: "Highlight Best Hubs",
-        description: "Highlights the lowest player hubs.\n&8Disable SBE's Hub Colors for the best experience!",
-        category: "Splasher",
-        subcategory: "Hub Selector Display"
-    })
-    hubSelectorHighlightBestHubs = false
-
-    @ButtonProperty({
-        name: "Move",
-        description: "Move the Lowest Hub Display",
-        category: "Splasher",
-        subcategory: "Hub Selector Display",
-        placeholder: "Move"
-    })
-    MoveHubSelectorDisplay() {
-        this.hubSelectorDisplayMove.open()
+.addSwitch({
+    category: "Splasher",
+    configName: "hubSelectorDisplay",
+    title: "Hub Selector Display",
+    description: "Show a display with the lowest player hubs while in the Hub Selector.",
+    subcategory: "Hub Selector Display"
+})
+.addSwitch({
+    category: "Splasher",
+    configName: "hubRestartWarning",
+    title: "Hub Restart Warning",
+    description: "Sends a message in chat if a restarting hub is detected.\nHub numbers may be shifting when this happens.",
+    subcategory: "Hub Selector Display"
+})
+.addSlider({
+    category: "Splasher",
+    configName: "hubSelectorDisplayTopHubs",
+    title: "Top Hubs",
+    description: "How many hubs to show",
+    subcategory: "Hub Selector Display",
+    options: [1, 28],
+    value: 5
+})
+.addSwitch({
+    category: "Splasher",
+    configName: "hubSelectorHighlightBestHubs",
+    title: "Highlight Best Hubs",
+    description: "Highlights the lowest player hubs.\n&8Disable SBE's Hub Colors for the best experience!",
+    subcategory: "Hub Selector Display"
+})
+.addButton({
+    category: "Splasher",
+    configName: "MoveHubSelectorDisplay",
+    title: "Move",
+    description: "Move the Lowest Hub Display",
+    subcategory: "Hub Selector Display",
+    placeHolder: "Move",
+    onClick() {
+        ChatLib.chat(`${constants.PREFIX}This feature can currently only be moved within the Hub Selector menu.`)
     }
+})
 
-    // Chat
+// Chat
 
-    @SwitchProperty({
-        name: "Oringo Abiphone Cost",
-        description: "Convert Oringo's Abiphone message to include the rarity and cost of each pet.",
-        category: "Chat",
-        subcategory: "Oringo"
-    })
-    oringoAbiphoneCost = true
+.addSwitch({
+    category: "Chat",
+    configName: "oringoAbiphoneCost",
+    title: "Oringo Abiphone Cost",
+    description: "Convert Oringo's Abiphone message to include the rarity and cost of each pet.",
+    subcategory: "Oringo",
+    value: true
+})
+.addSwitch({
+    category: "Chat",
+    configName: "oringoDiscordCopy",
+    title: "Copy as Discord message",
+    description: "Also automatically copy this message to send in Discord.",
+    subcategory: "Oringo",
+    value: true
+})
 
-    @SwitchProperty({
-        name: "Copy as Discord message",
-        description: "Also automatically copy this message to send in Discord.",
-        category: "Chat",
-        subcategory: "Oringo"
-    })
-    oringoDiscordCopy = true
+// Commands
 
-    // Commands
+.addTextInput({
+    category: "Commands",
+    configName: "centuryCakeIsland",
+    title: "Century Cake Island",
+    description: "Visits a Cake Hub when running &e/cake&r.\nDefault: &aBingoSplasher&r",
+    value: "BingoSplasher",
+    placeHolder: "username",
+    subcategory: ""
+})
 
-    @TextProperty({
-        name: "Century Cake Island",
-        description: "Visits a Cake Hub when running &e/cake&r.\nDefault: &aBingoSplasher&r",
-        category: "Commands"
-    })
-    centuryCakeIsland = "BingoSplasher"
-}
+const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/betterVigilanceScheme.json", `${constants.PREFIX}&bv${version} &aby &dooffyy`)
+    .onOpenGui(() => {
+        settings
+        .setSize(80, 80)
+        .setPos(10, 10)
+        .setCategorySort((a, b) => categories.indexOf(a.category) - categories.indexOf(b.category))
+        .apply()
+})
 
-export default new Settings()
+export default () => settings.settings

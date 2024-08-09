@@ -1,4 +1,4 @@
-import Settings from "../../Settings"
+import settings from "../../settings"
 import Party from "../../utils/Party"
 
 const partyLineBreak = '&9&m-----------------------------------------------------&r'
@@ -14,8 +14,8 @@ filter('blockPartyJoinLeave', /.* (?:has disconnected, they have 5 minutes to re
  */
 function filter(setting, criteria) {
     register("chat", (e) => {
-        if (Settings[setting] == 0) return
-        if ((Party.leader === 'BingoParty' && Settings[setting] == 1)
-         || Settings[setting] == 2) cancel(e)
+        if (settings()[setting] == 0) return
+        if ((Party.leader === 'BingoParty' && settings()[setting] == 1)
+         || settings()[setting] == 2) cancel(e)
     }).setCriteria(criteria)
 }

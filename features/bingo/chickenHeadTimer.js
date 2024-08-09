@@ -1,6 +1,6 @@
 import { BaseGui } from "../../render/BaseGui"
 import { data } from "../../utils/constants"
-import Settings from "../../Settings"
+import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
 import { registerGui } from "../../render/registerGui"
@@ -13,7 +13,7 @@ let chickenHeadTimerGui = new BaseGui('chickenHeadTimerDisplay', ['chickenHeadTi
 registerGui(chickenHeadTimerGui)
 
 register("tick", () => {
-    opened = (Settings.chickenHeadTimer && Skyblock.inSkyblock && Player.armor?.getHelmet()?.getName()?.includes("Chicken Head")) || chickenHeadTimerGui.isOpen()
+    opened = (settings().chickenHeadTimer && Skyblock.inSkyblock && Player.armor?.getHelmet()?.getName()?.includes("Chicken Head")) || chickenHeadTimerGui.isOpen()
 })
 
 register("worldLoad", () => {
@@ -42,5 +42,5 @@ registerWhen(register("renderOverlay", () => { // thanks bloom
 
 register("chat", (e) => {
     lastLay = new Date().getTime()
-    if (Settings.hideEggLaidMessage) cancel(e)
+    if (settings().hideEggLaidMessage) cancel(e)
 }).setCriteria("You laid an egg!")

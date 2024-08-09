@@ -1,4 +1,4 @@
-import Settings from "../../Settings"
+import settings from "../../settings"
 import constants from "../../utils/constants"
 
 PREFIX = constants.PREFIX
@@ -65,7 +65,7 @@ let pets = []
 
 // abiphone call 
 register("chat", (x, e) => {
-    if (!Settings.oringoAbiphoneCost) return
+    if (!settings().oringoAbiphoneCost) return
     const pet = x.slice(2)
     const colour = x[1]
     if (!rarityList[colour] || !oringoPets[pet]) { ChatLib.chat(`${PREFIX}&cPet not read correctly!`); return }
@@ -84,7 +84,7 @@ register("chat", (x, e) => {
 
     pets.push([rarity[0], pet, price])
 
-    if (rarity[1] == 4 && Settings.oringoDiscordCopy) { // todo: test if this actually works
+    if (rarity[1] == 4 && settings().oringoDiscordCopy) { // todo: test if this actually works
         let line = ['# Travelling Zoo']
         
         pets.forEach(x => {

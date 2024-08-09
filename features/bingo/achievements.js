@@ -1,4 +1,4 @@
-import Settings from "../../Settings"
+import settings from "../../settings";
 import constants from "../../utils/constants"
 import Bingo from "../../utils/Bingo";
 import Party from "../../utils/Party";
@@ -8,13 +8,13 @@ const regex = /(  HEART OF THE MOUNTAIN TIER .*|BINGO GOAL COMPLETE!.*|You compl
 
 register("chat", (event) => {
     if (!Bingo.inBingo) return
-    if (Settings.copyAchievements) {
+    if (settings().copyAchievements) {
         ChatLib.command(`ct copy ${event}`, true)
         ChatLib.chat(`${constants.PREFIX}&aAchievement copied to clipboard!`)
     }
-    if (Settings.autoSendAchievementsInParty) {
+    if (settings().autoSendAchievementsInParty) {
         if (Party.inParty) ChatLib.say(`/pc ${event}`)
     }
-    if (Settings.autoSendAchievementsInGuild) ChatLib.say(`/gc ${event}`)
+    if (settings().autoSendAchievementsInGuild) ChatLib.say(`/gc ${event}`)
 
 }).setCriteria(regex)

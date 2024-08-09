@@ -1,7 +1,10 @@
-import Settings from "../Settings"
+import settings from "../settings"
 import constants from "../utils/constants"
 
+// todo: fix this
+
 register("command", () => {
-    Settings.ratWaypoints = !Settings.ratWaypoints
-    ChatLib.chat(`${constants.PREFIX}${Settings.ratWaypoints ? '&aEnabled' : '&cDisabled'} Rat waypoints.`)
+    const active = !(settings().ratWaypoints)
+    settings().getConfig().setConfigValue('Other', 'ratWaypoints', active)
+    ChatLib.chat(`${constants.PREFIX}${active ? '&aEnabled' : '&cDisabled'} Rat waypoints.`)
 }).setName("rats").setAliases(["ratwaypoints"])

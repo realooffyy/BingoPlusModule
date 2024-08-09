@@ -1,9 +1,9 @@
-import Settings from "../Settings"
+import settings from "../settings"
 import constants from "../utils/constants"
 
 register("command", () => {
-    let name = '' + Settings.centuryCakeIsland
-    if (Settings.centuryCakeIsland === '') {
+    let name = '' + settings().centuryCakeIsland
+    if (name == '') {
         ChatLib.chat(`${constants.PREFIX}&aDefaulting to BingoSplasher.`)
         name = "BingoSplasher"
     }

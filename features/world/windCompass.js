@@ -1,7 +1,7 @@
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
 import { drawCenteredText, getStringWidth } from "../../render/utils"
-import Settings from "../../Settings"
+import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 import { getScoreboard, registerWhen } from "../../utils/utils"
 
@@ -22,7 +22,7 @@ registerGui(windCompassDisplayGui)
 
 register("tick", (t) => {
     if (t%5) return
-    opened = (Skyblock.inSkyblock && allowedLocations.includes(Skyblock.area) && (Settings.windCompassDisplay || Settings.windCompassGuide))
+    opened = (Skyblock.inSkyblock && allowedLocations.includes(Skyblock.area) && (settings().windCompassDisplay || settings().windCompassGuide))
     windy = false
     if (!opened) return
 
@@ -39,7 +39,7 @@ register("tick", (t) => {
 
 registerWhen(register("renderOverlay", () => {
     drawCenteredText(windText, 'windCompassDisplay', displayWidth)
-}), () => Settings.windCompassDisplay && windy && !windCompassDisplayGui.isOpen())
+}), () => settings().windCompassDisplay && windy && !windCompassDisplayGui.isOpen())
 
 registerWhen(register("renderOverlay", () => {
     drawCenteredText(displayExampleString, 'windCompassDisplay', getStringWidth(displayExampleString))

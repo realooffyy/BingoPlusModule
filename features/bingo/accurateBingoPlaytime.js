@@ -1,10 +1,10 @@
-import Settings from "../../Settings"
+import settings from "../../settings"
 import Bingo from "../../utils/Bingo"
 import constants, { data } from "../../utils/constants"
 import { convertDateObjectToString, msToTime } from "../../utils/utils"
 
 register("step", () => {
-    if (!Settings.accurateBingoPlaytime || !Bingo.inBingo) return
+    if (!settings().accurateBingoPlaytime || !Bingo.inBingo) return
     if (data.bingoPlaytime == 0 || !data.bingoPlaytimeStart) {
         data.bingoPlaytimeStart = Date.now()
         data.bingoPlaytime = 0
@@ -21,7 +21,7 @@ register("chat", () => {
 }).setCriteria('                     Welcome to SkyBlock Bingo!')
 
 register("chat", () => {
-    if (!Settings.accurateBingoPlaytime || !Bingo.inBingo) return
+    if (!settings().accurateBingoPlaytime || !Bingo.inBingo) return
     const time = msToTime(data.bingoPlaytime*1000)
     const startTime = new Date(data.bingoPlaytimeStart)
     const msg = new TextComponent(`${constants.PREFIX}&aPlaytime: ${time[0]}d ${time[1]}h ${time[2]}m ${time[3]}s `)

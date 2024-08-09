@@ -1,6 +1,6 @@
-import Settings from "../Settings"
+import settings from "../settings"
 
-const commandName = Settings.bingoPartyAlias
+const commandName = settings().bingoPartyAlias
 const commandList = [ 
     'boopme',
     'mute', 'unmute',

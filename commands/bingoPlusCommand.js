@@ -1,5 +1,5 @@
 import guis from "../render/registerGui"
-import Settings from "../Settings"
+import settings from "../settings"
 import { data } from "../utils/constants"
 import constants from "../utils/constants"
 
@@ -11,7 +11,7 @@ const commandsList = [
 ]
 
 export const bingoPlusCommand = register("command", (...args) => {
-    if (!args || !args[0]) return Settings.openGUI()
+    if (!args || !args[0]) return settings().getConfig().openGui()
 
     if (args[0] == "help") {
         let line = `&6&m${ChatLib.getChatBreak(" ")}`

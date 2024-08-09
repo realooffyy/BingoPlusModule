@@ -2,7 +2,7 @@
 /// <reference lib="es2015" />
 
 import constants, { data } from "../../utils/constants"
-import Settings from "../../Settings"
+import settings from "../../settings"
 import { highlightSlot } from "../../utils/utils"
 
 import Skyblock from "../../utils/Skyblock"
@@ -32,19 +32,11 @@ let grabbed = false
 
 register("tick", () => {
     display.setRenderLoc(data.hubSelectorDisplay.x, data.hubSelectorDisplay.y)
-    opened = hubSelectorOpened || Settings.hubSelectorDisplayMove.isOpen()
-    if (Settings.hubSelectorDisplayMove.isOpen()) {
-        display.clearLines()
-        display.addLine('&e&lHub Selector')
-        let closeListener = register("guiClosed", () => {
-            closeListener?.unregister()
-            display?.clearLines()
-        })
-    }
+    opened = hubSelectorOpened
 })
 
 register("guiRender", (e) => {
-    if (!Settings.hubSelectorHighlightBestHubs) return
+    if (!settings().hubSelectorHighlightBestHubs) return
     let rgba = [0, 0, 0, 255]
     bestHubs.forEach(x => {
         if (x[2] === 'c') rgba = [255, 0, 0, 255]
@@ -54,7 +46,7 @@ register("guiRender", (e) => {
 })
 
 register("guiRender", () => {
-    if (!Settings.hubSelectorDisplay || !Skyblock.inSkyblock) return
+    if (!settings().hubSelectorDisplay || !Skyblock.inSkyblock) return
     const container = Player.getContainer()
     if (!hubSelectorOpened && (container?.getName() == "SkyBlock Hub Selector" || container?.getName() == "Dungeon Hub Selector")) {
         
@@ -96,7 +88,7 @@ register("guiRender", () => {
                                 playerMax = match[2]
                                 slotsLeft = playerMax-playerCount
                                 
-                                if (Settings.hubRestartWarning) {
+                                if (settings().hubRestartWarning) {
                                     if (playerMax == 0 && !restartWarning) {
                                         ChatLib.chat(`${constants.PREFIX}&cDetected a restarting server! &eI recommend waiting before selecting a hub, in case the hubs shift.`)
                                         restartWarning = true
@@ -149,7 +141,7 @@ function compileLines(arr, sortIndex) {
     bestHubs = []
     otherHubs = []
 
-    for (let i = 0; i < Settings.hubSelectorDisplayTopHubs; i++) {
+    for (let i = 0; i < settings().hubSelectorDisplayTopHubs; i++) {
         let hub = hubs[i]
 
         if (hub[sortIndex] == bestCount) bestHubs.push(hub)
@@ -169,7 +161,7 @@ function compileLines(arr, sortIndex) {
 
 register("dragged", (dx, dy, x, y) => {
     if (opened) {
-        if (grabbed || Settings.hubSelectorDisplayMove.isOpen()) {
+        if (grabbed) {
             display.setRenderLoc(data.hubSelectorDisplay.x, data.hubSelectorDisplay.y)
             data.hubSelectorDisplay.x = x-(grabbed ? grabX : 0)
             data.hubSelectorDisplay.y = y-(grabbed ? grabY : 0)

@@ -11,9 +11,6 @@ import "./commands/bingoParty"
 import "./commands/ratWaypoints"
 //import "./commands/bingoGuides"
 
-// Legacy rendering
-import "./render/move"
-
 // Features
 import "./features/bingo/accurateBingoPlaytime"
 import "./features/bingo/achievements"
@@ -37,6 +34,7 @@ import "./features/splasher/hubSelectorDisplay"
 import "./features/world/rats"
 import "./features/world/puzzlerSolver"
 import "./features/world/windCompass"
+
 
 
 /* TODO
