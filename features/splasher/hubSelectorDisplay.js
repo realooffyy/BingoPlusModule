@@ -7,7 +7,7 @@ import { highlightSlot } from "../../utils/utils"
 
 import Skyblock from "../../utils/Skyblock"
 
-// i dont want to rewrite this lol
+// todo: rewrite this and seperate different hub selector features
 
 const nameRegex = /§(a|c)(?:Dungeon|SkyBlock) Hub #(\d{1,2})/
 // https://regex101.com/r/b8Gx1Q/1

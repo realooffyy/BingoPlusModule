@@ -13,3 +13,5 @@ registerWhen(register("renderItemIntoGui", (item, x, y) => {
     Renderer.drawString(text, 0, 0)
 
 }), () => settings().potionAbbreviation && Skyblock.inSkyblock)
+
+// todo: add keybind for showing the order of splashing potions for a rainbow order

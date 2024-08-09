@@ -393,14 +393,16 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "hubRestartWarning",
     title: "Hub Restart Warning",
     description: "Sends a message in chat if a restarting hub is detected.\nHub numbers may be shifting when this happens.",
-    subcategory: "Hub Selector"
+    subcategory: "Hub Selector",
+    shouldShow: data => data.hubSelectorDisplay
 })
 .addSwitch({
     category: "Splasher",
     configName: "hubSelectorHighlightBestHubs",
     title: "Highlight Best Hubs",
     description: "Highlights the hubs with the lowest playercount.\n&8Disable SBE's Hub Colors for the best experience!",
-    subcategory: "Hub Selector"
+    subcategory: "Hub Selector",
+    shouldShow: data => data.hubSelectorDisplay
 })
 
 // Chat
