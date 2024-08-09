@@ -428,7 +428,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     subcategory: ""
 })
 
-const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/betterVigilanceScheme.json", `${constants.PREFIX}&bv${version} &aby &dooffyy`)
+const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/vigilanceScheme.json", `${constants.PREFIX}&bv${version} &aby &dooffyy`)
     .onOpenGui(() => {
         settings
         .setSize(80, 80)
