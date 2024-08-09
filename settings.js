@@ -128,21 +128,23 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "bingoTimerDisplay",
     title: "Bingo Timer",
     description: "Displays time until a Bingo starts, ends, and profile deletion.",
-    subcategory: "Bingo Timer Display"
+    subcategory: "Bingo Timer Display",
 })
 .addSwitch({
     category: "Bingo",
     configName: "bingoTimerDisplayDontRound",
     title: "Don't round",
     description: "Leaves the time as day:hour:minute:second and doesn't round.",
-    subcategory: "Bingo Timer Display"
+    subcategory: "Bingo Timer Display",
+    shouldShow: data => data.bingoTimerDisplay
 })
 .addSwitch({
     category: "Bingo",
     configName: "bingoTimerDisplayEverywhere",
     title: "Show timer everywhere",
     description: "Shows timer while not on a Bingo profile.",
-    subcategory: "Bingo Timer Display"
+    subcategory: "Bingo Timer Display",
+    shouldShow: data => data.bingoTimerDisplay
 })
 .addButton({
     category: "Bingo",
@@ -153,7 +155,8 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     placeHolder: "Move",
     onClick() {
         ChatLib.command('b+ move bingoTimerDisplay', true)
-    }
+    },
+    shouldShow: data => data.bingoTimerDisplay
 })
 
 .addSwitch({
@@ -234,6 +237,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     title: "Show text",
     description: "Shows text next to each waypoint with information on how to access it.",
     subcategory: "Rats",
+    shouldShow: data => data.ratWaypoints,
     value: true
 })
 .addSwitch({
@@ -242,6 +246,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     title: "Show beacon",
     description: "Shows a beacon at each waypoint.",
     subcategory: "Rats",
+    shouldShow: data => data.ratWaypoints,
     value: true
 })
 
@@ -322,7 +327,8 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "splasherDisplayEverywhere",
     title: "Show everywhere",
     description: "Show the display everywhere.\n&cMay break in unsupported areas!",
-    subcategory: "Splasher Display"
+    subcategory: "Splasher Display",
+    shouldShow: data => data.splasherDisplay
 })
 .addSlider({
     category: "Splasher",
@@ -330,6 +336,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     title: "Splasher Display Distance",
     description: "Detect players until this distance.\n&a5 is recommended",
     subcategory: "Splasher Display",
+    shouldShow: data => data.splasherDisplay,
     options: [1, 10],
     value: 5,
 })
@@ -350,7 +357,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "noPotionsWarning",
     title: "No Potions Warning",
     description: "Warns you if you enter the Pet Care in a mega hub without any splash potions.\n&cthis doesn't work correctly rn i think",
-    subcategory: ""
+    subcategory: "Potions"
 })
 
 .addSwitch({
@@ -358,41 +365,42 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "hubSelectorDisplay",
     title: "Hub Selector Display",
     description: "Show a display with the lowest player hubs while in the Hub Selector.",
-    subcategory: "Hub Selector Display"
-})
-.addSwitch({
-    category: "Splasher",
-    configName: "hubRestartWarning",
-    title: "Hub Restart Warning",
-    description: "Sends a message in chat if a restarting hub is detected.\nHub numbers may be shifting when this happens.",
-    subcategory: "Hub Selector Display"
+    subcategory: "Hub Selector"
 })
 .addSlider({
     category: "Splasher",
     configName: "hubSelectorDisplayTopHubs",
     title: "Top Hubs",
     description: "How many hubs to show",
-    subcategory: "Hub Selector Display",
+    subcategory: "Hub Selector",
+    shouldShow: data => data.hubSelectorDisplay,
     options: [1, 28],
     value: 5
-})
-.addSwitch({
-    category: "Splasher",
-    configName: "hubSelectorHighlightBestHubs",
-    title: "Highlight Best Hubs",
-    description: "Highlights the lowest player hubs.\n&8Disable SBE's Hub Colors for the best experience!",
-    subcategory: "Hub Selector Display"
 })
 .addButton({
     category: "Splasher",
     configName: "MoveHubSelectorDisplay",
     title: "Move",
     description: "Move the Lowest Hub Display",
-    subcategory: "Hub Selector Display",
+    subcategory: "Hub Selector",
     placeHolder: "Move",
     onClick() {
         ChatLib.chat(`${constants.PREFIX}This feature can currently only be moved within the Hub Selector menu.`)
     }
+})
+.addSwitch({
+    category: "Splasher",
+    configName: "hubRestartWarning",
+    title: "Hub Restart Warning",
+    description: "Sends a message in chat if a restarting hub is detected.\nHub numbers may be shifting when this happens.",
+    subcategory: "Hub Selector"
+})
+.addSwitch({
+    category: "Splasher",
+    configName: "hubSelectorHighlightBestHubs",
+    title: "Highlight Best Hubs",
+    description: "Highlights the hubs with the lowest playercount.\n&8Disable SBE's Hub Colors for the best experience!",
+    subcategory: "Hub Selector"
 })
 
 // Chat
@@ -411,6 +419,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     title: "Copy as Discord message",
     description: "Also automatically copy this message to send in Discord.",
     subcategory: "Oringo",
+    shouldShow: data => data.oringoAbiphoneCost,
     value: true
 })
 
