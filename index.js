@@ -8,7 +8,7 @@ import "./render/registerGui"
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 import "./commands/bingoParty"
-//import "./commands/ratWaypoints"
+import "./commands/ratWaypoints"
 //import "./commands/bingoGuides"
 
 // Features
@@ -61,6 +61,7 @@ import "./features/world/windCompass"
 
     1.2.1 changelog
 - added a setting to only show the splasher display during a bingo event
+- readd /rats command (doc fixed)
 - fix incorrect bingo card detection when using /show
 - fix bingo card display not respecting hide completed bingo goals
 
