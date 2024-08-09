@@ -446,12 +446,9 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 })
 
 const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/vigilanceScheme.json", `${constants.PREFIX}&bv${version} &aby &dooffyy`)
-    .onOpenGui(() => {
-        settings
-        .setSize(80, 80)
-        .setPos(10, 10)
-        .setCategorySort((a, b) => categories.indexOf(a.category) - categories.indexOf(b.category))
-        .apply()
-})
+    .setSize(80, 80)
+    .setPos(10, 10)
+    .setCategorySort((a, b) => categories.indexOf(a.category) - categories.indexOf(b.category))
+    .apply()
 
 export default () => settings.settings
