@@ -58,7 +58,7 @@ registerWhen(register('renderOverlay', () => {
     for (let i = 0; i<5; i++) {
         for (let j = 0; j<5; j++) {
             let item = Bingo.goals[count]
-            if (!(item.getID() == 351 && item.getLore().includes('§5§o§aGOAL REACHED'))) item.draw(x1 + 16*j*scale, y1 + 16*i*scale, scale)
+            if (!(item.getID() == 351 && item.getLore().includes('§5§o§aGOAL REACHED') && settings().hideCompletedBingoGoals)) item.draw(x1 + 16*j*scale, y1 + 16*i*scale, scale)
             count++
         }
     }
