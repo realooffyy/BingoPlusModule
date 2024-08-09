@@ -61,7 +61,7 @@ import "./features/world/windCompass"
 
     1.2.1 changelog
 - added a setting to only show the splasher display during a bingo event
-- fix detection when /showing a bingo card
+- fix incorrect bingo card detection when using /show
 
     1.2.0 changelog
 - migrate to amaterasu
