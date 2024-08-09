@@ -6,6 +6,7 @@ import Skyblock from "../../utils/Skyblock"
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
 import { getStringHeight, getStringWidth, drawTextBox } from "../../render/utils"
+import Bingo from "../../utils/Bingo"
 
 const playersTabRegex = /.*Players \((\d{1,2})\)/
 const playersBoardRegex = /  \((\d{1,2})\/(\d{1,2})\).*/
@@ -27,7 +28,8 @@ registerGui(splasherGui)
 
 register("tick", () => { // opened and location manager
     if (!settings().splasherDisplay || !Skyblock.inSkyblock) return
-    opened = Skyblock.subArea === 'Pet Care' || settings().splasherDisplayEverywhere
+    opened = (Skyblock.subArea === 'Pet Care' || settings().splasherDisplayEverywhere) && 
+             (!settings().splasherDisplayOnlyShowDuringBingo || Bingo.isOngoing())
 })
 
 /*

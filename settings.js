@@ -330,6 +330,14 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     subcategory: "Splasher Display",
     shouldShow: data => data.splasherDisplay
 })
+.addSwitch({
+    category: "Splasher",
+    configName: "splasherDisplayOnlyShowDuringBingo",
+    title: "Only show during Bingo",
+    description: "Only shows the display during a Bingo event",
+    subcategory: "Splasher Display",
+    shouldShow: data => data.splasherDisplay
+})
 .addSlider({
     category: "Splasher",
     configName: "splasherDisplayDistance",

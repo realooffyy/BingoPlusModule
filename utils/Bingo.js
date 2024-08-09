@@ -55,13 +55,17 @@ export default new class Bingo {
 
                 const goals = goalSlots.map(slot => inv.getItems()[slot])
                 if (goals.includes(null)) this.goals = null
+                else if (goals.some(goal => goal.getName() == "§cClose")) this.goals = null // fix for /showing the bingo card
                 else this.goals = goals
 
-                if (this.goals) this.community = this.extractCommunity(communityGoalSlots.map(slot => this.goals[slot]))
-                else this.community = null
-
-                this.cardLoaded = true
-                this.communityGoalDisplayLinesUpdated = false
+                if (this.goals) {
+                    this.community = this.extractCommunity(communityGoalSlots.map(slot => this.goals[slot]))
+                    this.cardLoaded = true
+                    this.communityGoalDisplayLinesUpdated = false
+                } else {
+                    this.community = null
+                    this.cardLoaded = false
+                }
             }
             else {
                 this.cardLoaded = false
@@ -70,6 +74,16 @@ export default new class Bingo {
             
         register("worldLoad", () => this.reset())
     }
+
+    /**
+     * uses the api to check if the bingo event is ongoing
+     * @returns if the bingo event is underway
+     */
+        isOngoing() {
+            const time = Date.now()
+            return data.bingoApi.start != null && data.bingoApi.end != null &&
+                   (data.bingoApi.start < time && time < data.bingoApi.end)
+        }
 
     extractCommunity(list) {
         goals = []
@@ -100,9 +114,10 @@ export default new class Bingo {
         })
         return goals
     }
-
+    
     reset() {
         this.inBingo = null
+        this.ongoingEvent = false
         
         this.windowTitle = null
         this.cardLoaded = false
