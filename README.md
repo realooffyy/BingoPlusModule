@@ -58,7 +58,7 @@ If the module does not seem to be working, join the Discord and share your log i
 </details>
 <details>
     <summary>Rat waypoints</summary>
-    Shows waypoints for the general location of Rat spawns. Toggleable with `/rats`.
+    Shows waypoints for the general location of Rat spawns. Toggleable with /rats (command temporarily disabled).
 </details>
 
 ### Party
