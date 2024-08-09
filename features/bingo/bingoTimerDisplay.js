@@ -1,6 +1,6 @@
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
-import Settings from "../../Settings"
+import settings from "../../settings"
 import Bingo from "../../utils/Bingo"
 import Skyblock from "../../utils/Skyblock"
 import { data } from "../../utils/constants"
@@ -21,7 +21,7 @@ register("tick", (t) => {
     opened = false
     if (!Skyblock.inSkyblock) return
     if (bingoTimerDisplayGui.isOpen()) { line = 'Bingo Timer'; return }
-    if (!Settings.bingoTimerDisplay || (!Bingo.inBingo && !Settings.bingoTimerDisplayEverywhere)) return
+    if (!settings().bingoTimerDisplay || (!Bingo.inBingo && !settings().bingoTimerDisplayEverywhere)) return
     opened = true
 
     line = ''
@@ -49,7 +49,7 @@ register("tick", (t) => {
 
         const result = msToTime(diff)
 
-        if (Settings.bingoTimerDisplayDontRound) {
+        if (settings().bingoTimerDisplayDontRound) {
             if (result[0] > 0) line += result[0] + 'd ' + result[1] + 'h '+ result[2] + 'm ' + result[3] + 's'
             else if (result[1] > 0) line += result[1] + 'h ' + result[2] + 'm ' + result[3] + 's'
             else if (result[2] > 0) line += result[2] + 'm ' + result[3] + 's'

@@ -8,7 +8,6 @@ export class BaseGui {
     /**
      * @param {string[]} guiData - The data alias in the PogData
      * @param {string[]} alias - Aliases for this gui
-     * @param {boolean} draggable - Can be draggable without entering the move gui
      */
 
     constructor(guiData, aliases) {

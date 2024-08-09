@@ -8,11 +8,8 @@ import "./render/registerGui"
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 import "./commands/bingoParty"
-import "./commands/ratWaypoints"
+//import "./commands/ratWaypoints"
 //import "./commands/bingoGuides"
-
-// Legacy rendering
-import "./render/move"
 
 // Features
 import "./features/bingo/accurateBingoPlaytime"
@@ -39,6 +36,7 @@ import "./features/world/puzzlerSolver"
 import "./features/world/windCompass"
 
 
+
 /* TODO
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler, bednom
  * - hotm tree unlock reminders
@@ -60,6 +58,12 @@ import "./features/world/windCompass"
 
 
 /*
+
+    1.2.0 changelog
+- migrate to amaterasu
+- fixed bingo detection while visiting players
+- temporarily disable /rats command (it broke)
+
     1.1.3 changelog
 - added potion abbreviations
 - removed dialogue skipper
@@ -80,4 +84,5 @@ import "./features/world/windCompass"
 - added puzzler solver
 - changed rat waypoint colours
 - optimised community goal display
- */
+
+*/

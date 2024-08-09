@@ -1,6 +1,6 @@
 import { data } from "../../utils/constants"
 import constants from "../../utils/constants"
-import Settings from "../../Settings"
+import settings from "../../settings"
 import { registerWhen, getTabList, getScoreboard, getValue, removeUnicode } from "../../utils/utils"
 import Skyblock from "../../utils/Skyblock"
 import { BaseGui } from "../../render/BaseGui"
@@ -26,8 +26,8 @@ let splasherGui = new BaseGui('splasherDisplay', ['splasherDisplay', 'splasher',
 registerGui(splasherGui)
 
 register("tick", () => { // opened and location manager
-    if (!Settings.splasherDisplay || !Skyblock.inSkyblock) return
-    opened = Skyblock.subArea === 'Pet Care' || Settings.splasherDisplayEverywhere
+    if (!settings().splasherDisplay || !Skyblock.inSkyblock) return
+    opened = Skyblock.subArea === 'Pet Care' || settings().splasherDisplayEverywhere
 })
 
 /*
@@ -50,7 +50,7 @@ register("step", () => { // line constructor
         const selfName = Player?.getName()
 
         // put everyone in the lists
-        const nearbyPlayers = World.getAllPlayers().filter(player => player.getUUID().version() === 4 && Math.hypot(x - player.x, y - player.y, z - player.z) < Settings.splasherDisplayDistance)
+        const nearbyPlayers = World.getAllPlayers().filter(player => player.getUUID().version() === 4 && Math.hypot(x - player.x, y - player.y, z - player.z) < settings().splasherDisplayDistance)
 
         nearbyPlayers.forEach(user => {
             const name = user.getDisplayName().text

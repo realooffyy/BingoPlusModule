@@ -5,7 +5,6 @@
 
 /*
 
-import Settings from "../../Settings"
 import Bingo from "../../utils/Bingo"
 import Skyblock from "../../utils/Skyblock"
 import constants from "../../utils/constants"

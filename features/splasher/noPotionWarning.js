@@ -1,9 +1,9 @@
 import Skyblock from "../../utils/Skyblock"
-import Settings from "../../Settings"
+import settings from "../../settings"
 import Bingo from "../../utils/Bingo"
 
 register("step", () => {
-    if (!Settings.noPotionsWarning || !Skyblock.inSkyblock || Bingo.inBingo) return
+    if (!settings().noPotionsWarning || !Skyblock.inSkyblock || Bingo.inBingo) return
     if (Skyblock.subArea !== 'Pet Care' || Skyblock.serverType !== 'M') return
 
     const inv = Player.getInventory().getItems()

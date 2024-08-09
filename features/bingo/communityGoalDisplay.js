@@ -2,7 +2,7 @@
 /// <reference lib="es2015" />
 
 import { data } from "../../utils/constants"
-import Settings from "../../Settings"
+import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 import Bingo from "../../utils/Bingo"
 import { BaseGui } from "../../render/BaseGui"
@@ -25,7 +25,7 @@ let height = baseHeight
 let width = baseWidth
 
 register("tick", () => {
-    opened = (Skyblock.inSkyblock && Bingo.cardLoaded && Settings.communityGoalDisplay)
+    opened = (Skyblock.inSkyblock && Bingo.cardLoaded && settings().communityGoalDisplay)
     if (!Bingo.cardLoaded) lines = baseText
     if (Bingo.community !== null) {
         if (Bingo.community.length == 5 && Bingo.cardLoaded && !this.communityGoalDisplayLinesUpdated) {

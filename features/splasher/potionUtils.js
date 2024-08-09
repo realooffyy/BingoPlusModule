@@ -1,5 +1,5 @@
 import { registerWhen } from "../../utils/utils"
-import Settings from "../../Settings"
+import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 
 // Show potion abbreviation
@@ -8,8 +8,10 @@ registerWhen(register("renderItemIntoGui", (item, x, y) => {
     if (!name.includes("Splash Potion")) return
     const text = name.slice(0,5) + "."
 
-    Renderer.translate(x, y, 250) // 250 puts it behind the tooltip and in front of head textures 
+    Renderer.translate(x, y, 251) // 251 puts it behind the tooltip, in front of its texture, and in front of head other textures 
     Renderer.scale(0.6)
     Renderer.drawString(text, 0, 0)
 
-}), () => Settings.potionAbbreviation && Skyblock.inSkyblock)
+}), () => settings().potionAbbreviation && Skyblock.inSkyblock)
+
+// todo: add keybind for showing the order of splashing potions for a rainbow order
