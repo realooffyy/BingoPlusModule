@@ -8,7 +8,7 @@ import "./render/registerGui"
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 import "./commands/bingoParty"
-import "./commands/ratWaypoints"
+//import "./commands/ratWaypoints"
 //import "./commands/bingoGuides"
 
 // Features
@@ -60,7 +60,9 @@ import "./features/world/windCompass"
 /*
 
     1.2.0 changelog
+- migrate to amaterasu
 - fixed bingo detection while visiting
+- temporarily disable /rats command (it broke)
 
     1.1.3 changelog
 - added potion abbreviations

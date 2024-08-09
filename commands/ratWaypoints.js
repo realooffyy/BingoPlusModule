@@ -1,10 +1,12 @@
+/*
 import settings from "../settings"
 import constants from "../utils/constants"
 
-// todo: fix this
+doc please idk how fix
 
 register("command", () => {
-    const active = !(settings().ratWaypoints)
-    settings().getConfig().setConfigValue('Other', 'ratWaypoints', active)
-    ChatLib.chat(`${constants.PREFIX}${active ? '&aEnabled' : '&cDisabled'} Rat waypoints.`)
+    settings().getConfig().setConfigValue('Other', 'ratWaypoints', !(settings().ratWaypoints))
+    ChatLib.chat(`${constants.PREFIX}${settings().ratWaypoints ? '&aEnabled' : '&cDisabled'} Rat waypoints.`)
 }).setName("rats").setAliases(["ratwaypoints"])
+
+*/

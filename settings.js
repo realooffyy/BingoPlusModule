@@ -227,7 +227,6 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     title: "Rat Waypoints",
     description: "Shows waypoints for the general location of Rat spawns.\n&aToggleable with &6/rats&a.",
     subcategory: "Rats",
-    value: false
 })
 .addSwitch({
     category: "Other",
@@ -253,7 +252,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "blockPartyLineBreak",
     title: "Block Party Line Breaks",
     description: "Blocks the blue separator line.\nRecommended if using the other blockers!",
-    options: ["Off", "Only in Bingo Party", "Everywhere"],
+    options: ["Off", "Block while in BingoParty", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
@@ -262,7 +261,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "blockPartyTravelMessagesNew",
     title: "Block Party Travel Notifications",
     description: "Blocks party travel notifications.\n&8Instead of using 'Everywhere' consider disabling Co-op Travel Notifications in SkyBlock settings!",
-    options: ["Off", "Only in Bingo Party", "Everywhere"],
+    options: ["Off", "Block while in BingoParty", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
@@ -271,7 +270,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "blockPartyJoinLeave",
     title: "Block Join/Leave",
     description: "Blocks party join/leave messages. This includes the 5 minute disconnect messages.",
-    options: ["Off", "Only in Bingo Party", "Everywhere"],
+    options: ["Off", "Block while in BingoParty", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
@@ -289,7 +288,6 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
         ).toURI())
     }
 })
-
 .addTextInput({
     category: "Party",
     configName: "bingoPartyAlias",
