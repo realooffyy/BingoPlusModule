@@ -252,6 +252,13 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
 // Party
 
+.addSwitch({
+    category: "Party",
+    configName: "blockPartyDiscordWarning",
+    title: "Block Discord warning",
+    description: "Blocks the red text under a message containing the word 'discord'.",
+    subcategory: "Message Blockers"
+})
 .addDropDown({
     category: "Party",
     configName: "blockPartyLineBreak",
@@ -302,6 +309,15 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     placeHolder: "eg. ap",
     value: "",
 })
+/*
+.addSwitch({
+    category: "Party",
+    configName: "bingoPartyCommandConverter",
+    title: "Command converter",
+    description: "While in §6[MVP§r§c++§r§6] BingoParty§r's party, convert /p commands to its commands.",
+    subcategory: "BingoParty Moderation"
+})
+*/
 
 // Splasher
 
