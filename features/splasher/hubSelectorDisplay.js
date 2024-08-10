@@ -3,7 +3,7 @@
 
 import constants, { data } from "../../utils/constants"
 import settings from "../../settings"
-import { highlightSlot } from "../../utils/utils"
+import { highlightSlot } from "../../render/utils"
 
 import Skyblock from "../../utils/Skyblock"
 

@@ -62,15 +62,12 @@ export const getTabList = (formatted=false) => {
     return TabList.getNames().map(a => a.removeFormatting())
 }
 
-export const highlightSlot = (slot, rgba) => {
-    // From AlonAddons
-    let renderX, renderY
-    [renderX, renderY] = getSlotLocation(slot)
 
-    Renderer.translate(0, 0, 300);
-    Renderer.drawRect(rgba ? Renderer.color(rgba[0], rgba[1], rgba[2], rgba[3]) : Renderer.color(0, 255, 0, 255), renderX - 8, renderY - 8, 16, 16);
-}
-
+/**
+ * 
+ * @param {Number} slot slot number
+ * @returns {Array} x and y coordinates of the top left
+ */
 export const getSlotLocation = (slot) => {
     let x = slot % 9
     let y = Math.floor(slot / 9)
@@ -93,7 +90,8 @@ export function romanToInt(s) {
     return accumulator
 }
 
-export function msToTime(s) { // adapted from https://stackoverflow.com/questions/9763441/milliseconds-to-time-in-javascript
+// adapted from https://stackoverflow.com/questions/9763441/milliseconds-to-time-in-javascript
+export function msToTime(s) { 
     let ms = s % 1000
     s = (s - ms) / 1000
     let secs = s % 60
@@ -107,6 +105,7 @@ export function msToTime(s) { // adapted from https://stackoverflow.com/question
     return [days, hrs, mins, secs]
 }
 
-export function convertDateObjectToString(date) { //https://www.delftstack.com/howto/javascript/javascript-convert-timestamp-to-date/
+// https://www.delftstack.com/howto/javascript/javascript-convert-timestamp-to-date/
+export function convertDateObjectToString(date) { 
     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
 }

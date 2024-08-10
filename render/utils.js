@@ -1,4 +1,5 @@
 import { data } from "../utils/constants"
+import { getSlotLocation } from "../utils/utils"
 
 /**
  * Gets width of a string
@@ -58,4 +59,18 @@ export function drawCenteredText(text, dataName, width) {
     Renderer.translate(guiX, guiY)
     Renderer.scale(guiScale)
     Renderer.drawStringWithShadow(text, 0, 0)
+}
+
+/**
+ * Highlights a GUI slot (from alonaddons)
+ * @param {Number} slot slot number
+ * @param {Array} rgba an rgba array
+ */
+export const highlightSlot = (slot, rgba) => {
+    // From AlonAddons
+    let renderX, renderY
+    [renderX, renderY] = getSlotLocation(slot)
+
+    Renderer.translate(0, 0, 300);
+    Renderer.drawRect(rgba ? Renderer.color(rgba[0], rgba[1], rgba[2], rgba[3]) : Renderer.color(0, 255, 0, 255), renderX - 8, renderY - 8, 16, 16);
 }
