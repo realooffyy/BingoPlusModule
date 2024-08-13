@@ -11,18 +11,9 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
 .addButton({
     category: "General",
-    configName: "joinDiscord",
-    title: "Join the Discord",
-    description: "",
-    placeHolder: "Discord",
-    onClick() {
-        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
-    } // AVOID NOAMM9 AT ALL COSTS
-})
-.addButton({
-    category: "General",
+    subcategory: "Bingo Commands",
     configName: "runBingoCommand",
-    title: "Bingo Menu",
+    title: "/bingo",
     description: "",
     placeHolder: "/bingo",
     onClick() {
@@ -32,14 +23,26 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 })
 .addButton({
     category: "General",
+    subcategory: "Bingo Commands",
     configName: "runBingoPartyJoinCommand",
-    title: "Bingo Party",
+    title: "/p join BingoParty",
     description: "",
-    placeHolder: "/p join BingoParty",
+    placeHolder: "BingoParty",
     onClick() {
         Client.currentGui.close()
         ChatLib.command('p join BingoParty')
     }
+})
+.addButton({
+    category: "General",
+    subcategory: "Discord",
+    configName: "joinDiscord",
+    title: "Join the Discord",
+    description: "",
+    placeHolder: "Discord",
+    onClick() {
+        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
+    } // AVOID NOAMM9 AT ALL COSTS
 })
 
 // Bingo
