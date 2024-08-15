@@ -19,3 +19,26 @@ function filter(setting, criteria) {
          || settings()[setting] == 2) cancel(e)
     }).setCriteria(criteria)
 }
+
+// Discord red text blocker
+register("chat", (event) => {
+    if (!settings().blockPartyDiscordWarning) return
+
+    let message = new Message(EventLib.getMessage(event)).getMessageParts()
+    let newMessage = new Message()
+    let skipNext = false
+    
+    message.forEach(component => {
+        let text = component.getText()
+
+        if (text == '\n§r') { 
+            skipNext = true
+        } else if (!(skipNext && text == '§cPlease be mindful of Discord links in chat as they may pose a security risk§r')) {
+            newMessage.addTextComponent(component)
+            skipNext = false
+        }
+    })
+
+    newMessage.chat()
+    cancel(event)
+}).setCriteria(/^Party > .*Please be mindful of Discord links in chat as they may pose a security risk$/s)

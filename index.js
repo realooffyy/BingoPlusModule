@@ -8,7 +8,7 @@ import "./render/registerGui"
 import { bingoPlusCommand } from "./commands/bingoPlusCommand"
 import "./commands/centuryCakeIsland"
 import "./commands/bingoParty"
-//import "./commands/ratWaypoints"
+import "./commands/ratWaypoints"
 //import "./commands/bingoGuides"
 
 // Features
@@ -22,6 +22,7 @@ import "./features/bingo/communityGoalDisplay"
 //import "./features/bingo/dreadlordPickup"
 import "./features/bingo/hideCompletedBingoGoals"
 
+//import "./features/party/bingoPartyCommandConverter"
 import "./features/party/chatBlockers"
 
 import "./features/chat/oringoCost"
@@ -50,7 +51,7 @@ import "./features/world/windCompass"
  * - splash display
  * - splasher features
  *      add overlay for currently hovering potion
- * - dreadlord sword drop warning
+ * - dreadlord sword drop warning (bingohelper module checks entities, but i dont think it's practical bc telekinesis)
  * - splash display hub number guess
  * - brewing stand name display
  * - broken bingo goal helper
@@ -58,6 +59,14 @@ import "./features/world/windCompass"
 
 
 /*
+
+    1.2.1 changelog
+- added a setting to only show the splasher display during a bingo event
+- added blocker for the red discord text in party chat
+- readded /rats command (doc fixed)
+- changed settings colour scheme
+- fix incorrect bingo card detection when using /show
+- fix bingo card display not respecting hide completed bingo goals
 
     1.2.0 changelog
 - migrate to amaterasu

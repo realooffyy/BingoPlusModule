@@ -11,18 +11,9 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
 .addButton({
     category: "General",
-    configName: "joinDiscord",
-    title: "Join the Discord",
-    description: "",
-    placeHolder: "Discord",
-    onClick() {
-        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
-    } // AVOID NOAMM9 AT ALL COSTS
-})
-.addButton({
-    category: "General",
+    subcategory: "Bingo Commands",
     configName: "runBingoCommand",
-    title: "Bingo Menu",
+    title: "/bingo",
     description: "",
     placeHolder: "/bingo",
     onClick() {
@@ -32,14 +23,26 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 })
 .addButton({
     category: "General",
+    subcategory: "Bingo Commands",
     configName: "runBingoPartyJoinCommand",
-    title: "Bingo Party",
+    title: "/p join BingoParty",
     description: "",
-    placeHolder: "/p join BingoParty",
+    placeHolder: "BingoParty",
     onClick() {
         Client.currentGui.close()
         ChatLib.command('p join BingoParty')
     }
+})
+.addButton({
+    category: "General",
+    subcategory: "Discord",
+    configName: "joinDiscord",
+    title: "Join the Discord",
+    description: "",
+    placeHolder: "Discord",
+    onClick() {
+        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
+    } // AVOID NOAMM9 AT ALL COSTS
 })
 
 // Bingo
@@ -252,6 +255,13 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
 // Party
 
+.addSwitch({
+    category: "Party",
+    configName: "blockPartyDiscordWarning",
+    title: "Block Discord warning",
+    description: "Blocks the red text under a message containing the word 'discord'.",
+    subcategory: "Message Blockers"
+})
 .addDropDown({
     category: "Party",
     configName: "blockPartyLineBreak",
@@ -302,6 +312,15 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     placeHolder: "eg. ap",
     value: "",
 })
+/*
+.addSwitch({
+    category: "Party",
+    configName: "bingoPartyCommandConverter",
+    title: "Command converter",
+    description: "While in §6[MVP§r§c++§r§6] BingoParty§r's party, convert /p commands to its commands.",
+    subcategory: "BingoParty Moderation"
+})
+*/
 
 // Splasher
 
@@ -327,6 +346,14 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "splasherDisplayEverywhere",
     title: "Show everywhere",
     description: "Show the display everywhere.\n&cMay break in unsupported areas!",
+    subcategory: "Splasher Display",
+    shouldShow: data => data.splasherDisplay
+})
+.addSwitch({
+    category: "Splasher",
+    configName: "splasherDisplayOnlyShowDuringBingo",
+    title: "Only show during Bingo",
+    description: "Only shows the display during a Bingo event",
     subcategory: "Splasher Display",
     shouldShow: data => data.splasherDisplay
 })
@@ -438,12 +465,9 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 })
 
 const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/vigilanceScheme.json", `${constants.PREFIX}&bv${version} &aby &dooffyy`)
-    .onOpenGui(() => {
-        settings
-        .setSize(80, 80)
-        .setPos(10, 10)
-        .setCategorySort((a, b) => categories.indexOf(a.category) - categories.indexOf(b.category))
-        .apply()
-})
+    .setSize(80, 80)
+    .setPos(10, 10)
+    .setCategorySort((a, b) => categories.indexOf(a.category) - categories.indexOf(b.category))
+    .apply()
 
 export default () => settings.settings
