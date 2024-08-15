@@ -64,6 +64,7 @@ import "./features/world/windCompass"
 - added a setting to only show the splasher display during a bingo event
 - added blocker for the red discord text in party chat
 - readded /rats command (doc fixed)
+- changed settings colour scheme
 - fix incorrect bingo card detection when using /show
 - fix bingo card display not respecting hide completed bingo goals
 
