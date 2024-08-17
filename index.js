@@ -52,7 +52,6 @@ import "./features/world/windCompass"
  * - splasher features
  *      add overlay for currently hovering potion
  * - dreadlord sword drop warning (bingohelper module checks entities, but i dont think it's practical bc telekinesis)
- * - splash display hub number guess
  * - brewing stand name display
  * - broken bingo goal helper
  */
