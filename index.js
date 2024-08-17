@@ -28,7 +28,6 @@ import "./features/party/chatBlockers"
 import "./features/chat/oringoCost"
 
 import "./features/splasher/splasherDisplay"
-import "./features/splasher/noPotionWarning"
 import "./features/splasher/potionUtils"
 import "./features/splasher/hubSelector"
 
@@ -61,6 +60,7 @@ import "./features/world/windCompass"
     1.3.0 changelog
 - rewrite hub selector display
 - add setting to copy hub details if a splash potion is present
+- remove no potion warning feature
 
     1.2.1 changelog
 - added a setting to only show the splasher display during a bingo event

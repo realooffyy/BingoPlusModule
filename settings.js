@@ -381,14 +381,6 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
 .addSwitch({
     category: "Splasher",
-    configName: "noPotionsWarning",
-    title: "No Potions Warning",
-    description: "Warns you if you enter the Pet Care in a mega hub without any splash potions.\n&cthis doesn't work correctly rn i think",
-    subcategory: "Potions"
-})
-
-.addSwitch({
-    category: "Splasher",
     configName: "hubSelectorDisplay",
     title: "Hub Selector Display",
     description: "Show a display with the lowest player hubs while in the Hub Selector.",
