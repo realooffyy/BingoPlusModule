@@ -71,6 +71,6 @@ export const highlightSlot = (slot, rgba) => {
     let renderX, renderY
     [renderX, renderY] = getSlotLocation(slot)
 
-    Renderer.translate(0, 0, 300);
+    Renderer.translate(0, 0, 251);
     Renderer.drawRect(rgba ? Renderer.color(rgba[0], rgba[1], rgba[2], rgba[3]) : Renderer.color(0, 255, 0, 255), renderX - 8, renderY - 8, 16, 16);
 }

@@ -408,11 +408,11 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     category: "Splasher",
     configName: "MoveHubSelectorDisplay",
     title: "Move",
-    description: "Move the Lowest Hub Display",
+    description: "Move the Hub Selector Display",
     subcategory: "Hub Selector",
     placeHolder: "Move",
     onClick() {
-        ChatLib.chat(`${constants.PREFIX}This feature can currently only be moved within the Hub Selector menu.`)
+        ChatLib.command('b+ move hubSelectorDisplay', true)
     }
 })
 .addSwitch({
@@ -420,16 +420,22 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "hubRestartWarning",
     title: "Hub Restart Warning",
     description: "Sends a message in chat if a restarting hub is detected.\nHub numbers may be shifting when this happens.",
+    subcategory: "Hub Selector"
+})
+.addSwitch({
+    category: "Splasher",
+    configName: "hubSelectorCopyHubWhenClicked",
+    title: "Copy hub details when clicked",
+    description: "If you have splash potions in your inventory, clicking a hub will copy its hub number and server.",
     subcategory: "Hub Selector",
-    shouldShow: data => data.hubSelectorDisplay
+    value: true
 })
 .addSwitch({
     category: "Splasher",
     configName: "hubSelectorHighlightBestHubs",
     title: "Highlight Best Hubs",
     description: "Highlights the hubs with the lowest playercount.\n&8Disable SBE's Hub Colors for the best experience!",
-    subcategory: "Hub Selector",
-    shouldShow: data => data.hubSelectorDisplay
+    subcategory: "Hub Selector"
 })
 
 // Chat
