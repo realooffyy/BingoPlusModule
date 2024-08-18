@@ -466,6 +466,9 @@ const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/vigila
     .setSize(80, 80)
     .setPos(10, 10)
     .setCategorySort((a, b) => categories.indexOf(a.category) - categories.indexOf(b.category))
+    .onOpenGui(() => {
+        settings.searchBar._focusSearch()
+    })
     .apply()
 
 export default () => settings.settings
