@@ -57,6 +57,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.3.1 changelog
+- add settings search bar autofocus    
+
     1.3.0 changelog
 - rewrite hub selector display
 - add setting to copy hub details if a splash potion is present
