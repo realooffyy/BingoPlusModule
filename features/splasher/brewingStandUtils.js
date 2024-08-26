@@ -1,5 +1,4 @@
 import RenderLib from "../../../RenderLib"
-import deepEquals from "../../../DeepEquals/index"
 import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
@@ -71,6 +70,7 @@ register("blockBreak", (block) => {
 
 // get brewing time left 
 register("tick", () => {
+    if (!settings().brewingStandLoadedBox) return
     if (!openedStand) return
 
     const name = Player.getContainer()?.getStackInSlot(22)?.getName()

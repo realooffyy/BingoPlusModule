@@ -59,8 +59,8 @@ import "./features/world/windCompass"
 
 /*
     1.3.1 changelog
-- add settings search bar autofocus  
-- add brewing stand loaded feature  
+- add settings search bar autofocus
+- add colour brewing stands feature
 
     1.3.0 changelog
 - rewrite hub selector display
