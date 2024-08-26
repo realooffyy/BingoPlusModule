@@ -101,9 +101,10 @@ register("step", () => {
 registerWhen(register("renderWorld", () => {
     brewingStands.forEach(stand => {
         // r g b
-        let colour = [0, 1, 0]
-        if (stand.brewingEnd) colour = [1, 0, 0]
-        RenderLib.drawInnerEspBox(stand.x + 0.5, stand.y + .1, stand.z + 0.5, .8, .8, colour[0], colour[1], colour[2], .3, false)
+        let colour = settings().brewingStandLoadedColour
+        if (stand.brewingEnd) colour = settings().brewingStandCurrentlyBrewingColour
+        RenderLib.drawInnerEspBox(stand.x + 0.5, stand.y + .1, stand.z + 0.5, .8, .8,
+            colour[0]/255, colour[1]/255, colour[2]/255, colour[3]/255, false)
     })
 }), () => settings().brewingStandLoadedBox && brewingStands && Skyblock.area === "Private Island")
 
