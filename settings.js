@@ -335,6 +335,15 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
 .addSwitch({
     category: "Splasher",
+    configName: "brewingStandLoadedBox",
+    title: "Colour Brewing Stands",
+    description: "Colours brewing stands if they are loaded\n&cDisable Skytils' 'Color Brewing Stands' feature!",
+    subcategory: "Brewing Stands",
+    value: false
+})
+
+.addSwitch({
+    category: "Splasher",
     configName: "splasherDisplay",
     title: "Splasher Display",
     description: "Show a display with important information while in the Pet Care area.",
@@ -466,6 +475,9 @@ const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/vigila
     .setSize(80, 80)
     .setPos(10, 10)
     .setCategorySort((a, b) => categories.indexOf(a.category) - categories.indexOf(b.category))
+    .onOpenGui(() => {
+        settings.searchBar._focusSearch()
+    })
     .apply()
 
 export default () => settings.settings

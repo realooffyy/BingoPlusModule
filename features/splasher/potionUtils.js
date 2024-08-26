@@ -2,6 +2,9 @@ import { registerWhen } from "../../utils/utils"
 import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 
+const nameRegex = /^§\w(.*?) (Splash )?Potion$/ // https://regex101.com/r/aWdGG4/1
+const loreRegex = /§(\w).*/ // https://regex101.com/r/kht3Li/2
+
 // Show potion abbreviation
 registerWhen(register("renderItemIntoGui", (item, x, y) => {
     const name = item.getName()
@@ -14,4 +17,50 @@ registerWhen(register("renderItemIntoGui", (item, x, y) => {
 
 }), () => settings().potionAbbreviation && Skyblock.inSkyblock)
 
-// todo: add keybind for showing the order of splashing potions for a rainbow order
+// these functions will have a use eventually trust
+
+/**
+ * Gets all potions from the current inventory
+ * @returns array with any potions found
+ */
+const getPotions = () => {
+    let potions = []
+    const items = Player.getContainer().getItems()
+    let counter = 0
+    items.forEach(item => {
+        const potion = getPotion(item)
+        if (potion) {
+            potion.slotNumber = counter
+            potions.push(potion)
+        }
+        counter++
+    })
+    return potions
+}
+
+/**
+ * Attempts to get potion from an item
+ * @param {*} item 
+ * @returns potion object if successful, undefined if not
+ */
+const getPotion = (item) => {
+    if (!item) return
+
+    const potion = {
+        isSplash: null,
+        name: null,
+        colour: null,
+    }
+
+    const name = item.getName()
+    let match = name.match(nameRegex)
+    if (match) {
+        potion.name = match[1]
+        potion.isSplash = match[2].includes("Splash")
+    } else return
+
+    [ _, potion.colour] = item.getLore()[1].match(loreRegex)
+
+    if (Object.values(potion).some(value => value === null)) return
+    return potion
+}

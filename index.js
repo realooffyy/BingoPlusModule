@@ -27,6 +27,7 @@ import "./features/party/chatBlockers"
 
 import "./features/chat/oringoCost"
 
+import "./features/splasher/brewingStandUtils"
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/potionUtils"
 import "./features/splasher/hubSelector"
@@ -57,6 +58,10 @@ import "./features/world/windCompass"
 
 
 /*
+    1.3.1 changelog
+- add settings search bar autofocus
+- add colour brewing stands feature
+
     1.3.0 changelog
 - rewrite hub selector display
 - add setting to copy hub details if a splash potion is present

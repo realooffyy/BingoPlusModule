@@ -78,6 +78,10 @@ If the module does not seem to be working, join the Discord and share your log i
     Shows a shortened name next to splash potion items.
 </details>
 <details>
+    <summary>Colour Brewing Stands</summary>
+    Colours brewing stands if they are loaded. 
+</details>
+<details>
     <summary>Splasher Display</summary>
     Show a display with important information while in a splashing area.
 </details>

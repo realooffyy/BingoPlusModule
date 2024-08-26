@@ -81,6 +81,25 @@ export const rats = [
     [19, 61, -4, 'furniture shop basement'], // furniture shop basement
 ]
 
+export const colourMap = {
+    '4': [170, 0, 0],    // Dark Red
+    'c': [255, 85, 85],  // Red
+    '6': [255, 170, 0],  // Gold
+    'e': [255, 255, 85], // Yellow
+    '2': [0, 170, 0],    // Dark Green
+    'a': [85, 255, 85],  // Green
+    'b': [85, 255, 255], // Aqua
+    '3': [0, 170, 170],  // Dark Aqua
+    '1': [0, 0, 170],    // Dark Blue
+    '9': [85, 85, 255],  // Blue
+    'd': [255, 85, 255], // Light Purple
+    '5': [170, 0, 170],  // Dark Purple
+    'f': [255, 255, 255], // White
+    '7': [170, 170, 170], // Gray
+    '8': [85, 85, 85],   // Dark Gray
+    '0': [0, 0, 0]       // Black
+}
+
 /*
 export const goalSlots = {
     personal: [3, 4, 5, 6,
