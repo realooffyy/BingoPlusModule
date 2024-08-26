@@ -5,10 +5,9 @@ import settings from "../../settings"
 import constants from "../../utils/constants"
 import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
+import { onInventoryClose } from "../../utils/Events"
 
 const S2DPacketOpenWindow = Java.type("net.minecraft.network.play.server.S2DPacketOpenWindow")
-const S2EPacketCloseWindow = Java.type("net.minecraft.network.play.server.S2EPacketCloseWindow")
-const C0DPacketCloseWindow = Java.type("net.minecraft.network.play.client.C0DPacketCloseWindow")
 
 const hubSelectorWindowTitles = ["SkyBlock Hub Selector", "Dungeon Hub Selector"]
 const hubSlots = [
@@ -45,25 +44,13 @@ register("packetReceived", (packet) => {
     loaded = false
 }).setFilteredClass(S2DPacketOpenWindow)
 
-// reset when client close packet
-register("packetSent", () => {
-    reset()
-}).setFilteredClass(C0DPacketCloseWindow)
-
-// reset when server close packet
-register("packetReceived", () => {
-    reset()
-}).setFilteredClass(S2EPacketCloseWindow)
-
-// reset when world change
-register("worldUnload", () => {
-    reset()
-})
-
-function reset() {
+// reset manager
+const reset = () => {
     inHubSelector = false
     loaded = false
 }
+onInventoryClose(reset)
+register("worldUnload", reset)
 
 register("tick", () => {
     if (!Skyblock.inSkyblock) return

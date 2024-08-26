@@ -336,8 +336,8 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 .addSwitch({
     category: "Splasher",
     configName: "brewingStandLoadedBox",
-    title: "Is this brewing stand loaded??",
-    description: "Renders a box over currently loaded brewing stands\n&cDisable Skytils' 'Color Brewing Stands' feature!",
+    title: "Colour Brewing Stands",
+    description: "Colours brewing stands if they are loaded\n&cDisable Skytils' 'Color Brewing Stands' feature!",
     subcategory: "Brewing Stands",
     value: false
 })
