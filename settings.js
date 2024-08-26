@@ -341,6 +341,22 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     subcategory: "Brewing Stands",
     value: false
 })
+.addColorPicker({
+    category: "Splasher",
+    configName: "brewingStandLoadedColour",
+    title: "Loaded colour",
+    description: "Default colour when a brewing stand is loaded",
+    subcategory: "Brewing Stands",
+    value: [0, 255, 0, 77]
+})
+.addColorPicker({
+    category: "Splasher",
+    configName: "brewingStandCurrentlyBrewingColour",
+    title: "Currently brewing colour",
+    description: "Colour when something is brewing",
+    subcategory: "Brewing Stands",
+    value: [255, 0, 0, 77]
+})
 
 .addSwitch({
     category: "Splasher",
