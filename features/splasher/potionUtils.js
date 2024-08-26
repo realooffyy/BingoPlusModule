@@ -17,6 +17,8 @@ registerWhen(register("renderItemIntoGui", (item, x, y) => {
 
 }), () => settings().potionAbbreviation && Skyblock.inSkyblock)
 
+// these functions will have a use eventually trust
+
 /**
  * Gets all potions from the current inventory
  * @returns array with any potions found

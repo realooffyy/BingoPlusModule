@@ -27,6 +27,7 @@ import "./features/party/chatBlockers"
 
 import "./features/chat/oringoCost"
 
+import "./features/splasher/brewingStandUtils"
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/potionUtils"
 import "./features/splasher/hubSelector"

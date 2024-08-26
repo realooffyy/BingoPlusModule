@@ -1,10 +1,6 @@
 import request from "../../requestV2"
 import constants, { data } from "./constants"
 
-register("step", () => {
-    callBingoApi()    
-}).setDelay(300)
-
 register("worldLoad", callBingoApi)
 
 function callBingoApi() {

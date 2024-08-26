@@ -64,7 +64,6 @@ register("step", () => { // line constructor
         })
 
         const area = Skyblock.area
-        const server = Skyblock.server
         const serverType = Skyblock.serverType
         const subArea = Skyblock.subArea
 
