@@ -87,7 +87,7 @@
                 255
             ],
             "type": "OUT_EXP",
-            "time": 0.5
+            "time": 9999
         },
         "mouseEnterAnimation": {
             "color": [
@@ -444,7 +444,7 @@
                 255
             ],
             "outlineSize": 1,
-            "roundness": 3
+            "roundness": 0
         },
         "gradientbackground": {
             "color": [
@@ -454,13 +454,13 @@
                 0
             ],
             "outlineColor": [
-                255,
-                255,
-                255,
+                71,
+                71,
+                71,
                 255
             ],
-            "outlineSize": 0,
-            "roundness": 3
+            "outlineSize": 1,
+            "roundness": 0
         },
         "gradientpointer": {
             "outlineColor": [
@@ -469,7 +469,7 @@
                 255,
                 255
             ],
-            "outlineSize": 0.5
+            "outlineSize": 1
         },
         "huebackground": {
             "color": [
@@ -479,13 +479,13 @@
                 0
             ],
             "outlineColor": [
-                255,
-                255,
-                255,
+                71,
+                71,
+                71,
                 255
             ],
-            "outlineSize": 0,
-            "roundness": 3
+            "outlineSize": 1,
+            "roundness": 0
         },
         "huepointer": {
             "outlineColor": [
@@ -573,9 +573,9 @@
         "Slider": {
             "background": {
                 "color": [
-                    0,
-                    0,
-                    0,
+                    41,
+                    151,
+                    255,
                     0
                 ],
                 "outlineColor": [
@@ -589,26 +589,26 @@
             },
             "bar": {
                 "color": [
-                    0,
-                    0,
-                    0,
-                    80
-                ],
-                "outlineColor": [
-                    255,
-                    255,
-                    255,
+                    35,
+                    35,
+                    35,
                     255
                 ],
-                "outlineSize": 0,
-                "roundness": 3
+                "outlineColor": [
+                    71,
+                    71,
+                    71,
+                    255
+                ],
+                "outlineSize": 1,
+                "roundness": 0
             },
             "completionbar": {
                 "color": [
-                    140,
-                    140,
-                    140,
-                    80
+                    41,
+                    151,
+                    255,
+                    255
                 ],
                 "outlineColor": [
                     255,
@@ -617,14 +617,14 @@
                     255
                 ],
                 "outlineSize": 0,
-                "roundness": 3
+                "roundness": 0
             },
             "sliderbox": {
                 "color": [
-                    140,
-                    140,
-                    140,
-                    80
+                    41,
+                    151,
+                    255,
+                    255
                 ],
                 "outlineColor": [
                     255,
@@ -632,34 +632,34 @@
                     255,
                     255
                 ],
-                "outlineSize": 0,
-                "roundness": 3
+                "outlineSize": 1,
+                "roundness": 0
             },
             "text": {
                 "color": [
-                    255,
-                    255,
-                    255,
+                    187,
+                    187,
+                    187,
                     255
                 ],
                 "scale": 1
             },
             "mouseEnterAnimation": {
                 "color": [
-                    0,
-                    0,
-                    0,
-                    80
+                    41,
+                    151,
+                    255,
+                    255
                 ],
                 "type": "OUT_EXP",
                 "time": 0.5
             },
             "mouseLeaveAnimation": {
                 "color": [
-                    140,
-                    140,
-                    140,
-                    80
+                    41,
+                    151,
+                    255,
+                    255
                 ],
                 "type": "OUT_EXP",
                 "time": 0.5
