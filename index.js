@@ -22,7 +22,7 @@ import "./features/bingo/communityGoalDisplay"
 //import "./features/bingo/dreadlordPickup"
 import "./features/bingo/hideCompletedBingoGoals"
 
-//import "./features/party/bingoPartyCommandConverter"
+import "./features/party/bingoPartyCommandConverter"
 import "./features/party/chatBlockers"
 
 import "./features/chat/oringoCost"

@@ -1,13 +1,11 @@
-/// <reference types="../../../CTAutocomplete" />
-/// <reference lib="es2015" />
+// TODO: rewrite this similar to splasher/hubSelector.js
 
-import { data } from "../../utils/constants"
 import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 import Bingo from "../../utils/Bingo"
 import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
-import { registerWhen, removeUnicode } from "../../utils/utils"
+import { registerWhen } from "../../utils/utils"
 import { getStringHeight, getStringWidth, drawTextBox } from "../../render/utils"
 
 let communityGoalDisplayGui = new BaseGui('communityGoalDisplay', ['communityGoalDisplay', 'communitygoal', 'communitygoals', 'community'])

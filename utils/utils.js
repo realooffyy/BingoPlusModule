@@ -109,3 +109,20 @@ export function msToTime(s) {
 export function convertDateObjectToString(date) { 
     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
 }
+
+/**
+ * Returns enerates a random alphanumeric string
+ * @param {Number} length
+ * @returns the random string
+ */
+export const generateRandomString = (length) => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let result = ''
+
+    for (let i = 0; i < length; i++) {
+      let randomIndex = Math.floor(Math.random() * characters.length)
+      result += characters.charAt(randomIndex)
+    }
+    
+    return result
+  }

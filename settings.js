@@ -30,7 +30,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     placeHolder: "BingoParty",
     onClick() {
         Client.currentGui.close()
-        ChatLib.command('p join BingoParty')
+        ChatLib.command(`p join ${constants.BINGOPARTY_IGN}`)
     }
 })
 .addButton({
@@ -293,8 +293,8 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 .addButton({
     category: "Party",
     configName: "openBingoPartyDocumentation",
-    title: "BingoParty Commands Documentation",
-    description: "A guide on the available §6[MVP§r§c++§r§6] BingoParty§r commands.",
+    title: "Bingo Party",
+    description: "BingoPartyBot is a project allowing for controlling the Bingo Party without being a party leader.\nClick the button to see all available commands.",
     subcategory: "BingoParty Moderation",
     placeHolder: "GitHub",
     onClick() {
@@ -306,21 +306,27 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 .addTextInput({
     category: "Party",
     configName: "bingoPartyAlias",
-    title: "Alias for /msg BingoParty !p",
-    description: "Creates an alias for &6/msg BingoParty !p&r. Leave blank to disable.\nExample: &aap&r\n&cRun /ct load after changing alias!",
+    title: "Alias for Bingo Party commands",
+    description: "Creates an alias for messaging the Bingo Party. Leave blank to disable. Supports some autocomplete :P\nExample: &aap&r\n&cRun /ct load after changing alias!",
     subcategory: "BingoParty Moderation",
     placeHolder: "eg. ap",
     value: "",
 })
-/*
 .addSwitch({
     category: "Party",
     configName: "bingoPartyCommandConverter",
     title: "Command converter",
-    description: "While in §6[MVP§r§c++§r§6] BingoParty§r's party, convert /p commands to its commands.",
+    description: "While in the Bingo Party, convert /p commands to the Bingo Party equivalent.",
     subcategory: "BingoParty Moderation"
 })
-*/
+.addSwitch({
+    category: "Party",
+    configName: "bingoPartyCommandRandomString",
+    title: "Also add a random string to the end",
+    description: "Adds a random string to the end of most Bingo Party commands to bypass saying the same message twice.",
+    subcategory: "BingoParty Moderation",
+    value: true
+})
 
 // Splasher
 
