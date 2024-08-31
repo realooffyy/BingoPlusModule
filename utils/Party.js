@@ -122,7 +122,7 @@ export default new class Party {
         if (whenArgsRandomString.some(cmd => cmd == args[0]) && !args[1]) return string
         if (alwaysNoRandomString.includes(args[0])) return string
 
-        // TODO: potentially make something for speak + poll commands like an [END] for the bot to interpret as the end
+        // TODO: potentially make something for commands like an [END] for the bot to interpret and omit
         return string + ` ${generateRandomString(string.length * .33 < 6 ? 6 : string.length * .33)}`
     }
 }

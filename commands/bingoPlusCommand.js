@@ -72,7 +72,8 @@ export const bingoPlusCommand = register("command", (...args) => {
   .setAliases(["bingo+","bingoplus"])
   .setTabCompletions([
     "help",
-    "move"
+    "move",
+    "dev"
   ])
 
 

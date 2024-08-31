@@ -60,7 +60,7 @@ import "./features/world/windCompass"
 /*
     1.3.2 changelog
 - add /p -> /msg bingoparty !p converter, with support for spam bypass
-- update settings colour scheme
+- update vigilance scheme (v1.1)
 
     1.3.1 changelog
 - add settings search bar autofocus
