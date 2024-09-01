@@ -1,5 +1,5 @@
 import "./utils/firstInstall"
-import "./utils/BingoApi"
+import "./utils/Api"
 import "./utils/dataManager"
 
 import "./render/registerGui"

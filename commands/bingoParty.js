@@ -1,5 +1,4 @@
 import settings from "../settings"
-import constants from "../utils/constants"
 import Party from "../utils/Party"
 
 const commandName = settings().bingoPartyAlias
@@ -28,8 +27,9 @@ const commandList = [
 
 if (commandName !== '') {
     register("command", (...args) => {
-        const message = Party.addRandomString(args.join(" "))
-        ChatLib.command(`msg ${constants.BINGOPARTY_IGN} !p ${message}`)
+        let message = args.join(" ")
+        if (settings().bingoPartyCommandRandomString) message = Party.addRandomString(message)
+        ChatLib.command(`msg ${Party.getBotIGN()} !p ${message}`)
     })
     .setTabCompletions((args) => {
         if (args == undefined || args[0] == undefined) return commandList

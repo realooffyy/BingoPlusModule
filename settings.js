@@ -1,6 +1,7 @@
 import FuckYouIWantToUseThatName from "../Amaterasu/core/Settings"
 import DefaultConfig from "../Amaterasu/core/DefaultConfig"
 import constants from "./utils/constants"
+import Party from "./utils/Party"
 
 const categories = ["General", "Bingo", "Other", "Party", "Splasher", "Chat", "Commands"]
 const version = JSON.parse(FileLib.read("BingoPlus", "metadata.json")).version
@@ -25,12 +26,12 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     category: "General",
     subcategory: "Bingo Commands",
     configName: "runBingoPartyJoinCommand",
-    title: "/p join BingoParty",
+    title: "Join Bingo Party",
     description: "",
     placeHolder: "BingoParty",
     onClick() {
         Client.currentGui.close()
-        ChatLib.command(`p join ${constants.BINGOPARTY_IGN}`)
+        ChatLib.command(`p join ${Party.getBotIGN()}`)
     }
 })
 .addButton({
