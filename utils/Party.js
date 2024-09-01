@@ -1,8 +1,8 @@
-import { onHypixelConnect } from "./Events"
+//import { onHypixelConnect } from "./Events"
 import { generateRandomString } from "./utils"
 import { HypixelModAPI } from "../../HypixelModAPI"
-import settings from "../settings"
 import constants from "./constants"
+import { data } from "./constants"
 import request from "../../requestV2"
 
 const partyLeaderRegex = [
@@ -18,19 +18,26 @@ const partyResetRegex = [
     "The party was disbanded because the party leader disconnected."
 ]
 
-// TODO: add these to a repo
+// TODO: add these to the repo
 
 /**
- * Commands which should not append the random string to the end
+ * Commands which should always append the random string to the end
  */
-const alwaysNoRandomString = [
-    'say', 'speak',
-    'repeat', 'rep',
-    'customrep', 'customrepeat', 'crep', 'crepeat',
-    'poll',
-    // custom commands not mentioned publicly
-    'flea', 'bf',
-    'disable', 'enable', 'cmd',
+const alwaysRandomString = [
+    "disband",
+    "unmute", "mute",
+    "testcommand", "testpermissions", "testperms", "test",
+    "ka", "ko", "kickafk", "kickoffline",
+    "close",
+    "open", "public", "stream", // these should have 2 args but works fine
+    "allinvite",
+    "size",
+    "printallowed", "printAllowlist", "lsallowed",
+    "rule",
+    "publicguide", "g", "gd", "guide",
+    "help",
+    "sendlimbo", "limbo",
+    "lstoggled", "lsdisabled", "printdeactivated", "printdisabled", "printDisabled",
 ]
 
 /**
@@ -50,7 +57,7 @@ export default new class Party {
     constructor() {
         this.inParty = false
         this.leader = null
-        HypixelModAPI.requestPartyInfo()
+        // HypixelModAPI.requestPartyInfo()
 
         //register("step", () => {
         //    ChatLib.chat(`${this.leader}`)
@@ -75,13 +82,14 @@ export default new class Party {
             this.reset()
         })
 
+        // didn't work, temporarily disabled
         // get leader by modapi packet
-        onHypixelConnect(() => {
+        //onHypixelConnect(() => {
             // delayed bc skytils freaks out
-            setTimeout(() => {
-                HypixelModAPI.requestPartyInfo()
-            }, 1000)
-        })
+        //    setTimeout(() => {
+        //        HypixelModAPI.requestPartyInfo()
+        //    }, 1000)
+        //})
 
         HypixelModAPI.on("partyInfo", data => {
             const leaderUUID = Object.keys(data).find(key => data[key] === "LEADER")
@@ -102,7 +110,11 @@ export default new class Party {
     }
 
     inBingoParty() {
-        return this.inParty && this.leader === constants.BINGOPARTY_IGN
+        return this.inParty && this.leader === this.getBotIGN()
+    }
+
+    getBotIGN() {
+        return data.moduleData?.bingoParty?.botIGN || "BingoParty"
     }
 
     reset() {
@@ -116,11 +128,10 @@ export default new class Party {
      * @returns formatted/unformatted string
      */
     addRandomString(string) {
-        if (!settings().bingoPartyCommandRandomString) return
         args = string.split(" ")
 
-        if (whenArgsRandomString.some(cmd => cmd == args[0]) && !args[1]) return string
-        if (alwaysNoRandomString.includes(args[0])) return string
+        if (whenArgsRandomString.some(cmd => cmd.toLowerCase() == args[0].toLowerCase()) && !args[1]) return string
+        if (!alwaysRandomString.includes(args[0].toLowerCase())) return string
 
         // TODO: potentially make something for commands like an [END] for the bot to interpret and omit
         return string + ` ${generateRandomString(string.length * .33 < 6 ? 6 : string.length * .33)}`
