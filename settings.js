@@ -366,9 +366,10 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 .addSwitch({
     category: "Splasher",
     configName: "brewingStandHighlightCorrectBrew",
-    title: "Highlight correct nrew",
-    description: "Highlights the correct brew to use based on an ingredient",
-    subcategory: "Brewing Stands"
+    title: "Highlight correct brews",
+    description: "Highlights the correct brews to put in, based on the current ingredient.\n&cDesigned for God Splashes, may not work with other ingredients!",
+    subcategory: "Brewing Stands",
+    value: true
 })
 
 .addSwitch({

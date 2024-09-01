@@ -12,7 +12,7 @@ const S2DPacketOpenWindow = Java.type("net.minecraft.network.play.server.S2DPack
 
 const brewingStandID = "minecraft:brewing_stand"
 const coffeeIngredients = ["Enchanted Cake", "Enchanted Cookie", "Enchanted Rabbit Foot", "Enchanted Sugar Cane"]
-const brewsForIngredients = {
+const itemsIntoBrews = {
     "Cheap Coffee": coffeeIngredients,
     "Decent Coffee": coffeeIngredients,
     "Black Coffee": coffeeIngredients,
@@ -25,7 +25,6 @@ const brewsForIngredients = {
     "Bitter Iced Tea": ["Enchanted Cooked Mutton"],
     "Viking's Tear": ["Lapis Lazuli"]
 }
-const brewsForIngredientsMap = new Map(Object.entries(brewsForIngredients))
 
 const timeRegex = /^§a(\d{1,2}.\d)s$/
 // https://regex101.com/r/mgxH0O/1
@@ -33,7 +32,7 @@ const timeRegex = /^§a(\d{1,2}.\d)s$/
 let enabled
 
 let brewingStands = []
-let slotsToHighlight = []
+let brewsToHighlight = []
 let lastStand = null
 let openedStand = null
 // let lastServer = null
@@ -55,7 +54,7 @@ register("tick", () => {
             settings().brewingStandLoadedBox ||
             settings().brewingStandHighlightCorrectBrew
         ) 
-        && Skyblock.area !== "Private Island"
+        && Skyblock.area === "Private Island"
     )
 })
 
@@ -102,11 +101,11 @@ register("tick", () => {
     if (!enabled) return
     if (!openedStand) return
 
-    const container = Player.getContainer()
+    const inv = Player.getContainer()
     let name, match
 
     // time left
-    name = container?.getStackInSlot(22)?.getName()
+    name = inv?.getStackInSlot(22)?.getName()
     if (name) {
         match = name.match(timeRegex);
         if (match) openedStand.brewingEnd = Date.now() + parseFloat(match[1]) * 1000
@@ -115,7 +114,7 @@ register("tick", () => {
     else openedStand.brewingEnd = null
     
     // ingredient
-    name = container?.getStackInSlot(11)?.getName()
+    name = inv?.getStackInSlot(13)?.getName()
     openedStand.ingredient = name ? ChatLib.removeFormatting(name) : null
 
     // deletes the stand in the same location
@@ -150,23 +149,23 @@ registerWhen(register("renderWorld", () => {
 
 // render highlight behind correct brew
 registerWhen(register("renderItemIntoGui", (item, x, y) => {
-    let name = item?.getName()
+    const name = item?.getName()
     if (!name) return
-    name = ChatLib.removeFormatting(name)
 
-    ingredients = brewsForIngredientsMap.get("name")
+    ingredients = itemsIntoBrews[ChatLib.removeFormatting(name)]
     if (!ingredients) return
     ingredients.forEach(ingredient => {
-        if (ingredient === name) {
-            drawSlotBox(x, y, _, [0, 255, 0, 255])
+        if (ingredient == openedStand.ingredient) {
+            drawSlotBox(x, y, 247)
         }
     })
     
-}), () => settings().brewingStandHighlightCorrectBrew && enabled && openedStand);
-
+}), () => settings().brewingStandHighlightCorrectBrew && enabled && openedStand?.ingredient)
 
 // clear opened stand when closed
-onInventoryClose(() => { openedStand = null })
+onInventoryClose(() => {
+    openedStand = null
+})
 
 // reset stands when unload
 const reset = () => {
@@ -176,5 +175,3 @@ const reset = () => {
     openedStand = null
 }
 register("worldUnload", reset)
-
-in the // render highlight behind correct brew, i want to check if name exists in brewsForIngredients. if it does, then check if openedStand.ingredient === its value

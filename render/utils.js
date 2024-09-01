@@ -71,7 +71,7 @@ export const highlightSlot = (slot, rgba) => {
     let renderX, renderY
     [renderX, renderY] = getSlotLocation(slot)
 
-    drawSlotBox(renderX - 8, renderY - 8, _, rgba )
+    drawSlotBox(renderX - 8, renderY - 8, 247, rgba )
 }
 
 /**
@@ -83,5 +83,5 @@ export const highlightSlot = (slot, rgba) => {
  */
 export const drawSlotBox = (x, y, z = 247, rgba) => {
     Renderer.translate(x, y, z)
-    Renderer.drawRect(rgba ? Renderer.color(rgba[0], rgba[1], rgba[2], rgba[3]) : Renderer.color(0, 255, 0, 255), x, y, 16, 16)
+    Renderer.drawRect(rgba ? Renderer.color(rgba[0], rgba[1], rgba[2], rgba[3]) : Renderer.color(0, 255, 0, 255), 0, 0, 16, 16)
 }
