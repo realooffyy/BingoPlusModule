@@ -3,18 +3,37 @@ import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
 import { onInventoryClose } from "../../utils/Events"
+import { drawSlotBox } from "../../render/utils"
 
 // some logic from skytils
 // https://github.com/Skytils/SkytilsMod/blob/1.x/src/main/kotlin/gg/skytils/skytilsmod/features/impl/misc/BrewingFeatures.kt
 
-const brewingStandID = "minecraft:brewing_stand"
-
 const S2DPacketOpenWindow = Java.type("net.minecraft.network.play.server.S2DPacketOpenWindow")
+
+const brewingStandID = "minecraft:brewing_stand"
+const coffeeIngredients = ["Enchanted Cake", "Enchanted Cookie", "Enchanted Rabbit Foot", "Enchanted Sugar Cane"]
+const brewsForIngredients = {
+    "Cheap Coffee": coffeeIngredients,
+    "Decent Coffee": coffeeIngredients,
+    "Black Coffee": coffeeIngredients,
+    "KnockOff™ Cola": ["Enchanted Blaze Rod"],
+    "Dctr. Paper": ["Enchanted Gold Block"],
+    "Pulpous Orange Juice": ["Enchanted Ghast Tear"],
+    "Tepid Green Tea": ["Enchanted Cactus"],
+    "Slayer© Energy Drink": ["Flint"],
+    "Tutti-Frutti Flavored Poison": ["Feather"],
+    "Bitter Iced Tea": ["Enchanted Cooked Mutton"],
+    "Viking's Tear": ["Lapis Lazuli"]
+}
+const brewsForIngredientsMap = new Map(Object.entries(brewsForIngredients))
 
 const timeRegex = /^§a(\d{1,2}.\d)s$/
 // https://regex101.com/r/mgxH0O/1
 
+let enabled
+
 let brewingStands = []
+let slotsToHighlight = []
 let lastStand = null
 let openedStand = null
 // let lastServer = null
@@ -29,11 +48,20 @@ const compareCoords = (obj1, obj2) => {
     )
 }
 
+// should stands be logged?
+register("tick", () => {
+    enabled = (
+        (
+            settings().brewingStandLoadedBox ||
+            settings().brewingStandHighlightCorrectBrew
+        ) 
+        && Skyblock.area !== "Private Island"
+    )
+})
 
 // handle brewing stand interaction
 register("playerInteract", (action) => {
-    if (!settings().brewingStandLoadedBox) return
-    if (Skyblock.area !== "Private Island") return
+    if (!enabled) return
     if (action.toString() !== "RIGHT_CLICK_BLOCK") return
     const block = Player.lookingAt()
     if (block.type.getRegistryName() !== brewingStandID) return
@@ -41,13 +69,14 @@ register("playerInteract", (action) => {
         x: block.getX(),
         y: block.getY(),
         z: block.getZ(),
-        brewingEnd: null
+        brewingEnd: null,
+        ingredient: null,
     }
 })
 
 // push the latest stand if it doesn't exist
 register("packetReceived", (packet) => {
-    if (!settings().brewingStandLoadedBox) return
+    if (!enabled) return
     if (lastStand === null) return
     if (!packet.func_179840_c().func_150254_d().removeFormatting() === "Brewing Stand") return
     if (!brewingStands.some(stand => compareCoords(stand, lastStand)
@@ -58,7 +87,7 @@ register("packetReceived", (packet) => {
 
 // delete stand when broken
 register("blockBreak", (block) => {
-    if (!settings().brewingStandLoadedBox) return
+    if (!enabled) return
     if (block.type.getRegistryName() !== brewingStandID) return
     const brokenStand = {
         x: block.getX(),
@@ -68,23 +97,34 @@ register("blockBreak", (block) => {
     brewingStands = brewingStands.filter(stand => !compareCoords(stand, brokenStand))
 })
 
-// get brewing time left 
+// get info from inside the thing
 register("tick", () => {
-    if (!settings().brewingStandLoadedBox) return
+    if (!enabled) return
     if (!openedStand) return
 
-    const name = Player.getContainer()?.getStackInSlot(22)?.getName()
+    const container = Player.getContainer()
+    let name, match
+
+    // time left
+    name = container?.getStackInSlot(22)?.getName()
     if (name) {
-        const match = name.match(timeRegex)
+        match = name.match(timeRegex);
         if (match) openedStand.brewingEnd = Date.now() + parseFloat(match[1]) * 1000
         else openedStand.brewingEnd = null
     }
     else openedStand.brewingEnd = null
+    
+    // ingredient
+    name = container?.getStackInSlot(11)?.getName()
+    openedStand.ingredient = name ? ChatLib.removeFormatting(name) : null
 
+    // deletes the stand in the same location
     const index = brewingStands.findIndex(stand => compareCoords(stand, openedStand))
     if (index !== -1) {
         brewingStands.splice(index, 1)
     }
+
+    // finally push it
     brewingStands.push(openedStand)
 })
 
@@ -106,15 +146,35 @@ registerWhen(register("renderWorld", () => {
         RenderLib.drawInnerEspBox(stand.x + 0.5, stand.y + .1, stand.z + 0.5, .8, .8,
             colour[0]/255, colour[1]/255, colour[2]/255, colour[3]/255, false)
     })
-}), () => settings().brewingStandLoadedBox && brewingStands && Skyblock.area === "Private Island")
+}), () => settings().brewingStandLoadedBox && enabled && brewingStands)
+
+// render highlight behind correct brew
+registerWhen(register("renderItemIntoGui", (item, x, y) => {
+    let name = item?.getName()
+    if (!name) return
+    name = ChatLib.removeFormatting(name)
+
+    ingredients = brewsForIngredientsMap.get("name")
+    if (!ingredients) return
+    ingredients.forEach(ingredient => {
+        if (ingredient === name) {
+            drawSlotBox(x, y, _, [0, 255, 0, 255])
+        }
+    })
+    
+}), () => settings().brewingStandHighlightCorrectBrew && enabled && openedStand);
+
 
 // clear opened stand when closed
 onInventoryClose(() => { openedStand = null })
 
 // reset stands when unload
 const reset = () => {
+    enabled = false
     brewingStands = []
     lastStand = null
     openedStand = null
 }
 register("worldUnload", reset)
+
+in the // render highlight behind correct brew, i want to check if name exists in brewsForIngredients. if it does, then check if openedStand.ingredient === its value

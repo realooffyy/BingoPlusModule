@@ -346,7 +346,6 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     title: "Colour Brewing Stands",
     description: "Colours brewing stands if they are loaded\n&cDisable Skytils' 'Color Brewing Stands' feature!",
     subcategory: "Brewing Stands",
-    value: false
 })
 .addColorPicker({
     category: "Splasher",
@@ -363,6 +362,13 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Colour when something is brewing",
     subcategory: "Brewing Stands",
     value: [255, 0, 0, 77]
+})
+.addSwitch({
+    category: "Splasher",
+    configName: "brewingStandHighlightCorrectBrew",
+    title: "Highlight correct nrew",
+    description: "Highlights the correct brew to use based on an ingredient",
+    subcategory: "Brewing Stands"
 })
 
 .addSwitch({

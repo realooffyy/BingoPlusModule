@@ -71,6 +71,17 @@ export const highlightSlot = (slot, rgba) => {
     let renderX, renderY
     [renderX, renderY] = getSlotLocation(slot)
 
-    Renderer.translate(0, 0, 251);
-    Renderer.drawRect(rgba ? Renderer.color(rgba[0], rgba[1], rgba[2], rgba[3]) : Renderer.color(0, 255, 0, 255), renderX - 8, renderY - 8, 16, 16);
+    drawSlotBox(renderX - 8, renderY - 8, _, rgba )
+}
+
+/**
+ * Draws a box on a slot, under the item
+ * @param {Number} x x coordinate
+ * @param {Number} y y coordinate
+ * @param {Number} z z coordinate
+ * @param {Array} rgba an rgba array
+ */
+export const drawSlotBox = (x, y, z = 247, rgba) => {
+    Renderer.translate(x, y, z)
+    Renderer.drawRect(rgba ? Renderer.color(rgba[0], rgba[1], rgba[2], rgba[3]) : Renderer.color(0, 255, 0, 255), x, y, 16, 16)
 }
