@@ -62,7 +62,7 @@ import "./features/world/windCompass"
     1.3.4 changelog
 - add 'Highlight correct brews' feature
 - add 'Warn if mega' feature
-- fix module being broken on linux
+- fix module breaking on linux
 
     1.3.3 changelog
 - fix metadata
