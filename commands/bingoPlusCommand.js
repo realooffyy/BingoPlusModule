@@ -2,6 +2,7 @@ import guis from "../render/registerGui"
 import settings from "../settings"
 import { data } from "../utils/constants"
 import constants from "../utils/constants"
+import { streamCommands } from "../features/party/customStreamCommands"
 
 const commandsList = [
     "help",
@@ -34,6 +35,17 @@ export const bingoPlusCommand = register("command", (...args) => {
 
             if (!found) ChatLib.chat(`${constants.PREFIX}&cNo such gui as '${args[1]}'.`)
 
+            break
+
+        case "stream":
+            ChatLib.chat(`${constants.PREFIX}Custom /stream commands\n&cPlease note these only work with a valid Hypixel rank for hosting parties.`)
+            streamCommands.forEach(cmd => {
+                let message = new TextComponent(`&a${cmd[0]}&r: ${cmd[1]}`)
+                    .setClickAction("run_command")
+                    .setClickValue(cmd[0])
+                    .chat()
+            })
+            if (settings().partyCustomStreamCommands) ChatLib.chat("\n&aThese commands are active!")
             break
         
         /*
