@@ -89,7 +89,7 @@ registerWhen(register("guiRender", () => {
 
 // feature (Copy hub details when clicked)
 register("guiMouseClick", () => {
-    if (!settings().hubSelectorCopyHubWhenClicked || !inHubSelector) return
+    if (![1, 2].includes(settings().hubSelectorCopyHubWhenClicked) || !inHubSelector) return
 
     // splash potion check
     if (!Player.getContainer().getItems().some(item => 
@@ -100,8 +100,21 @@ register("guiMouseClick", () => {
     const hub = getHubFromItem(Client.currentGui.getSlotUnderMouse()?.getItem())
     if (!hub) return
 
-    ChatLib.command(`ct copy ${hub.area == 'Dungeon' ? 'Dungeon ' : ''}Hub ${hub.number} (${hub.serverName})`, true)
-    ChatLib.chat(`${constants.PREFIX}&aCopied hub details to clipboard!`)
+    const text = `${hub.area == 'Dungeon' ? 'Dungeon ' : ''}Hub ${hub.number} (${hub.serverName})`
+    
+    switch (settings().hubSelectorCopyHubWhenClicked) {
+        case 1:
+            ChatLib.command(`ct copy ${text}`)
+            ChatLib.chat(`${constants.PREFIX}&aCopied hub details to clipboard!`)
+            break
+        case 2:
+            new TextComponent(`${constants.PREFIX}Click to copy &a${text} `)
+                .setClickAction("run_command")
+                .setClickValue(`/b+ copy ${text}`)
+                .setHoverValue(text)
+                .chat()
+    }
+
 })
 
 // feature (Warn if mega)

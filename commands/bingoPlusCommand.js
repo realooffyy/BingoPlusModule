@@ -37,6 +37,14 @@ export const bingoPlusCommand = register("command", (...args) => {
 
             break
 
+        case "copy":
+            const text = args.join(" ").slice(5) // slice to remove "copy"
+            ChatLib.command(`ct copy ${text}`, true)
+            new TextComponent(`${constants.PREFIX}&aCopied to clipboard!`)
+                .setHoverValue(text)
+                .chat()
+            break
+
         case "stream":
             ChatLib.chat(`${constants.PREFIX}Custom /stream commands\n&cPlease note these only work with a valid Hypixel rank for hosting parties.`)
             streamCommands.forEach(cmd => {
