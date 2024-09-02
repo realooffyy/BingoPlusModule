@@ -87,7 +87,7 @@ registerWhen(register("guiRender", () => {
     })
 }), () => loaded)
 
-// copy hub details to clipboard
+// feature (Copy hub details when clicked)
 register("guiMouseClick", () => {
     if (!settings().hubSelectorCopyHubWhenClicked || !inHubSelector) return
 
@@ -103,6 +103,14 @@ register("guiMouseClick", () => {
     ChatLib.command(`ct copy ${hub.area == 'Dungeon' ? 'Dungeon ' : ''}Hub ${hub.number} (${hub.serverName})`, true)
     ChatLib.chat(`${constants.PREFIX}&aCopied hub details to clipboard!`)
 })
+
+// feature (Warn if mega)
+register("chat", (server) => {
+    if (!settings().hubSelectorWarnIfMega) return
+    if (server.slice(0, 4) === "mega")
+        ChatLib.chat(`${constants.PREFIX}&aYou're warping into a mega hub! (${server})`)
+}).setCriteria("Request join for Hub ${server}...")
+
 
 /**
  * Attempts to get all the hubs within the hub selector menu

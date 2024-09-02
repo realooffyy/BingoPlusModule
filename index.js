@@ -24,6 +24,7 @@ import "./features/bingo/hideCompletedBingoGoals"
 
 import "./features/party/bingoPartyCommandConverter"
 import "./features/party/chatBlockers"
+import "./features/party/customStreamCommands"
 
 import "./features/chat/oringoCost"
 
@@ -58,6 +59,14 @@ import "./features/world/windCompass"
 
 
 /*
+    1.3.4 changelog
+- add 'Highlight correct brews' feature
+- add 'Warn if mega' feature
+- fix module breaking on linux
+
+    1.3.3 changelog
+- fix metadata
+
     1.3.2 changelog
 - add /p -> /msg bingoparty !p converter, with support for spam bypass
 - update vigilance scheme (v1.1)

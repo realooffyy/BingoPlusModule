@@ -60,7 +60,8 @@ const getPotion = (item) => {
     } else return
 
     [ _, potion.colour] = item.getLore()[1].match(loreRegex)
-
+    
+    // if any values are still null, cancel
     if (Object.values(potion).some(value => value === null)) return
     return potion
 }

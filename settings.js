@@ -42,7 +42,12 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "",
     placeHolder: "Discord",
     onClick() {
-        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
+        try {
+            java.awt.Desktop.getDesktop().browse(new java.net.URL(constants.DISCORD).toURI())
+        } catch (err) {
+            ChatLib.command(`ct copy ${constants.DISCORD}`, true)
+            ChatLib.chat(`${constants.PREFIX}&aCopied Discord link to clipboard!`)
+        }
     } // AVOID NOAMM9 AT ALL COSTS
 })
 
@@ -215,7 +220,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     subcategory: "Gone with the Wind",
     placeHolder: "Move",
     onClick() {
-        ChatLib.command('b+ move chickenHeadTimerDisplay', true)
+        ChatLib.command('b+ move windCompassDisplay', true)
     }
 })
 
@@ -268,7 +273,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "blockPartyLineBreak",
     title: "Block Party Line Breaks",
     description: "Blocks the blue separator line.\nRecommended if using the other blockers!",
-    options: ["Off", "Block while in BingoParty", "Block everywhere"],
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
@@ -277,7 +282,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "blockPartyTravelMessagesNew",
     title: "Block Party Travel Notifications",
     description: "Blocks party travel notifications.\n&8Instead of using 'Everywhere' consider disabling Co-op Travel Notifications in SkyBlock settings!",
-    options: ["Off", "Block while in BingoParty", "Block everywhere"],
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
@@ -286,7 +291,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "blockPartyJoinLeave",
     title: "Block Join/Leave",
     description: "Blocks party join/leave messages. This includes the 5 minute disconnect messages.",
-    options: ["Off", "Block while in BingoParty", "Block everywhere"],
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
@@ -329,6 +334,14 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     value: true
 })
 
+.addSwitch({
+    category: "Party",
+    configName: "partyCustomStreamCommands",
+    title: "(coming soon) Custom stream commands",
+    description: "Custom commands to improve your public party management. Run &a/b+ stream &rfor a list.",
+    subcategory: "Commands"
+})
+
 // Splasher
 
 .addSwitch({
@@ -346,7 +359,6 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     title: "Colour Brewing Stands",
     description: "Colours brewing stands if they are loaded\n&cDisable Skytils' 'Color Brewing Stands' feature!",
     subcategory: "Brewing Stands",
-    value: false
 })
 .addColorPicker({
     category: "Splasher",
@@ -364,14 +376,20 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     subcategory: "Brewing Stands",
     value: [255, 0, 0, 77]
 })
+.addSwitch({
+    category: "Splasher",
+    configName: "brewingStandHighlightCorrectBrew",
+    title: "Highlight correct brews",
+    description: "Highlights the correct brews to put in, based on the current ingredient.\n&cDesigned for God Splashes, may not work with other ingredients!",
+    subcategory: "Brewing Stands"
+})
 
 .addSwitch({
     category: "Splasher",
     configName: "splasherDisplay",
     title: "Splasher Display",
     description: "Show a display with important information while in the Pet Care area.",
-    subcategory: "Splasher Display",
-    value: true
+    subcategory: "Splasher Display"
 })
 .addSwitch({
     category: "Splasher",
@@ -459,6 +477,13 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "hubSelectorHighlightBestHubs",
     title: "Highlight Best Hubs",
     description: "Highlights the hubs with the lowest playercount.\n&8Disable SBE's Hub Colors for the best experience!",
+    subcategory: "Hub Selector"
+})
+.addSwitch({
+    category: "Splasher",
+    configName: "hubSelectorWarnIfMega",
+    title: "Warn if mega",
+    description: "Warns the user if warping into a random mega hub. Useful for finding a private mega!",
     subcategory: "Hub Selector"
 })
 
