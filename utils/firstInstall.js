@@ -13,5 +13,6 @@ const checkFirstInstall = () => {
 
 
 register("step", () => {
+    if (!World.isLoaded()) return
     checkFirstInstall()
 }).setFps(1)

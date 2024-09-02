@@ -42,7 +42,12 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "",
     placeHolder: "Discord",
     onClick() {
-        java.awt.Desktop.getDesktop().browse(new java.net.URL('https://discord.gg/P8rahWWA7b').toURI())
+        try {
+            java.awt.Desktop.getDesktop().browse(new java.net.URL(constants.DISCORD).toURI())
+        } catch (err) {
+            ChatLib.command(`ct copy ${constants.DISCORD}`, true)
+            ChatLib.chat(`${constants.PREFIX}&aCopied Discord link to clipboard!`)
+        }
     } // AVOID NOAMM9 AT ALL COSTS
 })
 
@@ -215,7 +220,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     subcategory: "Gone with the Wind",
     placeHolder: "Move",
     onClick() {
-        ChatLib.command('b+ move chickenHeadTimerDisplay', true)
+        ChatLib.command('b+ move windCompassDisplay', true)
     }
 })
 
