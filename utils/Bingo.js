@@ -106,7 +106,7 @@ export default new class Bingo {
                 } else if (percentRegex.test(line)) {
                     [, goal.percentColour, goal.percent] = percentRegex.exec(line)
                 } else if (rankRegex.test(line)) {
-                    goal.rank = rankRegex.exec(line)
+                    goal.rank = rankRegex.exec(line)[1]
                 }
             })
             
