@@ -7,6 +7,7 @@ import { streamCommands } from "../features/party/customStreamCommands"
 const commandsList = [
     "help",
     "move",
+    "copy",
     "togglebingoapi",
     "resetdata"
 ]

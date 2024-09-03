@@ -1,4 +1,4 @@
-import RenderLib from "../../../RenderLib"
+import RenderLibV2 from "../../../RenderLibV2"
 import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
@@ -32,7 +32,6 @@ const timeRegex = /^§a(\d{1,2}.\d)s$/
 let enabled
 
 let brewingStands = []
-let brewsToHighlight = []
 let lastStand = null
 let openedStand = null
 // let lastServer = null
@@ -142,7 +141,7 @@ registerWhen(register("renderWorld", () => {
         // r g b
         let colour = settings().brewingStandLoadedColour
         if (stand.brewingEnd) colour = settings().brewingStandCurrentlyBrewingColour
-        RenderLib.drawInnerEspBox(stand.x + 0.5, stand.y + .1, stand.z + 0.5, .8, .8,
+        RenderLibV2.drawInnerEspBox(stand.x + 0.5, stand.y + .1, stand.z + 0.5, .8, .8,
             colour[0]/255, colour[1]/255, colour[2]/255, colour[3]/255, false)
     })
 }), () => settings().brewingStandLoadedBox && enabled && brewingStands)
