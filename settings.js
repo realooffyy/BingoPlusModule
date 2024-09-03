@@ -240,6 +240,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Shows waypoints for the general location of Rat spawns.\n&aToggleable with &6/rats&a.",
     subcategory: "Rats",
 })
+/* TODO: implement the text thing again
 .addSwitch({
     category: "Other",
     configName: "ratWaypointsShowText",
@@ -249,6 +250,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     shouldShow: data => data.ratWaypoints,
     value: true
 })
+*/
 .addSwitch({
     category: "Other",
     configName: "ratWaypointsShowBeacon",

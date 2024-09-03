@@ -1,3 +1,5 @@
+// TODO: make sub-commands modular
+
 import guis from "../render/registerGui"
 import settings from "../settings"
 import { data } from "../utils/constants"
@@ -8,8 +10,8 @@ const commandsList = [
     "help",
     "move",
     "copy",
-    "togglebingoapi",
-    "resetdata"
+    "rat",
+    "stream"
 ]
 
 export const bingoPlusCommand = register("command", (...args) => {
@@ -46,10 +48,17 @@ export const bingoPlusCommand = register("command", (...args) => {
                 .chat()
             break
 
+        case "rat":
+        case "rats":
+        case "ratwaypoints":
+            settings().getConfig().setConfigValue('Other', 'ratWaypoints', !(settings().ratWaypoints))
+            ChatLib.chat(`${constants.PREFIX}${settings().ratWaypoints ? '&aEnabled' : '&cDisabled'} Rat waypoints.`)
+            break
+
         case "stream":
             ChatLib.chat(`${constants.PREFIX}Custom /stream commands\n&cPlease note these only work with a valid Hypixel rank for hosting parties.`)
             streamCommands.forEach(cmd => {
-                let message = new TextComponent(`&a${cmd[0]}&r: ${cmd[1]}`)
+                new TextComponent(`&a${cmd[0]}&r: ${cmd[1]}`)
                     .setClickAction("run_command")
                     .setClickValue(cmd[0])
                     .chat()
@@ -92,9 +101,7 @@ export const bingoPlusCommand = register("command", (...args) => {
 }).setName("b+")
   .setAliases(["bingo+","bingoplus"])
   .setTabCompletions([
-    "help",
-    "move",
-    "dev"
+    commandsList
   ])
 
 
