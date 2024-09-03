@@ -59,6 +59,10 @@ import "./features/world/windCompass"
 
 
 /*
+    1.3.5 changelog
+- changed 'Copy hub details when clicked' feature to a dropdown
+- (maybe) fixed rank not showing properly on 'Community Goal Display' feature
+
     1.3.4 changelog
 - add 'Highlight correct brews' feature
 - add 'Warn if mega' feature

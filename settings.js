@@ -464,13 +464,14 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Sends a message in chat if a restarting hub is detected.\nHub numbers may be shifting when this happens.",
     subcategory: "Hub Selector"
 })
-.addSwitch({
+.addDropDown({
     category: "Splasher",
     configName: "hubSelectorCopyHubWhenClicked",
     title: "Copy hub details when clicked",
-    description: "If you have splash potions in your inventory, clicking a hub will copy its hub number and server.",
+    description: "Gets the hub number and server of a hub when clicking it.",
+    options: ["Off", "Auto copy", "Message in chat"],
     subcategory: "Hub Selector",
-    value: true
+    value: 1
 })
 .addSwitch({
     category: "Splasher",
