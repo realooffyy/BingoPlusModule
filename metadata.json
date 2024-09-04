@@ -5,5 +5,5 @@
   "description": "A module with various Bingo-related features",
   "version": "1.4.0",
   "entry": "index.js",
-  "requires": ["Vigilance", "Amaterasu", "PogData", "requestV2", "RenderLibV2", "BeaconBeam"]
+  "requires": ["Amaterasu", "PogData", "requestV2", "RenderLibV2", "BeaconBeam"]
 }
