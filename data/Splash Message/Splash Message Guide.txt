@@ -1,0 +1,34 @@
+
+------------
+Splash info
+------------
+
+{hub} = the hub number only
+	- Hub 28
+	- 13
+
+{dungeon?} = this becomes "Dungeon " if it is a dungeon hub
+	
+{server} = the server ID
+	- mega19E
+	- mega32C
+	
+{username} = your username
+	- ooffyy
+	- aphased
+
+------------
+Pings
+------------
+
+{bbping} = Bingo Brewers @Splash Ping 
+	- <@&916461777863180328>
+	
+{bscping} = Bingo Splash Community @human
+	- <@&915868180939960330>
+	
+{spaping} = Shark Plushie Apothecary @Splash Ping
+	- <@&1125381920159707156>
+	
+{iodping} = Isle of Ducks @Splash
+	- <@&927088424408735764>

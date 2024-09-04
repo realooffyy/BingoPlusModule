@@ -89,7 +89,7 @@ registerWhen(register("guiRender", () => {
 
 // feature (Copy hub details when clicked)
 register("guiMouseClick", () => {
-    if (![1, 2].includes(settings().hubSelectorCopyHubWhenClicked) || !inHubSelector) return
+    if (![1, 2].includes(settings().splashMessageCopyWhenClickingHub) || !inHubSelector) return
 
     // splash potion check
     if (!Player.getContainer().getItems().some(item => 
@@ -100,21 +100,39 @@ register("guiMouseClick", () => {
     const hub = getHubFromItem(Client.currentGui.getSlotUnderMouse()?.getItem())
     if (!hub) return
 
-    const text = `${hub.area == 'Dungeon' ? 'Dungeon ' : ''}Hub ${hub.number} (${hub.serverName})`
+    const hubText = `${hub.area == 'Dungeon' ? 'Dungeon ' : ''}Hub ${hub.number} (${hub.serverName})`
     
-    switch (settings().hubSelectorCopyHubWhenClicked) {
+    const text =
+        FileLib.read("BingoPlus", constants.SPLASHMESSAGE_FOLDER + constants.SPLASHMESSAGE_FILE)
+            .replaceAll('{hub}', hub.number)
+            .replaceAll('{dungeon?}', hub.area == 'Dungeon' ? 'Dungeon ' : '')
+            .replaceAll('{server}', hub.serverName)
+            .replaceAll('{username}', Player.getName())
+
+            .replaceAll('{bbping}',  '@Splash Pings')
+            .replaceAll('{bscping}', '@human')
+            .replaceAll('{spaping}', '@Splash Ping')
+            .replaceAll('{iodping}', '@Splash')
+
+            .replaceAll('{jbaping}', '@2mmwjba')
+       
+    if (!text) ChatLib.chat(`${constants.PREFIX}&cFailed to read &rSplashMessage.txt&c, or it is empty.`)
+    
+    switch (settings().splashMessageCopyWhenClickingHub) {
         case 1:
-            ChatLib.command(`ct copy ${text}`)
-            ChatLib.chat(`${constants.PREFIX}&aCopied hub details to clipboard!`)
+            ChatLib.command(`b+ copy splash_message ${text}`, true)
             break
         case 2:
-            new TextComponent(`${constants.PREFIX}Click to copy &a${text} `)
+            new TextComponent(`${constants.PREFIX}Click to copy splash message for &a${hubText}&r!`)
                 .setClickAction("run_command")
-                .setClickValue(`/b+ copy ${text}`)
-                .setHoverValue(text)
+                .setClickValue(`/b+ copy splash_message ${text}`)
                 .chat()
     }
-
+    new TextComponent(`${constants.PREFIX}Click to put &a${hubText} &rin chat`)
+        .setHoverValue(`Click to put &a${hubText} &rin chat`)
+        .setClickAction("run_command")
+        .setClickValue(`/b+ addtochatbox ${hubText}`)
+        .chat()
 })
 
 // feature (Warn if mega)

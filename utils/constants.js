@@ -7,7 +7,10 @@ export default constants = {
         `&6/b+ &8- Opens Bingo+ config`,
         `&7/cake &8- Visits a Cake Hub. Defaults to BingoSplasher, configurable in settings`
     ],
-    BINGOPARTY_IGN: "BingoParty"
+    BINGOPARTY_IGN: "BingoParty",
+
+    SPLASHMESSAGE_FOLDER: "/data/Splash Message/",
+    SPLASHMESSAGE_FILE: "Splash Message.txt"
 }
 
 export const data = new PogObject("BingoPlus", {
