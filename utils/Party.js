@@ -1,9 +1,6 @@
-//import { onHypixelConnect } from "./Events"
 import { generateRandomString } from "./utils"
-import { HypixelModAPI } from "../../HypixelModAPI"
-import constants from "./constants"
 import { data } from "./constants"
-import request from "../../requestV2"
+
 
 const partyLeaderRegex = [
     /^You have joined (?:\[.*?\] )?(\w{1,16})'s? party!$/, // https://regex101.com/r/gVoOq1/2
@@ -80,32 +77,6 @@ export default new class Party {
         
         register("serverDisconnect", () => {
             this.reset()
-        })
-
-        // didn't work, temporarily disabled
-        // get leader by modapi packet
-        //onHypixelConnect(() => {
-            // delayed bc skytils freaks out
-        //    setTimeout(() => {
-        //        HypixelModAPI.requestPartyInfo()
-        //    }, 1000)
-        //})
-
-        HypixelModAPI.on("partyInfo", data => {
-            const leaderUUID = Object.keys(data).find(key => data[key] === "LEADER")
-            if (!leaderUUID) {
-                this.reset()
-                return
-            }
-
-            request({
-                url: `https://api.mojang.com/user/profile/${leaderUUID}`,
-                json: true
-            }).then(api => {
-                this.leader = api.name
-            }).catch(err => {
-                ChatLib.chat(`${constants.PREFIX}&7Error fetching mojang uuid->username api: &f"${err.cause}"\n${constants.PREFIX}&7please report this to ooffyy on discord`)
-            })
         })
     }
 

@@ -3,9 +3,8 @@ import constants, { data } from "./constants"
 
 const bingoPlusModuleData = 'https://raw.githubusercontent.com/realooffyy/ModuleData/main/BingoPlusModule/data.json'
 
-
-const apiError = (text, err) => {
-    ChatLib.chat(`${constants.PREFIX}&7${text}: &f"${err}"\n${constants.PREFIX}&7please report this to ooffyy on discord`)
+const apiError = (text, err, report = true) => {
+    ChatLib.chat(`${constants.PREFIX}&7${text}: &f"${err}" ${report ? "\n"+constants.PREFIX+"&7Please report this to ooffyy &7on discord!" : ""}`)
 }
 
 const callGitHubModuleData = () => {
@@ -25,7 +24,9 @@ const callGitHubModuleData = () => {
         
     })
     .catch(err => {
-        apiError('Error fetching BingoPlusModule data', err)
+        apiError('Error fetching BingoPlusModule data', err, false)
+        ChatLib.chat(`${constants.PREFIX}&7This will probably not affect you, contact ooffyy &7on discord if you do run into any issues`)
+        ChatLib.chat()
     })
 }
 
@@ -55,7 +56,11 @@ const callBingoApi = () => {
     })
 }
 
+let requestExpires = Date.now() + 1000 // makes sure the request only happens once
 
-callGitHubModuleData()
-
-register("worldLoad", callBingoApi)
+register("worldLoad", () => {
+    if (Date.now() < requestExpires) return
+    requestExpires = Date.now() + 1000
+    callBingoApi()
+    callGitHubModuleData()
+})

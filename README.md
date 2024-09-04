@@ -78,6 +78,10 @@ If the module does not seem to be working, join the Discord and share your log i
     Shows a shortened name next to splash potion items.
 </details>
 <details>
+    <summary>Auto-copy splash message</summary>
+    A splash message builder with auto-copy functionality when warping to a hub with splash potions in your inventory!
+</details>
+<details>
     <summary>Colour Brewing Stands</summary>
     Colours brewing stands if they are loaded. 
 </details>

@@ -59,6 +59,11 @@ import "./features/world/windCompass"
 
 
 /*
+    1.4.0 changelog
+- add '/b+ rat' alongside '/rats'
+- changed hub details feature to 'Copy splash message when clicked'
+- fix 'Community Goal Display' rank line (again)
+
     1.3.5 changelog
 - changed 'Copy hub details when clicked' feature to a dropdown
 - (maybe) fixed rank not showing properly on 'Community Goal Display' feature

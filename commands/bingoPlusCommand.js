@@ -1,20 +1,24 @@
+// TODO: make sub-commands modular
+
 import guis from "../render/registerGui"
 import settings from "../settings"
 import { data } from "../utils/constants"
 import constants from "../utils/constants"
 import { streamCommands } from "../features/party/customStreamCommands"
+import { addToChatBox } from "../utils/utils"
 
 const commandsList = [
     "help",
     "move",
-    "togglebingoapi",
-    "resetdata"
+    "copy",
+    "rat",
+    "stream"
 ]
 
 export const bingoPlusCommand = register("command", (...args) => {
     if (!args || !args[0]) return settings().getConfig().openGui()
     
-    switch (args[0]) {
+    switch (args[0].toLowerCase()) {
         case "help":
             let line = `&6&m${ChatLib.getChatBreak(" ")}`
             let cmd = ''
@@ -37,18 +41,17 @@ export const bingoPlusCommand = register("command", (...args) => {
 
             break
 
-        case "copy":
-            const text = args.join(" ").slice(5) // slice to remove "copy"
-            ChatLib.command(`ct copy ${text}`, true)
-            new TextComponent(`${constants.PREFIX}&aCopied to clipboard!`)
-                .setHoverValue(text)
-                .chat()
+        case "rat":
+        case "rats":
+        case "ratwaypoints":
+            settings().getConfig().setConfigValue('Other', 'ratWaypoints', !(settings().ratWaypoints))
+            ChatLib.chat(`${constants.PREFIX}${settings().ratWaypoints ? '&aEnabled' : '&cDisabled'} Rat waypoints.`)
             break
 
         case "stream":
             ChatLib.chat(`${constants.PREFIX}Custom /stream commands\n&cPlease note these only work with a valid Hypixel rank for hosting parties.`)
             streamCommands.forEach(cmd => {
-                let message = new TextComponent(`&a${cmd[0]}&r: ${cmd[1]}`)
+                new TextComponent(`&a${cmd[0]}&r: ${cmd[1]}`)
                     .setClickAction("run_command")
                     .setClickValue(cmd[0])
                     .chat()
@@ -86,14 +89,26 @@ export const bingoPlusCommand = register("command", (...args) => {
 
         default: 
             ChatLib.chat(`${constants.PREFIX}Unknown command. Run &6/b+ help&r to see all commands.`)
+
+        // Helper functions
+        case "copy":
+            const text = args.slice(2).join(" ") // shift removes copy and reason
+            ChatLib.command(`ct copy ${text}`, true)
+            new TextComponent(`${constants.PREFIX}&aCopied ${args[1].replace(/_/g, ' ')} to clipboard!`)
+                .setHoverValue(text)
+                .chat()
+            break
+        
+        case "addtochatbox":
+            addToChatBox(args.slice(1).join(" "))
+            break
+        
     }
 
 }).setName("b+")
   .setAliases(["bingo+","bingoplus"])
   .setTabCompletions([
-    "help",
-    "move",
-    "dev"
+    commandsList
   ])
 
 

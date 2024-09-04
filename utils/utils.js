@@ -111,7 +111,7 @@ export function convertDateObjectToString(date) {
 }
 
 /**
- * Returns enerates a random alphanumeric string
+ * Returns a random alphanumeric string
  * @param {Number} length
  * @returns the random string
  */
@@ -125,4 +125,25 @@ export const generateRandomString = (length) => {
     }
     
     return result
-  }
+}
+
+/**
+ * Replaces spaces with underscores, or underscores with spaces
+ * @param {String} string 
+ * @returns the converted result
+ */
+export const spaceUndercoreConvert = (string) => {
+    if (string.includes(' ')) return string.replaceAll(' ', '_')
+    else if (string.includes('_')) return string.replaceAll('_', ' ')
+    else return string
+}
+
+// from EmojiChatBar
+export const addToChatBox = (text) => {
+    const chatGui = Client.currentGui.get();
+    if (chatGui) {
+        const chatInputField = chatGui.field_146415_a;
+        const currentText = chatInputField.func_146179_b();
+        chatInputField.func_146180_a(currentText + text)
+    }
+}

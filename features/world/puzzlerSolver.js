@@ -1,4 +1,4 @@
-import RenderLib from "../../../RenderLib"
+import RenderLibV2 from "../../../RenderLibV2"
 import settings from "../../settings"
 import constants from "../../utils/constants"
 import { registerWhen } from "../../utils/utils"
@@ -41,5 +41,5 @@ register("chat", (puzzle) => {
 
 // draw the box
 registerWhen(register("renderWorld", () => { 
-    RenderLib.drawInnerEspBox(loc.x+.5, loc.y+1.001, loc.z+.5, 1, 0.1, 0, 1, 0, 0.2, false)
+    RenderLibV2.drawInnerEspBox(loc.x+.5, loc.y+1.001, loc.z+.5, 1, 0.1, 0, 1, 0, 0.2, false)
 }), () => showSolution)

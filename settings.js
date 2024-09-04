@@ -240,6 +240,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Shows waypoints for the general location of Rat spawns.\n&aToggleable with &6/rats&a.",
     subcategory: "Rats",
 })
+/* TODO: implement the text thing again
 .addSwitch({
     category: "Other",
     configName: "ratWaypointsShowText",
@@ -249,6 +250,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     shouldShow: data => data.ratWaypoints,
     value: true
 })
+*/
 .addSwitch({
     category: "Other",
     configName: "ratWaypointsShowBeacon",
@@ -296,11 +298,18 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     value: 0
 })
 
+.addTextParagraph({
+    category: "Party",
+    configName: "bingoPartyBotInfo",
+    title: "BingoPartyBot",
+    description: "BingoPartyBot is a project allowing for controlling the Bingo Party without being a party leader.\n&cThis section is intended for Bingo Brewers splashers and other trusted individuals!",
+    subcategory: "BingoParty Moderation"
+})
 .addButton({
     category: "Party",
     configName: "openBingoPartyDocumentation",
     title: "Bingo Party",
-    description: "BingoPartyBot is a project allowing for controlling the Bingo Party without being a party leader.\nClick the button to see all available commands.",
+    description: "Click to see the available Bingo Party commands",
     subcategory: "BingoParty Moderation",
     placeHolder: "GitHub",
     onClick() {
@@ -384,6 +393,51 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     subcategory: "Brewing Stands"
 })
 
+// these are in hubSelector.js
+.addDropDown({
+    category: "Splasher",
+    configName: "splashMessageCopyWhenClickingHub",
+    title: "Copy splash message when clicked",
+    description: "Copies a dynamic splash message when clicking on a hub in the Hub Selector",
+    options: ["Off", "Auto copy", "Message in chat"],
+    subcategory: "Splash Message",
+    value: 1
+})
+.addButton({
+    category: "Splasher",
+    configName: "splashMessageOpenFolder",
+    title: "Open folder",
+    description: "Open the folder with the splash message files",
+    subcategory: "Splash Message",
+    onClick() {
+        // TODO: make this function modular
+        try {
+            const currentScriptPath = new java.io.File(arguments[0]).getAbsolutePath()
+            const currentDir = new java.io.File(currentScriptPath).getParent()
+
+            const relativeFilePath = new java.io.File(currentDir, "config/ChatTriggers/modules/BingoPlus" +
+                constants.SPLASHMESSAGE_FOLDER)
+
+            if (java.awt.Desktop.isDesktopSupported()) {
+                const desktop = java.awt.Desktop.getDesktop()
+                if (desktop.isSupported(java.awt.Desktop.Action.OPEN)) {
+                    const file = new java.io.File(relativeFilePath)
+                    desktop.open(file)
+                    return
+                }
+            }
+        }
+        catch (err) {
+            ChatLib.chat(`${constants.PREFIX}&cSomething went wrong! &rRun &a/ct file &rand go to &amodules/BingoPlus/data/Splash Message &rinstead.\n\n"${err}"`)
+            return
+        }
+        ChatLib.chat(`${constants.PREFIX}&cSomething went wrong! &rRun &a/ct file &rand go to &amodules/BingoPlus/data/Splash Message &rinstead.\n\n"${err}"`)
+
+
+        
+    }
+})
+
 .addSwitch({
     category: "Splasher",
     configName: "splasherDisplay",
@@ -463,15 +517,6 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     title: "Hub Restart Warning",
     description: "Sends a message in chat if a restarting hub is detected.\nHub numbers may be shifting when this happens.",
     subcategory: "Hub Selector"
-})
-.addDropDown({
-    category: "Splasher",
-    configName: "hubSelectorCopyHubWhenClicked",
-    title: "Copy hub details when clicked",
-    description: "Gets the hub number and server of a hub when clicking it.",
-    options: ["Off", "Auto copy", "Message in chat"],
-    subcategory: "Hub Selector",
-    value: 1
 })
 .addSwitch({
     category: "Splasher",
