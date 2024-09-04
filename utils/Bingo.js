@@ -18,7 +18,7 @@ const communityGoalSlots = [0, 6, 12, 18, 24]
 
 const contributionRegex = /§5§o§7Contribution: (.*)/
 const percentRegex = /  §8Top §(\w)(.*)%/
-const rankRegex = /  §6§l#(\d)+ §fcontributor/
+const rankRegex = /  §6§l#(\d{1,3}) §fcontributor/
 
 export default new class Bingo {
     constructor() {
