@@ -61,7 +61,6 @@ let requestExpires = Date.now() + 1000 // makes sure the request only happens on
 register("worldLoad", () => {
     if (Date.now() < requestExpires) return
     requestExpires = Date.now() + 1000
-    ChatLib.chat("hi")
     callBingoApi()
     callGitHubModuleData()
 })

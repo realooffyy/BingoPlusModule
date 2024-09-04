@@ -10,7 +10,7 @@ export default constants = {
     BINGOPARTY_IGN: "BingoParty",
 
     SPLASHMESSAGE_FOLDER: "/data/Splash Message/",
-    SPLASHMESSAGE_FILE: "Splash Message.txt"
+    SPLASHMESSAGE_FILE: "message.txt"
 }
 
 export const data = new PogObject("BingoPlus", {

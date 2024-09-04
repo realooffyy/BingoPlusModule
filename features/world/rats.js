@@ -3,7 +3,7 @@ import Skyblock from "../../utils/Skyblock"
 import constants, { rats } from "../../utils/constants"
 import { renderWaypoint } from "../../render/utils"
 
-const warning = new TextComponent(`${constants.PREFIX}&aRat waypoints are enabled! &rRun &6/b+ rat&r to disable.`)
+const warning = new TextComponent(`${constants.PREFIX}&aRat waypoints are enabled! &rRun &6/rats&r to disable.`)
                 .setClick('run_command', '/b+ rat')
 
 let warningSent = false
@@ -18,5 +18,3 @@ register("renderWorld", () => {
 })
 
 register("worldLoad", () => { warningSent = false })
-
-// todo: hide beacon/text/waypoint after killing a rat nearby

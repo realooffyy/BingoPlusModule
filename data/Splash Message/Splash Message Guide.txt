@@ -1,4 +1,8 @@
-To get started, create a file named 'Splash Message.txt'
+ - To get started, create a file named 'message.txt'
+     - This is where your splash message will go.
+ - An example 'message.txt' is shown below, you could copy paste this in
+ - NOTE: You do not need to /ct load to load your changes, just save the file
+   and you're good to go :D
 
 ---------------
 Example usage
@@ -8,7 +12,6 @@ Example usage
 ## {dungeon?}Hub: {hub}
 Splasher: {username}
 Where: Bea House
-
 
 
 ------------

@@ -87,7 +87,7 @@ registerWhen(register("guiRender", () => {
     })
 }), () => loaded)
 
-// feature (Copy hub details when clicked)
+// feature (Copy splash message when clicked)
 register("guiMouseClick", () => {
     if (![1, 2].includes(settings().splashMessageCopyWhenClickingHub) || !inHubSelector) return
 
@@ -102,21 +102,25 @@ register("guiMouseClick", () => {
 
     const hubText = `${hub.area == 'Dungeon' ? 'Dungeon ' : ''}Hub ${hub.number} (${hub.serverName})`
     
-    const text =
-        FileLib.read("BingoPlus", constants.SPLASHMESSAGE_FOLDER + constants.SPLASHMESSAGE_FILE)
-            .replaceAll('{hub}', hub.number)
-            .replaceAll('{dungeon?}', hub.area == 'Dungeon' ? 'Dungeon ' : '')
-            .replaceAll('{server}', hub.serverName)
-            .replaceAll('{username}', Player.getName())
+    let text = FileLib.read("BingoPlus", constants.SPLASHMESSAGE_FOLDER + constants.SPLASHMESSAGE_FILE)
 
-            .replaceAll('{bbping}',  '@Splash Pings')
-            .replaceAll('{bscping}', '@human')
-            .replaceAll('{spaping}', '@Splash Ping')
-            .replaceAll('{iodping}', '@Splash')
+    if (!text) {
+        ChatLib.chat(`${constants.PREFIX}&cFailed to read ${constants.SPLASHMESSAGE_FILE}&c, or it is empty.`)
+        return
+    }
 
-            .replaceAll('{jbaping}', '@2mmwjba')
+    text = text
+        .replaceAll('{hub}', hub.number)
+        .replaceAll('{dungeon?}', hub.area == 'Dungeon' ? 'Dungeon ' : '')
+        .replaceAll('{server}', hub.serverName)
+        .replaceAll('{username}', Player.getName())
+        .replaceAll('{bbping}',  '@Splash Pings')
+        .replaceAll('{bscping}', '@human')
+        .replaceAll('{spaping}', '@Splash Ping')
+        .replaceAll('{iodping}', '@Splash')
+        .replaceAll('{jbaping}', '@2mmwjba')
        
-    if (!text) ChatLib.chat(`${constants.PREFIX}&cFailed to read &rSplashMessage.txt&c, or it is empty.`)
+    
     
     switch (settings().splashMessageCopyWhenClickingHub) {
         case 1:
