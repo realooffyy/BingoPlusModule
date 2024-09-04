@@ -3,3 +3,4 @@ config/*
 data/config.toml
 data/data.json
 data/settings.json
+data/Splash Message/Splash Message.txt

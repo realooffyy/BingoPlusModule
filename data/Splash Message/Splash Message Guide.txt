@@ -1,3 +1,15 @@
+To get started, create a file named 'Splash Message.txt'
+
+---------------
+Example usage
+---------------
+
+{bbping}
+## {dungeon?}Hub: {hub}
+Splasher: {username}
+Where: Bea House
+
+
 
 ------------
 Splash info

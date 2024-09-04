@@ -1,8 +1,0 @@
-{bbping}
-## {dungeon?}Hub: {hub}
-Splasher: {username}
-Where: Bea House
-
-This is an example of how you could write your splash message.
-'Splash Message Guide.txt' contains the tags you can use and what they mean.
-This file won't delete/overwrite unless you delete the module.
