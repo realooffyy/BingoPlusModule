@@ -562,7 +562,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Visits a Cake Hub when running &e/cake&r.\nDefault: &aBingoSplasher&r",
     value: "BingoSplasher",
     placeHolder: "username",
-    subcategory: "Commands"
+    subcategory: ""
 })
 
 // Dev
@@ -572,7 +572,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "devInfo",
     title: "Dev settings",
     description: "&cOnly change these settings if you know what you're doing! This may break some features.\nYou may need to run &a/ct load &rto apply changes.",
-    subcategory: "Dev"
+    subcategory: ""
 })
 
 .addSwitch({
