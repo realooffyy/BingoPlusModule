@@ -3,7 +3,7 @@ import DefaultConfig from "../Amaterasu/core/DefaultConfig"
 import constants from "./utils/constants"
 import Party from "./utils/Party"
 
-const categories = ["General", "Bingo", "Other", "Party", "Splasher", "Chat", "Commands"]
+const categories = ["General", "Bingo", "Other", "Party", "Splasher", "Chat", "Commands", "Dev"]
 const version = JSON.parse(FileLib.read("BingoPlus", "metadata.json")).version
 
 const config = new DefaultConfig("BingoPlus", "data/settings.json")
@@ -563,6 +563,33 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     value: "BingoSplasher",
     placeHolder: "username",
     subcategory: ""
+})
+
+// Dev
+
+.addTextParagraph({
+    category: "Dev",
+    configName: "devInfo",
+    title: "Dev settings",
+    description: "&cOnly change these settings if you know what you're doing! This may break some features.\nYou may need to run &a/ct load &rto apply changes.",
+    subcategory: ""
+})
+
+.addSwitch({
+    category: "Dev",
+    configName: "devBingoApi",
+    title: "Bingo API",
+    description: "Enables calling the Bingo API",
+    subcategory: "API",
+    value: true
+})
+.addSwitch({
+    category: "Dev",
+    configName: "devBingoPlusModuleData",
+    title: "Github BingoPlusModule API",
+    description: "Enables calling the BingoPlusModule API",
+    subcategory: "API",
+    value: true
 })
 
 const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/vigilanceScheme.json", `${constants.PREFIX}&bv${version} &aby &dooffyy`)
