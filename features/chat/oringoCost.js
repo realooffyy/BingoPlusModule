@@ -37,7 +37,7 @@ const oringoPets = {
     ],
 
     'Monkey': [
-        ['10k', '64x Jungle Wood'],
+        ['10k', '64x Acacia Wood'],
         ['25k', '1x Enchanted Jungle Wood'],
         ['100k', '16x Enchanted Jungle Wood'],
         ['1M', '128x Enchanted Jungle Wood'],
@@ -45,7 +45,7 @@ const oringoPets = {
     ],
 
     'Elephant': [
-        ['10k', '64x Dark Oak Wood'],
+        ['10k', '64x Acacia Wood'],
         ['25k', '1x Enchanted Dark Oak Wood'],
         ['100k', '16x Enchanted Dark Oak Wood'],
         ['1M', '128x Enchanted Dark Oak Wood'],

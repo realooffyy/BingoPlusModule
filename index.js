@@ -59,6 +59,12 @@ import "./features/world/windCompass"
 
 
 /*
+    1.4.2 changelog
+- fix common monkey and elephant having the wrong ingredient
+
+    1.4.1 changelog
+- changed api to call every ct load and server join instead
+
     1.4.0 changelog
 - add '/b+ rat' alongside '/rats'
 - changed hub details feature to 'Copy splash message when clicked'
