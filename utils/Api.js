@@ -1,4 +1,5 @@
 import request from "../../requestV2"
+import settings from "../settings"
 import constants, { data } from "./constants"
 import { onHypixelConnect } from "./Events"
 
@@ -25,8 +26,7 @@ const callGitHubModuleData = () => {
         
     })
     .catch(err => {
-        apiError('Error fetching BingoPlusModule data', err, false)
-        ChatLib.chat(`${constants.PREFIX}&7This will probably not affect you, contact ooffyy &7on discord if you do run into any issues`)
+        apiError('Error fetching BingoPlusModule data', err, true)
         ChatLib.chat()
     })
 }
@@ -53,16 +53,23 @@ const callBingoApi = () => {
         }
     })
     .catch(err => {
-        apiError("Error fetching bingo api", err.cause)
+        apiError("Error fetching bingo api", err.cause, true)
     })
 }
 
-callGitHubModuleData()
-callBingoApi()
+let apiLoaded = false
 
 onHypixelConnect(() => {
-    callGitHubModuleData()
-    callBingoApi()
+    apiLoaded = false
+})
+
+register("tick", () => {
+    if (apiLoaded) return
+    if (!World.isLoaded()) return
+    apiLoaded = true
+
+    if (settings().devBingoPlusModuleData) callGitHubModuleData()
+    if (settings().devBingoApi) callBingoApi()
 })
 
 /*

@@ -59,6 +59,10 @@ import "./features/world/windCompass"
 
 
 /*
+
+    1.4.3 changelog
+- add dev section (the module api is breaking for some people so this lets you disable it)
+
     1.4.2 changelog
 - fix common monkey and elephant having the wrong ingredient
 
