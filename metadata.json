@@ -3,7 +3,7 @@
   "name": "BingoPlus",
   "creator": "ooffyy",
   "description": "A module with various Bingo-related features",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "entry": "index.js",
   "requires": ["Amaterasu", "PogData", "requestV2", "RenderLibV2", "BeaconBeam"]
 }
