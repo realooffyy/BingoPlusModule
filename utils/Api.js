@@ -1,5 +1,6 @@
 import request from "../../requestV2"
 import constants, { data } from "./constants"
+import { onHypixelConnect } from "./Events"
 
 const bingoPlusModuleData = 'https://raw.githubusercontent.com/realooffyy/ModuleData/main/BingoPlusModule/data.json'
 
@@ -56,6 +57,15 @@ const callBingoApi = () => {
     })
 }
 
+callGitHubModuleData()
+callBingoApi()
+
+onHypixelConnect(() => {
+    callGitHubModuleData()
+    callBingoApi()
+})
+
+/*
 let requestExpires = Date.now() + 1000 // makes sure the request only happens once
 
 register("worldLoad", () => {
@@ -64,3 +74,4 @@ register("worldLoad", () => {
     callBingoApi()
     callGitHubModuleData()
 })
+*/
