@@ -3,32 +3,8 @@ import settings from "../settings"
 import constants, { data } from "./constants"
 import { onHypixelConnect } from "./Events"
 
-const bingoPlusModuleData = 'https://raw.githubusercontent.com/realooffyy/ModuleData/main/BingoPlusModule/data.json'
-
 const apiError = (text, err, report = true) => {
     ChatLib.chat(`${constants.PREFIX}&7${text}: &f"${err}" ${report ? "\n"+constants.PREFIX+"&7Please report this to ooffyy &7on discord!" : ""}`)
-}
-
-const callGitHubModuleData = () => {
-    request({
-        url: bingoPlusModuleData,
-        json: true
-    })
-    .then(api => {
-        if (!(api.version <= data.moduleData.version)) {
-            ChatLib.chat(new TextComponent(`${constants.PREFIX}&7Updating BingoPlusModule data (v${data.moduleData.version} -> v${api.version})`)
-            .setClickAction('run_command')
-            .setClickValue(bingoPlusModuleData))
-
-            data.moduleData = api
-            data.save()
-        }
-        
-    })
-    .catch(err => {
-        apiError('Error fetching BingoPlusModule data', err, true)
-        ChatLib.chat()
-    })
 }
 
 const callBingoApi = () => {
@@ -57,6 +33,8 @@ const callBingoApi = () => {
     })
 }
 
+// api calling manager
+
 let apiLoaded = false
 
 onHypixelConnect(() => {
@@ -71,14 +49,3 @@ register("tick", () => {
     if (settings().devBingoPlusModuleData) callGitHubModuleData()
     if (settings().devBingoApi) callBingoApi()
 })
-
-/*
-let requestExpires = Date.now() + 1000 // makes sure the request only happens once
-
-register("worldLoad", () => {
-    if (Date.now() < requestExpires) return
-    requestExpires = Date.now() + 1000
-    callBingoApi()
-    callGitHubModuleData()
-})
-*/

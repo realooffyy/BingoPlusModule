@@ -183,8 +183,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "chickenHeadTimer",
     title: "Chicken Head Timer",
     description: "Displays a timer for the Chicken Head cooldown.",
-    subcategory: "Chicken Head Timer",
-    value: true
+    subcategory: "Chicken Head Timer"
 })
 .addButton({
     category: "Other",
@@ -229,8 +228,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "puzzlerSolver",
     title: "Puzzler solver",
     description: "Solves the Puzzler's riddle in the Dwarven Mines.",
-    subcategory: "Puzzler",
-    value: true
+    subcategory: "Puzzler"
 })
 
 .addSwitch({
@@ -358,8 +356,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "potionAbbreviation",
     title: "Show potion abbreviation",
     description: "Renders the potion's abbreviation over it",
-    subcategory: "Potions",
-    value: true
+    subcategory: "Potions"
 })
 
 .addSwitch({
@@ -398,10 +395,10 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     category: "Splasher",
     configName: "splashMessageCopyWhenClickingHub",
     title: "Copy splash message when clicked",
-    description: "Copies a dynamic splash message when clicking on a hub in the Hub Selector",
+    description: "If you have a splash potion, copies a dynamic splash message when clicking on a hub in the Hub Selector",
     options: ["Off", "Auto copy", "Message in chat"],
     subcategory: "Splash Message",
-    value: 1
+    value: 0
 })
 .addButton({
     category: "Splasher",
@@ -580,14 +577,6 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "devBingoApi",
     title: "Bingo API",
     description: "Enables calling the Bingo API",
-    subcategory: "API",
-    value: true
-})
-.addSwitch({
-    category: "Dev",
-    configName: "devBingoPlusModuleData",
-    title: "Github BingoPlusModule API",
-    description: "Enables calling the BingoPlusModule API",
     subcategory: "API",
     value: true
 })

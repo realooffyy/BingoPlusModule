@@ -1,6 +1,5 @@
 import { generateRandomString } from "./utils"
-import { data } from "./constants"
-
+import constants from "./constants"
 
 const partyLeaderRegex = [
     /^You have joined (?:\[.*?\] )?(\w{1,16})'s? party!$/, // https://regex101.com/r/gVoOq1/2
@@ -64,7 +63,7 @@ export default new class Party {
         partyLeaderRegex.forEach(regex => {
             register("chat", (leader) => {
                 this.inParty = true
-                this.leader = leader
+                this.leader = leader.toLowerCase()
             }).setCriteria(regex)
         })
 
@@ -85,7 +84,7 @@ export default new class Party {
     }
 
     getBotIGN() {
-        return data.moduleData?.bingoParty?.botIGN || "BingoParty"
+        return constants.BINGOPARTY_IGN.toLowerCase()
     }
 
     reset() {
