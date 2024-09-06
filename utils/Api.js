@@ -45,7 +45,6 @@ register("tick", () => {
     if (apiLoaded) return
     if (!World.isLoaded()) return
     apiLoaded = true
-
-    if (settings().devBingoPlusModuleData) callGitHubModuleData()
+    
     if (settings().devBingoApi) callBingoApi()
 })
