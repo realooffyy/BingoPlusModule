@@ -59,6 +59,10 @@ import "./features/world/windCompass"
 
 
 /*
+    1.4.4 changelog
+- fixed some rat waypoint names - @qtlunya
+- removed some setting defaults
+- removed moduledata api 
 
     1.4.3 changelog
 - add dev section (the module api is breaking for some people so this lets you disable it)

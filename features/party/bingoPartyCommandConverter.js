@@ -1,5 +1,4 @@
 import settings from "../../settings"
-import { data } from "../../utils/constants"
 import Party from "../../utils/Party"
 
 /**
@@ -11,8 +10,80 @@ const primaryCommandNames = [
 
 /**
  * Commands to allow through to bingoparty
+ * TODO: put these in constants.js
  */
-const allowList = data.moduleData.bingoParty.allowList
+const allowList = [
+    "disband",
+    "transfer",
+    "unmute",
+    "mute",
+    "pro",
+    "prom",
+    "promo",
+    "promote",
+    "testcommand",
+    "testpermissions",
+    "testperms",
+    "test",
+    "ka",
+    "ko",
+    "kickafk",
+    "kickoffline",
+    "remove",
+    "kick",
+    "block",
+    "ban",
+    "unblock",
+    "unban",
+    "close",
+    "open",
+    "public",
+    "stream",
+    "inv",
+    "invite",
+    "allinvite",
+    "speak",
+    "say",
+    "rep",
+    "repeat",
+    "crep",
+    "crepeat",
+    "customrep",
+    "customrepeat",
+    "flea",
+    "bf",
+    "pl",
+    "size",
+    "lsbanned",
+    "printallowed",
+    "printAllowlist",
+    "lsallowed",
+    "rule",
+    "poll",
+    "publicguide",
+    "g",
+    "gd",
+    "guide",
+    "sg",
+    "setguide",
+    "help",
+    "sendlimbo",
+    "limbo",
+    "addSplasher",
+    "add",
+    "removeSplasher",
+    "cmd",
+    "disable",
+    "disableall",
+    "enable",
+    "enableall",
+    "lstoggled",
+    "lsdisabled",
+    "printdeactivated",
+    "printdisabled",
+    "printDisabled",
+    "query"
+]
 
 register("messageSent", (message, event) => {
     if (!settings().bingoPartyCommandConverter) return

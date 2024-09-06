@@ -7,6 +7,7 @@ export default constants = {
         `&6/b+ &8- Opens Bingo+ config`,
         `&7/cake &8- Visits a Cake Hub. Defaults to BingoSplasher, configurable in settings`
     ],
+    // TODO: make this an array of bingoparty igns
     BINGOPARTY_IGN: "BingoParty",
 
     SPLASHMESSAGE_FOLDER: "/data/Splash Message/",
