@@ -429,10 +429,14 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
             return
         }
         ChatLib.chat(`${constants.PREFIX}&cSomething went wrong! &rRun &a/ct file &rand go to &amodules/BingoPlus/data/Splash Message &rinstead.\n\n"${err}"`)
-
-
-        
     }
+})
+.addSwitch({
+    category: "Splasher",
+    configName: "splashMessageAlwaysEnabled",
+    title: "Always enabled",
+    description: "Always enable this feature, even without a splash potion in your inventory",
+    subcategory: "Splash Message"
 })
 
 .addSwitch({

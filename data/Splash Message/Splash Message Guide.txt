@@ -1,15 +1,15 @@
- - To get started, create a file named 'message.txt'
-     - This is where your splash message will go.
- - An example 'message.txt' is shown below, you could copy paste this in
- - NOTE: You do not need to /ct load to load your changes, just save the file
-   and you're good to go :D
+ - If it doesn't exist already, create 'message.txt'.
+     - You should write your splash message there.
+ - An example is shown below, you could copy paste this if you want.
+ - NOTE: You do not need to /ct load to load your changes, just save the
+  file and you're good to go :D
 
 ---------------
 Example usage
 ---------------
 
 {bbping}
-## {dungeon?}Hub: {hub}
+## {dungeon?}Hub: {hub} ({server})
 Splasher: {username}
 Where: Bea House
 
@@ -37,13 +37,9 @@ Pings
 ------------
 
 {bbping} = Bingo Brewers @Splash Ping 
-	- <@&916461777863180328>
 	
 {bscping} = Bingo Splash Community @human
-	- <@&915868180939960330>
 	
 {spaping} = Shark Plushie Apothecary @Splash Ping
-	- <@&1125381920159707156>
 	
 {iodping} = Isle of Ducks @Splash
-	- <@&927088424408735764>
