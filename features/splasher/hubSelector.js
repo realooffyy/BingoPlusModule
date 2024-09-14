@@ -132,7 +132,7 @@ register("guiMouseClick", () => {
         // add default message if empty
         if (!text) {
             FileLib.append("BingoPlus", filePath, defaultSplashMessage)
-            text = defaultSplashMessage
+            text = FileLib.read("BingoPlus", filePath)
             ChatLib.chat(`${constants.PREFIX}&aAdded default message to&f ${constants.SPLASHMESSAGE_FILE}`)
         }
 

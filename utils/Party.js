@@ -53,11 +53,6 @@ export default new class Party {
     constructor() {
         this.inParty = false
         this.leader = null
-        // HypixelModAPI.requestPartyInfo()
-
-        //register("step", () => {
-        //    ChatLib.chat(`${this.leader}`)
-        //}).setFps(1)
 
         // Leader
         partyLeaderRegex.forEach(regex => {
@@ -87,6 +82,15 @@ export default new class Party {
         return constants.BINGOPARTY_IGN.toLowerCase()
     }
 
+    /**
+     * Dev: Simulate a party
+     * @param {String} param new leader
+     */
+    simulateParty(leader) {
+        this.inParty = true
+        this.leader = leader
+    }
+
     reset() {
         this.inParty = false
         this.leader = null
@@ -100,9 +104,11 @@ export default new class Party {
     addRandomString(string) {
         args = string.split(" ")
 
-        if (whenArgsRandomString.some(cmd => cmd.toLowerCase() == args[0].toLowerCase()) && !args[1]) return string
-        if (!alwaysRandomString.includes(args[0].toLowerCase())) return string
-
+        let shouldAdd = false
+        if (whenArgsRandomString.some(cmd => cmd.toLowerCase() == args[0].toLowerCase()) && args[1]) shouldAdd = true
+        if (alwaysRandomString.some(cmd => cmd.toLowerCase() == args[0].toLowerCase())) shouldAdd = true
+        if (!shouldAdd) return string
+        
         // TODO: potentially make something for commands like an [END] for the bot to interpret and omit
         return string + ` ${generateRandomString(string.length * .33 < 6 ? 6 : string.length * .33)}`
     }

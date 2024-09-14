@@ -6,6 +6,7 @@ import { data } from "../utils/constants"
 import constants from "../utils/constants"
 import { streamCommands } from "../features/party/customStreamCommands"
 import { addToChatBox } from "../utils/utils"
+import Party from "../utils/Party"
 
 const commandsList = [
     "help",
@@ -17,8 +18,9 @@ const commandsList = [
 
 export const bingoPlusCommand = register("command", (...args) => {
     if (!args || !args[0]) return settings().getConfig().openGui()
-    
-    switch (args[0].toLowerCase()) {
+
+    args = args.map(arg => arg ? arg.toLowerCase() : arg)
+    switch (args[0]) {
         case "help":
             let line = `&6&m${ChatLib.getChatBreak(" ")}`
             let cmd = ''
@@ -81,10 +83,22 @@ export const bingoPlusCommand = register("command", (...args) => {
         */
 
         case "dev":
-            data.dev = !data.dev
-            data.save()
-            ChatLib.chat(`${constants.PREFIX}Set developer to ${data.dev}`)
-            if (data.dev) ChatLib.chat("Make sure you know what you're doing!")
+            if (!args[1]) {
+                data.dev = !data.dev
+                data.save()
+                ChatLib.chat(`${constants.PREFIX}Set developer to ${data.dev}`)
+                if (data.dev) ChatLib.chat("Make sure you know what you're doing!")
+            }
+            else switch (args[1]) {
+                case "simulateparty":
+                    if (!args[2]) ChatLib.chat(`${constants.PREFIX}&cLeader not specified`)
+                    Party.simulateParty(args[2])
+                    ChatLib.chat(`${constants.PREFIX}&aSimulating a party with leader ${Party.leader}`)
+                    break
+                default:
+                    ChatLib.chat(`${constants.PREFIX}&cCan't find this dev option`)
+            }
+            
             break
 
         default: 
@@ -107,9 +121,7 @@ export const bingoPlusCommand = register("command", (...args) => {
 
 }).setName("b+")
   .setAliases(["bingo+","bingoplus"])
-  .setTabCompletions([
-    commandsList
-  ])
+  .setTabCompletions(commandsList)
 
 
 /*

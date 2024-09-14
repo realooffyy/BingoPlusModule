@@ -258,6 +258,21 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     shouldShow: data => data.ratWaypoints,
     value: true
 })
+.addSwitch({
+    category: "Other",
+    configName: "highlightRats",
+    title: "Highlight rats",
+    description: "Boxes rats so that they're easier to see. &cNot through walls, cheater",
+    subcategory: "Rats",
+})
+.addColorPicker({
+    category: "Other",
+    configName: "highlightRatsColour",
+    title: "Highlight rats colour",
+    description: "the box colour",
+    subcategory: "Rats",
+    value: [0, 255, 255, 255]
+})
 
 // Party
 
@@ -356,6 +371,13 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     configName: "potionAbbreviation",
     title: "Show potion abbreviation",
     description: "Renders the potion's abbreviation over it",
+    subcategory: "Potions"
+})
+.addKeybind({
+    category: "Splasher",
+    configName: "potionColourOrderKeybind",
+    title: "(coming soon) Show colour order",
+    description: "Highlights the rainbow order of potions while held",
     subcategory: "Potions"
 })
 
@@ -583,6 +605,67 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Enables calling the Bingo API",
     subcategory: "API",
     value: true
+})
+
+// i'll leave it in, i got tired of moving it in and out
+.addTextInput({
+    configName: "devAddTextInput",
+    title: "Text Input",
+    description: "Example of text input that does not wrap the text",
+    category: "Dev",
+    subcategory: "All elements",
+    value: "",
+    placeHolder: "Empty... :("
+})
+.addColorPicker({
+    configName: "devAddColorPicker",
+    title: "Color Picker",
+    description: "Pick a color! (hopefully...)",
+    category: "Dev",
+    subcategory: "All elements",
+    value: [0, 0, 255, 255]
+})
+.addSwitch({
+    configName: "devAddSwitch",
+    title: "Switch",
+    description: "toggle the checkbox in Not general! tab!",
+    category: "Dev",
+    subcategory: "All elements"
+})
+.addToggle({
+    configName: "devAddToggle",
+    title: "Checkbox/Toggle",
+    description: "Check this box",
+    category: "Dev",
+    subcategory: "All elements"
+})
+.addDropDown({
+    configName: "devAddDropDown",
+    title: "DropDown",
+    description: "Select an option",
+    category: "Dev",
+    subcategory: "All elements",
+    options: ["one", "two", "three"],
+    value: 0
+})
+.addSlider({
+    configName: "devAddSlider",
+    title: "Slider",
+    description: "Select a value",
+    category: "Dev",
+    subcategory: "All elements",
+    options: [0, 100],
+    value: 0
+})
+.addButton({
+    configName: "devAddButton",
+    title: "Button",
+    description: "yay",
+    category: "Dev",
+    subcategory: "All elements",
+    onClick() {
+        ChatLib.chat("hi :P")
+    }
 })
 
 const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/vigilanceScheme.json", `${constants.PREFIX}&bv${version} &aby &dooffyy`)

@@ -59,6 +59,12 @@ import "./features/world/windCompass"
 
 
 /*
+    1.4.5 changelog
+- add 'Highlight rats' feature
+- fix brewing stand features breaking when opening skyblock menu
+- fix random string not adding to bingoparty commands sometimes
+- made 'Copy splash message when clicked' more user friendly
+
     1.4.4 changelog
 - fixed some rat waypoint names - @qtlunya
 - removed some setting defaults

@@ -73,7 +73,7 @@ export const data = new PogObject("BingoPlus", {
 
 }, "data/data.json")
 
-export const rats = [
+export const ratLocations = [
     [-6, 69, 2, 'under mountain'], // house under mountain
     [27, 66, -24, 'behind fashion shop'], // behind fashion house
     [46, 69, -37, 'inside or behind thaumaturgist house'], // thaumaturgist house

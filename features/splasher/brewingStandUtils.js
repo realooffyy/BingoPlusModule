@@ -4,11 +4,10 @@ import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
 import { onInventoryClose } from "../../utils/Events"
 import { drawSlotBox } from "../../render/utils"
+import Window from "../../utils/Window"
 
 // some logic from skytils
 // https://github.com/Skytils/SkytilsMod/blob/1.x/src/main/kotlin/gg/skytils/skytilsmod/features/impl/misc/BrewingFeatures.kt
-
-const S2DPacketOpenWindow = Java.type("net.minecraft.network.play.server.S2DPacketOpenWindow")
 
 const brewingStandID = "minecraft:brewing_stand"
 const coffeeIngredients = ["Enchanted Cake", "Enchanted Cookie", "Enchanted Rabbit Foot", "Enchanted Sugar Cane"]
@@ -29,7 +28,7 @@ const itemsIntoBrews = {
 const timeRegex = /^§a(\d{1,2}.\d)s$/
 // https://regex101.com/r/mgxH0O/1
 
-let enabled
+let enabled = false
 
 let brewingStands = []
 let lastStand = null
@@ -72,16 +71,17 @@ register("playerInteract", (action) => {
     }
 })
 
-// push the latest stand if it doesn't exist
-register("packetReceived", (packet) => {
+// manage opened stand + storing stands
+register("tick", () => {
     if (!enabled) return
-    if (lastStand === null) return
-    if (!packet.func_179840_c().func_150254_d().removeFormatting() === "Brewing Stand") return
-    if (!brewingStands.some(stand => compareCoords(stand, lastStand)
-    )) brewingStands.push(lastStand)
-    openedStand = lastStand
-    lastStand = null
-}).setFilteredClass(S2DPacketOpenWindow)
+    if (Window.getTitle() === "Brewing Stand") {
+        if (lastStand === null) return
+        if (!brewingStands.some(stand => compareCoords(stand, lastStand))) brewingStands.push(lastStand)
+        openedStand = lastStand
+        lastStand = null
+    }
+    else openedStand = null
+})
 
 // delete stand when broken
 register("blockBreak", (block) => {
@@ -154,7 +154,7 @@ registerWhen(register("renderItemIntoGui", (item, x, y) => {
     ingredients = itemsIntoBrews[ChatLib.removeFormatting(name)]
     if (!ingredients) return
     ingredients.forEach(ingredient => {
-        if (ingredient == openedStand.ingredient) {
+        if (ingredient == openedStand?.ingredient) {
             drawSlotBox(x, y, 247)
         }
     })
