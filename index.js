@@ -59,7 +59,7 @@ import "./features/world/windCompass"
 
 
 /*
-    1.4.5 changelog
+    1.5.0 changelog
 - add 'Highlight rats' feature
 - fix brewing stand features breaking when opening skyblock menu
 - fix random string not adding to bingoparty commands sometimes
