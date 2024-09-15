@@ -2,7 +2,6 @@ import RenderLibV2 from "../../../RenderLibV2"
 import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
-import { onInventoryClose } from "../../utils/Events"
 import { drawSlotBox } from "../../render/utils"
 import Window from "../../utils/Window"
 
@@ -160,11 +159,6 @@ registerWhen(register("renderItemIntoGui", (item, x, y) => {
     })
     
 }), () => settings().brewingStandHighlightCorrectBrew && enabled && openedStand?.ingredient)
-
-// clear opened stand when closed
-onInventoryClose(() => {
-    openedStand = null
-})
 
 // reset stands when unload
 const reset = () => {
