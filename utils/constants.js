@@ -17,6 +17,7 @@ export default constants = {
 export const data = new PogObject("BingoPlus", {
     firstTime: true,
     dev: false,
+    lastVersion: null,
 
     bingoApiOn: true,
     bingoApi: {
@@ -69,89 +70,11 @@ export const data = new PogObject("BingoPlus", {
         x: Renderer.screen.getWidth()/2,
         y: Renderer.screen.getHeight()/2,
         scale: 2
-    },
-    moduleData: {
-        version: 2,
-        bingoParty: {
-            botIGN: "BingoParty",
-            allowList: [ // v2
-                "disband",
-                "transfer",
-                "unmute",
-                "mute",
-                "pro",
-                "prom",
-                "promo",
-                "promote",
-                "testcommand",
-                "testpermissions",
-                "testperms",
-                "test",
-                "ka",
-                "ko",
-                "kickafk",
-                "kickoffline",
-                "remove",
-                "kick",
-                "block",
-                "ban",
-                "unblock",
-                "unban",
-                "close",
-                "open",
-                "public",
-                "stream",
-                "inv",
-                "invite",
-                "allinvite",
-                "speak",
-                "say",
-                "rep",
-                "repeat",
-                "crep",
-                "crepeat",
-                "customrep",
-                "customrepeat",
-                "flea",
-                "bf",
-                "pl",
-                "size",
-                "lsbanned",
-                "printallowed",
-                "printAllowlist",
-                "lsallowed",
-                "rule",
-                "poll",
-                "publicguide",
-                "g",
-                "gd",
-                "guide",
-                "sg",
-                "setguide",
-                "help",
-                "sendlimbo",
-                "limbo",
-                "addSplasher",
-                "add",
-                "removeSplasher",
-                "cmd",
-                "disable",
-                "disableall",
-                "enable",
-                "enableall",
-                "lstoggled",
-                "lsdisabled",
-                "printdeactivated",
-                "printdisabled",
-                "printDisabled",
-                "query"
-            ]
-        }
     }
 
 }, "data/data.json")
 
-export const rats = [
+export const ratLocations = [
     [-6, 69, 2, 'under mountain'], // house under mountain
     [27, 66, -24, 'behind fashion shop'], // behind fashion house
     [46, 69, -37, 'inside or behind thaumaturgist house'], // thaumaturgist house

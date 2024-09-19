@@ -1,0 +1,5 @@
++ add changelog
++ add 'Highlight rats' feature
+= fix brewing stand features breaking when opening skyblock menu
+= fix random string not adding to bingoparty commands sometimes
+= made 'Copy splash message when clicked' more user friendly

@@ -51,7 +51,7 @@
                 255
             ],
             "outlineSize": 0,
-            "roundness": 5
+            "roundness": 0
         },
         "lines": {
             "color": [
@@ -970,19 +970,19 @@
     "Keybind": {
         "background": {
             "color": [
-                0,
-                0,
-                0,
-                80
-            ],
-            "outlineColor": [
-                255,
-                255,
-                255,
+                35,
+                35,
+                35,
                 255
             ],
-            "outlineSize": 0,
-            "roundness": 3
+            "outlineColor": [
+                71,
+                71,
+                71,
+                255
+            ],
+            "outlineSize": 1,
+            "roundness": 0
         },
         "text": {
             "color": [
@@ -1058,7 +1058,7 @@
                 255,
                 255
             ],
-            "scale": 2
+            "scale": 1.5
         },
         "descriptionbackground": {
             "color": [

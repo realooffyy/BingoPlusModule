@@ -24,6 +24,24 @@ const playersRegex = /§5§o§7Players: (\d{1,2})\/(\d{1,2})/
 const serverRegex = /^§5§o§8Server: (.*)$/
 // https://regex101.com/r/ksK6DK/2
 
+const defaultSplashMessage = [
+    "{bbping}",
+    "## {dungeon?}Hub: {hub} ({server})",
+    "Splasher: {username}",
+    "Where: Bea House",
+    "",
+    "Above is the default splash message.",
+    "You can actually create your own template for a splash message!",
+    "To do this, run /b+, then go to Splasher -> Splash Message -> Open folder.",
+    "",
+    `'${constants.SPLASHMESSAGE_FILE}' is where you should write your splash message template.`,
+    "'Splash Message Guide.txt' is a guide containing all the information you need to create your template.",
+    "",
+    "If you're already happy with this default message, you can simply delete these bottom lines.",
+    "",
+    "If you run into any issues, feel free to message ooffyy on discord :3"
+].join("\n")
+
 let hubSelectorGui = new BaseGui('hubSelectorDisplay', ['hubSelectorDisplay', 'hubSelector', 'lowesthub'])
 registerGui(hubSelectorGui)
 
@@ -92,51 +110,62 @@ register("guiMouseClick", () => {
     if (![1, 2].includes(settings().splashMessageCopyWhenClickingHub) || !inHubSelector) return
 
     // splash potion check
-    if (!Player.getContainer().getItems().some(item => 
-        item && item.getName().includes('Splash Potion')))
-    return
+    if (Player.getContainer().getItems().some((item) => item && item.getName().includes('Splash Potion')) ||
+        settings().splashMessageAlwaysEnabled) {
 
-    // get hub
-    const hub = getHubFromItem(Client.currentGui.getSlotUnderMouse()?.getItem())
-    if (!hub) return
+        // get hub
+        const hub = getHubFromItem(Client.currentGui.getSlotUnderMouse()?.getItem())
+        if (!hub) return
 
-    const hubText = `${hub.area == 'Dungeon' ? 'Dungeon ' : ''}Hub ${hub.number} (${hub.serverName})`
-    
-    let text = FileLib.read("BingoPlus", constants.SPLASHMESSAGE_FOLDER + constants.SPLASHMESSAGE_FILE)
+        const hubText = `${hub.area == 'Dungeon' ? 'Dungeon ' : ''}Hub ${hub.number} (${hub.serverName})`
 
-    if (!text) {
-        ChatLib.chat(`${constants.PREFIX}&cFailed to read ${constants.SPLASHMESSAGE_FILE}&c, or it is empty.`)
-        return
+        const filePath = constants.SPLASHMESSAGE_FOLDER + constants.SPLASHMESSAGE_FILE
+        // create file if doesnt exist
+        if (!FileLib.exists("BingoPlus", filePath)) {
+            FileLib.write("BingoPlus", filePath, defaultSplashMessage)
+            ChatLib.chat(`${constants.PREFIX}&aCreated&f ${constants.SPLASHMESSAGE_FILE}&a!`)
+        }
+
+        // get text
+        let text = FileLib.read("BingoPlus", filePath)
+
+        // add default message if empty
+        if (!text) {
+            FileLib.append("BingoPlus", filePath, defaultSplashMessage)
+            text = FileLib.read("BingoPlus", filePath)
+            ChatLib.chat(`${constants.PREFIX}&aAdded default message to&f ${constants.SPLASHMESSAGE_FILE}`)
+        }
+
+        // all the replacements
+        text = text
+            .replaceAll('{hub}', hub.number)
+            .replaceAll('{dungeon?}', hub.area == 'Dungeon' ? 'Dungeon ' : '')
+            .replaceAll('{server}', hub.serverName)
+            .replaceAll('{username}', Player.getName())
+
+            .replaceAll('{bbping}',  '@Splash Pings')
+            .replaceAll('{bscping}', '@human')
+            .replaceAll('{spaping}', '@Splash Ping')
+            .replaceAll('{iodping}', '@Splash')
+            .replaceAll('{jbaping}', '@2mmwjba')
+
+
+        switch (settings().splashMessageCopyWhenClickingHub) {
+            case 1:
+                ChatLib.command(`b+ copy splash_message ${text}`, true)
+                break
+            case 2:
+                new TextComponent(`${constants.PREFIX}Click to copy splash message for &a${hubText}&r!`)
+                    .setClickAction("run_command")
+                    .setClickValue(`/b+ copy splash_message ${text}`)
+                    .chat()
+        }
+        new TextComponent(`${constants.PREFIX}Click to put &a${hubText} &rin chat`)
+            .setHoverValue(`Click to put &a${hubText} &rin chat`)
+            .setClickAction("run_command")
+            .setClickValue(`/b+ addtochatbox ${hubText}`)
+            .chat()
     }
-
-    text = text
-        .replaceAll('{hub}', hub.number)
-        .replaceAll('{dungeon?}', hub.area == 'Dungeon' ? 'Dungeon ' : '')
-        .replaceAll('{server}', hub.serverName)
-        .replaceAll('{username}', Player.getName())
-        .replaceAll('{bbping}',  '@Splash Pings')
-        .replaceAll('{bscping}', '@human')
-        .replaceAll('{spaping}', '@Splash Ping')
-        .replaceAll('{iodping}', '@Splash')
-        .replaceAll('{jbaping}', '@2mmwjba')
-       
-    
-    
-    switch (settings().splashMessageCopyWhenClickingHub) {
-        case 1:
-            ChatLib.command(`b+ copy splash_message ${text}`, true)
-            break
-        case 2:
-            new TextComponent(`${constants.PREFIX}Click to copy splash message for &a${hubText}&r!`)
-                .setClickAction("run_command")
-                .setClickValue(`/b+ copy splash_message ${text}`)
-                .chat()
-    }
-    new TextComponent(`${constants.PREFIX}Click to put &a${hubText} &rin chat`)
-        .setHoverValue(`Click to put &a${hubText} &rin chat`)
-        .setClickAction("run_command")
-        .setClickValue(`/b+ addtochatbox ${hubText}`)
-        .chat()
 })
 
 // feature (Warn if mega)

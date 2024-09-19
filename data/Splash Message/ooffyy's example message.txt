@@ -1,0 +1,9 @@
+{bbping} **{dungeon?}Hub {hub} ({server})**
+
+:godpotion: 36 potions
+:regeneration: Last potion is **Regeneration 8**
+:cake: /visit ooffyy for cakes :3
+
+[bingo texture pack](<https://modrinth.com/resourcepack/bingo+>) 
+[bingoplus module](<https://chattriggers.com/modules/v/BingoPlus>) (/ct import bingoplus)
+[bingohelper module](<https://chattriggers.com/modules/v/BingoHelper>) (/ct import bingohelper)
