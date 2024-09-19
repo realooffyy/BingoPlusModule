@@ -1,12 +1,13 @@
 // inspired by azuredclient
 import constants, { data } from "../utils/constants"
+import Skyblock from "./Skyblock"
 
 const changelogMessage = (text) => {
     new TextComponent(text).setClickAction("run_command").setClickValue("/b+").chat()
 }
 
 sentStep = register("step", () => {
-    if (!World.isLoaded()) return
+    if (!Skyblock.inSkyblock) return
     sentStep.unregister()
 
     const version = JSON.parse(FileLib.read("BingoPlus", "metadata.json")).version
