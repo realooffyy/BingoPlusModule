@@ -383,6 +383,14 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
 .addSwitch({
     category: "Splasher",
+    configName: "brewingPreventWarpingOut",
+    title: "Prevent warping out",
+    description: "Prevents you from warping out if you're brewing",
+    subcategory: "Brewing"
+})
+
+.addSwitch({
+    category: "Splasher",
     configName: "brewingStandLoadedBox",
     title: "Colour Brewing Stands",
     description: "Colours brewing stands if they are loaded\n&cDisable Skytils' 'Color Brewing Stands' feature!",
@@ -411,12 +419,27 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Highlights the correct brews to put in, based on the current ingredient.\n&cDesigned for God Splashes, may not work with other ingredients!",
     subcategory: "Brewing Stands"
 })
-.addSwitch({
+.addMultiCheckbox({
     category: "Splasher",
     configName: "brewingStandWarnIfMissingPotions",
     title: "Warn if missing potions",
-    description: "Warns you if there's 1 or 2 potions missing in the brewing stand.",
-    subcategory: "Brewing Stands"
+    description: "Warns you if there's 1 or 2 potions missing in the brewing stand./n&cThis feature is buggy bc hypixel is trash",
+    subcategory: "Brewing Stands",
+    options: [
+        {
+            title: "Chat message",
+            configName: "brewingStandWarnIfMissingPotions_chat",
+            value: false
+        }, {
+            title: "Sound",
+            configName: "brewingStandWarnIfMissingPotions_sound",
+            value: false
+        }, {
+            title: "Subtitle",
+            configName: "brewingStandWarnIfMissingPotions_subtitle",
+            value: false
+        }
+    ]
 })
 
 // these are in hubSelector.js

@@ -28,6 +28,7 @@ import "./features/party/customStreamCommands"
 
 import "./features/chat/oringoCost"
 
+import "./features/splasher/brewingUtils"
 import "./features/splasher/brewingStandUtils"
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/potionUtils"
@@ -61,6 +62,7 @@ import "./features/world/windCompass"
 /*
     1.5.1 changelog
 + add 'Warn if missing potions' feature
++ add 'Prevent warping out' feature while brewing
 
     1.5.0 changelog
 + add changelog

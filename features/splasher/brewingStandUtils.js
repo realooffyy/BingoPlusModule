@@ -2,7 +2,7 @@ import RenderLibV2 from "../../../RenderLibV2"
 import settings from "../../settings"
 import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
-import { drawSlotBox } from "../../render/utils"
+import { drawSlotBox, showTitle } from "../../render/utils"
 import Window from "../../utils/Window"
 import constants from "../../utils/constants"
 
@@ -37,6 +37,12 @@ let openedStand = null
 // let lastServer = null
 // potentially keep stands active if the server is still up, not sure if this would work though lol
 
+/**
+ * 
+ * @returns {Array<{x: number, y: number, z: number, brewingEnd: number, ingredient: string, potions: string[]}>} currently loaded brewing stands
+ */
+export const getBrewingStands = () => { return brewingStands }
+
 // todo: maybe move to utils
 const compareCoords = (obj1, obj2) => {
     return (
@@ -69,7 +75,7 @@ register("playerInteract", (action) => {
         z: block.getZ(),
         brewingEnd: null,
         ingredient: null,
-        potions: []
+        potionAmount: 0
     }
 })
 
@@ -84,14 +90,24 @@ register("tick", () => {
     } else {
         if (openedStand) {
             // feature (warn if missing potions)
-            if (settings().brewingStandWarnIfMissingPotions) {
-                const potions = openedStand?.potions?.length
-                if (potions > 0 && potions < 3) {
-                    ChatLib.chat(`${constants.PREFIX}&cYou left a brewing stand with ${3 - potions} potion${potions === 1 ? "s" : ""} missing!`)
+            const potions = openedStand?.potionAmount
+            ChatLib.chat(potions)
+            if ([1, 2].includes(potions)) {
+                const potionsMissing = `${3 - potions} potion${potions === 1 ? "s" : ""}`
+                if (settings().brewingStandWarnIfMissingPotions_chat)
+                    ChatLib.chat(`${constants.PREFIX}&cYou left a brewing stand with ${potionsMissing} missing!`)
+                if (settings().brewingStandWarnIfMissingPotions_sound)
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => {
+                            World.playSound("note.pling", 100, 1)
+                        }, i * 100)
+                    }
+                if (settings().brewingStandWarnIfMissingPotions_subtitle)
+                    showTitle("", `&c${potionsMissing} missing from stand!`, 3000)
                 }
-    
+ 
+            
             openedStand = null
-            }
         }
     }
 })
@@ -130,10 +146,10 @@ register("tick", () => {
     openedStand.ingredient = name ? ChatLib.removeFormatting(name) : null
 
     // potions
-    openedStand.potions = []
+    openedStand.potionAmount = 0
     ingredientSlots.forEach(slot => {
         name = inv?.getStackInSlot(slot)?.getName()
-        if (name) openedStand.potions.push(ChatLib.removeFormatting(name))
+        if (name) openedStand.potionAmount += 1
     })
 
     // deletes the stand in the same location
