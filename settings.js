@@ -411,6 +411,13 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Highlights the correct brews to put in, based on the current ingredient.\n&cDesigned for God Splashes, may not work with other ingredients!",
     subcategory: "Brewing Stands"
 })
+.addSwitch({
+    category: "Splasher",
+    configName: "brewingStandWarnIfMissingPotions",
+    title: "Warn if missing potions",
+    description: "Warns you if there's 1 or 2 potions missing in the brewing stand.",
+    subcategory: "Brewing Stands"
+})
 
 // these are in hubSelector.js
 .addDropDown({

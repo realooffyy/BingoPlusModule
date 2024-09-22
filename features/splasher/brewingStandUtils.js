@@ -4,6 +4,7 @@ import Skyblock from "../../utils/Skyblock"
 import { registerWhen } from "../../utils/utils"
 import { drawSlotBox } from "../../render/utils"
 import Window from "../../utils/Window"
+import constants from "../../utils/constants"
 
 // some logic from skytils
 // https://github.com/Skytils/SkytilsMod/blob/1.x/src/main/kotlin/gg/skytils/skytilsmod/features/impl/misc/BrewingFeatures.kt
@@ -23,6 +24,7 @@ const itemsIntoBrews = {
     "Bitter Iced Tea": ["Enchanted Cooked Mutton"],
     "Viking's Tear": ["Lapis Lazuli"]
 }
+const ingredientSlots = [38, 40, 42]
 
 const timeRegex = /^§a(\d{1,2}.\d)s$/
 // https://regex101.com/r/mgxH0O/1
@@ -67,6 +69,7 @@ register("playerInteract", (action) => {
         z: block.getZ(),
         brewingEnd: null,
         ingredient: null,
+        potions: []
     }
 })
 
@@ -78,8 +81,19 @@ register("tick", () => {
         if (!brewingStands.some(stand => compareCoords(stand, lastStand))) brewingStands.push(lastStand)
         openedStand = lastStand
         lastStand = null
+    } else {
+        if (openedStand) {
+            // feature (warn if missing potions)
+            if (settings().brewingStandWarnIfMissingPotions) {
+                const potions = openedStand?.potions?.length
+                if (potions > 0 && potions < 3) {
+                    ChatLib.chat(`${constants.PREFIX}&cYou left a brewing stand with ${3 - potions} potion${potions === 1 ? "s" : ""} missing!`)
+                }
+    
+            openedStand = null
+            }
+        }
     }
-    else openedStand = null
 })
 
 // delete stand when broken
@@ -114,6 +128,13 @@ register("tick", () => {
     // ingredient
     name = inv?.getStackInSlot(13)?.getName()
     openedStand.ingredient = name ? ChatLib.removeFormatting(name) : null
+
+    // potions
+    openedStand.potions = []
+    ingredientSlots.forEach(slot => {
+        name = inv?.getStackInSlot(slot)?.getName()
+        if (name) openedStand.potions.push(ChatLib.removeFormatting(name))
+    })
 
     // deletes the stand in the same location
     const index = brewingStands.findIndex(stand => compareCoords(stand, openedStand))

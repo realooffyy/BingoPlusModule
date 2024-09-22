@@ -59,6 +59,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.1 changelog
++ add 'Warn if missing potions' feature
+
     1.5.0 changelog
 + add changelog
 + add 'Highlight rats' feature
