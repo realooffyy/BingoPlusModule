@@ -5,8 +5,10 @@ import { getBrewingStands } from "./brewingStandUtils"
 const confirmMessage = new TextComponent(`${constants.PREFIX}&cWarp blocked as you are brewing! &e&lCLICK &eto confirm warp.`)
     .setClickAction("run_command")
 const warpKeywords = [
-    "warp",
-    "hub"
+    "warp", "warpforge",
+    "hub",
+    "l", "lobby",
+    "limbo"
 ]
 let warpBlockedTime = 0
 
@@ -17,8 +19,9 @@ register("messageSent", (msg, e) => {
     if (!getBrewingStands().length) return
     if (!msg.startsWith("/")) return
 
-    const m = msg.substring(1)
-    if (!warpKeywords.some(word => m.startsWith(word))) return
+    let m = msg.substring(1).split(" ")[0].toLowerCase()
+    ChatLib.chat(m)
+    if (!warpKeywords.some(word => m == word)) return
 
     cancel(e)
     confirmMessage.setClickValue(msg).chat()
