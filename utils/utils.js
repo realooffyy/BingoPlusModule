@@ -147,3 +147,17 @@ export const addToChatBox = (text) => {
         chatInputField.func_146180_a(currentText + text)
     }
 }
+
+/**
+ * Converts a string to Discord ANSI
+ * Suggested by aphased
+ * @param {String} text text to convert
+ * @param {Object} ansi ansi code conversions
+ */
+export const toDiscordAnsi = (text, ansi = defaultAnsiCodes) => {
+    let result = ("```ansi\n" + text + "\n```").replaceAll("&", "§")
+    Object.keys(ansi).forEach(code => {
+        result = result.replaceAll(`§${code}`, `**${ansi[code]}**`)
+    })
+    return result
+}

@@ -1,5 +1,6 @@
 import settings from "../../settings"
 import constants from "../../utils/constants"
+import { toDiscordAnsi } from "../../utils/utils"
 
 PREFIX = constants.PREFIX
 
@@ -54,15 +55,16 @@ const oringoPets = {
 } // i probably got at least something wrong
 
 const rarityList = {
-    'f': ['COMMON', 0],
-    'a': ['UNCOMMON', 1],
-    '9': ['RARE', 2],
-    '5': ['EPIC', 3],
-    '6': ['LEGENDARY', 4]
+    'f': ['&fCOMMON', 0],
+    'a': ['&aUNCOMMON', 1],
+    '9': ['&9RARE', 2],
+    '5': ['&5EPIC', 3],
+    '6': ['&6LEGENDARY', 4]
 }
 
 let pets = []
 
+// TODO: test this
 // abiphone call 
 register("chat", (x, e) => {
     if (!settings().oringoAbiphoneCost) return
@@ -85,13 +87,13 @@ register("chat", (x, e) => {
     pets.push([rarity[0], pet, price])
 
     if (rarity[1] == 4 && settings().oringoDiscordCopy) { // todo: test if this actually works
-        let line = ['# Travelling Zoo']
+        let line = ['&lTravelling Zoo']
         
         pets.forEach(x => {
-            line.push(`- **${x[0]} ${x[1]}**: \`${x[2][0]} coins\` and \`${x[2][1]}\``)
+            line.push(`${x[0]} ${x[1]}&r: &6${x[2][0]} coins &rand ${x[2][1]}`)
         })
 
-        ChatLib.command(`ct copy ${line.join('\n')}`, true)
+        ChatLib.command(`ct copy ${toDiscordAnsi(line)}`, true)
         ChatLib.chat(`${PREFIX}&aCopied all pets to clipboard. You can send this in Discord.`)
 
     }
