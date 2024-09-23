@@ -44,6 +44,7 @@ If the module does not seem to be working, join the Discord and share your log i
 </details>
 
 ### Other
+
 <details>
     <summary>Chicken Head Timer</summary>
     Displays a timer for the Chicken Head cooldown.
@@ -57,11 +58,12 @@ If the module does not seem to be working, join the Discord and share your log i
     Solves the Puzzler's riddle in the Dwarven Mines.
 </details>
 <details>
-    <summary>Rat waypoints</summary>
-    Shows waypoints for the general location of Rat spawns. Toggleable with /rats.
+    <summary>Rat features</summary>
+    Rat waypoints with `/rats` command, and a box outline around visible rats.
 </details>
 
 ### Party
+
 <details>
     <summary>Chat blockers</summary>
     Various blockers for messages, like follow, join and leave.
@@ -82,12 +84,8 @@ If the module does not seem to be working, join the Discord and share your log i
     A splash message builder with auto-copy functionality when warping to a hub with splash potions in your inventory!
 </details>
 <details>
-    <summary>Colour Brewing Stands</summary>
-    Colours brewing stands if they are loaded. 
-</details>
-<details>
-    <summary>Highlight correct brew</summary>
-    Highlights the correct brews to put in, based on the current ingredient.
+    <summary>Brewing Stand features</summary>
+    Coloured brewing stands (like in skytils) and various other features to aid brewing
 </details>
 <details>
     <summary>Splasher Display</summary>
@@ -102,12 +100,12 @@ If the module does not seem to be working, join the Discord and share your log i
 
 <details>
     <summary>Oringo Cost</summary>
-    Convert Oringo's Abiphone message to include the rarity and cost of each pet. Also copyable as a Discord message!
+    A more informative Oringo abiphone call, and support to copy as a discord message.
 </details>
 
 ### Commands
 
 <details>
     <summary>/cake</summary>
-    Visits a Cake Hub. Default is BingoSplasher, configurable in settings
+    Visits a Cake Hub. Default is BingoSplasher, configurable in settings.
 </details>

@@ -423,7 +423,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     category: "Splasher",
     configName: "brewingStandWarnIfMissingPotions",
     title: "Warn if missing potions",
-    description: "Warns you if there's 1 or 2 potions missing in the brewing stand./n&cThis feature is buggy bc hypixel is trash",
+    description: "Warns you if there's 1 or 2 potions missing in the brewing stand.\n&cThis feature can be buggy if transferring potions quickly bc hypixel bald",
     subcategory: "Brewing Stands",
     options: [
         {
