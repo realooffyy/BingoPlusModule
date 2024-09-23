@@ -101,9 +101,6 @@ export const bingoPlusCommand = register("command", (...args) => {
             
             break
 
-        default: 
-            ChatLib.chat(`${constants.PREFIX}Unknown command. Run &6/b+ help&r to see all commands.`)
-
         // Helper functions
         case "copy":
             const text = args.slice(2).join(" ") // shift removes copy and reason
@@ -116,7 +113,10 @@ export const bingoPlusCommand = register("command", (...args) => {
         case "addtochatbox":
             addToChatBox(args.slice(1).join(" "))
             break
-        
+
+
+        default: 
+            ChatLib.chat(`${constants.PREFIX}Unknown command. Run &6/b+ help&r to see all commands.`)
     }
 
 }).setName("b+")

@@ -1,5 +1,3 @@
-+ add changelog
-+ add 'Highlight rats' feature
-= fix brewing stand features breaking when opening skyblock menu
-= fix random string not adding to bingoparty commands sometimes
-= made 'Copy splash message when clicked' more user friendly
++ add 'Prevent warping out' feature while brewing
++ add 'Warn if missing potions' feature (buggy)
+= colour (ansi) support for oringo discord message

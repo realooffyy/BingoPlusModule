@@ -28,6 +28,7 @@ import "./features/party/customStreamCommands"
 
 import "./features/chat/oringoCost"
 
+import "./features/splasher/brewingUtils"
 import "./features/splasher/brewingStandUtils"
 import "./features/splasher/splasherDisplay"
 import "./features/splasher/potionUtils"
@@ -59,6 +60,11 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.1 changelog
++ add 'Prevent warping out' feature while brewing
++ add 'Warn if missing potions' feature (buggy)
+= colour (ansi) support for oringo discord message
+
     1.5.0 changelog
 + add changelog
 + add 'Highlight rats' feature

@@ -20,9 +20,9 @@ sentStep = register("step", () => {
         const lines = changelog.replace(/\r\n/g, "\n").split("\n")
         lines.forEach(line => {
             let newLine = ""
-            if (line.startsWith('+')) newLine = "&a" + line
-            else if (line.startsWith('-')) newLine = "&c" + line
-            else if (line.startsWith('=')) newLine = "&7" + line
+            if (line.startsWith('+')) newLine = " &a" + line
+            else if (line.startsWith('-')) newLine = " &c" + line
+            else if (line.startsWith('=')) newLine = " &7" + line
             else newLine = line
             changelogMessage(newLine)
         })
