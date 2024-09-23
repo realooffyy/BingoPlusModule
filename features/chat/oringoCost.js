@@ -55,16 +55,16 @@ const oringoPets = {
 } // i probably got at least something wrong
 
 const rarityList = {
-    'f': ['&fCOMMON', 0],
-    'a': ['&aUNCOMMON', 1],
-    '9': ['&9RARE', 2],
-    '5': ['&5EPIC', 3],
-    '6': ['&6LEGENDARY', 4]
+    'f': ['&f&lCOMMON', 0],
+    'a': ['&a&lUNCOMMON', 1],
+    '9': ['&9&lRARE', 2],
+    '5': ['&5&lEPIC', 3],
+    '6': ['&6&lLEGENDARY', 4]
 }
 
 let pets = []
 
-// TODO: test this
+// TODO: fix this attrocity
 // abiphone call 
 register("chat", (x, e) => {
     if (!settings().oringoAbiphoneCost) return
@@ -87,15 +87,23 @@ register("chat", (x, e) => {
     pets.push([rarity[0], pet, price])
 
     if (rarity[1] == 4 && settings().oringoDiscordCopy) { // todo: test if this actually works
-        let line = ['&lTravelling Zoo']
-        
-        pets.forEach(x => {
-            line.push(`${x[0]} ${x[1]}&r: &6${x[2][0]} coins &rand ${x[2][1]}`)
+        let lines = ['&lTravelling Zoo', '']
+    
+        // order pets by rarity
+        Object.entries(rarityList)
+            .sort(([, a], [, b]) => a[1] - b[1])
+            .forEach(([_, value]) => {
+            const rarity = value[0]
+                pets.forEach(pet => {
+                    if (pet[0] === rarity) lines.push(`${pet[0]} ${pet[1]}&r: &6${pet[2][0]} coins &rand &2${pet[2][1]}&r`)
+                })
         })
 
-        ChatLib.command(`ct copy ${toDiscordAnsi(line)}`, true)
-        ChatLib.chat(`${PREFIX}&aCopied all pets to clipboard. You can send this in Discord.`)
+        pets = []
 
+        const discordAnsi = toDiscordAnsi(lines.join('\n'))
+        ChatLib.command(`ct copy ${discordAnsi}`, true)
+        ChatLib.chat(`${PREFIX}&aCopied all pets to clipboard. You can send this in Discord.`)
     }
 
 }).setCriteria("&e[NPC] Oringo&f: &b✆ &f&r&8• ${x} Pet&r")

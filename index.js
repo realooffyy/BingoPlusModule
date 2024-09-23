@@ -63,6 +63,7 @@ import "./features/world/windCompass"
     1.5.1 changelog
 + add 'Warn if missing potions' feature
 + add 'Prevent warping out' feature while brewing
+= colour (ansi) support for oringo discord message
 
     1.5.0 changelog
 + add changelog

@@ -104,7 +104,7 @@ export const colourMap = {
     '0': [0, 0, 0]       // Black
 }
 
-const defaultAnsiCodes = {
+export const defaultAnsiCodes = {
     '§0': '\u001b[30m',
     '§1': '\u001b[34m',
     '§2': '\u001b[32m',
