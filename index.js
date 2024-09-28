@@ -60,6 +60,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.2 changelog
++ add message when starting playtime recording
+
     1.5.1 changelog
 + add 'Prevent warping out' feature while brewing
 + add 'Warn if missing potions' feature (buggy)

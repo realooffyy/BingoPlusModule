@@ -1,3 +1,1 @@
-+ add 'Prevent warping out' feature while brewing
-+ add 'Warn if missing potions' feature (buggy)
-= colour (ansi) support for oringo discord message
++ add message when starting playtime recording

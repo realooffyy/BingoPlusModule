@@ -19,6 +19,7 @@ register("chat", () => {
     data.bingoPlaytime = 0
     data.bingoPlaytimeStart = null
     data.save()
+    ChatLib.chat(`${constants.PREFIX}&aStarted recording Bingo playtime! &7Use &a/playtime &7to view.`)
 }).setCriteria('                     Welcome to SkyBlock Bingo!')
 
 register("chat", () => {
