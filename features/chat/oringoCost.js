@@ -86,7 +86,7 @@ register("chat", (x, e) => {
 
     pets.push([rarity[0], pet, price])
 
-    if (rarity[1] == 4 && settings().oringoDiscordCopy) { // todo: test if this actually works
+    if (rarity[1] == 4 && settings().oringoDiscordCopy) {
         let lines = ['&lTravelling Zoo', '']
     
         // order pets by rarity

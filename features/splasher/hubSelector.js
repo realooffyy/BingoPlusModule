@@ -31,7 +31,7 @@ const defaultSplashMessage = [
     "Where: Bea House",
     "",
     "Above is the default splash message.",
-    "You can actually create your own template for a splash message!",
+    "You can create your own template for a splash message!",
     "To do this, run /b+, then go to Splasher -> Splash Message -> Open folder.",
     "",
     `'${constants.SPLASHMESSAGE_FILE}' is where you should write your splash message template.`,

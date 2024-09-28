@@ -14,8 +14,6 @@ const partyResetRegex = [
     "The party was disbanded because the party leader disconnected."
 ]
 
-// TODO: add these to the repo
-
 /**
  * Commands which should always append the random string to the end
  */

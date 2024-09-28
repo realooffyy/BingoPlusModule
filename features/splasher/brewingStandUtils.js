@@ -91,7 +91,6 @@ register("tick", () => {
         if (openedStand) {
             // feature (warn if missing potions)
             const potions = openedStand?.potionAmount
-            ChatLib.chat(potions)
             if ([1, 2].includes(potions)) {
                 const potionsMissing = `${3 - potions} potion${potions === 1 ? "s" : ""}`
                 if (settings().brewingStandWarnIfMissingPotions_chat)
