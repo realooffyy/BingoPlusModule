@@ -14,7 +14,6 @@ register("step", () => {
     if (!data.bingoPlaytime % 60) data.save()
 }).setDelay(1)
 
-// TODO: show an informative message when starting playtime recording
 register("chat", () => {
     data.bingoPlaytime = 0
     data.bingoPlaytimeStart = null

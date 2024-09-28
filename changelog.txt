@@ -1,1 +1,2 @@
 + add message when starting playtime recording
+= fix 'Copy splash message' feature copying in all lowercase

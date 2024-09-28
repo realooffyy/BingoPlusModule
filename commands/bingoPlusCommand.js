@@ -18,7 +18,8 @@ const commandsList = [
 
 export const bingoPlusCommand = register("command", (...args) => {
     if (!args || !args[0]) return settings().getConfig().openGui()
-
+    
+    const originalArgs = args
     args = args.map(arg => arg ? arg.toLowerCase() : arg)
     switch (args[0]) {
         case "help":
@@ -103,7 +104,7 @@ export const bingoPlusCommand = register("command", (...args) => {
 
         // Helper functions
         case "copy":
-            const text = args.slice(2).join(" ") // shift removes copy and reason
+            const text = originalArgs.slice(2).join(" ") // shift removes copy and reason
             ChatLib.command(`ct copy ${text}`, true)
             new TextComponent(`${constants.PREFIX}&aCopied ${args[1].replace(/_/g, ' ')} to clipboard!`)
                 .setHoverValue(text)
@@ -111,7 +112,7 @@ export const bingoPlusCommand = register("command", (...args) => {
             break
         
         case "addtochatbox":
-            addToChatBox(args.slice(1).join(" "))
+            addToChatBox(originalArgs.slice(1).join(" "))
             break
 
 

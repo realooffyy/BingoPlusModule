@@ -62,6 +62,7 @@ import "./features/world/windCompass"
 /*
     1.5.2 changelog
 + add message when starting playtime recording
+= fix 'Copy splash message' feature copying in all lowercase
 
     1.5.1 changelog
 + add 'Prevent warping out' feature while brewing
