@@ -23,8 +23,6 @@ registerWhen(register("renderWorld", () => {
     })
 }), () => settings().ratWaypoints)
 
-register("worldLoad", () => { warningSent = false })
-
 // feature (Highlight rats)
 register("tick", () => {
     if (!settings().highlightRats) return
@@ -43,3 +41,8 @@ registerWhen(register("renderWorld", () => {
         RenderLibV2.drawEspBoxV2(rat[0], rat[1]+1.45, rat[2], .6, .6, .6, rgba[0]/255, rgba[1]/255, rgba[2]/255, rgba[3]/255, false, 10)
     })
 }), () => settings().highlightRats && rats) 
+
+register("worldLoad", () => {
+    warningSent = false
+    rats = []
+})

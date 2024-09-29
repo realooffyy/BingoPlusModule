@@ -60,6 +60,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.3 changelog
+= fix 'Highlight rats' showing the highlight after warping out
+
     1.5.2 changelog
 + add message when starting playtime recording
 = fix 'Copy splash message' feature copying in all lowercase
