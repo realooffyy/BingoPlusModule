@@ -704,6 +704,7 @@ const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/vigila
     .setCategorySort((a, b) => categories.indexOf(a.category) - categories.indexOf(b.category))
     .onOpenGui(() => {
         settings.searchBar._focusSearch()
+        // settings.setScheme("data/vigilanceScheme.json").apply()
     })
     .apply()
 
