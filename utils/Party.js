@@ -25,7 +25,6 @@ const alwaysRandomString = [
     "testcommand", "testpermissions", "testperms", "test",
     "ka", "ko", "kickafk", "kickoffline",
     "close",
-    "open", "public", "stream", // these should have 2 args but works fine
     "allinvite",
     "size",
     "printallowed", "printAllowlist", "lsallowed",
@@ -40,12 +39,12 @@ const alwaysRandomString = [
  * Commands which should only append a random string to the end when there is an argument present
  */
 const whenArgsRandomString = [
+    "open", "public", "stream",
     'promote', 'pro', 'prom', 'promo',
     'unblock', 'unban',
     'invite', 'inv',
     'query', // if this gets added
     'transfer',
-    
 ]
 
 export default new class Party {
