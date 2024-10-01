@@ -39,12 +39,11 @@ const alwaysRandomString = [
  */
 const whenArgsRandomString = [
     'promote', 'pro', 'prom', 'promo',
-    'kick', 'remove',
-    'ban', 'block',
     'unblock', 'unban',
     'invite', 'inv',
     'query', // if this gets added
     'transfer',
+    
 ]
 
 export default new class Party {
