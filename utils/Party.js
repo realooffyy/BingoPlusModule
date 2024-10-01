@@ -14,6 +14,8 @@ const partyResetRegex = [
     "The party was disbanded because the party leader disconnected."
 ]
 
+// TODO: post-rewrite update
+
 /**
  * Commands which should always append the random string to the end
  */
