@@ -1,4 +1,4 @@
-import { defaultAnsiCodes } from "./constants"
+import { discordAnsiCodes } from "./constants"
 // a lot of these are from bloom 🙏
 
 // Removes all unicode characters from a string
@@ -155,7 +155,7 @@ export const addToChatBox = (text) => {
  * @param {String} text text to convert
  * @param {Object} ansi ansi code conversions
  */
-export const toDiscordAnsi = (text, ansi = defaultAnsiCodes) => {
+export const toDiscordAnsi = (text, ansi = discordAnsiCodes) => {
     let result = ("```ansi\n" + text + "\n```").replaceAll("&", "§")
     Object.keys(ansi).forEach(code => {
         result = result.replaceAll(code, ansi[code])

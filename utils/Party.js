@@ -14,6 +14,8 @@ const partyResetRegex = [
     "The party was disbanded because the party leader disconnected."
 ]
 
+// TODO: post-rewrite update
+
 /**
  * Commands which should always append the random string to the end
  */
@@ -23,7 +25,6 @@ const alwaysRandomString = [
     "testcommand", "testpermissions", "testperms", "test",
     "ka", "ko", "kickafk", "kickoffline",
     "close",
-    "open", "public", "stream", // these should have 2 args but works fine
     "allinvite",
     "size",
     "printallowed", "printAllowlist", "lsallowed",
@@ -38,9 +39,8 @@ const alwaysRandomString = [
  * Commands which should only append a random string to the end when there is an argument present
  */
 const whenArgsRandomString = [
+    "open", "public", "stream",
     'promote', 'pro', 'prom', 'promo',
-    'kick', 'remove',
-    'ban', 'block',
     'unblock', 'unban',
     'invite', 'inv',
     'query', // if this gets added
