@@ -1,12 +1,13 @@
 import settings from "../settings"
 import Skyblock from "./Skyblock"
+import Window from "./Window"
 import { data } from "./constants"
 import { getScoreboard } from "./utils"
 // import { getScoreboard } from "./utils"
 
-const S30PacketWindowItems = Java.type("net.minecraft.network.play.server.S30PacketWindowItems")
-const S2DPacketOpenWindow = Java.type("net.minecraft.network.play.server.S2DPacketOpenWindow")
-const C0DPacketCloseWindow = Java.type("net.minecraft.network.play.client.C0DPacketCloseWindow")
+//const S30PacketWindowItems = Java.type("net.minecraft.network.play.server.S30PacketWindowItems")
+//const S2DPacketOpenWindow = Java.type("net.minecraft.network.play.server.S2DPacketOpenWindow")
+//const C0DPacketCloseWindow = Java.type("net.minecraft.network.play.client.C0DPacketCloseWindow")
 
 
 const goalSlots = [2,  3,  4,  5,  6,
@@ -27,50 +28,37 @@ export default new class Bingo {
         this.goals = null
         this.community = null
 
-        this.windowTitle = null
-        this.cardLoaded = false
-        this.communityGoalDisplayLinesUpdated = false
+        this.cardOpened = false
 
         register("tick", (t) => { // bingo check
-            if (t%10 || !Skyblock.inSkyblock) return
             this.inBingo = getScoreboard().some(line => line.includes('Ⓑ'))
+            this.cardOpened = Window.getTitle() === "Bingo Card" ||
+                             (Window.getTitle() === "Your Skills" && data.dev) // also skills menu for testing
         })
 
-        register("packetReceived", (packet) => {
-            this.windowTitle = packet.func_179840_c().func_150254_d().removeFormatting()
-        }).setFilteredClass(S2DPacketOpenWindow)
-
-        register("packetSent", () => {
-            this.windowTitle = null
-            this.cardLoaded = false
-            this.communityGoalDisplayLinesUpdated = false
-        }).setFilteredClass(C0DPacketCloseWindow)
-
-        register("packetReceived", () => { // bingo card grabber
+        register("tick", (t) => {
+            if (t%5) return
             if (!Skyblock.inSkyblock) return
+            if (!this.cardOpened) return
+
             const inv = Player.getContainer()
 
             if ((!settings().communityGoalDisplay && !settings().bingoCardDisplay) || inv == null) return
-            if (this.windowTitle == "Bingo Card" || (this.windowTitle == "Your Skills" && data.dev)) { // also skills menu for testing purposes
 
-                const goals = goalSlots.map(slot => inv.getItems()[slot])
-                if (goals.includes(null)) this.goals = null
-                else if (goals.some(goal => goal.getName() == "§cClose")) this.goals = null // fix for /showing the bingo card
-                else this.goals = goals
+            // extract goals
+            const goals = goalSlots.map(slot => inv.getItems()[slot])
 
-                if (this.goals) {
-                    this.community = this.extractCommunity(communityGoalSlots.map(slot => this.goals[slot]))
-                    this.cardLoaded = true
-                    this.communityGoalDisplayLinesUpdated = false
-                } else {
-                    this.community = null
-                    this.cardLoaded = false
-                }
-            }
-            else {
-                this.cardLoaded = false
-            }
-        }).setFilteredClass(S30PacketWindowItems)
+            if (goals.includes(null)) this.goals = null
+            else if (goals.some(goal => goal.getName() == "§cClose")) this.goals = null // fix for /showing the bingo card
+            else this.goals = goals
+
+            // extract community goals
+            if (this.goals)
+                this.community = this.extractCommunity(communityGoalSlots.map(slot => this.goals[slot]))
+            else
+                this.community = null
+
+        })
             
         register("worldLoad", () => this.reset())
     }
@@ -79,11 +67,11 @@ export default new class Bingo {
      * uses the api to check if the bingo event is ongoing
      * @returns if the bingo event is underway
      */
-        isOngoing() {
-            const time = Date.now()
-            return data.bingoApi.start != null && data.bingoApi.end != null &&
-                   (data.bingoApi.start < time && time < data.bingoApi.end)
-        }
+    isOngoing() {
+        const time = Date.now()
+        return data.bingoApi.start != null && data.bingoApi.end != null &&
+               (data.bingoApi.start < time && time < data.bingoApi.end)
+    }
 
     extractCommunity(list) {
         goals = []
@@ -118,9 +106,5 @@ export default new class Bingo {
     reset() {
         this.inBingo = null
         this.ongoingEvent = false
-        
-        this.windowTitle = null
-        this.cardLoaded = false
-        this.communityGoalDisplayLinesUpdated = false
     }
 }

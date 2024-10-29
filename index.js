@@ -60,6 +60,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.4 changelog
+= fix stuff related to 'Community Goal Display'
+    
     1.5.3 changelog
 = fix 'Highlight rats' showing the highlight after warping out
 
