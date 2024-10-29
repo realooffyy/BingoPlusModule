@@ -1,1 +1,2 @@
++ add separate features for 'Party Join and Leave messages'
 = fix stuff related to 'Community Goal Display'

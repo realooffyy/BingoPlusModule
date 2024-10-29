@@ -303,9 +303,18 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 })
 .addDropDown({
     category: "Party",
-    configName: "blockPartyJoinLeave",
-    title: "Block Join/Leave",
-    description: "Blocks party join/leave messages. This includes the 5 minute disconnect messages.",
+    configName: "blockPartyJoin",
+    title: "Block Join",
+    description: "Blocks party join messages.",
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyLeave",
+    title: "Block Leave",
+    description: "Blocks party leave messages. This includes the 5 minute disconnect messages.",
     options: ["Off", "Block while in Bingo Party", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0

@@ -5,7 +5,8 @@ const partyLineBreak = '&9&m----------------------------------------------------
 
 filter('blockPartyLineBreak', partyLineBreak)
 filter('blockPartyTravelMessagesNew', / &9&l».*/) // https://regex101.com/r/w2zgat/1
-filter('blockPartyJoinLeave', /.* (?:has disconnected, they have 5 minutes to rejoin before they are removed from the party|was removed from your party because they disconnected|has left the party|joined the party)\./, true) // https://regex101.com/r/ycPbfQ/3
+filter('blockPartyJoin', /(?:\[.*?\] )?(?:\w{1,16}) joined the party\./)
+filter('blockPartyLeave', /(?:\[.*?\] )?(?:\w{1,16}) (?:has disconnected, they have 5 minutes to rejoin before they are removed from the party|was removed from your party because they disconnected|has left the party)\./)
 
 /**
  * Creates a blocker for certain message criteria.
