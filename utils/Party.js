@@ -108,6 +108,6 @@ export default new class Party {
         if (!shouldAdd) return string
         
         // TODO: potentially make something for commands like an [END] for the bot to interpret and omit
-        return string + ` ${generateRandomString(string.length * .33 < 6 ? 6 : string.length * .33)}`
+        return string + ` | ${generateRandomString(string.length * .33 < 6 ? 6 : string.length * .33)}`
     }
 }
