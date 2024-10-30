@@ -9,6 +9,7 @@ export default constants = {
     ],
     // TODO: make this an array of bingoparty igns
     BINGOPARTY_IGN: "BingoParty",
+    DEFAULT_MESSAGE_FORMATTER_PREFIX: "&6Bingo Party > ",
 
     SPLASHMESSAGE_FOLDER: "/data/Splash Message/",
     SPLASHMESSAGE_FILE: "message.txt"

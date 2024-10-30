@@ -1,2 +1,3 @@
 + add separate features for 'Party Join and Leave messages'
++ add formatter for bingoparty commands
 = fix stuff related to 'Community Goal Display'

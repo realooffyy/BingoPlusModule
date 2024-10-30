@@ -76,8 +76,13 @@ export default new class Party {
         return this.inParty && this.leader === this.getBotIGN()
     }
 
-    getBotIGN() {
-        return constants.BINGOPARTY_IGN.toLowerCase()
+    /**
+     * Gets the party bot's ign
+     * @param {Boolean} lowercase defaults to true
+     * @returns the bot's ign
+     */
+    getBotIGN(lowercase = true) {
+        return lowercase ? constants.BINGOPARTY_IGN.toLowerCase() : constants.BINGOPARTY_IGN
     }
 
     /**

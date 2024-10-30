@@ -344,7 +344,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     category: "Party",
     configName: "bingoPartyAlias",
     title: "Alias for Bingo Party commands",
-    description: "Creates an alias for messaging the Bingo Party. Leave blank to disable. Supports some autocomplete :P\nExample: &aap&r\n&cRun /ct load after changing alias!",
+    description: `Alias for '/msg ${Party.getBotIGN(false)} !p'. Leave blank to disable. Supports some autocomplete.\nExample: &aap&r\n&cRun /ct load after changing alias!`,
     subcategory: "BingoParty Moderation",
     placeHolder: "eg. ap",
     value: "",
@@ -363,6 +363,30 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Adds a random string to the end of most Bingo Party commands to bypass saying the same message twice.",
     subcategory: "BingoParty Moderation",
     value: true
+})
+
+.addSwitch({
+    category: "Party",
+    configName: "bingoPartyIncomingFormatter",
+    title: "Message formatter",
+    description: `Formats incoming messages from ${Party.getBotIGN(false)}.`,
+    subcategory: "BingoParty Formatter"
+})
+.addTextInput({
+    category: "Party",
+    configName: "bingoPartyMessageFormatterPrefix",
+    title: "Message formatter prefix",
+    description: "Custom prefix for feature above (supports colour codes).",
+    subcategory: "BingoParty Formatter",
+    placeHolder: constants.DEFAULT_MESSAGE_FORMATTER_PREFIX,
+    value: constants.DEFAULT_MESSAGE_FORMATTER_PREFIX,
+})
+.addSwitch({
+    category: "Party",
+    configName: "bingoPartyOutgoingHider",
+    title: "Hide sent commands",
+    description: `Hide commands sent to ${Party.getBotIGN(false)}.`,
+    subcategory: "BingoParty Formatter"
 })
 
 .addSwitch({
