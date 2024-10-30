@@ -64,6 +64,7 @@ import "./features/world/windCompass"
     1.5.4 changelog
 + add separate features for 'Party Join and Leave messages'
 + add formatter for bingoparty commands
+- disabled 'Warn if missing potions' feature cuz hypixel D:
 = fix stuff related to 'Community Goal Display'
     
     1.5.3 changelog

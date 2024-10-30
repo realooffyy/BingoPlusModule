@@ -452,6 +452,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Highlights the correct brews to put in, based on the current ingredient.\n&cDesigned for God Splashes, may not work with other ingredients!",
     subcategory: "Brewing Stands"
 })
+/*
 .addMultiCheckbox({
     category: "Splasher",
     configName: "brewingStandWarnIfMissingPotions",
@@ -474,6 +475,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
         }
     ]
 })
+*/
 
 // these are in hubSelector.js
 .addDropDown({

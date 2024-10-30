@@ -89,6 +89,8 @@ register("tick", () => {
         lastStand = null
     } else {
         if (openedStand) {
+            return
+            // temporarily disabled
             // feature (warn if missing potions)
             const potions = openedStand?.potionAmount
             if ([1, 2].includes(potions)) {
