@@ -3,6 +3,8 @@ import DefaultConfig from "../Amaterasu/core/DefaultConfig"
 import constants from "./utils/constants"
 import Party from "./utils/Party"
 
+const ooffyy = constants.FORMATTED_OOFFYY
+
 const categories = ["General", "Bingo", "Other", "Party", "Splasher", "Chat", "Commands", "Dev"]
 const version = JSON.parse(FileLib.read("BingoPlus", "metadata.json")).version
 
@@ -292,24 +294,75 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     subcategory: "Message Blockers",
     value: 0
 })
+.addSwitch({
+    category: "Party",
+    configName: "blockPartyIgnoreLeaderEvents",
+    title: "Ignore leader events",
+    description: "Ignore below blockers if message involves the party leader.",
+    subcategory: "Message Blockers"
+})
+.addSwitch({
+    category: "Party",
+    configName: "blockPartyIgnoreFamousPeopleEvents",
+    title: "Clout chaser",
+    description: "Ignore below blockers if message involves a youtube, admin or gm rank.",
+    subcategory: "Message Blockers"
+})
 .addDropDown({
     category: "Party",
-    configName: "blockPartyTravelMessagesNew",
-    title: "Block Party Travel Notifications",
-    description: "Blocks party travel notifications.\n&8Instead of using 'Everywhere' consider disabling Co-op Travel Notifications in SkyBlock settings!",
+    configName: "blockPartyJoinedTheParty",
+    title: "Block Party Joined",
+    description: `${ooffyy} §r§ejoined the party.`,
     options: ["Off", "Block while in Bingo Party", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
 .addDropDown({
     category: "Party",
-    configName: "blockPartyJoinLeave",
-    title: "Block Join/Leave",
-    description: "Blocks party join/leave messages. This includes the 5 minute disconnect messages.",
+    configName: "blockPartyLeftTheParty",
+    title: "Block Party Leave",
+    description: `${ooffyy} §r§ehas left the party.`,
     options: ["Off", "Block while in Bingo Party", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyDisconnected",
+    title: "Block Party Disconnected",
+    description: `${ooffyy} §r§ehas disconnected, they have §r§c5 §r§eminutes to rejoin before they are removed from the party.`,
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyDisconnectedRemoved",
+    title: "Block Party Disconnected Removed",
+    description: `${ooffyy} §r§ewas removed from the party because they disconnected.`,
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyRejoined",
+    title: "Block Party Rejoined",
+    description: `${ooffyy} §r§ehas rejoined.`,
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyLeaderRejoined",
+    title: "Block Party Leader Rejoined",
+    description: `§eThe party leader ${ooffyy} §r§ehas rejoined.`,
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+
 
 .addTextParagraph({
     category: "Party",
@@ -335,7 +388,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     category: "Party",
     configName: "bingoPartyAlias",
     title: "Alias for Bingo Party commands",
-    description: "Creates an alias for messaging the Bingo Party. Leave blank to disable. Supports some autocomplete :P\nExample: &aap&r\n&cRun /ct load after changing alias!",
+    description: `Alias for '/msg ${Party.getBotIGN(false)} !p'. Leave blank to disable. Supports some autocomplete.\nExample: &aap&r\n&cRun /ct load after changing alias!`,
     subcategory: "BingoParty Moderation",
     placeHolder: "eg. ap",
     value: "",
@@ -354,6 +407,30 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Adds a random string to the end of most Bingo Party commands to bypass saying the same message twice.",
     subcategory: "BingoParty Moderation",
     value: true
+})
+
+.addSwitch({
+    category: "Party",
+    configName: "bingoPartyIncomingFormatter",
+    title: "Message formatter",
+    description: `Formats incoming messages from ${Party.getBotIGN(false)}.`,
+    subcategory: "BingoParty Formatter"
+})
+.addTextInput({
+    category: "Party",
+    configName: "bingoPartyMessageFormatterPrefix",
+    title: "Message formatter prefix",
+    description: "Custom prefix for feature above (supports colour codes).",
+    subcategory: "BingoParty Formatter",
+    placeHolder: constants.DEFAULT_MESSAGE_FORMATTER_PREFIX,
+    value: constants.DEFAULT_MESSAGE_FORMATTER_PREFIX,
+})
+.addSwitch({
+    category: "Party",
+    configName: "bingoPartyOutgoingHider",
+    title: "Hide sent commands",
+    description: `Hide commands sent to ${Party.getBotIGN(false)}.`,
+    subcategory: "BingoParty Formatter"
 })
 
 .addSwitch({
@@ -419,6 +496,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Highlights the correct brews to put in, based on the current ingredient.\n&cDesigned for God Splashes, may not work with other ingredients!",
     subcategory: "Brewing Stands"
 })
+/*
 .addMultiCheckbox({
     category: "Splasher",
     configName: "brewingStandWarnIfMissingPotions",
@@ -441,6 +519,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
         }
     ]
 })
+*/
 
 // these are in hubSelector.js
 .addDropDown({
@@ -704,6 +783,7 @@ const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/vigila
     .setCategorySort((a, b) => categories.indexOf(a.category) - categories.indexOf(b.category))
     .onOpenGui(() => {
         settings.searchBar._focusSearch()
+        // settings.setScheme("data/vigilanceScheme.json").apply()
     })
     .apply()
 

@@ -1,6 +1,8 @@
 import { generateRandomString } from "./utils"
 import constants from "./constants"
 
+// TODO: add the following line:
+// The party leader [VIP+] BingoSplasher has rejoined.
 const partyLeaderRegex = [
     /^You have joined (?:\[.*?\] )?(\w{1,16})'s? party!$/, // https://regex101.com/r/gVoOq1/2
     /^Party Leader: (?:\[.*?\] )?(\w{1,16}) ●$/, // https://regex101.com/r/zcdveP/1
@@ -76,8 +78,13 @@ export default new class Party {
         return this.inParty && this.leader === this.getBotIGN()
     }
 
-    getBotIGN() {
-        return constants.BINGOPARTY_IGN.toLowerCase()
+    /**
+     * Gets the party bot's ign
+     * @param {Boolean} lowercase defaults to true
+     * @returns the bot's ign
+     */
+    getBotIGN(lowercase = true) {
+        return lowercase ? constants.BINGOPARTY_IGN.toLowerCase() : constants.BINGOPARTY_IGN
     }
 
     /**
@@ -108,6 +115,6 @@ export default new class Party {
         if (!shouldAdd) return string
         
         // TODO: potentially make something for commands like an [END] for the bot to interpret and omit
-        return string + ` ${generateRandomString(string.length * .33 < 6 ? 6 : string.length * .33)}`
+        return string + ` | ${generateRandomString(string.length * .33 < 6 ? 6 : string.length * .33)}`
     }
 }

@@ -7,6 +7,7 @@ import { BaseGui } from "../../render/BaseGui"
 import { registerGui } from "../../render/registerGui"
 import { registerWhen } from "../../utils/utils"
 import { getStringHeight, getStringWidth, drawTextBox } from "../../render/utils"
+import { onInventoryClose } from "../../utils/Events"
 
 let communityGoalDisplayGui = new BaseGui('communityGoalDisplay', ['communityGoalDisplay', 'communitygoal', 'communitygoals', 'community'])
 registerGui(communityGoalDisplayGui)
@@ -22,26 +23,7 @@ const baseHeight = 118
 let height = baseHeight
 let width = baseWidth
 
-register("tick", () => {
-    opened = (Skyblock.inSkyblock && Bingo.cardLoaded && settings().communityGoalDisplay)
-    if (!Bingo.cardLoaded) lines = baseText
-    if (Bingo.community !== null) {
-        if (Bingo.community.length == 5 && Bingo.cardLoaded && !this.communityGoalDisplayLinesUpdated) {
-            compileLines()
-            Bingo.communityGoalDisplayLinesUpdated = true
-        }
-    }
-})
-
-registerWhen(register('guiRender', () => { // rendering
-    drawTextBox(lines, 'communityGoalDisplay', height, width)
-}), () => opened)
-
-registerWhen(register('renderOverlay', () => { // settings rendering
-    drawTextBox('&6&lCommunity Goals&r', 'communityGoalDisplay')
-}), () => communityGoalDisplayGui.isOpen())
-
-function compileLines() {
+const compileLines = () => {
     lines = '&6&lCommunity Goals&r\n'
     Bingo.community.forEach(goal => {
         lines += `\n  &a✔ ${goal.name}\n      ${goal.contributionLine} &f`
@@ -52,3 +34,22 @@ function compileLines() {
     width = getStringWidth(lines)
     height = getStringHeight(lines)
 }
+
+register("tick", () => {
+    opened = (Skyblock.inSkyblock && Bingo.cardOpened && settings().communityGoalDisplay)
+    if (!Bingo.community) {
+        lines = baseText
+        return
+    }
+    else if (Bingo.community.length == 5) compileLines()
+})
+
+onInventoryClose(() => {lines = baseText})
+
+registerWhen(register('guiRender', () => { // rendering
+    drawTextBox(lines, 'communityGoalDisplay', height, width)
+}), () => opened)
+
+registerWhen(register('renderOverlay', () => { // settings rendering
+    drawTextBox('&6&lCommunity Goals&r', 'communityGoalDisplay')
+}), () => communityGoalDisplayGui.isOpen())

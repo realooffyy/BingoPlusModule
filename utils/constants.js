@@ -2,6 +2,7 @@ import PogObject from "../../PogData/index"
 
 export default constants = {
     PREFIX: "&6[&6Bingo&c+&6]&r ",
+    FORMATTED_OOFFYY: "§b[MVP§d+§b] §dooffyy§r",
     DISCORD: "https://discord.gg/P8rahWWA7b",
     COMMANDS_LIST: [
         `&6/b+ &8- Opens Bingo+ config`,
@@ -9,6 +10,7 @@ export default constants = {
     ],
     // TODO: make this an array of bingoparty igns
     BINGOPARTY_IGN: "BingoParty",
+    DEFAULT_MESSAGE_FORMATTER_PREFIX: "&6Bingo Party > ",
 
     SPLASHMESSAGE_FOLDER: "/data/Splash Message/",
     SPLASHMESSAGE_FILE: "message.txt"

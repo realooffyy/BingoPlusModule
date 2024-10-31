@@ -25,6 +25,7 @@ import "./features/bingo/hideCompletedBingoGoals"
 import "./features/party/bingoPartyCommandConverter"
 import "./features/party/chatBlockers"
 import "./features/party/customStreamCommands"
+import "./features/party/messageFormatter"
 
 import "./features/chat/oringoCost"
 
@@ -60,6 +61,12 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.4 changelog
++ add separate features for 'Party Join and Leave messages'
++ add formatter for bingoparty commands
+- disabled 'Warn if missing potions' feature cuz hypixel D:
+= fix stuff related to 'Community Goal Display'
+    
     1.5.3 changelog
 = fix 'Highlight rats' showing the highlight after warping out
 
