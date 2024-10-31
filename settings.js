@@ -3,6 +3,8 @@ import DefaultConfig from "../Amaterasu/core/DefaultConfig"
 import constants from "./utils/constants"
 import Party from "./utils/Party"
 
+const ooffyy = constants.FORMATTED_OOFFYY
+
 const categories = ["General", "Bingo", "Other", "Party", "Splasher", "Chat", "Commands", "Dev"]
 const version = JSON.parse(FileLib.read("BingoPlus", "metadata.json")).version
 
@@ -292,33 +294,75 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     subcategory: "Message Blockers",
     value: 0
 })
+.addSwitch({
+    category: "Party",
+    configName: "blockPartyIgnoreLeaderEvents",
+    title: "Ignore leader events",
+    description: "Ignore below blockers if message involves the party leader.",
+    subcategory: "Message Blockers"
+})
+.addSwitch({
+    category: "Party",
+    configName: "blockPartyIgnoreFamousPeopleEvents",
+    title: "Clout chaser",
+    description: "Ignore below blockers if message involves a youtube, admin or gm rank.",
+    subcategory: "Message Blockers"
+})
 .addDropDown({
     category: "Party",
-    configName: "blockPartyTravelMessagesNew",
-    title: "Block Party Travel Notifications",
-    description: "Blocks party travel notifications.\n&8Instead of using 'Everywhere' consider disabling Co-op Travel Notifications in SkyBlock settings!",
+    configName: "blockPartyJoinedTheParty",
+    title: "Block Party Joined",
+    description: `${ooffyy} §r§ejoined the party.`,
     options: ["Off", "Block while in Bingo Party", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
 .addDropDown({
     category: "Party",
-    configName: "blockPartyJoin",
-    title: "Block Join",
-    description: "Blocks party join messages.",
+    configName: "blockPartyLeftTheParty",
+    title: "Block Party Leave",
+    description: `${ooffyy} §r§ehas left the party.`,
     options: ["Off", "Block while in Bingo Party", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
 .addDropDown({
     category: "Party",
-    configName: "blockPartyLeave",
-    title: "Block Leave",
-    description: "Blocks party leave messages. This includes the 5 minute disconnect messages.",
+    configName: "blockPartyDisconnected",
+    title: "Block Party Disconnected",
+    description: `${ooffyy} §r§ehas disconnected, they have §r§c5 §r§eminutes to rejoin before they are removed from the party.`,
     options: ["Off", "Block while in Bingo Party", "Block everywhere"],
     subcategory: "Message Blockers",
     value: 0
 })
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyDisconnectedRemoved",
+    title: "Block Party Disconnected Removed",
+    description: `${ooffyy} §r§ewas removed from the party because they disconnected.`,
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyRejoined",
+    title: "Block Party Rejoined",
+    description: `${ooffyy} §r§ehas rejoined.`,
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+.addDropDown({
+    category: "Party",
+    configName: "blockPartyLeaderRejoined",
+    title: "Block Party Leader Rejoined",
+    description: `§eThe party leader ${ooffyy} §r§ehas rejoined.`,
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+
 
 .addTextParagraph({
     category: "Party",

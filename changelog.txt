@@ -1,4 +1,4 @@
-+ add separate features for 'Party Join and Leave messages'
++ add more party message blocker toggles
 + add formatter for bingoparty commands
 - disabled 'Warn if missing potions' feature cuz hypixel D:
 = fix stuff related to 'Community Goal Display'

@@ -1,6 +1,8 @@
 import { generateRandomString } from "./utils"
 import constants from "./constants"
 
+// TODO: add the following line:
+// The party leader [VIP+] BingoSplasher has rejoined.
 const partyLeaderRegex = [
     /^You have joined (?:\[.*?\] )?(\w{1,16})'s? party!$/, // https://regex101.com/r/gVoOq1/2
     /^Party Leader: (?:\[.*?\] )?(\w{1,16}) ●$/, // https://regex101.com/r/zcdveP/1
