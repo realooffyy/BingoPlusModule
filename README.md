@@ -1,4 +1,4 @@
-# BingoPlus Module for 1.8.9
+# BingoPlus Module for 1.8.9 
 
 BingoPlus is a module with features related to the Hypixel SkyBlock Bingo gamemode.  
 **https://chattriggers.com/modules/v/BingoPlus**
