@@ -61,6 +61,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.5 changelog
+= i accidentally deleted party warp blocker 💀 it's back now
+
     1.5.4 changelog
 + add separate features for 'Party Join and Leave messages'
 + add formatter for bingoparty commands
