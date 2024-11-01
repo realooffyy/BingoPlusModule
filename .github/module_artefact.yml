@@ -1,0 +1,34 @@
+name: Module artefact
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  zip:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      # Step 2: Rename the root directory to BingoPlus
+      - name: Rename root directory
+        run: |
+          mkdir BingoPlus
+          shopt -s extglob
+          mv !(BingoPlus) BingoPlus/
+
+      # Step 3: Zip the code
+      - name: Create zip archive
+        run: |
+          zip -r source.zip . -x "*.github/*" ".gitignore" "LICENSE" "README.md"
+      
+      # Step 4: Upload the artifact
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: BingoPlus-archive
+          path: BingoPlus.zip
