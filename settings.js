@@ -310,6 +310,15 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 })
 .addDropDown({
     category: "Party",
+    configName: "blockPartyTravelMessagesNew",
+    title: "Block Party Travel Notifications",
+    description: " §9§l» §booffyy §eis traveling to §aHub §e§lFOLLOW§r\n&8Instead of using 'Everywhere' consider disabling Co-op Travel Notifications in SkyBlock settings!",
+    options: ["Off", "Block while in Bingo Party", "Block everywhere"],
+    subcategory: "Message Blockers",
+    value: 0
+})
+.addDropDown({
+    category: "Party",
     configName: "blockPartyJoinedTheParty",
     title: "Block Party Joined",
     description: `${ooffyy} §r§ejoined the party.`,
