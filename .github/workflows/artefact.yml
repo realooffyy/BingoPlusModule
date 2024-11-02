@@ -19,13 +19,14 @@ jobs:
         run: |
           mkdir BingoPlus
           shopt -s extglob
-          mv !(BingoPlus) BingoPlus/
+          mv !(BingoPlus|.github|.git|README.md|LICENSE) BingoPlus/
 
-      # Step 3: Zip the code
-      - name: Create zip archive
+      # Step 3: Zip the contents without creating a BingoPlus folder in the zip
+      - name: Create zip archive without outer folder
         run: |
-          zip -r BingoPlus.zip BingoPlus -x "*.github/*" ".gitignore" "LICENSE" "README.md"
-      
+          cd BingoPlus
+          zip -r ../BingoPlus.zip . -x "*.github/*" ".git/*" "README.md" "LICENSE"
+
       # Step 4: Upload the artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v3
