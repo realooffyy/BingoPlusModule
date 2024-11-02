@@ -10,7 +10,7 @@ filter('blockPartyTravelMessagesNew', /^()() &9&l».*$/) // https://regex101.com
 // [VIP+] BingoSplasher joined the party.
 filter('blockPartyJoinedTheParty', new RegExp(`^${userRegex} joined the party\\.$`))
 // [VIP+] BingoSplasher has left the party.
-filter('blockPartyLeftTheParty', new RegExp(`^${userRegex} left the party\\.$`))
+filter('blockPartyLeftTheParty', new RegExp(`^${userRegex} has left the party\\.$`))
 
 // [VIP+] BingoSplasher has disconnected, they have 5 minutes to rejoin before they are removed from the party.
 filter('blockPartyDisconnected', new RegExp(`^${userRegex} has disconnected, they have 5 minutes to rejoin before they are removed from the party\\.$`))
