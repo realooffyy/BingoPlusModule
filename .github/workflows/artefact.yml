@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  create-folder-artifact:
+  zip:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,16 +14,21 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      # Step 2: Create BingoPlus folder with the required contents
+      # Step 2: Create BingoPlus folder and move contents into it
       - name: Organize files into BingoPlus folder
         run: |
           mkdir BingoPlus
           shopt -s extglob
           mv !(BingoPlus|.github|.git|README.md|LICENSE) BingoPlus/
 
-      # Step 3: Upload the BingoPlus folder as an artifact
-      - name: Upload BingoPlus folder as artifact
+      # Step 3: Zip the BingoPlus folder
+      - name: Create zip archive
+        run: |
+          zip -r BingoPlus.zip BingoPlus
+
+      # Step 4: Upload the zip archive
+      - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: BingoPlus-archive
-          path: BingoPlus
+          name: BingoPlus
+          path: BingoPlus.zip
