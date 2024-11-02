@@ -11,6 +11,8 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
 
     steps:
       # Step 1: Check out the repository
@@ -23,6 +25,7 @@ jobs:
         run: |
           version=$(jq -r '.version' metadata.json)
           echo "version=$version" >> $GITHUB_ENV
+          echo "::set-output name=version::$version"
 
       # Step 3: Create BingoPlus folder and move contents into it, excluding specified files
       - name: Organize files into BingoPlus folder
