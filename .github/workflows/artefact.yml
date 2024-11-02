@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  zip:
+  release:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,21 +14,39 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      # Step 2: Create BingoPlus folder and move contents into it
+      # Step 2: Read version from metadata.json
+      - name: Extract version from metadata.json
+        id: get_version
+        run: |
+          version=$(jq -r '.version' metadata.json)
+          echo "version=$version" >> $GITHUB_ENV
+
+      # Step 3: Create BingoPlus folder and move contents into it
       - name: Organize files into BingoPlus folder
         run: |
           mkdir BingoPlus
           shopt -s extglob
           mv !(BingoPlus|.github|.git|README.md|LICENSE) BingoPlus/
 
-      # Step 3: Zip the BingoPlus folder
+      # Step 4: Zip the BingoPlus folder
       - name: Create zip archive
         run: |
           zip -r BingoPlus.zip BingoPlus
 
-      # Step 4: Upload the zip archive
+      # Step 5: Upload the zip archive as an artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: BingoPlus
           path: BingoPlus.zip
+
+      # Step 6: Create a release using the version from metadata.json
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ env.version }}
+          release_name: ${{ env.version }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
