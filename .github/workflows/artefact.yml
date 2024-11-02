@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write  # Allows creating releases
+  actions: read    # Allows actions to be read
 
 jobs:
   release:
