@@ -14,22 +14,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      # Step 2: Rename the root directory to BingoPlus
-      - name: Rename root directory
+      # Step 2: Create zip archive without an inner folder
+      - name: Create zip archive
         run: |
-          mkdir BingoPlus
-          shopt -s extglob
-          mv !(BingoPlus|.github|.git|README.md|LICENSE) BingoPlus/
+          zip -r BingoPlus.zip . -x "*.github/*" ".git/*" "README.md" "LICENSE"
 
-      # Step 3: Zip the contents without creating a BingoPlus folder in the zip
-      - name: Create zip archive without outer folder
-        run: |
-          cd BingoPlus
-          zip -r ../BingoPlus.zip . -x "*.github/*" ".git/*" "README.md" "LICENSE"
-
-      # Step 4: Upload the artifact
+      # Step 3: Upload the artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: BingoPlus-archive
+          name: BingoPlus
           path: BingoPlus.zip
