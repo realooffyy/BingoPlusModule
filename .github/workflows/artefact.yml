@@ -64,8 +64,8 @@ jobs:
         uses: actions/create-release@v1
         id: create_release
         with:
-          tag_name: BingoPlus-${{ needs.release.outputs.version }}
-          release_name: BingoPlus-${{ needs.release.outputs.version }}
+          tag_name: ${{ needs.release.outputs.version }}
+          release_name: ${{ needs.release.outputs.version }}
           draft: false
           prerelease: false
         env:
