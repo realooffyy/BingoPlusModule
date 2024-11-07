@@ -61,6 +61,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.7 changelog
+= fix random /bingo
+
     1.5.6 changelog
 = fix 'Block Party Leave'
 

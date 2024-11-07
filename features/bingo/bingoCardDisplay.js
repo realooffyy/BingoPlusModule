@@ -64,6 +64,8 @@ registerWhen(register('renderOverlay', () => {
     }
 }), () => opened)
 
+/*
+bug: https://discord.com/channels/1163947833402085439/1304167016944504924
 register("clicked", (x, y, btn, state) => {
     if (opened && !bingoCardGui.isOpen() && Bingo.goals < 25) {
         if (state) {
@@ -74,3 +76,4 @@ register("clicked", (x, y, btn, state) => {
         }
     }
 })
+*/

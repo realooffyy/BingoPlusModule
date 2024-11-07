@@ -1,1 +1,1 @@
-= fix 'Block Party Leave'
+= fix random /bingo
