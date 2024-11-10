@@ -6,15 +6,21 @@ const nameRegex = /^§\w(.*?) (Splash )?Potion$/ // https://regex101.com/r/aWdGG
 const loreRegex = /§(\w).*/ // https://regex101.com/r/kht3Li/2
 
 // Show potion abbreviation
+// thanks chick man
+const items = new (Java.type('java.util.WeakHashMap'))();
 registerWhen(register("renderItemIntoGui", (item, x, y) => {
-    const name = item.getName()
-    if (!name.includes("Splash Potion")) return
-    const text = name.slice(0,5) + "."
-
-    Renderer.translate(x, y, 251) // 251 puts it behind the tooltip, in front of its texture, and in front of head other textures 
+    const stack = item.itemStack
+    let str = items.get(stack)
+    if (str === '') return
+    if (!str) {
+        const n = item.getName()
+        str = n.includes('Splash Potion') ? item.getLore()[2].match(/^([§\w]*§\w\w{1,3})/)[1] + '.' : ''
+        items.put(stack, str)
+        if (!str) return
+    }
+    Renderer.translate(x, y, 251)
     Renderer.scale(0.6)
-    Renderer.drawString(text, 0, 0)
-
+    Renderer.drawString(str, 0, 0)
 }), () => settings().potionAbbreviation && Skyblock.inSkyblock)
 
 // these functions will have a use eventually trust

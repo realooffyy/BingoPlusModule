@@ -61,6 +61,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.8 changelog
+= make 'Show potion abbreviation' show the correct colour
+
     1.5.7 changelog
 = fix random /bingo
 
