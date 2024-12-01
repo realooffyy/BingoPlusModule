@@ -61,6 +61,13 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.8 changelog
+= make 'Show potion abbreviation' show the correct colour
+Bingo Party message formatter stuff:
++ add voicemail support 
+= fixed it triggering when it shouldn't
+= fixed custom prefix
+
     1.5.7 changelog
 = fix random /bingo
 
