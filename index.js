@@ -63,6 +63,7 @@ import "./features/world/windCompass"
 /*
     1.5.8 changelog
 = make 'Show potion abbreviation' show the correct colour
+= fixed Bingo Party message formatter triggering when it shouldn't
 
     1.5.7 changelog
 = fix random /bingo
