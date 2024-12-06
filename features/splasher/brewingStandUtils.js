@@ -125,12 +125,14 @@ register("blockBreak", (block) => {
     brewingStands = brewingStands.filter(stand => !compareCoords(stand, brokenStand))
 })
 
-// get info from inside the thing
+// get info from inside the brewing stand
 register("tick", () => {
     if (!enabled) return
     if (!openedStand) return
 
     const inv = Player.getContainer()
+    if (!inv) return
+    
     let name, match
 
     // time left
