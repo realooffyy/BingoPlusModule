@@ -37,6 +37,7 @@ import "./features/splasher/hubSelector"
 
 import "./features/world/rats"
 import "./features/world/puzzlerSolver"
+import "./features/world/timerOverBones"
 import "./features/world/windCompass"
 
 
@@ -61,6 +62,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.9 changelog
+= maybe fixed brewing stand-related features
+
     1.5.8 changelog
 = make 'Show potion abbreviation' show the correct colour
 Bingo Party message formatter stuff:
