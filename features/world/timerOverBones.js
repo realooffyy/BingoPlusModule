@@ -10,14 +10,6 @@ const reset = () => {
     bones = []
 }
 
-register("command", () => {
-    World.getAllEntitiesOfType(net.minecraft.entity.item.EntityItem)
-        .forEach(item => {
-            if (item.name !== "item.item.bone") return
-            ChatLib.chat(item.getUUID())
-        })
-}).setName("getBones")
-
 register("tick", () => {
     enabled = Skyblock.area === "Spider's Den" && settings().timerOverBones
 })
