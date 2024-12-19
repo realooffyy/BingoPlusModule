@@ -37,6 +37,7 @@ import "./features/splasher/hubSelector"
 
 import "./features/world/rats"
 import "./features/world/puzzlerSolver"
+import "./features/world/timerOverBones"
 import "./features/world/windCompass"
 
 

@@ -208,21 +208,10 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
 .addSwitch({
     category: "Other",
-    configName: "windCompassDisplay",
-    title: "Wind Compass Display",
-    description: "Shows a display with the wind compass during the 'Gone with the Wind' event.",
-    subcategory: "Gone with the Wind"
-})
-.addButton({
-    category: "Other",
-    configName: "MoveWindCompassDisplay",
-    title: "Move",
-    description: "Move the Wind Compass Display.",
-    subcategory: "Gone with the Wind",
-    placeHolder: "Move",
-    onClick() {
-        ChatLib.command('b+ move windCompassDisplay', true)
-    }
+    configName: "timerOverBones",
+    title: "Timer over Spider's Den bones",
+    description: "Shows a timer for a skeleton to spawn from a bone.",
+    subcategory: "Spider's Den"
 })
 
 .addSwitch({
@@ -274,6 +263,25 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "the box colour",
     subcategory: "Rats",
     value: [0, 255, 255, 255]
+})
+
+.addSwitch({
+    category: "Other",
+    configName: "windCompassDisplay",
+    title: "Wind Compass Display",
+    description: "Shows a display with the wind compass during the 'Gone with the Wind' event.",
+    subcategory: "Gone with the Wind"
+})
+.addButton({
+    category: "Other",
+    configName: "MoveWindCompassDisplay",
+    title: "Move",
+    description: "Move the Wind Compass Display.",
+    subcategory: "Gone with the Wind",
+    placeHolder: "Move",
+    onClick() {
+        ChatLib.command('b+ move windCompassDisplay', true)
+    }
 })
 
 // Party
