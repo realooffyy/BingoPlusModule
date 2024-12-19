@@ -63,7 +63,7 @@ export const getTabList = (formatted=false) => {
     return TabList.getNames().map(a => a.removeFormatting())
 }
 
-
+const MCItemStack = Java.type("net.minecraft.item.ItemStack")
 /**
  * Gets the Skyblock item ID of the given MCItem or CT Item
  * From BloomCore
