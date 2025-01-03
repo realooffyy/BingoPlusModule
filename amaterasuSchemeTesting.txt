@@ -1,0 +1,59 @@
+.addTextInput({
+    configName: "devAddTextInput",
+    title: "Text Input",
+    description: "Example of text input that does not wrap the text",
+    category: "Dev",
+    subcategory: "All elements",
+    value: "",
+    placeHolder: "Empty... :("
+})
+.addColorPicker({
+    configName: "devAddColorPicker",
+    title: "Color Picker",
+    description: "Pick a color! (hopefully...)",
+    category: "Dev",
+    subcategory: "All elements",
+    value: [0, 0, 255, 255]
+})
+.addSwitch({
+    configName: "devAddSwitch",
+    title: "Switch",
+    description: "toggle the checkbox in Not general! tab!",
+    category: "Dev",
+    subcategory: "All elements"
+})
+.addToggle({
+    configName: "devAddToggle",
+    title: "Checkbox/Toggle",
+    description: "Check this box",
+    category: "Dev",
+    subcategory: "All elements"
+})
+.addDropDown({
+    configName: "devAddDropDown",
+    title: "DropDown",
+    description: "Select an option",
+    category: "Dev",
+    subcategory: "All elements",
+    options: ["one", "two", "three"],
+    value: 0
+})
+.addSlider({
+    configName: "devAddSlider",
+    title: "Slider",
+    description: "Select a value",
+    category: "Dev",
+    subcategory: "All elements",
+    options: [0, 100],
+    value: 0
+})
+.addButton({
+    configName: "devAddButton",
+    title: "Button",
+    description: "yay",
+    category: "Dev",
+    subcategory: "All elements",
+    onClick() {
+        ChatLib.chat("hi :P")
+    }
+})
