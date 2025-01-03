@@ -63,6 +63,31 @@ export const getTabList = (formatted=false) => {
     return TabList.getNames().map(a => a.removeFormatting())
 }
 
+const MCItemStack = Java.type("net.minecraft.item.ItemStack")
+/**
+ * Gets the Skyblock item ID of the given MCItem or CT Item
+ * From BloomCore
+ * @param {Item | MCItemStack} item 
+ */
+export const getSkyblockItemID = (item) => {
+    if (item instanceof MCItemStack) item = new Item(item)
+    if (!(item instanceof Item)) return null
+
+    const extraAttributes = item.getNBT()?.getCompoundTag("tag")?.getCompoundTag("ExtraAttributes")
+    const itemID = extraAttributes?.getString("id") ?? null
+
+    if (itemID !== "ENCHANTED_BOOK") return itemID
+    
+    // Enchanted books are a pain in the ass
+    const enchantments = extraAttributes.getCompoundTag("enchantments")
+    const enchants = [...enchantments.getKeySet()]
+    if (!enchants.length) return null
+
+    const enchantment = enchants[0]
+    const level = enchantments.getInteger(enchants[0])
+
+    return `ENCHANTMENT_${enchantment.toUpperCase()}_${level}`
+}
 
 /**
  * 

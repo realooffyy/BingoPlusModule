@@ -182,6 +182,14 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
 .addSwitch({
     category: "Other",
+    configName: "splashCombo",
+    title: "Splash combo",
+    description: "Shows a fun combo counter during a splash",
+    subcategory: "Splashes"
+})
+
+.addSwitch({
+    category: "Other",
     configName: "chickenHeadTimer",
     title: "Chicken Head Timer",
     description: "Displays a timer for the Chicken Head cooldown.",
@@ -208,21 +216,10 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
 
 .addSwitch({
     category: "Other",
-    configName: "windCompassDisplay",
-    title: "Wind Compass Display",
-    description: "Shows a display with the wind compass during the 'Gone with the Wind' event.",
-    subcategory: "Gone with the Wind"
-})
-.addButton({
-    category: "Other",
-    configName: "MoveWindCompassDisplay",
-    title: "Move",
-    description: "Move the Wind Compass Display.",
-    subcategory: "Gone with the Wind",
-    placeHolder: "Move",
-    onClick() {
-        ChatLib.command('b+ move windCompassDisplay', true)
-    }
+    configName: "timerOverBones",
+    title: "Timer over Spider's Den bones",
+    description: "Shows a timer for a skeleton to spawn from a bone.",
+    subcategory: "Spider's Den"
 })
 
 .addSwitch({
@@ -274,6 +271,25 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "the box colour",
     subcategory: "Rats",
     value: [0, 255, 255, 255]
+})
+
+.addSwitch({
+    category: "Other",
+    configName: "windCompassDisplay",
+    title: "Wind Compass Display",
+    description: "Shows a display with the wind compass during the 'Gone with the Wind' event.",
+    subcategory: "Gone with the Wind"
+})
+.addButton({
+    category: "Other",
+    configName: "MoveWindCompassDisplay",
+    title: "Move",
+    description: "Move the Wind Compass Display.",
+    subcategory: "Gone with the Wind",
+    placeHolder: "Move",
+    onClick() {
+        ChatLib.command('b+ move windCompassDisplay', true)
+    }
 })
 
 // Party
@@ -682,7 +698,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     title: "Oringo Abiphone Cost",
     description: "Convert Oringo's Abiphone message to include the rarity and cost of each pet.",
     subcategory: "Oringo",
-    value: true
+    value: false
 })
 .addSwitch({
     category: "Chat",
@@ -691,7 +707,7 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Also automatically copy this message to send in Discord.",
     subcategory: "Oringo",
     shouldShow: data => data.oringoAbiphoneCost,
-    value: true
+    value: false
 })
 
 // Commands
@@ -725,66 +741,6 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     value: true
 })
 
-// i'll leave it in, i got tired of moving it in and out
-.addTextInput({
-    configName: "devAddTextInput",
-    title: "Text Input",
-    description: "Example of text input that does not wrap the text",
-    category: "Dev",
-    subcategory: "All elements",
-    value: "",
-    placeHolder: "Empty... :("
-})
-.addColorPicker({
-    configName: "devAddColorPicker",
-    title: "Color Picker",
-    description: "Pick a color! (hopefully...)",
-    category: "Dev",
-    subcategory: "All elements",
-    value: [0, 0, 255, 255]
-})
-.addSwitch({
-    configName: "devAddSwitch",
-    title: "Switch",
-    description: "toggle the checkbox in Not general! tab!",
-    category: "Dev",
-    subcategory: "All elements"
-})
-.addToggle({
-    configName: "devAddToggle",
-    title: "Checkbox/Toggle",
-    description: "Check this box",
-    category: "Dev",
-    subcategory: "All elements"
-})
-.addDropDown({
-    configName: "devAddDropDown",
-    title: "DropDown",
-    description: "Select an option",
-    category: "Dev",
-    subcategory: "All elements",
-    options: ["one", "two", "three"],
-    value: 0
-})
-.addSlider({
-    configName: "devAddSlider",
-    title: "Slider",
-    description: "Select a value",
-    category: "Dev",
-    subcategory: "All elements",
-    options: [0, 100],
-    value: 0
-})
-.addButton({
-    configName: "devAddButton",
-    title: "Button",
-    description: "yay",
-    category: "Dev",
-    subcategory: "All elements",
-    onClick() {
-        ChatLib.chat("hi :P")
-    }
-})
 
 const settings = new FuckYouIWantToUseThatName("BingoPlus", config, "data/vigilanceScheme.json", `${constants.PREFIX}&bv${version} &aby &dooffyy`)
     .setSize(80, 80)

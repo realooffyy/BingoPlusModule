@@ -29,6 +29,8 @@ import "./features/party/messageFormatter"
 
 import "./features/chat/oringoCost"
 
+import "./features/other/splashCombo"
+
 import "./features/splasher/brewingUtils"
 import "./features/splasher/brewingStandUtils"
 import "./features/splasher/splasherDisplay"
@@ -37,11 +39,14 @@ import "./features/splasher/hubSelector"
 
 import "./features/world/rats"
 import "./features/world/puzzlerSolver"
+import "./features/world/timerOverBones"
 import "./features/world/windCompass"
 
 
 
 /* TODO
+ * - fix feature file structure !!!
+
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler, bednom
  * - hotm tree unlock reminders
  * - king talisman helper!
@@ -61,6 +66,9 @@ import "./features/world/windCompass"
 
 
 /*
+    1.5.9 changelog
+= maybe fixed brewing stand-related features
+
     1.5.8 changelog
 = make 'Show potion abbreviation' show the correct colour
 Bingo Party message formatter stuff:

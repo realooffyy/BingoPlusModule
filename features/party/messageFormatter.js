@@ -3,7 +3,8 @@ import constants from "../../utils/constants"
 import { onChatPacket } from "../../utils/Events"
 import Party from "../../utils/Party"
 
-const incomingRegex = new RegExp(`^(?:From|Voicemail) (?:\\[.*?\\] )?${Party.getBotIGN(false)}: (.*)$`)
+// https://regex101.com/r/a9UlVQ/1
+const incomingRegex = new RegExp(`^(?:From|Voicemail) (?:\\[[^\\]]*?\\] )?${Party.getBotIGN(false)}: (.*)$`, 'm');
 const outgoingRegex = new RegExp(`^To (?:\\[.*?\\] )?${Party.getBotIGN(false)}: !p .*$`)
 
 // incoming formatter
