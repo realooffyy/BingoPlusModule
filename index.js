@@ -29,6 +29,8 @@ import "./features/party/messageFormatter"
 
 import "./features/chat/oringoCost"
 
+import "./features/other/splashCombo"
+
 import "./features/splasher/brewingUtils"
 import "./features/splasher/brewingStandUtils"
 import "./features/splasher/splasherDisplay"
@@ -43,6 +45,8 @@ import "./features/world/windCompass"
 
 
 /* TODO
+ * - fix feature file structure !!!
+
  * - reminder to do bingo stuff like cakes, experiments, fetchur, puzzler, bednom
  * - hotm tree unlock reminders
  * - king talisman helper!

@@ -1,3 +1,4 @@
++ add "Splash combo" feature
 + add "Timer over Spider's Den bones" feature
-= fix "Chicken Head Timer"
-= fix Bingo Party incoming message formatter
+= fix Chicken Head Timer not hiding properly
+= fix incoming party message formatter again
