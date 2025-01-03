@@ -24,7 +24,7 @@ jobs:
       # Step 3: Zip the code
       - name: Create zip archive
         run: |
-          zip -r source.zip . -x "*.github/*" ".gitignore" "LICENSE" "README.md"
+          zip -r source.zip . -x "*.github/*" ".gitignore" "LICENSE" "README.md" "amaterasuSchemeTesting.txt"
       
       # Step 4: Upload the artifact
       - name: Upload artifact
