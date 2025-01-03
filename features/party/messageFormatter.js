@@ -7,8 +7,6 @@ import Party from "../../utils/Party"
 const incomingRegex = new RegExp(`^(?:From|Voicemail) (?:\\[[^\\]]*?\\] )?${Party.getBotIGN(false)}: (.*)$`, 'm');
 const outgoingRegex = new RegExp(`^To (?:\\[.*?\\] )?${Party.getBotIGN(false)}: !p .*$`)
 
-console.log(incomingRegex)
-
 // incoming formatter
 onChatPacket((message, event) => {
     if (!settings().bingoPartyIncomingFormatter) return
