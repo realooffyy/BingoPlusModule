@@ -475,13 +475,6 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     description: "Renders the potion's abbreviation over it",
     subcategory: "Potions"
 })
-.addKeybind({
-    category: "Splasher",
-    configName: "potionColourOrderKeybind",
-    title: "(coming soon) Show colour order",
-    description: "Highlights the rainbow order of potions while held",
-    subcategory: "Potions"
-})
 
 .addSwitch({
     category: "Splasher",
