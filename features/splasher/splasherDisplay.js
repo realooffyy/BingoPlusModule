@@ -71,7 +71,7 @@ register("step", () => { // line constructor
         let playerMax = null
         let playerCount = null
         if (area === 'Hub') {
-            if (serverType === 'M') playerMax = 80
+            if (serverType === 'M') playerMax = 60
             else if (serverType === 'm') playerMax = 24
         }
         else if (area === 'Dungeon Hub') playerMax = 24
