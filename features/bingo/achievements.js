@@ -13,8 +13,8 @@ register("chat", (event) => {
         ChatLib.chat(`${constants.PREFIX}&aAchievement copied to clipboard!`)
     }
     if (settings().autoSendAchievementsInParty) {
-        if (Party.inParty) ChatLib.say(`/pc ${event}`)
+        if (Party.inParty) ChatLib.command(`pc ${event}`)
     }
-    if (settings().autoSendAchievementsInGuild) ChatLib.say(`/gc ${event}`)
+    if (settings().autoSendAchievementsInGuild) ChatLib.command(`gc ${event}`)
 
 }).setCriteria(regex)

@@ -715,6 +715,16 @@ const config = new DefaultConfig("BingoPlus", "data/settings.json")
     subcategory: ""
 })
 
+.addTextInput({
+    category: "Commands",
+    configName: "partyJoinAlias",
+    title: "Bingo Party Join Alias",
+    description: "Runs &e/p join IGN&r using the bot IGN defined earlier.\nDefault command alias is &e/pb&r, you can define additional aliases below.",
+    value: "pjoinbp",
+    placeHolder: "pb",
+    subcategory: ""
+})
+
 // Dev
 
 .addTextParagraph({

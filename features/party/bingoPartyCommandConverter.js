@@ -97,8 +97,8 @@ register("messageSent", (message, event) => {
     // check if a random string should be added
     let newMessage = args.slice(1).join(' ') // the slice removes /p
     if (settings().bingoPartyCommandRandomString) newMessage = Party.addRandomString(newMessage)
-    const command = `/msg ${Party.getBotIGN()} !p ${newMessage}`
+    const command = `msg ${Party.getBotIGN()} !p ${newMessage}`
 
     cancel(event)
-    ChatLib.say(command)
+    ChatLib.command(command)
 })
