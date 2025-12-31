@@ -15,6 +15,11 @@ Once done, run `/ct import BingoPlus` in-game.
 Use `/b+` to open the config.  
 If the module does not seem to be working, join the Discord and share your log in `/ct console js`.
 
+## Contributors
+
+- Please join my [Discord](https://discord.gg/P8rahWWA7b) server to discuss contributions.
+- Contributions should go into the `dev` branch.
+
 ## Features
 
 ### Bingo

@@ -2,7 +2,7 @@ import settings from "../../settings"
 import Party from "../../utils/Party"
 
 const userRegex = "(?:\\[(.*?)\\] )?(\\w{1,16})"
-const famousRanks = ["YOUTUBE", "ADMIN", "GM"]
+const famousRanks = ["YOUTUBE", "ዞ"]
 
 filter('blockPartyLineBreak', /()()&9&m-----------------------------------------------------&r/)
 filter('blockPartyTravelMessagesNew', /^()() &9&l».*$/) // https://regex101.com/r/w2zgat/1
