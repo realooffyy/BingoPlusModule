@@ -1,3 +1,8 @@
+> [!NOTE]
+> This module is no longer being maintained. PRs for small bug fixes are welcome, please contribute to the `dev` branch and I will get back to you.
+> 
+> I have plans to recreate this as a Fabric mod for modern versions of Minecraft when I find free time. If you are interested in helping out, please join the [Discord](https://discord.gg/P8rahWWA7b) server to discuss this!
+
 # BingoPlus Module for 1.8.9 
 
 BingoPlus is a module with features related to the Hypixel SkyBlock Bingo gamemode.  
